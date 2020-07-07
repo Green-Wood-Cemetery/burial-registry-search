@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "@appbaseio/reactivesearch": "3.2.2",
+    "antd": "^3.6.6",
+    "dotenv": "^8.2.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-expand-collapse": "latest"
+  },
+  "name": "82kp7",
+  "description": null,
+  "version": "0.0.0",
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
