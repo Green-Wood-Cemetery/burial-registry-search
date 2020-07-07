@@ -6,8 +6,10 @@ import ReactDOM from 'react-dom';
 import {
 	ReactiveBase,
 	DataSearch,
+	DateRange,
 	MultiList,
 	SelectedFilters,
+	DynamicRangeSlider,
 	ReactiveList
 } from '@appbaseio/reactivesearch';
 import {
@@ -74,16 +76,16 @@ const App = () => (
 			<Col span={12}>
 				<Card>
 				<MultiList
-				  componentId="list-3"
+				  componentId="death_cause_facet"
 				  dataField="death_cause.keyword"
 				  size={100}
 				  style={{
 				    marginBottom: 20
 				  }}
 				  title="Cause of death"
-				/>
+				 showCheckbox/>
 				<MultiList
-				  componentId="list-4"
+				  componentId="residence_city_facet"
 				  dataField="late_residence_city.keyword"
 				  showSearch={false}
 				  size={100}
@@ -91,37 +93,99 @@ const App = () => (
 				    marginBottom: 20
 				  }}
 				  title="City"
+				 showCheckbox/>
+				<DateRange
+					componentId="death_date_facet"
+					dataField="death_date"
+					title="Death Date"
+					defaultValue={{
+						start: new Date('1840-01-01'),
+						end: new Date('2020-01-01')
+					}}
+					placeholder={{
+						start: 'Start Date',
+						end: 'End Date'
+					}}
+					focused={false}
+					numberOfMonths={1}
+					queryFormat="date"
+					autoFocusEnd={true}
+					showClear={true}
+					showFilter={true}
+					filterLabel="Death Date"
+					URLParams={false}
+				/>
+				<DynamicRangeSlider
+					componentId="death_age_facet"
+					dataField="age"
+					title="Age Range"
+					defaultValue={(min, max) => (
+						{
+							"start": min,
+							"end": Math.min(min + 5, max)
+						}
+					)}
+					rangeLabels={(min, max) => (
+						{
+							"start": min + " years",
+							"end": max + " years"
+						}
+					)}
+					stepValue={1}
+					showHistogram={true}
+					showFilter={true}
+					interval={2}
+					react={{
+						and: ["CategoryFilter", "SearchFilter"]
+					}}
+					URLParams={true}
+					loader="Loading ..."
+					filterLabel="Age Range"
 				/>
 				</Card>
 			</Col>
 			<Col span={12}>
 				<DataSearch
-				  componentId="search"
-				  dataField={[
-				    'age',
-				    'age.keyword',
-				    'surname',
-				    'surname.autosuggest',
-				    'surname.english',
-				    'surname.search'
-				  ]}
-				  fieldWeights={[
-				    1,
-				    1,
-				    1,
-				    1,
-				    1,
-				    1
-				  ]}
-				  fuzziness={0}
-				  highlight={true}
-				  highlightField={[
-				    'age',
-				    'surname'
-				  ]}
-				  style={{
-				    marginBottom: 20
-				  }}
+					autosuggest={true}
+					componentId="search"
+					componentType="DATASEARCH"
+					dataField={[
+						'surname',
+						'surname.autosuggest',
+						'surname.english',
+						'surname.search',
+						'late_residence_city',
+						'late_residence_city.keyword',
+						'forename',
+						'forename.keyword'
+					]}
+					debounce={0}
+					defaultValue={undefined}
+					fieldWeights={[
+						1,
+						1,
+						1,
+						1,
+						1,
+						1,
+						1,
+						1
+					]}
+					fuzziness={0}
+					highlight={false}
+					highlightField={[
+						'surname',
+						'late_residence_city',
+						'forename'
+					]}
+					placeholder="Search"
+					queryFormat="or"
+					showFilter={true}
+					size={20}
+					strictSelection={false}
+					style={{
+						marginBottom: 20
+					}}
 				/>
 
 				<SelectedFilters />
@@ -132,9 +196,10 @@ const App = () => (
 				  pagination={true}
 				  react={{
 				    and: [
-				      'list-3',
-				      'search',
-				      'list-4'
+				    	'death_cause_facet',
+						'residence_city_facet',
+						'death_date_facet',
+						'death_age_facet'
 				    ]
 				  }}
 				  renderItem={renderItem}
