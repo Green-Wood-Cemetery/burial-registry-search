@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -12,6 +11,11 @@ import {
 	DynamicRangeSlider,
 	ReactiveList
 } from '@appbaseio/reactivesearch';
+
+import {
+	ReactiveOpenStreetMap
+} from '@appbaseio/reactivemaps';
+
 import {
 	Row,
 	Button,
@@ -80,9 +84,15 @@ const App = () => (
 		analytics={true}
 		searchStateHeader
 	>
+
 		<Row gutter={16} style={{ padding: 20 }}>
-			<Col span={12}>
+			<Col span={6}>
 				<Card>
+				<ReactiveOpenStreetMap
+					componentId="place_of_death"
+					dataField="death_location"
+					title="Place of death"
+				/>
 				<MultiList
 				  componentId="death_cause_facet"
 				  dataField="death_cause.keyword"
@@ -93,6 +103,16 @@ const App = () => (
 				  title="Cause of death"
 				 showCheckbox/>
 				<MultiList
+					componentId="residence_state_facet"
+					dataField="late_residence_state.keyword"
+					showSearch={false}
+					size={100}
+					style={{
+						marginBottom: 20
+					}}
+					title="Residence: state"
+					showCheckbox/>
+				<MultiList
 				  componentId="residence_city_facet"
 				  dataField="late_residence_city.keyword"
 				  showSearch={false}
@@ -100,16 +120,33 @@ const App = () => (
 				  style={{
 				    marginBottom: 20
 				  }}
-				  title="City"
+				  title="Residence: city"
 				 showCheckbox/>
+				<MultiList
+					componentId="place_of_death_facet"
+					dataField="place_of_death.keyword"
+					showSearch={false}
+					size={100}
+					style={{
+						marginBottom: 20
+					}}
+					title="Place of death"
+					showCheckbox/>
+				<MultiList
+					componentId="marital_status_facet"
+					dataField="marital_status.keyword"
+					showSearch={false}
+					size={100}
+					style={{
+						marginBottom: 20
+					}}
+					filterLabel="Marital status"
+					title="Marital status"
+					showCheckbox/>
 				<DateRange
 					componentId="death_date_facet"
 					dataField="death_date"
 					title="Death Date"
-					defaultValue={{
-						start: new Date('1840-01-01'),
-						end: new Date('2020-01-01')
-					}}
 					placeholder={{
 						start: 'Start Date',
 						end: 'End Date'
@@ -122,17 +159,14 @@ const App = () => (
 					showFilter={true}
 					filterLabel="Death Date"
 					URLParams={false}
+					style={{
+						marginBottom: 20
+					}}
 				/>
 				<DynamicRangeSlider
 					componentId="death_age_facet"
 					dataField="age"
 					title="Age Range"
-					defaultValue={(min, max) => (
-						{
-							"start": 0,
-							"end": 110
-						}
-					)}
 					rangeLabels={(min, max) => (
 						{
 							"start": "0 years",
@@ -150,6 +184,30 @@ const App = () => (
 					loader="Loading ..."
 					filterLabel="Age Range"
 				/>
+
+
+				{/*<ReactiveGoogleMap*/}
+				{/*	componentId="place_of_location_map"*/}
+				{/*	dataField="death_location"*/}
+				{/*	title="Death Location Map"*/}
+				{/*	size={100}*/}
+				{/*	defaultZoom={13}*/}
+				{/*	defaultCenter={{ lat: 40.636929, lng: -73.9603557 }}*/}
+				{/*	showMapStyles={true}*/}
+				{/*	defaultMapStyle="Standard"*/}
+				{/*	showMarkerClusters={true}*/}
+				{/*	showSearchAsMove={true}*/}
+				{/*	searchAsMove={true}*/}
+				{/*	onPopoverClick={this.onPopoverClick}*/}
+
+				{/*	stream={true}*/}
+
+				{/*	// map events*/}
+				{/*	renderData={this.renderData}*/}
+
+				{/*	// less useful props*/}
+				{/*	autoCenter={true}*/}
+				{/*/>*/}
 				</Card>
 			</Col>
 			<Col span={12}>
@@ -187,7 +245,7 @@ const App = () => (
 						'forename'
 					]}
 					placeholder="Search"
-					queryFormat="or"
+					queryFormat="and"
 					showFilter={true}
 					size={20}
 					strictSelection={false}
@@ -207,7 +265,11 @@ const App = () => (
 				    	'death_cause_facet',
 						'residence_city_facet',
 						'death_date_facet',
-						'death_age_facet'
+						'death_age_facet',
+						'residence_state_facet',
+						'place_of_death_facet',
+						'marital_status_facet',
+						'search'
 				    ]
 				  }}
 				  renderItem={renderItem}
