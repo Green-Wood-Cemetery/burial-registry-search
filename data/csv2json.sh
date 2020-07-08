@@ -1,0 +1,1 @@
+csvtojson ./csv/greenwood.csv | jq 'map(. + { "birth_location": {"lat": (.birth_lat)|tonumber, "lon": (.birth_lon)|tonumber} })' | jq 'map(. + { "death_location": {"lat": (.death_lat)|tonumber, "lon": (.death_lon)|tonumber} })' | jq 'map(del(.birth_lat, .birth_lon, .death_lat, .death_lon))' > ./json/greenwood-es.json

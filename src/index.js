@@ -121,14 +121,14 @@ const App = () => (
 					title="Age Range"
 					defaultValue={(min, max) => (
 						{
-							"start": min,
-							"end": Math.min(min + 5, max)
+							"start": 0,
+							"end": 110
 						}
 					)}
 					rangeLabels={(min, max) => (
 						{
-							"start": min + " years",
-							"end": max + " years"
+							"start": "0 years",
+							"end": "110 years"
 						}
 					)}
 					stepValue={1}
