@@ -43,9 +43,12 @@ function getNestedValue(obj, path) {
 function renderItem(res, triggerClickAnalytics) {
 	let { image, url, description, title } = {"description":"death_city","image":"","showRest":true,"title":"surname","url":""};
 	image = getNestedValue(res,image);
-	title = getNestedValue(res,title);
+	title = getNestedValue(res,"surname") + ", " + getNestedValue(res,"forename");
 	url = getNestedValue(res,url);
-	description = getNestedValue(res,description)
+	let death = getNestedValue(res,"death_date") + " (aged " + getNestedValue(res,"age") + " years)";
+	let death_place = getNestedValue(res,"place_of_death");
+	let death_cause = "Cause: " + getNestedValue(res,"death_cause");
+	let birth_place = getNestedValue(res,"birth_place");
 	return (
 		<Row onClick={triggerClickAnalytics} type="flex" gutter={16} key={res._id} style={{margin:'20px auto',borderBottom:'1px solid #ededed'}}>
 			<Col span={image ? 6 : 0}>
@@ -53,7 +56,12 @@ function renderItem(res, triggerClickAnalytics) {
 			</Col>
 			<Col span={image ? 18 : 24}>
 				<h3 style={{ fontWeight: '600' }} dangerouslySetInnerHTML={{__html: title || 'Choose a valid Title Field'}}/>
-				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: description || 'Choose a valid Description Field'}}/>
+				<h4 style={{ fontWeight: '600' }}>Died</h4>
+				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: death || 'Choose a valid field'}}/>
+				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: death_place || 'Choose a valid field'}}/>
+				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: death_cause || 'Choose a valid field'}}/>
+				<h4 style={{ fontWeight: '600' }}>Born</h4>
+				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: birth_place || 'Choose a valid field'}}/>
 			</Col>
 			<div style={{padding:'20px'}}>
 				{url ? <Button shape="circle" icon="link" style={{ marginRight: '5px' }} onClick={() => window.open(url, '_blank')} />
