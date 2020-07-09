@@ -92,6 +92,8 @@ const App = () => (
 					componentId="place_of_death"
 					dataField="death_location"
 					title="Place of death"
+					style={{ height: '300px', width: '100%'}}
+					zoom={13}
 				/>
 				<MultiList
 				  componentId="death_cause_facet"
