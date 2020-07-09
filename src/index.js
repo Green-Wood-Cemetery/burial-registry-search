@@ -13,7 +13,7 @@ import {
 } from '@appbaseio/reactivesearch';
 
 import {
-	ReactiveOpenStreetMap
+	ReactiveGoogleMap
 } from '@appbaseio/reactivemaps';
 
 import {
@@ -88,13 +88,6 @@ const App = () => (
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={6}>
 				<Card>
-				<ReactiveOpenStreetMap
-					componentId="place_of_death"
-					dataField="death_location"
-					title="Place of death"
-					style={{ height: '300px', width: '100%'}}
-					zoom={13}
-				/>
 				<MultiList
 				  componentId="death_cause_facet"
 				  dataField="death_cause.keyword"
@@ -103,6 +96,7 @@ const App = () => (
 				    marginBottom: 20
 				  }}
 				  title="Cause of death"
+				  filterLabel="Cause of death"
 				 showCheckbox/>
 				<MultiList
 					componentId="residence_state_facet"
@@ -113,6 +107,7 @@ const App = () => (
 						marginBottom: 20
 					}}
 					title="Residence: state"
+					filterLabel="Residence: state"
 					showCheckbox/>
 				<MultiList
 				  componentId="residence_city_facet"
@@ -123,6 +118,7 @@ const App = () => (
 				    marginBottom: 20
 				  }}
 				  title="Residence: city"
+				  filterLabel="Residence: city"
 				 showCheckbox/>
 				<MultiList
 					componentId="place_of_death_facet"
@@ -133,7 +129,17 @@ const App = () => (
 						marginBottom: 20
 					}}
 					title="Place of death"
+					filterLabel="Place of death"
 					showCheckbox/>
+				<ReactiveGoogleMap
+					componentId="place_of_death"
+					dataField="death_location"
+					title="Place of death"
+					style={{ height: '300px', width: '100%'}}
+					zoom={25}
+					showSearchAsMove={false}
+					searchAsMove={false}
+				/>
 				<MultiList
 					componentId="marital_status_facet"
 					dataField="marital_status.keyword"
@@ -186,30 +192,6 @@ const App = () => (
 					loader="Loading ..."
 					filterLabel="Age Range"
 				/>
-
-
-				{/*<ReactiveGoogleMap*/}
-				{/*	componentId="place_of_location_map"*/}
-				{/*	dataField="death_location"*/}
-				{/*	title="Death Location Map"*/}
-				{/*	size={100}*/}
-				{/*	defaultZoom={13}*/}
-				{/*	defaultCenter={{ lat: 40.636929, lng: -73.9603557 }}*/}
-				{/*	showMapStyles={true}*/}
-				{/*	defaultMapStyle="Standard"*/}
-				{/*	showMarkerClusters={true}*/}
-				{/*	showSearchAsMove={true}*/}
-				{/*	searchAsMove={true}*/}
-				{/*	onPopoverClick={this.onPopoverClick}*/}
-
-				{/*	stream={true}*/}
-
-				{/*	// map events*/}
-				{/*	renderData={this.renderData}*/}
-
-				{/*	// less useful props*/}
-				{/*	autoCenter={true}*/}
-				{/*/>*/}
 				</Card>
 			</Col>
 			<Col span={12}>
