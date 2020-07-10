@@ -85,7 +85,7 @@ const App = () => (
 		credentials={API_KEY}
 		url="https://scalr.api.appbase.io"
 		analytics={true}
-		searchStateHeader
+		// searchStateHeader
 	>
 
 		<Row gutter={16} style={{ padding: 20 }}>
