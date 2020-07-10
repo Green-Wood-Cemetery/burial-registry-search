@@ -2,7 +2,11 @@ The bash script grabs the google spreadsheet as a CSV file, converts it to JSON 
 
 ## Prerequisites
 
-### node and npm
+### node
+
+### npm
+
+### wget
 
 ### csvtojson
 
