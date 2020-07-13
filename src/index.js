@@ -87,7 +87,6 @@ const App = () => (
 		analytics={true}
 		// searchStateHeader
 	>
-
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
 				<Collapse defaultActiveKey={['1']}>
@@ -126,7 +125,7 @@ const App = () => (
 						  filterLabel="Residence: city"
 						 showCheckbox/>
 					</Panel>
-					<Panel header="Place of death" key="3">
+					<Panel header="Place of death" key="3" forceRender>
 						<MultiList
 							componentId="place_of_death_country_facet"
 							dataField="death_country.keyword"
@@ -171,6 +170,16 @@ const App = () => (
 							title="Hospital"
 							filterLabel="Place of death: hospital"
 							showCheckbox/>
+						<ReactiveGoogleMap
+							componentId="place_of_death"
+							dataField="death_location"
+							title="Place of death"
+							style={{ height: '300px', width: '100%'}}
+							zoom={25}
+							showSearchAsMove={false}
+							searchAsMove={false}
+							onPopoverClick={this.onPopoverClick}
+						/>
 						{/*<MultiList*/}
 						{/*	componentId="place_of_death_facet"*/}
 						{/*	dataField="place_of_death.keyword"*/}
@@ -192,7 +201,42 @@ const App = () => (
 						{/*	searchAsMove={false}*/}
 						{/*/>*/}
 					</Panel>
-					<Panel header="Marital status" key="4">
+					<Panel header="Place of birth" key="4">
+						<MultiList
+							componentId="place_of_birth_country_facet"
+							dataField="birth_country.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="Country"
+							filterLabel="Place of birth: country"
+							showCheckbox/>
+						<MultiList
+							componentId="place_of_birth_state_facet"
+							dataField="birth_state.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="State"
+							filterLabel="Place of birth: state"
+							showCheckbox/>
+						<MultiList
+							componentId="place_of_birth_city_facet"
+							dataField="birth_city.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="City"
+							filterLabel="Place of birth: city"
+							showCheckbox/>
+					</Panel>
+					<Panel header="Marital status" key="5">
 						<MultiList
 							componentId="marital_status_facet"
 							dataField="marital_status.keyword"
@@ -204,7 +248,7 @@ const App = () => (
 							filterLabel="Marital status"
 							showCheckbox/>
 					</Panel>
-					<Panel header="Date of death" key="5">
+					<Panel header="Date of death" key="6">
 						<DynamicRangeSlider
 							componentId="death_year_facet"
 							dataField="death_year"
@@ -219,7 +263,6 @@ const App = () => (
 							react={{
 								and: ["CategoryFilter", "SearchFilter"]
 							}}
-							URLParams={true}
 							loader="Loading ..."
 							filterLabel="Death year range"
 							includeNullValues
@@ -245,7 +288,7 @@ const App = () => (
 						{/*	}}*/}
 						{/*/>*/}
 					</Panel>
-					<Panel header="Age" key="6">
+					<Panel header="Age" key="7">
 						<DynamicRangeSlider
 							componentId="death_age_facet"
 							dataField="age"
@@ -262,7 +305,6 @@ const App = () => (
 							react={{
 								and: ["CategoryFilter", "SearchFilter"]
 							}}
-							URLParams={true}
 							loader="Loading ..."
 							filterLabel="Age Range"
 							includeNullValues
@@ -334,6 +376,9 @@ const App = () => (
 						'place_of_death_state_facet',
 						'place_of_death_city_facet',
 						'place_of_death_hospital_facet',
+						'place_of_birth_country_facet',
+						'place_of_birth_state_facet',
+						'place_of_birth_city_facet',
 						'search'
 				    ]
 				  }}
