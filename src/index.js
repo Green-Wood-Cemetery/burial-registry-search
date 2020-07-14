@@ -13,7 +13,8 @@ import {
 } from '@appbaseio/reactivesearch';
 
 import {
-	ReactiveGoogleMap
+	ReactiveGoogleMap,
+	ReactiveOpenStreetMap
 } from '@appbaseio/reactivemaps';
 
 import {
@@ -78,6 +79,10 @@ function renderItem(res, triggerClickAnalytics) {
 	);
 };
 
+let onPopoverClick = function(item) {
+	return <div>{item.place_of_death}</div>;
+};
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 const App = () => (
 	<ReactiveBase
@@ -89,7 +94,7 @@ const App = () => (
 	>
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
-				<Collapse defaultActiveKey={['1']}>
+				<Collapse defaultActiveKey={['1', '3']}>
 					<Panel header="Cause of death" key="1">
 						<MultiList
 						  componentId="death_cause_facet"
@@ -170,15 +175,18 @@ const App = () => (
 							title="Hospital"
 							filterLabel="Place of death: hospital"
 							showCheckbox/>
-						<ReactiveGoogleMap
+						<ReactiveOpenStreetMap
 							componentId="place_of_death"
 							dataField="death_location"
 							title="Place of death"
+							size={1000}
+							autoCenter
 							style={{ height: '300px', width: '100%'}}
-							zoom={25}
+							defaultZoom={2}
 							showSearchAsMove={false}
-							searchAsMove={false}
-							onPopoverClick={this.onPopoverClick}
+							onPopoverClick={onPopoverClick}
+							showMarkers={true}
+							// center={{ lat: 40.691265, lng: -73.9777743 }}
 						/>
 						{/*<MultiList*/}
 						{/*	componentId="place_of_death_facet"*/}

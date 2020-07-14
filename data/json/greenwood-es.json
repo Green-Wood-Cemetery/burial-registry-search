@@ -1,1371 +1,6 @@
 [
   {
     "image_file": "00004-00005.tif",
-    "id": "392574",
-    "cemetery_date": "1921-08-26",
-    "surname": "Pollock",
-    "forename": "Juliet M (Ashes of)",
-    "lot_number": "2657",
-    "grave_location": "See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "New York City",
-    "birth_place": "N Y City",
-    "age": "68",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "1055 Madison St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Cumberland Street Hospital",
-    "death_street": "110 Carlton Ave",
-    "place_of_death": "Cumberland St Hosp. Brooklyn N Y",
-    "death_date": "1920-03-10",
-    "death_year": "1920",
-    "death_cause": "Complications",
-    "undertaker": "Fairchild Sons",
-    "notes": "Ashes Strewn on Lot About Apr. 1st 1920",
-    "birth_location": {
-      "lat": 40.71305,
-      "lon": -74.00723
-    },
-    "death_location": {
-      "lat": 40.6943807,
-      "lon": -73.973211
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392575",
-    "cemetery_date": "1921-08-26",
-    "surname": "Ferrer",
-    "forename": "Frances Traingue",
-    "lot_number": "10581",
-    "grave_location": "N Front Right Corner",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "New York City",
-    "birth_place": "N Y City",
-    "age": "70",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "123 Parkside Ave",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "None",
-    "death_street": "1045 Ocean Ave",
-    "place_of_death": "1045 Ocean Ave Brooklyn NY",
-    "death_date": "1921-08-24",
-    "death_year": "1921",
-    "death_cause": "Nephritis",
-    "undertaker": "Est of James N Tracy",
-    "notes": "",
-    "birth_location": {
-      "lat": 40.71305,
-      "lon": -74.00723
-    },
-    "death_location": {
-      "lat": 40.636929,
-      "lon": -73.9603557
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392576",
-    "cemetery_date": "1921-08-26",
-    "surname": "Hoey",
-    "forename": "Mary Elizabeth",
-    "lot_number": "14001",
-    "grave_location": "R Front Right Corner",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Albany",
-    "birth_place": "Albany N Y",
-    "age": "67",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "1346 Pacific St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Peck Memorial Hospital",
-    "death_street": "570 Crown Street",
-    "place_of_death": "Peck Memorial Hosp. Brooklyn N Y",
-    "death_date": "1921-08-23",
-    "death_year": "1921",
-    "death_cause": "Intestinal Obstruction",
-    "undertaker": "Fairchild Sons Inc",
-    "notes": "",
-    "birth_location": {
-      "lat": 42.651718,
-      "lon": -73.755089
-    },
-    "death_location": {
-      "lat": 40.6651035,
-      "lon": -73.9384709
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392577",
-    "cemetery_date": "1921-08-26",
-    "surname": "McFarland",
-    "forename": "Anna M",
-    "lot_number": "27650",
-    "grave_location": "N 1",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Brooklyn",
-    "birth_place": "Brooklyn NY",
-    "age": "38",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Irvington",
-    "late_residence_street": "? Ball St",
-    "death_country": "US",
-    "death_state": "NJ",
-    "death_city": "Keansburg",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Keansburg N J",
-    "death_date": "1921-08-23",
-    "death_year": "1921",
-    "death_cause": "Acute Brights Disease",
-    "undertaker": "Joseph West",
-    "notes": "Age: 38 years 11 months",
-    "birth_location": {
-      "lat": 40.692532,
-      "lon": -73.990997
-    },
-    "death_location": {
-      "lat": 40.4677182,
-      "lon": -74.1833224
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392578",
-    "cemetery_date": "1921-08-26",
-    "surname": "Carlisle",
-    "forename": "William Thomas",
-    "lot_number": "28970",
-    "grave_location": "R 4",
-    "birth_country": "UK",
-    "birth_state": "Unknown",
-    "birth_city": "London",
-    "birth_place": "London England",
-    "age": "71",
-    "age_unit": "Y",
-    "marital_status": "Single",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "New York City",
-    "late_residence_street": "Hotel St Andrews",
-    "death_country": "US",
-    "death_state": "NJ",
-    "death_city": "Keansburg",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Keansburg N J",
-    "death_date": "1921-08-22",
-    "death_year": "1921",
-    "death_cause": "Cardio Valvular Disease",
-    "undertaker": "Frank E Campbell",
-    "notes": "Age: 71 years 9 months 20 days",
-    "birth_location": {
-      "lat": 51.507351,
-      "lon": -0.127758
-    },
-    "death_location": {
-      "lat": 40.4677182,
-      "lon": -74.1833224
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392579",
-    "cemetery_date": "1921-08-26",
-    "surname": "Fallert",
-    "forename": "Henrietta",
-    "lot_number": "33659",
-    "grave_location": "N See R Column",
-    "birth_country": "DE",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "Germany",
-    "age": "76",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "738 Willoughby St",
-    "death_country": "US",
-    "death_state": "NJ",
-    "death_city": "Keansburg",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Keansburg N J",
-    "death_date": "1921-08-23",
-    "death_year": "1921",
-    "death_cause": "Pulmonary Oedema",
-    "undertaker": "Fred Roemmele",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.4677182,
-      "lon": -74.1833224
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392580",
-    "cemetery_date": "1921-08-26",
-    "surname": "Smith",
-    "forename": "Louisa Dusenberry",
-    "lot_number": "34017",
-    "grave_location": "N See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Mount Vernon",
-    "birth_place": "Mt Vernon N Y",
-    "age": "71",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "New York City",
-    "late_residence_street": "70 E 77th St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-24",
-    "death_year": "1921",
-    "death_cause": "Senility",
-    "undertaker": "Fairchild Sons Inc",
-    "notes": "14/09/1921",
-    "birth_location": {
-      "lat": 40.9127,
-      "lon": -73.83726
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392581",
-    "cemetery_date": "1921-08-26",
-    "surname": "Brown",
-    "forename": "Baby",
-    "lot_number": "35869",
-    "grave_location": "N 4",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "New York City",
-    "birth_place": "N Y City",
-    "age": "2",
-    "age_unit": "D",
-    "marital_status": "Unknown",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "New York City",
-    "late_residence_street": "Sloane Hospital",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-24",
-    "death_year": "1921",
-    "death_cause": "Atelectasis",
-    "undertaker": "Frank Campbell",
-    "notes": "Said to by Robert J Brown",
-    "birth_location": {
-      "lat": 40.71305,
-      "lon": -74.00723
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392582",
-    "cemetery_date": "1921-08-27",
-    "surname": "Hopkins",
-    "forename": "Harriet A",
-    "lot_number": "493",
-    "grave_location": "R See R Column",
-    "birth_country": "US",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "U S",
-    "age": "86",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "New York City",
-    "late_residence_street": "St Lukes Home",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-25",
-    "death_year": "1921",
-    "death_cause": "Apoplexy",
-    "undertaker": "J W Lyons & Son",
-    "notes": "Age: 86 years 8 months 19 days",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392583",
-    "cemetery_date": "1921-08-27",
-    "surname": "Bergen",
-    "forename": "Emily Schuyler",
-    "lot_number": "1226/9",
-    "grave_location": "R See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Brooklyn",
-    "birth_place": "Brooklyn",
-    "age": "62",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "614 6th St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-24",
-    "death_year": "1921",
-    "death_cause": "Neoplasm",
-    "undertaker": "John C Kuhlke",
-    "notes": "",
-    "birth_location": {
-      "lat": 40.692532,
-      "lon": -73.990997
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392584",
-    "cemetery_date": "1921-08-27",
-    "surname": "Magrath",
-    "forename": "Mary",
-    "lot_number": "5107",
-    "grave_location": "R See R Column",
-    "birth_country": "UK",
-    "birth_state": "Unknown",
-    "birth_city": "Manchester",
-    "birth_place": "Manchester Eng.",
-    "age": "77",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "New York City",
-    "late_residence_street": "222 East 32nd St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-25",
-    "death_year": "1921",
-    "death_cause": "Intestinal Obstruction",
-    "undertaker": "Victor Larson",
-    "notes": "Age: 77 years 10 months 15 days",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392585",
-    "cemetery_date": "1921-08-27",
-    "surname": "Williamson",
-    "forename": "George Miller",
-    "lot_number": "10344",
-    "grave_location": "N 5",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "New York City",
-    "birth_place": "N Y City",
-    "age": "71",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Unknown",
-    "late_residence_street": "Grand View",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-25",
-    "death_year": "1921",
-    "death_cause": "Cerebral Hemorrhage",
-    "undertaker": "A G Lord",
-    "notes": "",
-    "birth_location": {
-      "lat": 40.71305,
-      "lon": -74.00723
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392586",
-    "cemetery_date": "1921-08-27",
-    "surname": "Smith",
-    "forename": "Mary",
-    "lot_number": "13013",
-    "grave_location": "N Front Left Corner",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "New York City",
-    "birth_place": "N Y City",
-    "age": "57",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Bronx",
-    "late_residence_street": "2086 Creston Ave",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-24",
-    "death_year": "1921",
-    "death_cause": "Diabetes",
-    "undertaker": "Frank E Campbell",
-    "notes": "Age: 57 years 3 months 15 days",
-    "birth_location": {
-      "lat": 40.71305,
-      "lon": -74.00723
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392587",
-    "cemetery_date": "1921-08-27",
-    "surname": "Tappenbeck",
-    "forename": "Mary E",
-    "lot_number": "21033 & C",
-    "grave_location": "N See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Brooklyn",
-    "birth_place": "Brooklyn N Y",
-    "age": "75",
-    "age_unit": "Y",
-    "marital_status": "Unknown",
-    "late_residence_country": "DE",
-    "late_residence_state": "",
-    "late_residence_city": "Wiesbaden",
-    "late_residence_street": "46 Sonnenberger Strasse",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "",
-    "death_year": "",
-    "death_cause": "",
-    "undertaker": "J H Tibbetts",
-    "notes": "8/30/21",
-    "birth_location": {
-      "lat": 40.692532,
-      "lon": -73.990997
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392588",
-    "cemetery_date": "1921-08-28",
-    "surname": "Post",
-    "forename": "George M",
-    "lot_number": "27263",
-    "grave_location": "1109",
-    "birth_country": "US",
-    "birth_state": "NJ",
-    "birth_city": "Jersey City",
-    "birth_place": "Jersey City N J",
-    "age": "76",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "430-54th St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-24",
-    "death_year": "1921",
-    "death_cause": "Tuberculosis",
-    "undertaker": "H J Flood",
-    "notes": "Age: 76 years 6 months",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392589",
-    "cemetery_date": "1921-08-28",
-    "surname": "Whitfield",
-    "forename": "George B",
-    "lot_number": "4701/2",
-    "grave_location": "N See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "New York City",
-    "birth_place": "N Y City",
-    "age": "52",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "FL",
-    "late_residence_city": "St Petersburg",
-    "late_residence_street": "Unknown",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-21",
-    "death_year": "1921",
-    "death_cause": "Uraemia",
-    "undertaker": "T C Freeborn's Son",
-    "notes": "",
-    "birth_location": {
-      "lat": 40.71305,
-      "lon": -74.00723
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392590",
-    "cemetery_date": "1921-08-28",
-    "surname": "Christman",
-    "forename": "Henry",
-    "lot_number": "12281",
-    "grave_location": "N 5",
-    "birth_country": "US",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "U S",
-    "age": "77",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "475 Wilson Ave",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brownville",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Brownville N Y",
-    "death_date": "1921-08-25",
-    "death_year": "1921",
-    "death_cause": "Apoplexy",
-    "undertaker": "Joseph Henderson",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.6635707,
-      "lon": -73.9211983
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392591",
-    "cemetery_date": "1921-08-28",
-    "surname": "Dix",
-    "forename": "Robert G",
-    "lot_number": "20930",
-    "grave_location": "R See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Unknown",
-    "birth_place": "N Y",
-    "age": "31",
-    "age_unit": "Y",
-    "marital_status": "Single",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "272 Lenox Rd",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "1921-08-24",
-    "death_year": "1921",
-    "death_cause": "Broncho Pneumonia",
-    "undertaker": "Fairchild Sons Inc",
-    "notes": "Said to be R Gary Dix",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392592",
-    "cemetery_date": "1921-08-28",
-    "surname": "Case",
-    "forename": "Caroline S (Ashes of)",
-    "lot_number": "29432",
-    "grave_location": "R See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Brooklyn",
-    "birth_place": "Brooklyn",
-    "age": "70",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "314 Washington St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "",
-    "death_year": "",
-    "death_cause": "",
-    "undertaker": "John C Kuhlke",
-    "notes": "",
-    "birth_location": {
-      "lat": 40.692532,
-      "lon": -73.990997
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392593",
-    "cemetery_date": "1921-08-29",
-    "surname": "Kargus",
-    "forename": "Carl",
-    "lot_number": "18372",
-    "grave_location": "75",
-    "birth_country": "DE",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "Germany",
-    "age": "84",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "143 Foxall St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "1921-08-26",
-    "death_year": "1921",
-    "death_cause": "Myocarditis",
-    "undertaker": "Rudolph Stutzmann",
-    "notes": "Age: 84 years 2 months 14 days",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392594",
-    "cemetery_date": "1921-08-29",
-    "surname": "Kingston",
-    "forename": "Annie E",
-    "lot_number": "19438",
-    "grave_location": "311",
-    "birth_country": "IE",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "Ireland",
-    "age": "70",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "525 Atlantic Ave",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "1921-08-27",
-    "death_year": "1921",
-    "death_cause": "Fall",
-    "undertaker": "Daily Bros",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392595",
-    "cemetery_date": "1921-08-29",
-    "surname": "Thompson",
-    "forename": "Thomas H",
-    "lot_number": "29725",
-    "grave_location": "626",
-    "birth_country": "IE",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "Ireland",
-    "age": "68",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Queens",
-    "late_residence_street": "847-85th St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "1921-08-27",
-    "death_year": "1921",
-    "death_cause": "Cirrhosis of Liver",
-    "undertaker": "C F Simonson",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392596",
-    "cemetery_date": "1921-08-29",
-    "surname": "Galpine",
-    "forename": "Fannie B",
-    "lot_number": "34436",
-    "grave_location": "R 2",
-    "birth_country": "US",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "U S",
-    "age": "65",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "490 Clarkson Ave",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "1921-08-26",
-    "death_year": "1921",
-    "death_cause": "Paralysis",
-    "undertaker": "Henman Bros",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392597",
-    "cemetery_date": "1921-08-30",
-    "surname": "Luttgen",
-    "forename": "Frederick W",
-    "lot_number": "18707",
-    "grave_location": "R Rear Left Corner",
-    "birth_country": "US",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "U S",
-    "age": "78",
-    "age_unit": "Y",
-    "marital_status": "Divorced",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Amityville",
-    "late_residence_street": "Unknown",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "1921-08-27",
-    "death_year": "1921",
-    "death_cause": "Exhaustion",
-    "undertaker": "Stephen Merritt",
-    "notes": "Age: 78 years 3 months 12 days",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392598",
-    "cemetery_date": "1921-08-30",
-    "surname": "Fricker",
-    "forename": "Frances Genevieve",
-    "lot_number": "24236",
-    "grave_location": "R 1",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Unknown",
-    "birth_place": "N Y",
-    "age": "27",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "New York City",
-    "late_residence_street": "730 E 236th St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Brooklyn Hospital",
-    "death_street": "121 Dekalb Ave",
-    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
-    "death_date": "1921-08-28",
-    "death_year": "1921",
-    "death_cause": "Oedema",
-    "undertaker": "Geo O'Connor",
-    "notes": "Age: 27 years 11 months 13 days",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.691265,
-      "lon": -73.979963
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392599",
-    "cemetery_date": "1921-08-30",
-    "surname": "Plenkers",
-    "forename": "Henry",
-    "lot_number": "32803",
-    "grave_location": "R 3",
-    "birth_country": "DE",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "Germany",
-    "age": "65",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "525-88th St",
-    "death_country": "US",
-    "death_state": "FL",
-    "death_city": "Tampa",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Tampa Fla",
-    "death_date": "1921-08-25",
-    "death_year": "1921",
-    "death_cause": "Fractured Skull",
-    "undertaker": "Fred Herbst & Sons",
-    "notes": "Said to be Henry P. Plenkers",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 27.9944116,
-      "lon": -82.594364
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392600",
-    "cemetery_date": "1921-08-31",
-    "surname": "Marvin",
-    "forename": "Florence A",
-    "lot_number": "14393",
-    "grave_location": "N See R Column",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Brooklyn",
-    "birth_place": "Brooklyn N Y",
-    "age": "59",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "572 Lincoln Pl",
-    "death_country": "US",
-    "death_state": "FL",
-    "death_city": "Tampa",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Tampa Fla",
-    "death_date": "1921-08-29",
-    "death_year": "1921",
-    "death_cause": "Chronic Endocarditis",
-    "undertaker": "Ernest J Ebbers",
-    "notes": "",
-    "birth_location": {
-      "lat": 40.692532,
-      "lon": -73.990997
-    },
-    "death_location": {
-      "lat": 27.9944116,
-      "lon": -82.594364
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392601",
-    "cemetery_date": "1921-08-31",
-    "surname": "Moser",
-    "forename": "William J",
-    "lot_number": "30432",
-    "grave_location": "R 2",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "New York City",
-    "birth_place": "N Y City",
-    "age": "40",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "1789 Bedford Ave",
-    "death_country": "US",
-    "death_state": "FL",
-    "death_city": "Tampa",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Tampa, Fla",
-    "death_date": "1921-08-27",
-    "death_year": "1921",
-    "death_cause": "Myocarditis",
-    "undertaker": "Fairchild Sons Inc",
-    "notes": "",
-    "birth_location": {
-      "lat": 40.71305,
-      "lon": -74.00723
-    },
-    "death_location": {
-      "lat": 27.9944116,
-      "lon": -82.594364
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392602",
-    "cemetery_date": "1921-08-31",
-    "surname": "Grieve",
-    "forename": "Thomas",
-    "lot_number": "30 Vault #15",
-    "grave_location": "Cata # 2",
-    "birth_country": "UK",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "Scotland",
-    "age": "61",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NJ",
-    "late_residence_city": "Perth Amboy",
-    "late_residence_street": "Unknown",
-    "death_country": "US",
-    "death_state": "PA",
-    "death_city": "Ambler",
-    "death_hospital": "None",
-    "death_street": "",
-    "place_of_death": "Ambler Pa",
-    "death_date": "1921-08-25",
-    "death_year": "1921",
-    "death_cause": "Carcinoma of Liver",
-    "undertaker": "Ferd Garretson",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.1567081,
-      "lon": -75.2308045
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392603",
-    "cemetery_date": "1921-09-01",
-    "surname": "Sinclair",
-    "forename": "John C",
-    "lot_number": "1896",
-    "grave_location": "26",
-    "birth_country": "US",
-    "birth_state": "NY",
-    "birth_city": "Brooklyn",
-    "birth_place": "Brooklyn N Y",
-    "age": "56",
-    "age_unit": "Y",
-    "marital_status": "Single",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "37 Lafayette Ave",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "New York City",
-    "death_hospital": "House of Rest",
-    "death_street": "Inwood Hill Park",
-    "place_of_death": "House of Rest N Y City",
-    "death_date": "1921-08-31",
-    "death_year": "1921",
-    "death_cause": "Tuberculosis",
-    "undertaker": "W H Williams",
-    "notes": "Age: 56 years 8 months 21 days",
-    "birth_location": {
-      "lat": 40.692532,
-      "lon": -73.990997
-    },
-    "death_location": {
-      "lat": 40.8722007,
-      "lon": -73.9277436
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392604",
-    "cemetery_date": "1921-09-01",
-    "surname": "Busch",
-    "forename": "Anna Elizabeth",
-    "lot_number": "5499",
-    "grave_location": "533",
-    "birth_country": "DE",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "Germany",
-    "age": "63",
-    "age_unit": "Y",
-    "marital_status": "Widowed",
-    "late_residence_country": "US",
-    "late_residence_state": "NJ",
-    "late_residence_city": "Ocean Port",
-    "late_residence_street": "Main & Centre Sts",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "New York City",
-    "death_hospital": "House of Rest",
-    "death_street": "Inwood Hill Park",
-    "place_of_death": "House of Rest N Y City",
-    "death_date": "1921-08-29",
-    "death_year": "1921",
-    "death_cause": "Apoplexy",
-    "undertaker": "J G Sexton",
-    "notes": "Age: 63 years 11 months 27 days",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.8722007,
-      "lon": -73.9277436
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392605",
-    "cemetery_date": "1921-09-01",
-    "surname": "Harrison",
-    "forename": "Frederick",
-    "lot_number": "31394",
-    "grave_location": "215",
-    "birth_country": "UK",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "England",
-    "age": "68",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "177 W 12th St",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "New York City",
-    "death_hospital": "House of Rest",
-    "death_street": "Inwood Hill Park",
-    "place_of_death": "House of Rest N Y City",
-    "death_date": "1921-08-30",
-    "death_year": "1921",
-    "death_cause": "Cardiac",
-    "undertaker": "Ericson Ericson",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.8722007,
-      "lon": -73.9277436
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392606",
-    "cemetery_date": "1921-09-01",
-    "surname": "French",
-    "forename": "Pauline (Female child of)",
-    "lot_number": "8417",
-    "grave_location": "N See R Column",
-    "birth_country": "US",
-    "birth_state": "NJ",
-    "birth_city": "South Orange",
-    "birth_place": "South Orange N J",
-    "age": "",
-    "age_unit": "",
-    "marital_status": "Unknown",
-    "late_residence_country": "US",
-    "late_residence_state": "NJ",
-    "late_residence_city": "South Orange",
-    "late_residence_street": "Unknown",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "New York City",
-    "death_hospital": "House of Rest",
-    "death_street": "Inwood Hill Park",
-    "place_of_death": "House of Rest N Y City",
-    "death_date": "1921-08-28",
-    "death_year": "1921",
-    "death_cause": "Still Born",
-    "undertaker": "W N Knapp & Sons",
-    "notes": "Female Child of",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.8722007,
-      "lon": -73.9277436
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392607",
-    "cemetery_date": "1921-09-01",
-    "surname": "Edwards",
-    "forename": "Frank Flowers",
-    "lot_number": "9097",
-    "grave_location": "N See R Column",
-    "birth_country": "UK",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "England",
-    "age": "54",
-    "age_unit": "Y",
-    "marital_status": "Married",
-    "late_residence_country": "US",
-    "late_residence_state": "NJ",
-    "late_residence_city": "South Orange",
-    "late_residence_street": "231 Prospect St",
-    "death_country": "US",
-    "death_state": "NJ",
-    "death_city": "South Orange",
-    "death_hospital": "Orange Memorial Hospital",
-    "death_street": "",
-    "place_of_death": "Orange Memorial Hosp. South Orange N J",
-    "death_date": "1921-08-29",
-    "death_year": "1921",
-    "death_cause": "General Peritonitis",
-    "undertaker": "Fred Ardrey",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.7708936,
-      "lon": -74.2543887
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
-    "id": "392608",
-    "cemetery_date": "1921-09-01",
-    "surname": "Love",
-    "forename": "Charles",
-    "lot_number": "25627",
-    "grave_location": "N 3",
-    "birth_country": "US",
-    "birth_state": "Unknown",
-    "birth_city": "Unknown",
-    "birth_place": "U S",
-    "age": "50",
-    "age_unit": "Y",
-    "marital_status": "Single",
-    "late_residence_country": "US",
-    "late_residence_state": "NY",
-    "late_residence_city": "Brooklyn",
-    "late_residence_street": "2868 Stillwell Ave",
-    "death_country": "US",
-    "death_state": "NY",
-    "death_city": "Brooklyn",
-    "death_hospital": "Coney Island Hospital",
-    "death_street": "2601 Ocean Parkway",
-    "place_of_death": "Coney Island Hosp. Brooklyn N Y",
-    "death_date": "1921-08-28",
-    "death_year": "1921",
-    "death_cause": "Nephritis",
-    "undertaker": "Jacob C Jentzer",
-    "notes": "",
-    "birth_location": {
-      "lat": 0,
-      "lon": 0
-    },
-    "death_location": {
-      "lat": 40.5856257,
-      "lon": -73.9670593
-    }
-  },
-  {
-    "image_file": "00004-00005.tif",
     "id": "392609",
     "cemetery_date": "1921-09-01",
     "surname": "Winkler",
@@ -1386,9 +21,11 @@
     "death_country": "FR",
     "death_state": "Unknown",
     "death_city": "Unknown",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "France",
+    "place_of_death_formatted": "",
     "death_date": "1918-07-10",
     "death_year": "1918",
     "death_cause": "Influenza",
@@ -1399,8 +36,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 46.1314354,
-      "lon": -2.434436
+      "lat": 46.227638,
+      "lon": 2.213749
     }
   },
   {
@@ -1425,9 +62,11 @@
     "death_country": "FR",
     "death_state": "Unknown",
     "death_city": "Unknown",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "France",
+    "place_of_death_formatted": "",
     "death_date": "1918-10-12",
     "death_year": "1918",
     "death_cause": "Killed in Action",
@@ -1438,8 +77,1443 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 46.1314354,
-      "lon": -2.434436
+      "lat": 46.227638,
+      "lon": 2.213749
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392574",
+    "cemetery_date": "1921-08-26",
+    "surname": "Pollock",
+    "forename": "Juliet M (Ashes of)",
+    "lot_number": "2657",
+    "grave_location": "See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "New York City",
+    "birth_place": "N Y City",
+    "age": "68",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "1055 Madison St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Cumberland Street Hospital",
+    "death_street": "110 Carlton Ave",
+    "place_of_death": "Cumberland St Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1920-03-10",
+    "death_year": "1920",
+    "death_cause": "Complications",
+    "undertaker": "Fairchild Sons",
+    "notes": "Ashes Strewn on Lot About Apr. 1st 1920",
+    "birth_location": {
+      "lat": 40.71305,
+      "lon": -74.00723
+    },
+    "death_location": {
+      "lat": 40.695099,
+      "lon": -73.9764879
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392575",
+    "cemetery_date": "1921-08-26",
+    "surname": "Ferrer",
+    "forename": "Frances Traingue",
+    "lot_number": "10581",
+    "grave_location": "N Front Right Corner",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "New York City",
+    "birth_place": "N Y City",
+    "age": "70",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "123 Parkside Ave",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Flatbush",
+    "death_hospital": "None",
+    "death_street": "1045 Ocean Ave",
+    "place_of_death": "1045 Ocean Ave Brooklyn NY",
+    "place_of_death_formatted": "1045 Ocean Ave, Brooklyn, NY 11226, USA",
+    "death_date": "1921-08-24",
+    "death_year": "1921",
+    "death_cause": "Nephritis",
+    "undertaker": "Est of James N Tracy",
+    "notes": "",
+    "birth_location": {
+      "lat": 40.71305,
+      "lon": -74.00723
+    },
+    "death_location": {
+      "lat": 40.636929,
+      "lon": -73.958167
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392576",
+    "cemetery_date": "1921-08-26",
+    "surname": "Hoey",
+    "forename": "Mary Elizabeth",
+    "lot_number": "14001",
+    "grave_location": "R Front Right Corner",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Albany",
+    "birth_place": "Albany N Y",
+    "age": "67",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "1346 Pacific St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Peck Memorial Hospital",
+    "death_street": "570 Crown Street",
+    "place_of_death": "Peck Memorial Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-23",
+    "death_year": "1921",
+    "death_cause": "Intestinal Obstruction",
+    "undertaker": "Fairchild Sons Inc",
+    "notes": "",
+    "birth_location": {
+      "lat": 42.651718,
+      "lon": -73.755089
+    },
+    "death_location": {
+      "lat": 40.6149996,
+      "lon": -74.0231484
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392577",
+    "cemetery_date": "1921-08-26",
+    "surname": "McFarland",
+    "forename": "Anna M",
+    "lot_number": "27650",
+    "grave_location": "N 1",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Brooklyn",
+    "birth_place": "Brooklyn NY",
+    "age": "38",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Irvington",
+    "late_residence_street": "? Ball St",
+    "death_country": "US",
+    "death_state": "NJ",
+    "death_city": "Keansburg",
+    "death_neighborhood": "",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Keansburg N J",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-23",
+    "death_year": "1921",
+    "death_cause": "Acute Brights Disease",
+    "undertaker": "Joseph West",
+    "notes": "Age: 38 years 11 months",
+    "birth_location": {
+      "lat": 40.692532,
+      "lon": -73.990997
+    },
+    "death_location": {
+      "lat": 40.4417743,
+      "lon": -74.1298643
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392578",
+    "cemetery_date": "1921-08-26",
+    "surname": "Carlisle",
+    "forename": "William Thomas",
+    "lot_number": "28970",
+    "grave_location": "R 4",
+    "birth_country": "UK",
+    "birth_state": "Unknown",
+    "birth_city": "London",
+    "birth_place": "London England",
+    "age": "71",
+    "age_unit": "Y",
+    "marital_status": "Single",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "New York City",
+    "late_residence_street": "Hotel St Andrews",
+    "death_country": "US",
+    "death_state": "NJ",
+    "death_city": "Keansburg",
+    "death_neighborhood": "",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Keansburg N J",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-22",
+    "death_year": "1921",
+    "death_cause": "Cardio Valvular Disease",
+    "undertaker": "Frank E Campbell",
+    "notes": "Age: 71 years 9 months 20 days",
+    "birth_location": {
+      "lat": 51.507351,
+      "lon": -0.127758
+    },
+    "death_location": {
+      "lat": 40.4417743,
+      "lon": -74.1298643
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392579",
+    "cemetery_date": "1921-08-26",
+    "surname": "Fallert",
+    "forename": "Henrietta",
+    "lot_number": "33659",
+    "grave_location": "N See R Column",
+    "birth_country": "DE",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "Germany",
+    "age": "76",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "738 Willoughby St",
+    "death_country": "US",
+    "death_state": "NJ",
+    "death_city": "Keansburg",
+    "death_neighborhood": "",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Keansburg N J",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-23",
+    "death_year": "1921",
+    "death_cause": "Pulmonary Oedema",
+    "undertaker": "Fred Roemmele",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.4417743,
+      "lon": -74.1298643
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392580",
+    "cemetery_date": "1921-08-26",
+    "surname": "Smith",
+    "forename": "Louisa Dusenberry",
+    "lot_number": "34017",
+    "grave_location": "N See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Mount Vernon",
+    "birth_place": "Mt Vernon N Y",
+    "age": "71",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "New York City",
+    "late_residence_street": "70 E 77th St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-24",
+    "death_year": "1921",
+    "death_cause": "Senility",
+    "undertaker": "Fairchild Sons Inc",
+    "notes": "14/09/1921",
+    "birth_location": {
+      "lat": 40.9127,
+      "lon": -73.83726
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392581",
+    "cemetery_date": "1921-08-26",
+    "surname": "Brown",
+    "forename": "Baby",
+    "lot_number": "35869",
+    "grave_location": "N 4",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "New York City",
+    "birth_place": "N Y City",
+    "age": "2",
+    "age_unit": "D",
+    "marital_status": "Unknown",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "New York City",
+    "late_residence_street": "Sloane Hospital",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-24",
+    "death_year": "1921",
+    "death_cause": "Atelectasis",
+    "undertaker": "Frank Campbell",
+    "notes": "Said to by Robert J Brown",
+    "birth_location": {
+      "lat": 40.71305,
+      "lon": -74.00723
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392582",
+    "cemetery_date": "1921-08-27",
+    "surname": "Hopkins",
+    "forename": "Harriet A",
+    "lot_number": "493",
+    "grave_location": "R See R Column",
+    "birth_country": "US",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "U S",
+    "age": "86",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "New York City",
+    "late_residence_street": "St Lukes Home",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-25",
+    "death_year": "1921",
+    "death_cause": "Apoplexy",
+    "undertaker": "J W Lyons & Son",
+    "notes": "Age: 86 years 8 months 19 days",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392583",
+    "cemetery_date": "1921-08-27",
+    "surname": "Bergen",
+    "forename": "Emily Schuyler",
+    "lot_number": "1226/9",
+    "grave_location": "R See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Brooklyn",
+    "birth_place": "Brooklyn",
+    "age": "62",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "614 6th St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-24",
+    "death_year": "1921",
+    "death_cause": "Neoplasm",
+    "undertaker": "John C Kuhlke",
+    "notes": "",
+    "birth_location": {
+      "lat": 40.692532,
+      "lon": -73.990997
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392584",
+    "cemetery_date": "1921-08-27",
+    "surname": "Magrath",
+    "forename": "Mary",
+    "lot_number": "5107",
+    "grave_location": "R See R Column",
+    "birth_country": "UK",
+    "birth_state": "Unknown",
+    "birth_city": "Manchester",
+    "birth_place": "Manchester Eng.",
+    "age": "77",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "New York City",
+    "late_residence_street": "222 East 32nd St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-25",
+    "death_year": "1921",
+    "death_cause": "Intestinal Obstruction",
+    "undertaker": "Victor Larson",
+    "notes": "Age: 77 years 10 months 15 days",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392585",
+    "cemetery_date": "1921-08-27",
+    "surname": "Williamson",
+    "forename": "George Miller",
+    "lot_number": "10344",
+    "grave_location": "N 5",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "New York City",
+    "birth_place": "N Y City",
+    "age": "71",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Unknown",
+    "late_residence_street": "Grand View",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-25",
+    "death_year": "1921",
+    "death_cause": "Cerebral Hemorrhage",
+    "undertaker": "A G Lord",
+    "notes": "",
+    "birth_location": {
+      "lat": 40.71305,
+      "lon": -74.00723
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392586",
+    "cemetery_date": "1921-08-27",
+    "surname": "Smith",
+    "forename": "Mary",
+    "lot_number": "13013",
+    "grave_location": "N Front Left Corner",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "New York City",
+    "birth_place": "N Y City",
+    "age": "57",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Bronx",
+    "late_residence_street": "2086 Creston Ave",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-24",
+    "death_year": "1921",
+    "death_cause": "Diabetes",
+    "undertaker": "Frank E Campbell",
+    "notes": "Age: 57 years 3 months 15 days",
+    "birth_location": {
+      "lat": 40.71305,
+      "lon": -74.00723
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392587",
+    "cemetery_date": "1921-08-27",
+    "surname": "Tappenbeck",
+    "forename": "Mary E",
+    "lot_number": "21033 & C",
+    "grave_location": "N See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Brooklyn",
+    "birth_place": "Brooklyn N Y",
+    "age": "75",
+    "age_unit": "Y",
+    "marital_status": "Unknown",
+    "late_residence_country": "DE",
+    "late_residence_state": "",
+    "late_residence_city": "Wiesbaden",
+    "late_residence_street": "46 Sonnenberger Strasse",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "",
+    "death_year": "",
+    "death_cause": "",
+    "undertaker": "J H Tibbetts",
+    "notes": "8/30/21",
+    "birth_location": {
+      "lat": 40.692532,
+      "lon": -73.990997
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392588",
+    "cemetery_date": "1921-08-28",
+    "surname": "Post",
+    "forename": "George M",
+    "lot_number": "27263",
+    "grave_location": "1109",
+    "birth_country": "US",
+    "birth_state": "NJ",
+    "birth_city": "Jersey City",
+    "birth_place": "Jersey City N J",
+    "age": "76",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "430-54th St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-24",
+    "death_year": "1921",
+    "death_cause": "Tuberculosis",
+    "undertaker": "H J Flood",
+    "notes": "Age: 76 years 6 months",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392589",
+    "cemetery_date": "1921-08-28",
+    "surname": "Whitfield",
+    "forename": "George B",
+    "lot_number": "4701/2",
+    "grave_location": "N See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "New York City",
+    "birth_place": "N Y City",
+    "age": "52",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "FL",
+    "late_residence_city": "St Petersburg",
+    "late_residence_street": "Unknown",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-21",
+    "death_year": "1921",
+    "death_cause": "Uraemia",
+    "undertaker": "T C Freeborn's Son",
+    "notes": "",
+    "birth_location": {
+      "lat": 40.71305,
+      "lon": -74.00723
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392590",
+    "cemetery_date": "1921-08-28",
+    "surname": "Christman",
+    "forename": "Henry",
+    "lot_number": "12281",
+    "grave_location": "N 5",
+    "birth_country": "US",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "U S",
+    "age": "77",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "475 Wilson Ave",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "Brownsville",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Brownville N Y",
+    "place_of_death_formatted": "Brownsville, Brooklyn, NY, USA",
+    "death_date": "1921-08-25",
+    "death_year": "1921",
+    "death_cause": "Apoplexy",
+    "undertaker": "Joseph Henderson",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.665214,
+      "lon": -73.9125304
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392591",
+    "cemetery_date": "1921-08-28",
+    "surname": "Dix",
+    "forename": "Robert G",
+    "lot_number": "20930",
+    "grave_location": "R See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Unknown",
+    "birth_place": "N Y",
+    "age": "31",
+    "age_unit": "Y",
+    "marital_status": "Single",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "272 Lenox Rd",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-24",
+    "death_year": "1921",
+    "death_cause": "Broncho Pneumonia",
+    "undertaker": "Fairchild Sons Inc",
+    "notes": "Said to be R Gary Dix",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392592",
+    "cemetery_date": "1921-08-28",
+    "surname": "Case",
+    "forename": "Caroline S (Ashes of)",
+    "lot_number": "29432",
+    "grave_location": "R See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Brooklyn",
+    "birth_place": "Brooklyn",
+    "age": "70",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "314 Washington St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "",
+    "death_year": "",
+    "death_cause": "",
+    "undertaker": "John C Kuhlke",
+    "notes": "",
+    "birth_location": {
+      "lat": 40.692532,
+      "lon": -73.990997
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392593",
+    "cemetery_date": "1921-08-29",
+    "surname": "Kargus",
+    "forename": "Carl",
+    "lot_number": "18372",
+    "grave_location": "75",
+    "birth_country": "DE",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "Germany",
+    "age": "84",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "143 Foxall St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-26",
+    "death_year": "1921",
+    "death_cause": "Myocarditis",
+    "undertaker": "Rudolph Stutzmann",
+    "notes": "Age: 84 years 2 months 14 days",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392594",
+    "cemetery_date": "1921-08-29",
+    "surname": "Kingston",
+    "forename": "Annie E",
+    "lot_number": "19438",
+    "grave_location": "311",
+    "birth_country": "IE",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "Ireland",
+    "age": "70",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "525 Atlantic Ave",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-27",
+    "death_year": "1921",
+    "death_cause": "Fall",
+    "undertaker": "Daily Bros",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392595",
+    "cemetery_date": "1921-08-29",
+    "surname": "Thompson",
+    "forename": "Thomas H",
+    "lot_number": "29725",
+    "grave_location": "626",
+    "birth_country": "IE",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "Ireland",
+    "age": "68",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Queens",
+    "late_residence_street": "847-85th St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-27",
+    "death_year": "1921",
+    "death_cause": "Cirrhosis of Liver",
+    "undertaker": "C F Simonson",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392596",
+    "cemetery_date": "1921-08-29",
+    "surname": "Galpine",
+    "forename": "Fannie B",
+    "lot_number": "34436",
+    "grave_location": "R 2",
+    "birth_country": "US",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "U S",
+    "age": "65",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "490 Clarkson Ave",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-26",
+    "death_year": "1921",
+    "death_cause": "Paralysis",
+    "undertaker": "Henman Bros",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392597",
+    "cemetery_date": "1921-08-30",
+    "surname": "Luttgen",
+    "forename": "Frederick W",
+    "lot_number": "18707",
+    "grave_location": "R Rear Left Corner",
+    "birth_country": "US",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "U S",
+    "age": "78",
+    "age_unit": "Y",
+    "marital_status": "Divorced",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Amityville",
+    "late_residence_street": "Unknown",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-27",
+    "death_year": "1921",
+    "death_cause": "Exhaustion",
+    "undertaker": "Stephen Merritt",
+    "notes": "Age: 78 years 3 months 12 days",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392598",
+    "cemetery_date": "1921-08-30",
+    "surname": "Fricker",
+    "forename": "Frances Genevieve",
+    "lot_number": "24236",
+    "grave_location": "R 1",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Unknown",
+    "birth_place": "N Y",
+    "age": "27",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "New York City",
+    "late_residence_street": "730 E 236th St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Brooklyn Hospital",
+    "death_street": "121 Dekalb Ave",
+    "place_of_death": "Brooklyn Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-28",
+    "death_year": "1921",
+    "death_cause": "Oedema",
+    "undertaker": "Geo O'Connor",
+    "notes": "Age: 27 years 11 months 13 days",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.691265,
+      "lon": -73.9777743
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392599",
+    "cemetery_date": "1921-08-30",
+    "surname": "Plenkers",
+    "forename": "Henry",
+    "lot_number": "32803",
+    "grave_location": "R 3",
+    "birth_country": "DE",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "Germany",
+    "age": "65",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "525-88th St",
+    "death_country": "US",
+    "death_state": "FL",
+    "death_city": "Tampa",
+    "death_neighborhood": "",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Tampa Fla",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-25",
+    "death_year": "1921",
+    "death_cause": "Fractured Skull",
+    "undertaker": "Fred Herbst & Sons",
+    "notes": "Said to be Henry P. Plenkers",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 27.950575,
+      "lon": -82.4571776
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392600",
+    "cemetery_date": "1921-08-31",
+    "surname": "Marvin",
+    "forename": "Florence A",
+    "lot_number": "14393",
+    "grave_location": "N See R Column",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Brooklyn",
+    "birth_place": "Brooklyn N Y",
+    "age": "59",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "572 Lincoln Pl",
+    "death_country": "US",
+    "death_state": "FL",
+    "death_city": "Tampa",
+    "death_neighborhood": "",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Tampa Fla",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-29",
+    "death_year": "1921",
+    "death_cause": "Chronic Endocarditis",
+    "undertaker": "Ernest J Ebbers",
+    "notes": "",
+    "birth_location": {
+      "lat": 40.692532,
+      "lon": -73.990997
+    },
+    "death_location": {
+      "lat": 27.950575,
+      "lon": -82.4571776
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392601",
+    "cemetery_date": "1921-08-31",
+    "surname": "Moser",
+    "forename": "William J",
+    "lot_number": "30432",
+    "grave_location": "R 2",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "New York City",
+    "birth_place": "N Y City",
+    "age": "40",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "1789 Bedford Ave",
+    "death_country": "US",
+    "death_state": "FL",
+    "death_city": "Tampa",
+    "death_neighborhood": "",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Tampa, Fla",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-27",
+    "death_year": "1921",
+    "death_cause": "Myocarditis",
+    "undertaker": "Fairchild Sons Inc",
+    "notes": "",
+    "birth_location": {
+      "lat": 40.71305,
+      "lon": -74.00723
+    },
+    "death_location": {
+      "lat": 27.950575,
+      "lon": -82.4571776
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392602",
+    "cemetery_date": "1921-08-31",
+    "surname": "Grieve",
+    "forename": "Thomas",
+    "lot_number": "30 Vault #15",
+    "grave_location": "Cata # 2",
+    "birth_country": "UK",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "Scotland",
+    "age": "61",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NJ",
+    "late_residence_city": "Perth Amboy",
+    "late_residence_street": "Unknown",
+    "death_country": "US",
+    "death_state": "PA",
+    "death_city": "Ambler",
+    "death_neighborhood": "",
+    "death_hospital": "None",
+    "death_street": "",
+    "place_of_death": "Ambler Pa",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-25",
+    "death_year": "1921",
+    "death_cause": "Carcinoma of Liver",
+    "undertaker": "Ferd Garretson",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.1545535,
+      "lon": -75.2215651
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392603",
+    "cemetery_date": "1921-09-01",
+    "surname": "Sinclair",
+    "forename": "John C",
+    "lot_number": "1896",
+    "grave_location": "26",
+    "birth_country": "US",
+    "birth_state": "NY",
+    "birth_city": "Brooklyn",
+    "birth_place": "Brooklyn N Y",
+    "age": "56",
+    "age_unit": "Y",
+    "marital_status": "Single",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "37 Lafayette Ave",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "New York City",
+    "death_neighborhood": "",
+    "death_hospital": "House of Rest",
+    "death_street": "Inwood Hill Park",
+    "place_of_death": "House of Rest N Y City",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-31",
+    "death_year": "1921",
+    "death_cause": "Tuberculosis",
+    "undertaker": "W H Williams",
+    "notes": "Age: 56 years 8 months 21 days",
+    "birth_location": {
+      "lat": 40.692532,
+      "lon": -73.990997
+    },
+    "death_location": {
+      "lat": 40.7127753,
+      "lon": -74.0059728
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392604",
+    "cemetery_date": "1921-09-01",
+    "surname": "Busch",
+    "forename": "Anna Elizabeth",
+    "lot_number": "5499",
+    "grave_location": "533",
+    "birth_country": "DE",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "Germany",
+    "age": "63",
+    "age_unit": "Y",
+    "marital_status": "Widowed",
+    "late_residence_country": "US",
+    "late_residence_state": "NJ",
+    "late_residence_city": "Ocean Port",
+    "late_residence_street": "Main & Centre Sts",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "New York City",
+    "death_neighborhood": "",
+    "death_hospital": "House of Rest",
+    "death_street": "Inwood Hill Park",
+    "place_of_death": "House of Rest N Y City",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-29",
+    "death_year": "1921",
+    "death_cause": "Apoplexy",
+    "undertaker": "J G Sexton",
+    "notes": "Age: 63 years 11 months 27 days",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.7127753,
+      "lon": -74.0059728
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392605",
+    "cemetery_date": "1921-09-01",
+    "surname": "Harrison",
+    "forename": "Frederick",
+    "lot_number": "31394",
+    "grave_location": "215",
+    "birth_country": "UK",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "England",
+    "age": "68",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "177 W 12th St",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "New York City",
+    "death_neighborhood": "",
+    "death_hospital": "House of Rest",
+    "death_street": "Inwood Hill Park",
+    "place_of_death": "House of Rest N Y City",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-30",
+    "death_year": "1921",
+    "death_cause": "Cardiac",
+    "undertaker": "Ericson Ericson",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.7127753,
+      "lon": -74.0059728
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392606",
+    "cemetery_date": "1921-09-01",
+    "surname": "French",
+    "forename": "Pauline (Female child of)",
+    "lot_number": "8417",
+    "grave_location": "N See R Column",
+    "birth_country": "US",
+    "birth_state": "NJ",
+    "birth_city": "South Orange",
+    "birth_place": "South Orange N J",
+    "age": "",
+    "age_unit": "",
+    "marital_status": "Unknown",
+    "late_residence_country": "US",
+    "late_residence_state": "NJ",
+    "late_residence_city": "South Orange",
+    "late_residence_street": "Unknown",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "New York City",
+    "death_neighborhood": "",
+    "death_hospital": "House of Rest",
+    "death_street": "Inwood Hill Park",
+    "place_of_death": "House of Rest N Y City",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-28",
+    "death_year": "1921",
+    "death_cause": "Still Born",
+    "undertaker": "W N Knapp & Sons",
+    "notes": "Female Child of",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.7127753,
+      "lon": -74.0059728
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392607",
+    "cemetery_date": "1921-09-01",
+    "surname": "Edwards",
+    "forename": "Frank Flowers",
+    "lot_number": "9097",
+    "grave_location": "N See R Column",
+    "birth_country": "UK",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "England",
+    "age": "54",
+    "age_unit": "Y",
+    "marital_status": "Married",
+    "late_residence_country": "US",
+    "late_residence_state": "NJ",
+    "late_residence_city": "South Orange",
+    "late_residence_street": "231 Prospect St",
+    "death_country": "US",
+    "death_state": "NJ",
+    "death_city": "South Orange",
+    "death_neighborhood": "",
+    "death_hospital": "Orange Memorial Hospital",
+    "death_street": "",
+    "place_of_death": "Orange Memorial Hosp. South Orange N J",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-29",
+    "death_year": "1921",
+    "death_cause": "General Peritonitis",
+    "undertaker": "Fred Ardrey",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.767661,
+      "lon": -74.2338583
+    }
+  },
+  {
+    "image_file": "00004-00005.tif",
+    "id": "392608",
+    "cemetery_date": "1921-09-01",
+    "surname": "Love",
+    "forename": "Charles",
+    "lot_number": "25627",
+    "grave_location": "N 3",
+    "birth_country": "US",
+    "birth_state": "Unknown",
+    "birth_city": "Unknown",
+    "birth_place": "U S",
+    "age": "50",
+    "age_unit": "Y",
+    "marital_status": "Single",
+    "late_residence_country": "US",
+    "late_residence_state": "NY",
+    "late_residence_city": "Brooklyn",
+    "late_residence_street": "2868 Stillwell Ave",
+    "death_country": "US",
+    "death_state": "NY",
+    "death_city": "Brooklyn",
+    "death_neighborhood": "",
+    "death_hospital": "Coney Island Hospital",
+    "death_street": "2601 Ocean Parkway",
+    "place_of_death": "Coney Island Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
+    "death_date": "1921-08-28",
+    "death_year": "1921",
+    "death_cause": "Nephritis",
+    "undertaker": "Jacob C Jentzer",
+    "notes": "",
+    "birth_location": {
+      "lat": 0,
+      "lon": 0
+    },
+    "death_location": {
+      "lat": 40.5855566,
+      "lon": -73.9648753
     }
   },
   {
@@ -1464,9 +1538,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Christophers Hospital",
     "death_street": "283 Hicks Street",
     "place_of_death": "St Christophers Hospital Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Pneumonia",
@@ -1477,8 +1553,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6929057,
-      "lon": -73.9989192
+      "lat": 40.0062402,
+      "lon": -75.1256383
     }
   },
   {
@@ -1503,9 +1579,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Christophers Hospital",
     "death_street": "283 Hicks Street",
     "place_of_death": "St Christophers Hospital Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Cardiac",
@@ -1516,8 +1594,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6929057,
-      "lon": -73.9989192
+      "lat": 40.0062402,
+      "lon": -75.1256383
     }
   },
   {
@@ -1542,9 +1620,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Christophers Hospital",
     "death_street": "283 Hicks Street",
     "place_of_death": "St Christophers Hospital Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-30",
     "death_year": "1921",
     "death_cause": "Cirrhoses of Liver",
@@ -1555,8 +1635,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6929057,
-      "lon": -73.9989192
+      "lat": 40.0062402,
+      "lon": -75.1256383
     }
   },
   {
@@ -1581,9 +1661,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Christophers Hospital",
     "death_street": "283 Hicks Street",
     "place_of_death": "St Christophers Hospital Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Locomotive Ataxia",
@@ -1594,8 +1676,8 @@
       "lon": -74.00723
     },
     "death_location": {
-      "lat": 40.6929057,
-      "lon": -73.9989192
+      "lat": 40.0062402,
+      "lon": -75.1256383
     }
   },
   {
@@ -1620,9 +1702,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Christophers Hospital",
     "death_street": "283 Hicks Street",
     "place_of_death": "St Christophers Hospital Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-30",
     "death_year": "1921",
     "death_cause": "Cancer",
@@ -1633,8 +1717,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6929057,
-      "lon": -73.9989192
+      "lat": 40.0062402,
+      "lon": -75.1256383
     }
   },
   {
@@ -1659,9 +1743,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Kings County Hospital",
     "death_street": "451 Clarkson Avenue",
     "place_of_death": "Kings County Hospital Brooklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Abscess",
@@ -1672,8 +1758,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6566037,
-      "lon": -73.9472582
+      "lat": 40.6563934,
+      "lon": -73.9422225
     }
   },
   {
@@ -1698,9 +1784,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Kings County Hospital",
     "death_street": "451 Clarkson Avenue",
     "place_of_death": "Kings County Hospital Brooklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Myocarditis",
@@ -1711,8 +1799,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6566037,
-      "lon": -73.9472582
+      "lat": 40.6563934,
+      "lon": -73.9422225
     }
   },
   {
@@ -1737,9 +1825,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Kings County Hospital",
     "death_street": "451 Clarkson Avenue",
     "place_of_death": "Kings County Hospital Brooklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-30",
     "death_year": "1921",
     "death_cause": "Organic Heart Disease",
@@ -1750,8 +1840,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6566037,
-      "lon": -73.9472582
+      "lat": 40.6563934,
+      "lon": -73.9422225
     }
   },
   {
@@ -1776,9 +1866,11 @@
     "death_country": "FR",
     "death_state": "Unknown",
     "death_city": "Unknown",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "France",
+    "place_of_death_formatted": "",
     "death_date": "1918-09-07",
     "death_year": "1918",
     "death_cause": "Pneumonia",
@@ -1789,8 +1881,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 46.1314354,
-      "lon": -2.434436
+      "lat": 46.227638,
+      "lon": 2.213749
     }
   },
   {
@@ -1815,9 +1907,11 @@
     "death_country": "FR",
     "death_state": "Unknown",
     "death_city": "Unknown",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "France",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Cancer of Stomach",
@@ -1828,8 +1922,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 46.1314354,
-      "lon": -2.434436
+      "lat": 46.227638,
+      "lon": 2.213749
     }
   },
   {
@@ -1854,9 +1948,11 @@
     "death_country": "US",
     "death_state": "NJ",
     "death_city": "Trenton",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Trenton N J",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-30",
     "death_year": "1921",
     "death_cause": "Chronic Myocarditis",
@@ -1867,8 +1963,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.2160482,
-      "lon": -74.8092248
+      "lat": 40.2205824,
+      "lon": -74.759717
     }
   },
   {
@@ -1893,9 +1989,11 @@
     "death_country": "US",
     "death_state": "NJ",
     "death_city": "Trenton",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Trenton N J",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-29",
     "death_year": "1921",
     "death_cause": "Cerebral Hemorrhage",
@@ -1906,8 +2004,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.2160482,
-      "lon": -74.8092248
+      "lat": 40.2205824,
+      "lon": -74.759717
     }
   },
   {
@@ -1932,9 +2030,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "Manhattan State Hospital",
     "death_street": "600 E 125th St",
     "place_of_death": "Manhattan State Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Arterio Sclerosis",
@@ -1971,9 +2071,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "Manhattan State Hospital",
     "death_street": "600 E 125th St",
     "place_of_death": "Manhattan State Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Apoplexy",
@@ -2010,9 +2112,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "Manhattan State Hospital",
     "death_street": "600 E 125th St",
     "place_of_death": "Manhattan State Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Cardiac",
@@ -2049,9 +2153,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "St Lukes Hospital",
     "death_street": "1111 Amsterdam Avenue",
     "place_of_death": "St Lukes Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Uraemia",
@@ -2062,8 +2168,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.8055483,
-      "lon": -73.9635039
+      "lat": 40.8051916,
+      "lon": -73.9615196
     }
   },
   {
@@ -2088,9 +2194,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Long Island College Hospital",
     "death_street": "350 Henry St",
     "place_of_death": "Long Island College Hospital Brooklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Broncho Pneumonia",
@@ -2101,8 +2209,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6893465,
-      "lon": -73.9993788
+      "lat": 40.689605,
+      "lon": -73.9965762
     }
   },
   {
@@ -2127,9 +2235,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Long Island College Hospital",
     "death_street": "350 Henry St",
     "place_of_death": "Long Island College Hospital Brooklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Pneumonia",
@@ -2140,8 +2250,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6893465,
-      "lon": -73.9993788
+      "lat": 40.689605,
+      "lon": -73.9965762
     }
   },
   {
@@ -2166,9 +2276,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Long Island College Hospital",
     "death_street": "350 Henry St",
     "place_of_death": "Long Island College Hospital Brooklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-29",
     "death_year": "1921",
     "death_cause": "Carcinoma Offace",
@@ -2179,8 +2291,8 @@
       "lon": -73.755089
     },
     "death_location": {
-      "lat": 40.6893465,
-      "lon": -73.9993788
+      "lat": 40.689605,
+      "lon": -73.9965762
     }
   },
   {
@@ -2205,9 +2317,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Long Island College Hospital",
     "death_street": "350 Henry St",
     "place_of_death": "Long Island College Hospital Brooklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Carditis",
@@ -2218,8 +2332,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6893465,
-      "lon": -73.9993788
+      "lat": 40.689605,
+      "lon": -73.9965762
     }
   },
   {
@@ -2244,9 +2358,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Bronx",
+    "death_neighborhood": "",
     "death_hospital": "Seton Hospital",
     "death_street": "Henry Hudson Parkway",
     "place_of_death": "Seton Hosp Bronx N Y C",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Pulmonary Tuberculosis",
@@ -2257,8 +2373,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.8643039,
-      "lon": -73.9463978
+      "lat": 40.8559912,
+      "lon": -73.8463639
     }
   },
   {
@@ -2283,9 +2399,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Bronx",
+    "death_neighborhood": "",
     "death_hospital": "Seton Hospital",
     "death_street": "Henry Hudson Parkway",
     "place_of_death": "Seton Hosp Bronx N Y C",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Cancer",
@@ -2296,8 +2414,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.8643039,
-      "lon": -73.9463978
+      "lat": 40.8559912,
+      "lon": -73.8463639
     }
   },
   {
@@ -2322,9 +2440,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Bronx",
+    "death_neighborhood": "",
     "death_hospital": "Seton Hospital",
     "death_street": "Henry Hudson Parkway",
     "place_of_death": "Seton Hosp Bronx N Y C",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Diabetes",
@@ -2335,8 +2455,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.8643039,
-      "lon": -73.9463978
+      "lat": 40.8559912,
+      "lon": -73.8463639
     }
   },
   {
@@ -2361,9 +2481,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Carcinoma",
@@ -2374,8 +2496,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2400,9 +2522,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Apoplexy",
@@ -2413,8 +2537,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2439,9 +2563,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Lobar Pneumonia",
@@ -2452,8 +2578,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2478,9 +2604,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Cardiac",
@@ -2491,8 +2619,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2517,9 +2645,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Carcinoma",
@@ -2530,8 +2660,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2556,9 +2686,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Broncho Pneumonia",
@@ -2569,8 +2701,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2595,9 +2727,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Nephritis",
@@ -2608,8 +2742,8 @@
       "lon": -74.00723
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2634,9 +2768,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Cardiac",
@@ -2647,8 +2783,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2673,9 +2809,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "St Peters Hospital",
     "death_street": "380 Henry St",
     "place_of_death": "St. Peters Hosp. Bklyn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Epilepey",
@@ -2686,8 +2824,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6884766,
-      "lon": -73.9998374
+      "lat": 40.6826885,
+      "lon": -73.8812338
     }
   },
   {
@@ -2712,9 +2850,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Long Island College Hospital",
     "death_street": "350 Henry St",
     "place_of_death": "L I College Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-03",
     "death_year": "1921",
     "death_cause": "",
@@ -2725,8 +2865,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6893465,
-      "lon": -73.9993788
+      "lat": 40.689605,
+      "lon": -73.9965762
     }
   },
   {
@@ -2751,9 +2891,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Long Island College Hospital",
     "death_street": "350 Henry St",
     "place_of_death": "L I College Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-01",
     "death_year": "1921",
     "death_cause": "Old Age",
@@ -2764,8 +2906,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6893465,
-      "lon": -73.9993788
+      "lat": 40.689605,
+      "lon": -73.9965762
     }
   },
   {
@@ -2790,9 +2932,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Norwegian Hospital",
     "death_street": "4520 Fourth Avenue",
     "place_of_death": "Norwegian Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Injury",
@@ -2803,8 +2947,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6493509,
-      "lon": -74.0123244
+      "lat": 40.6249141,
+      "lon": -74.0041677
     }
   },
   {
@@ -2829,9 +2973,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Norwegian Hospital",
     "death_street": "4520 Fourth Avenue",
     "place_of_death": "Norwegian Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Senility",
@@ -2842,8 +2988,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6493509,
-      "lon": -74.0123244
+      "lat": 40.6249141,
+      "lon": -74.0041677
     }
   },
   {
@@ -2868,9 +3014,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Norwegian Hospital",
     "death_street": "4520 Fourth Avenue",
     "place_of_death": "Norwegian Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-03",
     "death_year": "1921",
     "death_cause": "Cystitis",
@@ -2881,8 +3029,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6493509,
-      "lon": -74.0123244
+      "lat": 40.6249141,
+      "lon": -74.0041677
     }
   },
   {
@@ -2907,9 +3055,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Kings County Hospital",
     "death_street": "451 Clarkson Avenue",
     "place_of_death": "Kings County Hosp. Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-08-31",
     "death_year": "1921",
     "death_cause": "Cardiac",
@@ -2920,8 +3070,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6566037,
-      "lon": -73.9472582
+      "lat": 40.656587,
+      "lon": -73.9439771
     }
   },
   {
@@ -2946,9 +3096,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Brooklyn State Hospital",
     "death_street": "681 Clarkson Ave",
     "place_of_death": "Bklyn State Hosp Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Arterio Selerosis",
@@ -2960,7 +3112,7 @@
     },
     "death_location": {
       "lat": 40.6563118,
-      "lon": -73.938876
+      "lon": -73.9366877
     }
   },
   {
@@ -2985,9 +3137,11 @@
     "death_country": "US",
     "death_state": "NJ",
     "death_city": "Morris Plains",
+    "death_neighborhood": "",
     "death_hospital": "Morris Plains State Hospital",
     "death_street": "59 Koch Ave",
     "place_of_death": "Morris Plains State Hosp. Morris Plains N J",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-04",
     "death_year": "1921",
     "death_cause": "Interstitial Nephritis",
@@ -2999,7 +3153,7 @@
     },
     "death_location": {
       "lat": 40.83848,
-      "lon": -74.5119994
+      "lon": -74.5098107
     }
   },
   {
@@ -3024,9 +3178,11 @@
     "death_country": "US",
     "death_state": "NJ",
     "death_city": "Morris Plains",
+    "death_neighborhood": "",
     "death_hospital": "Morris Plains State Hospital",
     "death_street": "59 Koch Ave",
     "place_of_death": "Morris Plains State Hosp. Morris Plains N J",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-03",
     "death_year": "1921",
     "death_cause": "Thrombosis",
@@ -3038,7 +3194,7 @@
     },
     "death_location": {
       "lat": 40.83848,
-      "lon": -74.5119994
+      "lon": -74.5098107
     }
   },
   {
@@ -3063,9 +3219,11 @@
     "death_country": "US",
     "death_state": "NJ",
     "death_city": "Morris Plains",
+    "death_neighborhood": "",
     "death_hospital": "Morris Plains State Hospital",
     "death_street": "59 Koch Ave",
     "place_of_death": "Morris Plains State Hosp. Morris Plains N J",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-02",
     "death_year": "1921",
     "death_cause": "Cancer",
@@ -3077,7 +3235,7 @@
     },
     "death_location": {
       "lat": 40.83848,
-      "lon": -74.5119994
+      "lon": -74.5098107
     }
   },
   {
@@ -3102,9 +3260,11 @@
     "death_country": "US",
     "death_state": "NJ",
     "death_city": "Morris Plains",
+    "death_neighborhood": "",
     "death_hospital": "Morris Plains State Hospital",
     "death_street": "59 Koch Ave",
     "place_of_death": "Morris Plains State Hosp. Morris Plains N J",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-03",
     "death_year": "1921",
     "death_cause": "Cardiac",
@@ -3116,7 +3276,7 @@
     },
     "death_location": {
       "lat": 40.83848,
-      "lon": -74.5119994
+      "lon": -74.5098107
     }
   },
   {
@@ -3141,9 +3301,11 @@
     "death_country": "US",
     "death_state": "RI",
     "death_city": "Westerly",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Westerly R I",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-03",
     "death_year": "1921",
     "death_cause": "Valvular Heart Disease",
@@ -3154,8 +3316,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 41.3018905,
-      "lon": -71.9583252
+      "lat": 41.3775987,
+      "lon": -71.8272871
     }
   },
   {
@@ -3180,9 +3342,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "St Roses Home",
     "death_street": "South St",
     "place_of_death": "St Roses Home N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-05",
     "death_year": "1921",
     "death_cause": "Cancer",
@@ -3219,9 +3383,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "City Hospital",
     "death_street": "",
     "place_of_death": "City Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-03",
     "death_year": "1921",
     "death_cause": "Intestinal Obstruction",
@@ -3232,8 +3398,8 @@
       "lon": -74.00723
     },
     "death_location": {
-      "lat": 40.6974034,
-      "lon": -74.1197634
+      "lat": 40.657773,
+      "lon": -73.9413019
     }
   },
   {
@@ -3258,9 +3424,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "City Hospital",
     "death_street": "",
     "place_of_death": "City Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-03",
     "death_year": "1921",
     "death_cause": "Myocarditis",
@@ -3271,8 +3439,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6974034,
-      "lon": -74.1197634
+      "lat": 40.657773,
+      "lon": -73.9413019
     }
   },
   {
@@ -3297,9 +3465,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "City Hospital",
     "death_street": "",
     "place_of_death": "City Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-05",
     "death_year": "1921",
     "death_cause": "Tuberculosis",
@@ -3310,8 +3480,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6974034,
-      "lon": -74.1197634
+      "lat": 40.657773,
+      "lon": -73.9413019
     }
   },
   {
@@ -3336,9 +3506,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "City Hospital",
     "death_street": "",
     "place_of_death": "City Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-04",
     "death_year": "1921",
     "death_cause": "Apoplexy",
@@ -3349,8 +3521,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6974034,
-      "lon": -74.1197634
+      "lat": 40.657773,
+      "lon": -73.9413019
     }
   },
   {
@@ -3375,9 +3547,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "City Hospital",
     "death_street": "",
     "place_of_death": "City Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-07-05",
     "death_year": "1921",
     "death_cause": "Cirrhosis of Liver",
@@ -3388,8 +3562,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6974034,
-      "lon": -74.1197634
+      "lat": 40.657773,
+      "lon": -73.9413019
     }
   },
   {
@@ -3414,9 +3588,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "City Hospital",
     "death_street": "",
     "place_of_death": "City Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-04",
     "death_year": "1921",
     "death_cause": "Apoplexy",
@@ -3427,8 +3603,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6974034,
-      "lon": -74.1197634
+      "lat": 40.657773,
+      "lon": -73.9413019
     }
   },
   {
@@ -3453,9 +3629,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "New York City",
+    "death_neighborhood": "",
     "death_hospital": "City Hospital",
     "death_street": "",
     "place_of_death": "City Hospital N Y City",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-04",
     "death_year": "1921",
     "death_cause": "Cancer",
@@ -3466,8 +3644,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 40.6974034,
-      "lon": -74.1197634
+      "lat": 40.657773,
+      "lon": -73.9413019
     }
   },
   {
@@ -3492,9 +3670,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Pont Jefferson",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
-    "place_of_death": "Pont Jefferson L I",
+    "place_of_death": "Pont Jefferson NY",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-06",
     "death_year": "1921",
     "death_cause": "Carcinoma of Neck",
@@ -3505,8 +3685,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.9471979,
-      "lon": -73.0545088
+      "lat": 40.9497931,
+      "lon": -73.6211761
     }
   },
   {
@@ -3531,9 +3711,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Bronx",
+    "death_neighborhood": "",
     "death_hospital": "Fordham Hospital",
     "death_street": "",
     "place_of_death": "Fordham Hosp. Bronk N Y C",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-06",
     "death_year": "1921",
     "death_cause": "Myocarditis",
@@ -3544,8 +3726,8 @@
       "lon": -74.00723
     },
     "death_location": {
-      "lat": 40.85861,
-      "lon": -73.88167
+      "lat": 40.8595685,
+      "lon": -73.8993135
     }
   },
   {
@@ -3570,9 +3752,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "643 Chauncey St",
     "place_of_death": "643 Chauncey St Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-05",
     "death_year": "1921",
     "death_cause": "Myocarditis",
@@ -3584,7 +3768,7 @@
     },
     "death_location": {
       "lat": 40.683401,
-      "lon": -73.9117832
+      "lon": -73.9095945
     }
   },
   {
@@ -3609,9 +3793,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "643 Chauncey St",
     "place_of_death": "643 Chauncey St Brooklyn N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-05",
     "death_year": "1921",
     "death_cause": "Cardiac",
@@ -3623,7 +3809,7 @@
     },
     "death_location": {
       "lat": 40.683401,
-      "lon": -73.9117832
+      "lon": -73.9095945
     }
   },
   {
@@ -3648,9 +3834,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Kingston",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Kingston N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-06",
     "death_year": "1921",
     "death_cause": "Apoplexy",
@@ -3661,8 +3849,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 41.9274042,
-      "lon": -74.0166785
+      "lat": 41.9270367,
+      "lon": -73.9973608
     }
   },
   {
@@ -3687,9 +3875,11 @@
     "death_country": "US",
     "death_state": "CT",
     "death_city": "Niantic",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Niantic Conn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-05",
     "death_year": "1921",
     "death_cause": "Heart Disease",
@@ -3700,8 +3890,8 @@
       "lon": -74.00723
     },
     "death_location": {
-      "lat": 41.3210927,
-      "lon": -72.2143819
+      "lat": 41.3253756,
+      "lon": -72.1931338
     }
   },
   {
@@ -3726,9 +3916,11 @@
     "death_country": "US",
     "death_state": "CT",
     "death_city": "Niantic",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Niantic Conn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-07",
     "death_year": "1921",
     "death_cause": "Endocarditis",
@@ -3739,8 +3931,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 41.3210927,
-      "lon": -72.2143819
+      "lat": 41.3253756,
+      "lon": -72.1931338
     }
   },
   {
@@ -3765,9 +3957,11 @@
     "death_country": "US",
     "death_state": "CT",
     "death_city": "Niantic",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Niantic Conn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-08",
     "death_year": "1921",
     "death_cause": "Internal Hemorrhage",
@@ -3778,8 +3972,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 41.3210927,
-      "lon": -72.2143819
+      "lat": 41.3253756,
+      "lon": -72.1931338
     }
   },
   {
@@ -3804,9 +3998,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Malone",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Malone N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-05",
     "death_year": "1921",
     "death_cause": "Gastric Dilatation",
@@ -3817,8 +4013,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 44.8496152,
-      "lon": -74.3021401
+      "lat": 44.8486596,
+      "lon": -74.2948983
     }
   },
   {
@@ -3843,9 +4039,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Malone",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Malone N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-06",
     "death_year": "1921",
     "death_cause": "Chr Nephritis",
@@ -3856,8 +4054,8 @@
       "lon": -74.00723
     },
     "death_location": {
-      "lat": 44.8496152,
-      "lon": -74.3021401
+      "lat": 44.8486596,
+      "lon": -74.2948983
     }
   },
   {
@@ -3882,9 +4080,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Malone",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Malone N Y",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-06",
     "death_year": "1921",
     "death_cause": "Pistal Shot Wound",
@@ -3895,8 +4095,8 @@
       "lon": 0
     },
     "death_location": {
-      "lat": 44.8496152,
-      "lon": -74.3021401
+      "lat": 44.8486596,
+      "lon": -74.2948983
     }
   },
   {
@@ -3921,9 +4121,11 @@
     "death_country": "US",
     "death_state": "CT",
     "death_city": "Stamford",
+    "death_neighborhood": "",
     "death_hospital": "None",
     "death_street": "",
     "place_of_death": "Stamford Conn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-07",
     "death_year": "1921",
     "death_cause": "Myocarditis",
@@ -3934,8 +4136,8 @@
       "lon": -74.00723
     },
     "death_location": {
-      "lat": 41.0715507,
-      "lon": -73.6345355
+      "lat": 41.0534302,
+      "lon": -73.5387341
     }
   },
   {
@@ -3960,9 +4162,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Brooklyn State Hospital",
     "death_street": "681 Clarkson Ave",
     "place_of_death": "Brooklyn State Hosp",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-07",
     "death_year": "1921",
     "death_cause": "Endocarditis",
@@ -3974,7 +4178,7 @@
     },
     "death_location": {
       "lat": 40.6563118,
-      "lon": -73.938876
+      "lon": -73.9366877
     }
   },
   {
@@ -3999,9 +4203,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Cumberland Street Hospital",
     "death_street": "110 Carlton Ave",
     "place_of_death": "Cumberlands St. Hosp. Bkn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-07",
     "death_year": "1921",
     "death_cause": "Tetanus",
@@ -4012,8 +4218,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6943807,
-      "lon": -73.973211
+      "lat": 36.7371496,
+      "lon": -84.1638243
     }
   },
   {
@@ -4038,9 +4244,11 @@
     "death_country": "US",
     "death_state": "NY",
     "death_city": "Brooklyn",
+    "death_neighborhood": "",
     "death_hospital": "Kings County Hospital",
     "death_street": "451 Clarkson Avenue",
     "place_of_death": "Kings County Hosp. Bkn",
+    "place_of_death_formatted": "",
     "death_date": "1921-09-07",
     "death_year": "1921",
     "death_cause": "(Left) Hemiplegia",
@@ -4051,8 +4259,8 @@
       "lon": -73.990997
     },
     "death_location": {
-      "lat": 40.6566037,
-      "lon": -73.9472582
+      "lat": 40.656587,
+      "lon": -73.9439771
     }
   }
 ]
