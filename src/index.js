@@ -23,6 +23,7 @@ import {
 	Col,
 	Card,
 	Collapse,
+	Descriptions,
 	Switch,
 	Tree,
 	Popover,
@@ -53,9 +54,10 @@ function renderItem(res, triggerClickAnalytics) {
 	image = "/registry/registry.png";
 	title = getNestedValue(res,"surname") + ", " + getNestedValue(res,"forename");
 	url = getNestedValue(res,url);
-	let death = getNestedValue(res,"death_date") + " (aged " + getNestedValue(res,"age") + " years)";
+	let death = getNestedValue(res,"death_date");
+	let aged = "(aged " + getNestedValue(res,"age") + " years)";
 	let death_place = getNestedValue(res,"place_of_death");
-	let death_cause = "Cause: " + getNestedValue(res,"death_cause");
+	let death_cause = getNestedValue(res,"death_cause");
 	let birth_place = getNestedValue(res,"birth_place");
 	return (
 		<Row onClick={triggerClickAnalytics} type="flex" gutter={16} key={res._id} style={{margin:'20px auto',borderBottom:'1px solid #ededed'}}>
@@ -63,13 +65,34 @@ function renderItem(res, triggerClickAnalytics) {
 				{image &&  <a href={image} target='registry_image'><img src={image} alt={title} width='200px;'/></a> }
 			</Col>
 			<Col span={image ? 18 : 24}>
-				<h3 style={{ fontWeight: '600' }} dangerouslySetInnerHTML={{__html: title || 'Choose a valid Title Field'}}/>
-				<h4 style={{ fontWeight: '600' }}>Died</h4>
-				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: death || 'Choose a valid field'}}/>
-				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: death_place || 'Choose a valid field'}}/>
-				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: death_cause || 'Choose a valid field'}}/>
-				<h4 style={{ fontWeight: '600' }}>Born</h4>
-				<p style={{ fontSize: '1em' }} dangerouslySetInnerHTML={{__html: birth_place || 'Choose a valid field'}}/>
+				<Descriptions title={title} column={1} size="small" bordered>
+					<Descriptions.Item label="Date of death">{death}</Descriptions.Item>
+					<Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
+					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
+					<Descriptions.Item label="Place of residence">{getNestedValue(res, "late_residence_street")}</Descriptions.Item>
+					<Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place")}</Descriptions.Item>
+					<Descriptions.Item label="Age">{getNestedValue(res,"age")}</Descriptions.Item>
+					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
+					<Descriptions.Item label="Cemetery">Green-Wood Cemetery, Brooklyn, NY, USA</Descriptions.Item>
+					<Descriptions.Item label="Date of burial">{getNestedValue(res, "cemetery_date")}</Descriptions.Item>
+					<Descriptions.Item label="Grave location">{getNestedValue(res, "grave_location")}</Descriptions.Item>
+					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "lot_number")}</Descriptions.Item>
+					<Descriptions.Item label="Cemetery IDr">{getNestedValue(res, "id")}</Descriptions.Item>
+					<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
+				</Descriptions>
+
+				{/*<Collapse ghost={true} defaultActiveKey={[]}>*/}
+				{/*	<Panel header="Gravesite info" key="1">*/}
+				{/*		<Descriptions column={1} size="small"  bordered>*/}
+				{/*			<Descriptions.Item label="Cemetery">Green-Wood Cemetery, Brooklyn, NY, USA</Descriptions.Item>*/}
+				{/*			<Descriptions.Item label="Date of burial">{getNestedValue(res, "cemetery_date")}</Descriptions.Item>*/}
+				{/*			<Descriptions.Item label="Grave location">{getNestedValue(res, "grave_location")}</Descriptions.Item>*/}
+				{/*			<Descriptions.Item label="Grave lot number">{getNestedValue(res, "lot_number")}</Descriptions.Item>*/}
+				{/*			<Descriptions.Item label="Cemetery IDr">{getNestedValue(res, "id")}</Descriptions.Item>*/}
+				{/*			<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>*/}
+				{/*		</Descriptions>*/}
+				{/*	</Panel>*/}
+				{/*</Collapse>*/}
 			</Col>
 			<div style={{padding:'20px'}}>
 				{url ? <Button shape="circle" icon="link" style={{ marginRight: '5px' }} onClick={() => window.open(url, '_blank')} />
@@ -94,7 +117,7 @@ const App = () => (
 	>
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
-				<Collapse defaultActiveKey={['1', '3']}>
+				<Collapse defaultActiveKey={['1', '2']}>
 					<Panel header="Cause of death" key="1">
 						<MultiList
 						  componentId="death_cause_facet"
@@ -106,31 +129,7 @@ const App = () => (
 						  filterLabel="Cause of death"
 						 showCheckbox/>
 					</Panel>
-					<Panel header="Place of residence" key="2">
-						<MultiList
-							componentId="residence_state_facet"
-							dataField="late_residence_state.keyword"
-							showSearch={false}
-							size={100}
-							style={{
-								marginBottom: 20
-							}}
-							title="State"
-							filterLabel="State"
-							showCheckbox/>
-						<MultiList
-						  componentId="residence_city_facet"
-						  dataField="late_residence_city.keyword"
-						  showSearch={false}
-						  size={100}
-						  style={{
-							marginBottom: 20
-						  }}
-						  title="City"
-						  filterLabel="Residence: city"
-						 showCheckbox/>
-					</Panel>
-					<Panel header="Place of death" key="3" forceRender>
+					<Panel header="Place of death" key="2" forceRender>
 						<MultiList
 							componentId="place_of_death_country_facet"
 							dataField="death_country.keyword"
@@ -163,6 +162,17 @@ const App = () => (
 							}}
 							title="City"
 							filterLabel="Place of death: city"
+							showCheckbox/>
+						<MultiList
+							componentId="place_of_death_neighborhood_facet"
+							dataField="death_neighborhood.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="Neighborhood"
+							filterLabel="Place of death: neighborhood"
 							showCheckbox/>
 						<MultiList
 							componentId="place_of_death_hospital_facet"
@@ -208,6 +218,30 @@ const App = () => (
 						{/*	showSearchAsMove={false}*/}
 						{/*	searchAsMove={false}*/}
 						{/*/>*/}
+					</Panel>
+					<Panel header="Place of residence" key="3">
+						<MultiList
+							componentId="residence_state_facet"
+							dataField="late_residence_state.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="State"
+							filterLabel="State"
+							showCheckbox/>
+						<MultiList
+						  componentId="residence_city_facet"
+						  dataField="late_residence_city.keyword"
+						  showSearch={false}
+						  size={100}
+						  style={{
+							marginBottom: 20
+						  }}
+						  title="City"
+						  filterLabel="Residence: city"
+						 showCheckbox/>
 					</Panel>
 					<Panel header="Place of birth" key="4">
 						<MultiList
@@ -383,6 +417,7 @@ const App = () => (
 						'place_of_death_country_facet',
 						'place_of_death_state_facet',
 						'place_of_death_city_facet',
+						'place_of_death_neighborhood_facet',
 						'place_of_death_hospital_facet',
 						'place_of_birth_country_facet',
 						'place_of_birth_state_facet',
