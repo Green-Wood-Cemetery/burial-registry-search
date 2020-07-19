@@ -71,13 +71,13 @@ function renderItem(res, triggerClickAnalytics) {
 					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
 					<Descriptions.Item label="Place of residence">{getNestedValue(res, "late_residence_street")}</Descriptions.Item>
 					<Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place")}</Descriptions.Item>
-					<Descriptions.Item label="Age">{getNestedValue(res,"age")}</Descriptions.Item>
+					<Descriptions.Item label="Age">{getNestedValue(res,"age_years")}</Descriptions.Item>
 					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
 					<Descriptions.Item label="Cemetery">Green-Wood Cemetery, Brooklyn, NY, USA</Descriptions.Item>
 					<Descriptions.Item label="Date of burial">{getNestedValue(res, "cemetery_date")}</Descriptions.Item>
 					<Descriptions.Item label="Grave location">{getNestedValue(res, "grave_location")}</Descriptions.Item>
 					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "lot_number")}</Descriptions.Item>
-					<Descriptions.Item label="Cemetery IDr">{getNestedValue(res, "id")}</Descriptions.Item>
+					<Descriptions.Item label="Cemetery ID">{getNestedValue(res, "id")}</Descriptions.Item>
 					<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
 				</Descriptions>
 
@@ -333,7 +333,7 @@ const App = () => (
 					<Panel header="Age" key="7">
 						<DynamicRangeSlider
 							componentId="death_age_facet"
-							dataField="age"
+							dataField="age_years"
 							rangeLabels={(min, max) => (
 								{
 									"start": "0 years",
