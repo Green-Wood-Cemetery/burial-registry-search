@@ -73,7 +73,7 @@ function renderItem(res, triggerClickAnalytics) {
 					<Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place")}</Descriptions.Item>
 					<Descriptions.Item label="Age">{getNestedValue(res,"age_years")}</Descriptions.Item>
 					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
-					<Descriptions.Item label="Cemetery">Green-Wood Cemetery, Brooklyn, NY, USA</Descriptions.Item>
+					<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
 					<Descriptions.Item label="Date of burial">{getNestedValue(res, "cemetery_date")}</Descriptions.Item>
 					<Descriptions.Item label="Grave location">{getNestedValue(res, "grave_location")}</Descriptions.Item>
 					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "lot_number")}</Descriptions.Item>
@@ -117,7 +117,19 @@ const App = () => (
 	>
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
-				<Collapse defaultActiveKey={['1', '2']}>
+				<Collapse defaultActiveKey={['8', '1', '2']}>
+					<Panel header="Cemetery" key="8">
+						<MultiList
+							componentId="cemetery_facet"
+							dataField="cemetery.keyword"
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							filterLabel="Cemetery"
+							showSearch={false}
+							showCheckbox/>
+					</Panel>
 					<Panel header="Cause of death" key="1">
 						<MultiList
 						  componentId="death_cause_facet"
@@ -422,6 +434,7 @@ const App = () => (
 						'place_of_birth_country_facet',
 						'place_of_birth_state_facet',
 						'place_of_birth_city_facet',
+						'cemetery_facet',
 						'search'
 				    ]
 				  }}
