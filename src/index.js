@@ -52,13 +52,13 @@ function renderItem(res, triggerClickAnalytics) {
 	let { image, url, description, title } = {"description":"death_city","image":"","showRest":true,"title":"surname","url":""};
 	// image = getNestedValue(res,image);
 	image = "/registry/registry.png";
-	title = getNestedValue(res,"surname") + ", " + getNestedValue(res,"forename");
+	title = getNestedValue(res,"name_full");
 	url = getNestedValue(res,url);
-	let death = getNestedValue(res,"death_date");
-	let aged = "(aged " + getNestedValue(res,"age") + " years)";
-	let death_place = getNestedValue(res,"place_of_death");
-	let death_cause = getNestedValue(res,"death_cause");
-	let birth_place = getNestedValue(res,"birth_place");
+	let death = getNestedValue(res,"death_date_iso");
+	let aged = "(aged " + getNestedValue(res,"age_years") + " years)";
+	let death_place = getNestedValue(res,"death_place_full");
+	let death_cause = getNestedValue(res,"cause_of_death");
+	let birth_place = getNestedValue(res,"birth_place_full");
 	return (
 		<Row onClick={triggerClickAnalytics} type="flex" gutter={16} key={res._id} style={{margin:'20px auto',borderBottom:'1px solid #ededed'}}>
 			<Col span={image ? 6 : 0}>
@@ -69,14 +69,14 @@ function renderItem(res, triggerClickAnalytics) {
 					<Descriptions.Item label="Date of death">{death}</Descriptions.Item>
 					<Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
 					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
-					<Descriptions.Item label="Place of residence">{getNestedValue(res, "late_residence_street")}</Descriptions.Item>
-					<Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place")}</Descriptions.Item>
+					<Descriptions.Item label="Place of residence">{getNestedValue(res, "residence_place_full")}</Descriptions.Item>
+					<Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place_full")}</Descriptions.Item>
 					<Descriptions.Item label="Age">{getNestedValue(res,"age_years")}</Descriptions.Item>
 					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
 					<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
-					<Descriptions.Item label="Date of burial">{getNestedValue(res, "cemetery_date")}</Descriptions.Item>
-					<Descriptions.Item label="Grave location">{getNestedValue(res, "grave_location")}</Descriptions.Item>
-					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "lot_number")}</Descriptions.Item>
+					<Descriptions.Item label="Date of burial">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>
+					<Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_current_grave")}</Descriptions.Item>
+					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_current_lot")}</Descriptions.Item>
 					<Descriptions.Item label="Cemetery ID">{getNestedValue(res, "id")}</Descriptions.Item>
 					<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
 				</Descriptions>
@@ -117,7 +117,7 @@ const App = () => (
 	>
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
-				<Collapse defaultActiveKey={['8', '1', '2']}>
+				<Collapse defaultActiveKey={['8', '9', '1', '2']}>
 					<Panel header="Cemetery" key="8">
 						<MultiList
 							componentId="cemetery_facet"
@@ -130,10 +130,34 @@ const App = () => (
 							showSearch={false}
 							showCheckbox/>
 					</Panel>
+					<Panel header="Registry" key="9">
+						<MultiList
+							componentId="registry_volume_facet"
+							dataField="registry_volume.keyword"
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="Volume"
+							filterLabel="Registry volume"
+							showSearch={true}
+							showCheckbox/>
+						<MultiList
+							componentId="registry_page_facet"
+							dataField="registry_page.keyword"
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title={"Page"}
+							filterLabel="Registry page"
+							showSearch={false}
+							showCheckbox/>
+					</Panel>
 					<Panel header="Cause of death" key="1">
 						<MultiList
 						  componentId="death_cause_facet"
-						  dataField="death_cause.keyword"
+						  dataField="cause_of_death.keyword"
 						  size={100}
 						  style={{
 							marginBottom: 20
@@ -177,7 +201,7 @@ const App = () => (
 							showCheckbox/>
 						<MultiList
 							componentId="place_of_death_neighborhood_facet"
-							dataField="death_neighborhood.keyword"
+							dataField="death_geo_neighborhood.keyword"
 							showSearch={false}
 							size={100}
 							style={{
@@ -188,7 +212,7 @@ const App = () => (
 							showCheckbox/>
 						<MultiList
 							componentId="place_of_death_hospital_facet"
-							dataField="death_hospital.keyword"
+							dataField="death_location.keyword"
 							showSearch={false}
 							size={100}
 							style={{
@@ -199,7 +223,7 @@ const App = () => (
 							showCheckbox/>
 						<ReactiveOpenStreetMap
 							componentId="place_of_death"
-							dataField="death_location"
+							dataField="death_geo_location"
 							title="Place of death"
 							size={1000}
 							autoCenter
@@ -234,7 +258,7 @@ const App = () => (
 					<Panel header="Place of residence" key="3">
 						<MultiList
 							componentId="residence_state_facet"
-							dataField="late_residence_state.keyword"
+							dataField="residence_geo_state_long.keyword"
 							showSearch={false}
 							size={100}
 							style={{
@@ -245,7 +269,7 @@ const App = () => (
 							showCheckbox/>
 						<MultiList
 						  componentId="residence_city_facet"
-						  dataField="late_residence_city.keyword"
+						  dataField="residence_geo_city.keyword"
 						  showSearch={false}
 						  size={100}
 						  style={{
@@ -254,7 +278,17 @@ const App = () => (
 						  title="City"
 						  filterLabel="Residence: city"
 						 showCheckbox/>
-					</Panel>
+						<MultiList
+							componentId="residence_neighborhood_facet"
+							dataField="residence_geo_neighborhood.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="Neighborhood"
+							filterLabel="Residence: neighborhood"
+							showCheckbox/>					</Panel>
 					<Panel header="Place of birth" key="4">
 						<MultiList
 							componentId="place_of_birth_country_facet"
@@ -435,7 +469,9 @@ const App = () => (
 						'place_of_birth_state_facet',
 						'place_of_birth_city_facet',
 						'cemetery_facet',
-						'search'
+						'search',
+						'registry_volume_facet',
+						'registry_page_facet'
 				    ]
 				  }}
 				  renderItem={renderItem}
