@@ -5,12 +5,24 @@ import requests
 import logging
 from nameparser import HumanName
 from openpyxl import load_workbook
+import argparse
 
-GOOGLE_API_KEY = 'key_goes_here'
+# command line arguments
+parser = argparse.ArgumentParser(description='Spreadsheet to JSON')
+parser.add_argument('-input', type=str, help='spreadsheet in xslx format')
+parser.add_argument('-key', type=str, help='google api key')
+parser.add_argument('-sheet', type=str, help='worksheet to transform')
+args = parser.parse_args()
+workbook = load_workbook(filename=args.input)
+GOOGLE_API_KEY = args.key
+# sheet = workbook.active
+sheet = workbook[args.sheet]
+
 do_geocode_birth = True
 do_geocode_residence = True
 do_geocode_death = True
 cemetery = "Green-Wood Cemetery, Brooklyn, NY, USA"
+
 
 def get_google_geocode_results(address_or_zipcode):
     api_key = GOOGLE_API_KEY
@@ -30,9 +42,6 @@ def get_google_geocode_results(address_or_zipcode):
         pass
     return results
 
-workbook = load_workbook(filename="excel/greenwood 08022020 volume 60.xlsx")
-# sheet = workbook.active
-sheet = workbook['Volume 30']
 
 internments = []
 
@@ -166,15 +175,23 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         age_years = None
         age_months = None
         age_days = None
+        age_full = ''
         if row[17] is not None:
             age_years = row[17]
+            age_full += str(int(age_years) )+ " years"
         if row[18] is not None:
             age_months = row[18]
+            if age_full != '':
+                age_full += ", "
+            age_full += str(int(age_months)) + " months"
         if row[19] is not None:
             age_days = row[19]
+            if age_full != '':
+                age_full += ", "
+            age_full += str(int(age_days)) + " days"
 
         # --- MARITAL STATUS (20)
-        marital_status = None
+        marital_status = 'Unknown'
         if row[20] is not None:
             marital_status = row[20].capitalize()
 
@@ -392,6 +409,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "age_years": age_years,
             "age_months": age_months,
             "age_days": age_days,
+            "age_full": age_full,
             "marital_status": marital_status,
             "residence_street": residence_street,
             "residence_city": residence_city,

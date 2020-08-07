@@ -9,6 +9,7 @@ import {
 	MultiList,
 	SelectedFilters,
 	DynamicRangeSlider,
+	SingleDropdownList,
 	ReactiveList
 } from '@appbaseio/reactivesearch';
 
@@ -66,12 +67,12 @@ function renderItem(res, triggerClickAnalytics) {
 			</Col>
 			<Col span={image ? 18 : 24}>
 				<Descriptions title={title} column={1} size="small" bordered>
-					<Descriptions.Item label="Date of death">{death}</Descriptions.Item>
+					<Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
 					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
 					<Descriptions.Item label="Place of residence">{getNestedValue(res, "residence_place_full")}</Descriptions.Item>
 					<Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place_full")}</Descriptions.Item>
-					<Descriptions.Item label="Age">{getNestedValue(res,"age_years")}</Descriptions.Item>
+					<Descriptions.Item label="Age">{getNestedValue(res,"age_full")}</Descriptions.Item>
 					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
 					<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
 					<Descriptions.Item label="Date of burial">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>
@@ -102,8 +103,20 @@ function renderItem(res, triggerClickAnalytics) {
 	);
 };
 
-let onPopoverClick = function(item) {
-	return <div>{item.place_of_death}</div>;
+let onPopoverClickPlaceOfDeath = function(item) {
+	if (typeof item !== 'undefined') {
+		return <div>{item.death_geo_formatted_address}</div>;
+	}
+};
+let onPopoverClickPlaceOfResidence = function(item) {
+	if (typeof item !== 'undefined') {
+		return <div>{item.residence_geo_formatted_address}</div>;
+	}
+};
+let onPopoverClickPlaceOfBirth = function(item) {
+	if (typeof item !== 'undefined') {
+		return <div>{item.birth_geo_formatted_address}</div>;
+	}
 };
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -118,19 +131,19 @@ const App = () => (
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
 				<Collapse defaultActiveKey={['8', '9', '1', '2']}>
-					<Panel header="Cemetery" key="8">
-						<MultiList
-							componentId="cemetery_facet"
-							dataField="cemetery.keyword"
-							size={100}
-							style={{
-								marginBottom: 20
-							}}
-							filterLabel="Cemetery"
-							showSearch={false}
-							showCheckbox/>
-					</Panel>
-					<Panel header="Registry" key="9">
+					{/*<Panel header="Cemetery" key="8">*/}
+					{/*	<MultiList*/}
+					{/*		componentId="cemetery_facet"*/}
+					{/*		dataField="cemetery.keyword"*/}
+					{/*		size={100}*/}
+					{/*		style={{*/}
+					{/*			marginBottom: 20*/}
+					{/*		}}*/}
+					{/*		filterLabel="Cemetery"*/}
+					{/*		showSearch={false}*/}
+					{/*		showCheckbox/>*/}
+					{/*</Panel>*/}
+					<Panel header="Registry volumes" key="9">
 						<MultiList
 							componentId="registry_volume_facet"
 							dataField="registry_volume.keyword"
@@ -138,21 +151,31 @@ const App = () => (
 							style={{
 								marginBottom: 20
 							}}
-							title="Volume"
 							filterLabel="Registry volume"
-							showSearch={true}
-							showCheckbox/>
-						<MultiList
-							componentId="registry_page_facet"
-							dataField="registry_page.keyword"
-							size={100}
-							style={{
-								marginBottom: 20
-							}}
-							title={"Page"}
-							filterLabel="Registry page"
 							showSearch={false}
 							showCheckbox/>
+						{/*<MultiList*/}
+						{/*	componentId="registry_volume_facet"*/}
+						{/*	dataField="registry_volume.keyword"*/}
+						{/*	size={100}*/}
+						{/*	style={{*/}
+						{/*		marginBottom: 20*/}
+						{/*	}}*/}
+						{/*	title="Volume"*/}
+						{/*	filterLabel="Registry volume"*/}
+						{/*	showSearch={true}*/}
+						{/*	showCheckbox/>*/}
+						{/*<MultiList*/}
+						{/*	componentId="registry_page_facet"*/}
+						{/*	dataField="registry_page.keyword"*/}
+						{/*	size={100}*/}
+						{/*	style={{*/}
+						{/*		marginBottom: 20*/}
+						{/*	}}*/}
+						{/*	title={"Page"}*/}
+						{/*	filterLabel="Registry page"*/}
+						{/*	showSearch={false}*/}
+						{/*	showCheckbox/>*/}
 					</Panel>
 					<Panel header="Cause of death" key="1">
 						<MultiList
@@ -230,7 +253,7 @@ const App = () => (
 							style={{ height: '300px', width: '100%'}}
 							defaultZoom={2}
 							showSearchAsMove={false}
-							onPopoverClick={onPopoverClick}
+							onPopoverClick={onPopoverClickPlaceOfDeath}
 							showMarkers={true}
 							// center={{ lat: 40.691265, lng: -73.9777743 }}
 						/>
@@ -288,7 +311,20 @@ const App = () => (
 							}}
 							title="Neighborhood"
 							filterLabel="Residence: neighborhood"
-							showCheckbox/>					</Panel>
+							showCheckbox/>
+						<ReactiveOpenStreetMap
+							componentId="place_of_residence_map"
+							dataField="residence_geo_location"
+							title="Place of residence"
+							size={1000}
+							autoCenter
+							style={{ height: '300px', width: '100%'}}
+							defaultZoom={2}
+							showSearchAsMove={false}
+							onPopoverClick={onPopoverClickPlaceOfResidence}
+							showMarkers={true}
+						/>
+					</Panel>
 					<Panel header="Place of birth" key="4">
 						<MultiList
 							componentId="place_of_birth_country_facet"
@@ -323,6 +359,18 @@ const App = () => (
 							title="City"
 							filterLabel="Place of birth: city"
 							showCheckbox/>
+						<ReactiveOpenStreetMap
+							componentId="place_of_birth_map"
+							dataField="birth_geo_location"
+							title="Place of birth"
+							size={1000}
+							autoCenter
+							style={{ height: '300px', width: '100%'}}
+							defaultZoom={2}
+							showSearchAsMove={false}
+							onPopoverClick={onPopoverClickPlaceOfBirth}
+							showMarkers={true}
+						/>
 					</Panel>
 					<Panel header="Marital status" key="5">
 						<MultiList
@@ -406,14 +454,17 @@ const App = () => (
 					componentId="search"
 					componentType="DATASEARCH"
 					dataField={[
-						'surname',
-						'surname.autosuggest',
-						'surname.english',
-						'surname.search',
+						'cause_of_death',
+						'cause_of_death.synonyms',
+						'name_full',
+						'name_last',
+						'name_last.autosuggest',
+						'name_last.english',
+						'name_last.search',
 						'late_residence_city',
 						'late_residence_city.keyword',
-						'forename',
-						'forename.keyword'
+						'name_first',
+						'name_first.keyword'
 					]}
 					debounce={0}
 					defaultValue={undefined}
