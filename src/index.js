@@ -119,14 +119,14 @@ let onPopoverClickPlaceOfBirth = function(item) {
 	}
 };
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+const CREDENTIALS = process.env.REACT_APP_ES_CREDENTIALS;
+const ENDPOINT = process.env.REACT_APP_ES_ENDPOINT;
+const INDEX = process.env.REACT_APP_ES_INDEX;
 const App = () => (
 	<ReactiveBase
-		app="greenwood"
-		credentials={API_KEY}
-		url="https://scalr.api.appbase.io"
-		analytics={true}
-		// searchStateHeader
+		app={INDEX}
+		url={ENDPOINT}
+		credentials={CREDENTIALS}
 	>
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
