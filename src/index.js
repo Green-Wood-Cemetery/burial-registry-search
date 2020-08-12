@@ -455,16 +455,14 @@ const App = () => (
 					componentType="DATASEARCH"
 					dataField={[
 						'cause_of_death',
-						'cause_of_death.synonyms',
 						'name_full',
 						'name_last',
 						'name_last.autosuggest',
 						'name_last.english',
 						'name_last.search',
-						'late_residence_city',
-						'late_residence_city.keyword',
 						'name_first',
-						'name_first.keyword'
+						'name_first.keyword',
+						'residence_place_full'
 					]}
 					debounce={0}
 					defaultValue={undefined}
