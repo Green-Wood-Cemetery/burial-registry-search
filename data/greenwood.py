@@ -13,18 +13,19 @@ parser.add_argument('-input', type=str, help='spreadsheet in xslx format')
 parser.add_argument('-key', type=str, help='google api key')
 parser.add_argument('-sheet', type=str, help='worksheet to transform')
 args = parser.parse_args()
-workbook = load_workbook(filename=args.input)
+workbook = load_workbook(filename=args.input, data_only=True)
 GOOGLE_API_KEY = args.key
 # sheet = workbook.active
 sheet = workbook[args.sheet]
 
-do_geocode_birth = True
-do_geocode_residence = True
-do_geocode_death = True
+do_geocode_birth = False
+do_geocode_residence = False
+do_geocode_death = False
 cemetery = "Green-Wood Cemetery, Brooklyn, NY, USA"
 
 
 def get_google_geocode_results(address_or_zipcode):
+    results = None
     api_key = GOOGLE_API_KEY
     base_url = "https://maps.googleapis.com/maps/api/geocode/json"
     endpoint = f"{base_url}?address={address_or_zipcode}&key={api_key}"
@@ -50,11 +51,16 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
 
     if row[1] is not None:
 
+        # --- TAGS (39)
+        tags = []
+        if row[39] is not None:
+            tags = re.findall(r'"(.*?)"', row[39])
+
         # --- REGISTRY IMAGE FILENAME (0)
         image_filename = row[0]
 
         # --- PARSE REGISTRY VOL AND PAGE
-        m = re.search('Volume (\d+)_0?0?(\d+)', image_filename)
+        m = re.search('V\w+\s+(\d+)_0?0?(\d+)', image_filename)
         registry_volume = m.group(1)
         registry_page = m.group(2)
 
@@ -66,17 +72,17 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         intern_date_iso = ''
         intern_year = ''
         # internment month
-        if row[2] is not None:
+        if row[2] is not None and row[2] != '':
             intern_date_display += row[2] + " "
         # internment day
-        if row[3] is not None:
+        if row[3] is not None and row[3] != '':
             intern_date_display += str(int(row[3])) + ", "
         # internment year
-        if row[4] is not None:
+        if row[4] is not None and row[4] != '':
             intern_date_display += str(int(row[4]))
             intern_year = int(row[4])
         intern_date = ''
-        if intern_date_display is not '':
+        if intern_date_display != '':
             dt = dateparser.parse(intern_date_display)
             if dt is not None:
                 intern_date_iso = dt.strftime("%Y-%m-%d")
@@ -87,6 +93,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         name_middle = ''
         name_last = ''
         name_infant = ''
+        name_full = ''
         if row[5] is not None:
             name_salutation = row[5]
         if row[6] is not None:
@@ -95,9 +102,22 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             name_middle = row[7]
         if row[8] is not None:
             name_last = row[8]
+
+        name = HumanName(name_salutation + " " + name_first + " " + name_middle + " " + name_last)
+        name_full = name.full_name
+
         if row[9] is not None:
             name_infant = row[9]
-        name = HumanName(name_salutation + " " + name_first + " " + name_middle + " " + name_last)
+            if name_infant != '':
+                name_full += " (" + name_infant + ")"
+
+        #--- expand abbreviated first names in tags
+        if name_first.lower() == "geo":
+            if "George" not in tags:
+                tags.append("George")
+        if name_first.lower() == "wm":
+            if "William" not in tags:
+                tags.append("William")
 
         #--- BURIAL LOCATION (10-13)
         burial_location_current_lot = ''
@@ -140,60 +160,62 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             birth_country = row[16]
         birth_place_full = (birth_city + " " + birth_state + " " + birth_country).strip()
         ' '.join(birth_place_full.split())
-        if birth_place_full is not '' and do_geocode_birth is True:
+        if birth_place_full != '' and do_geocode_birth is True:
             geocode_results = get_google_geocode_results(birth_place_full)
-            birth_geo_lat = geocode_results['geometry']['location']['lat']
-            birth_geo_lng = geocode_results['geometry']['location']['lng']
-            birth_geo_formatted_address = geocode_results['formatted_address']
-            for component in geocode_results['address_components']:
-                # logging.warning(component)
-                for type in component['types']:
-                    # logging.warning(type)
-                    if type == 'street_number':
-                        birth_geo_street_number = component['short_name']
-                    if type == 'route':
-                        birth_geo_street_name_long = component['long_name']
-                        birth_geo_street_name_short = component['short_name']
-                    if type == 'neighborhood':
-                        birth_geo_neighborhood = component['long_name']
-                    if type == 'country':
-                        birth_geo_country_short = component['short_name']
-                        birth_geo_country_long = component['long_name']
-                    if type == 'sublocality':
-                        birth_geo_city = component['long_name']
-                    if type == 'locality':
-                        birth_geo_city = component['long_name']
-                    if type == 'administrative_area_level_1':
-                        birth_geo_state_long = component['long_name']
-                        birth_geo_state_short = component['short_name']
-                    if type == 'administrative_area_level_2':
-                        birth_geo_county = component['long_name']
-                    if type == 'postal_code':
-                        birth_geo_zip = component['long_name']
+            if geocode_results is not None:
+                birth_geo_lat = geocode_results['geometry']['location']['lat']
+                birth_geo_lng = geocode_results['geometry']['location']['lng']
+                birth_geo_formatted_address = geocode_results['formatted_address']
+                for component in geocode_results['address_components']:
+                    # logging.warning(component)
+                    for type in component['types']:
+                        # logging.warning(type)
+                        if type == 'street_number':
+                            birth_geo_street_number = component['short_name']
+                        if type == 'route':
+                            birth_geo_street_name_long = component['long_name']
+                            birth_geo_street_name_short = component['short_name']
+                        if type == 'neighborhood':
+                            birth_geo_neighborhood = component['long_name']
+                        if type == 'country':
+                            birth_geo_country_short = component['short_name']
+                            birth_geo_country_long = component['long_name']
+                        if type == 'sublocality':
+                            birth_geo_city = component['long_name']
+                        if type == 'locality':
+                            birth_geo_city = component['long_name']
+                        if type == 'administrative_area_level_1':
+                            birth_geo_state_long = component['long_name']
+                            birth_geo_state_short = component['short_name']
+                        if type == 'administrative_area_level_2':
+                            birth_geo_county = component['long_name']
+                        if type == 'postal_code':
+                            birth_geo_zip = component['long_name']
 
         # --- AGE (17-19)
         age_years = None
         age_months = None
         age_days = None
         age_full = ''
-        if row[17] is not None:
+        if row[17] is not None and row[17] != '':
             age_years = row[17]
             age_full += str(int(age_years) )+ " years"
-        if row[18] is not None:
+        if row[18] is not None and row[18] != '':
             age_months = row[18]
             if age_full != '':
                 age_full += ", "
             age_full += str(int(age_months)) + " months"
-        if row[19] is not None:
+        if row[19] is not None and row[19] != '':
             age_days = row[19]
+#             print('days: ' + str(int(age_days)))
             if age_full != '':
                 age_full += ", "
             age_full += str(int(age_days)) + " days"
 
         # --- MARITAL STATUS (20)
         marital_status = 'Unknown'
-        if row[20] is not None:
-            marital_status = row[20].capitalize()
+        if row[20] is not None and row[20] != '':
+            marital_status = row[20].capitalize().strip()
 
         # --- PLACE OF RESIDENCE (21-24)
         residence_street = ''
@@ -225,36 +247,37 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             residence_country = row[24]
         residence_place_full = (residence_street + " " + residence_city + " " + residence_state + " " + residence_country).strip()
         ' '.join(residence_place_full.split())
-        if residence_place_full is not '' and do_geocode_residence is True:
+        if residence_place_full != '' and do_geocode_residence is True:
             geocode_results = get_google_geocode_results(residence_place_full)
-            residence_geo_lat = geocode_results['geometry']['location']['lat']
-            residence_geo_lng = geocode_results['geometry']['location']['lng']
-            residence_geo_formatted_address = geocode_results['formatted_address']
-            for component in geocode_results['address_components']:
-                # logging.warning(component)
-                for type in component['types']:
-                    # logging.warning(type)
-                    if type == 'street_number':
-                        residence_geo_street_number = component['short_name']
-                    if type == 'route':
-                        residence_geo_street_name_long = component['long_name']
-                        residence_geo_street_name_short = component['short_name']
-                    if type == 'neighborhood':
-                        residence_geo_neighborhood = component['long_name']
-                    if type == 'country':
-                        residence_geo_country_short = component['short_name']
-                        residence_geo_country_long = component['long_name']
-                    if type == 'sublocality':
-                        residence_geo_city = component['long_name']
-                    if type == 'locality':
-                        residence_geo_city = component['long_name']
-                    if type == 'administrative_area_level_1':
-                        residence_geo_state_long = component['long_name']
-                        residence_geo_state_short = component['short_name']
-                    if type == 'administrative_area_level_2':
-                        residence_geo_county = component['long_name']
-                    if type == 'postal_code':
-                        residence_geo_zip = component['long_name']
+            if geocode_results is not None:
+                residence_geo_lat = geocode_results['geometry']['location']['lat']
+                residence_geo_lng = geocode_results['geometry']['location']['lng']
+                residence_geo_formatted_address = geocode_results['formatted_address']
+                for component in geocode_results['address_components']:
+                    # logging.warning(component)
+                    for type in component['types']:
+                        # logging.warning(type)
+                        if type == 'street_number':
+                            residence_geo_street_number = component['short_name']
+                        if type == 'route':
+                            residence_geo_street_name_long = component['long_name']
+                            residence_geo_street_name_short = component['short_name']
+                        if type == 'neighborhood':
+                            residence_geo_neighborhood = component['long_name']
+                        if type == 'country':
+                            residence_geo_country_short = component['short_name']
+                            residence_geo_country_long = component['long_name']
+                        if type == 'sublocality':
+                            residence_geo_city = component['long_name']
+                        if type == 'locality':
+                            residence_geo_city = component['long_name']
+                        if type == 'administrative_area_level_1':
+                            residence_geo_state_long = component['long_name']
+                            residence_geo_state_short = component['short_name']
+                        if type == 'administrative_area_level_2':
+                            residence_geo_county = component['long_name']
+                        if type == 'postal_code':
+                            residence_geo_zip = component['long_name']
 
         # --- PLACE OF DEATH (25-29)
         death_location = ''
@@ -289,53 +312,54 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             death_country = row[29]
         death_place_full = (death_location + " " + death_street + " " + death_city + " " + death_state + " " + death_country).strip()
         ' '.join(death_place_full.split())
-        if death_place_full is not '' and do_geocode_death is True:
+        if death_place_full != '' and do_geocode_death is True:
             geocode_results = get_google_geocode_results(death_place_full)
-            death_geo_lat = geocode_results['geometry']['location']['lat']
-            death_geo_lng = geocode_results['geometry']['location']['lng']
-            death_geo_formatted_address = geocode_results['formatted_address']
-            for component in geocode_results['address_components']:
-                # logging.warning(component)
-                for type in component['types']:
-                    # logging.warning(type)
-                    if type == 'street_number':
-                        death_geo_street_number = component['short_name']
-                    if type == 'route':
-                        death_geo_street_name_long = component['long_name']
-                        death_geo_street_name_short = component['short_name']
-                    if type == 'neighborhood':
-                        death_geo_neighborhood = component['long_name']
-                    if type == 'country':
-                        death_geo_country_short = component['short_name']
-                        death_geo_country_long = component['long_name']
-                    if type == 'sublocality':
-                        death_geo_city = component['long_name']
-                    if type == 'locality':
-                        death_geo_city = component['long_name']
-                    if type == 'administrative_area_level_1':
-                        death_geo_state_long = component['long_name']
-                        death_geo_state_short = component['short_name']
-                    if type == 'administrative_area_level_2':
-                        death_geo_county = component['long_name']
-                    if type == 'postal_code':
-                        death_geo_zip = component['long_name']
+            if geocode_results is not None:
+                death_geo_lat = geocode_results['geometry']['location']['lat']
+                death_geo_lng = geocode_results['geometry']['location']['lng']
+                death_geo_formatted_address = geocode_results['formatted_address']
+                for component in geocode_results['address_components']:
+                    # logging.warning(component)
+                    for type in component['types']:
+                        # logging.warning(type)
+                        if type == 'street_number':
+                            death_geo_street_number = component['short_name']
+                        if type == 'route':
+                            death_geo_street_name_long = component['long_name']
+                            death_geo_street_name_short = component['short_name']
+                        if type == 'neighborhood':
+                            death_geo_neighborhood = component['long_name']
+                        if type == 'country':
+                            death_geo_country_short = component['short_name']
+                            death_geo_country_long = component['long_name']
+                        if type == 'sublocality':
+                            death_geo_city = component['long_name']
+                        if type == 'locality':
+                            death_geo_city = component['long_name']
+                        if type == 'administrative_area_level_1':
+                            death_geo_state_long = component['long_name']
+                            death_geo_state_short = component['short_name']
+                        if type == 'administrative_area_level_2':
+                            death_geo_county = component['long_name']
+                        if type == 'postal_code':
+                            death_geo_zip = component['long_name']
 
         # --- DEATH DATE (30-32)
         death_date_display = ''
         death_date_iso = ''
         death_year = ''
         # death month
-        if row[30] is not None:
+        if row[30] is not None and row[30] != '':
             death_date_display += row[30] + " "
         # death day
-        if row[31] is not None:
+        if row[31] is not None and row[31] != '':
             death_date_display += str(int(row[31])) + ", "
         # death year
-        if row[32] is not None:
+        if row[32] is not None and row[32] != '':
             death_date_display += str(int(row[32]))
             death_year = int(row[32])
         death_date = ''
-        if death_date_display is not '':
+        if death_date_display != '':
             dt = dateparser.parse(death_date_display)
             if dt is not None:
                 death_date_iso = dt.strftime("%Y-%m-%d")
@@ -343,7 +367,10 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # --- CAUSE OF DEATH (33)
         cause_of_death = ''
         if row[33] is not None:
-            cause_of_death = row[33]
+            cause_of_death = row[33].strip()
+        if cause_of_death.lower() == "consumption":
+            if "Tuberculosis" not in tags:
+                tags.append("Tuberculosis")
 
         # --- REMOVAL FROM (34)
         removal_from = ''
@@ -372,7 +399,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
 
         internment = {
             "cemetery": cemetery,
-            "id": intern_id,
+            "intern_id": intern_id,
             "image_filename": image_filename,
             "registry_volume": registry_volume,
             "registry_page": registry_page,
@@ -383,7 +410,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "name_first": name_first,
             "name_middle": name_middle,
             "name_last": name_last,
-            "name_full": name.full_name,
+            "name_full": name_full,
             "name_infant": name_infant,
             "burial_location_current_lot": burial_location_current_lot,
             "burial_location_current_grave": burial_location_current_grave,
@@ -456,9 +483,17 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "undertaker": undertaker,
             "removed": removed,
             "removed_date": removed_date,
-            "note": notes
+            "note": notes,
+            "tags": tags
         }
-        internments.append(internment)
+
+        # make sure you can json serialize, otherwise dump error and internment
+        try:
+            json_temp = json.dumps(internment)
+            internments.append(internment)
+        except Exception as e:
+            logging.fatal(getattr(e, 'message', repr(e)))
+            logging.fatal(internment)
+            # exit()
 
 print(json.dumps(internments))
-

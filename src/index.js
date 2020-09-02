@@ -60,6 +60,9 @@ function renderItem(res, triggerClickAnalytics) {
 	let death_place = getNestedValue(res,"death_place_full");
 	let death_cause = getNestedValue(res,"cause_of_death");
 	let birth_place = getNestedValue(res,"birth_place_full");
+	let tags =  getNestedValue(res, "tags");
+	// remove array's square brackets for display
+	tags = tags.substring(1, tags.length-1);
 	return (
 		<Row onClick={triggerClickAnalytics} type="flex" gutter={16} key={res._id} style={{margin:'20px auto',borderBottom:'1px solid #ededed'}}>
 			<Col span={image ? 6 : 0}>
@@ -67,6 +70,7 @@ function renderItem(res, triggerClickAnalytics) {
 			</Col>
 			<Col span={image ? 18 : 24}>
 				<Descriptions title={title} column={1} size="small" bordered>
+					<Descriptions.Item label="Date of internment">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
 					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
@@ -75,11 +79,12 @@ function renderItem(res, triggerClickAnalytics) {
 					<Descriptions.Item label="Age">{getNestedValue(res,"age_full")}</Descriptions.Item>
 					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
 					<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
-					<Descriptions.Item label="Date of burial">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>
+					{/*<Descriptions.Item label="Date of burial">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>*/}
 					<Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_current_grave")}</Descriptions.Item>
 					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_current_lot")}</Descriptions.Item>
-					<Descriptions.Item label="Cemetery ID">{getNestedValue(res, "id")}</Descriptions.Item>
+					<Descriptions.Item label="Cemetery ID">{getNestedValue(res, "intern_id")}</Descriptions.Item>
 					<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
+					<Descriptions.Item label="Tags">{tags}</Descriptions.Item>
 				</Descriptions>
 
 				{/*<Collapse ghost={true} defaultActiveKey={[]}>*/}
@@ -222,17 +227,17 @@ const App = () => (
 							title="City"
 							filterLabel="Place of death: city"
 							showCheckbox/>
-						<MultiList
-							componentId="place_of_death_neighborhood_facet"
-							dataField="death_geo_neighborhood.keyword"
-							showSearch={false}
-							size={100}
-							style={{
-								marginBottom: 20
-							}}
-							title="Neighborhood"
-							filterLabel="Place of death: neighborhood"
-							showCheckbox/>
+						{/*<MultiList*/}
+						{/*	componentId="place_of_death_neighborhood_facet"*/}
+						{/*	dataField="death_geo_neighborhood.keyword"*/}
+						{/*	showSearch={false}*/}
+						{/*	size={100}*/}
+						{/*	style={{*/}
+						{/*		marginBottom: 20*/}
+						{/*	}}*/}
+						{/*	title="Neighborhood"*/}
+						{/*	filterLabel="Place of death: neighborhood"*/}
+						{/*	showCheckbox/>*/}
 						<MultiList
 							componentId="place_of_death_hospital_facet"
 							dataField="death_location.keyword"
@@ -241,22 +246,22 @@ const App = () => (
 							style={{
 								marginBottom: 20
 							}}
-							title="Hospital"
-							filterLabel="Place of death: hospital"
+							title="Location"
+							filterLabel="Place of death: location"
 							showCheckbox/>
-						<ReactiveOpenStreetMap
-							componentId="place_of_death"
-							dataField="death_geo_location"
-							title="Place of death"
-							size={1000}
-							autoCenter
-							style={{ height: '300px', width: '100%'}}
-							defaultZoom={2}
-							showSearchAsMove={false}
-							onPopoverClick={onPopoverClickPlaceOfDeath}
-							showMarkers={true}
-							// center={{ lat: 40.691265, lng: -73.9777743 }}
-						/>
+						{/*<ReactiveOpenStreetMap*/}
+						{/*	componentId="place_of_death"*/}
+						{/*	dataField="death_geo_location"*/}
+						{/*	title="Place of death"*/}
+						{/*	size={1000}*/}
+						{/*	autoCenter*/}
+						{/*	style={{ height: '300px', width: '100%'}}*/}
+						{/*	defaultZoom={2}*/}
+						{/*	showSearchAsMove={false}*/}
+						{/*	onPopoverClick={onPopoverClickPlaceOfDeath}*/}
+						{/*	showMarkers={true}*/}
+						{/*	// center={{ lat: 40.691265, lng: -73.9777743 }}*/}
+						{/*/>*/}
 						{/*<MultiList*/}
 						{/*	componentId="place_of_death_facet"*/}
 						{/*	dataField="place_of_death.keyword"*/}
@@ -280,8 +285,19 @@ const App = () => (
 					</Panel>
 					<Panel header="Place of residence" key="3">
 						<MultiList
+							componentId="place_of_residence_country_facet"
+							dataField="residence_country.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="Country"
+							filterLabel="Place of residence: country"
+							showCheckbox/>
+						<MultiList
 							componentId="residence_state_facet"
-							dataField="residence_geo_state_long.keyword"
+							dataField="residence_state.keyword"
 							showSearch={false}
 							size={100}
 							style={{
@@ -292,7 +308,7 @@ const App = () => (
 							showCheckbox/>
 						<MultiList
 						  componentId="residence_city_facet"
-						  dataField="residence_geo_city.keyword"
+						  dataField="residence_city.keyword"
 						  showSearch={false}
 						  size={100}
 						  style={{
@@ -301,29 +317,29 @@ const App = () => (
 						  title="City"
 						  filterLabel="Residence: city"
 						 showCheckbox/>
-						<MultiList
-							componentId="residence_neighborhood_facet"
-							dataField="residence_geo_neighborhood.keyword"
-							showSearch={false}
-							size={100}
-							style={{
-								marginBottom: 20
-							}}
-							title="Neighborhood"
-							filterLabel="Residence: neighborhood"
-							showCheckbox/>
-						<ReactiveOpenStreetMap
-							componentId="place_of_residence_map"
-							dataField="residence_geo_location"
-							title="Place of residence"
-							size={1000}
-							autoCenter
-							style={{ height: '300px', width: '100%'}}
-							defaultZoom={2}
-							showSearchAsMove={false}
-							onPopoverClick={onPopoverClickPlaceOfResidence}
-							showMarkers={true}
-						/>
+						{/*<MultiList*/}
+						{/*	componentId="residence_neighborhood_facet"*/}
+						{/*	dataField="residence_geo_neighborhood.keyword"*/}
+						{/*	showSearch={false}*/}
+						{/*	size={100}*/}
+						{/*	style={{*/}
+						{/*		marginBottom: 20*/}
+						{/*	}}*/}
+						{/*	title="Neighborhood"*/}
+						{/*	filterLabel="Residence: neighborhood"*/}
+						{/*	showCheckbox/>*/}
+						{/*<ReactiveOpenStreetMap*/}
+						{/*	componentId="place_of_residence_map"*/}
+						{/*	dataField="residence_geo_location"*/}
+						{/*	title="Place of residence"*/}
+						{/*	size={1000}*/}
+						{/*	autoCenter*/}
+						{/*	style={{ height: '300px', width: '100%'}}*/}
+						{/*	defaultZoom={2}*/}
+						{/*	showSearchAsMove={false}*/}
+						{/*	onPopoverClick={onPopoverClickPlaceOfResidence}*/}
+						{/*	showMarkers={true}*/}
+						{/*/>*/}
 					</Panel>
 					<Panel header="Place of birth" key="4">
 						<MultiList
@@ -359,18 +375,18 @@ const App = () => (
 							title="City"
 							filterLabel="Place of birth: city"
 							showCheckbox/>
-						<ReactiveOpenStreetMap
-							componentId="place_of_birth_map"
-							dataField="birth_geo_location"
-							title="Place of birth"
-							size={1000}
-							autoCenter
-							style={{ height: '300px', width: '100%'}}
-							defaultZoom={2}
-							showSearchAsMove={false}
-							onPopoverClick={onPopoverClickPlaceOfBirth}
-							showMarkers={true}
-						/>
+						{/*<ReactiveOpenStreetMap*/}
+						{/*	componentId="place_of_birth_map"*/}
+						{/*	dataField="birth_geo_location"*/}
+						{/*	title="Place of birth"*/}
+						{/*	size={1000}*/}
+						{/*	autoCenter*/}
+						{/*	style={{ height: '300px', width: '100%'}}*/}
+						{/*	defaultZoom={2}*/}
+						{/*	showSearchAsMove={false}*/}
+						{/*	onPopoverClick={onPopoverClickPlaceOfBirth}*/}
+						{/*	showMarkers={true}*/}
+						{/*/>*/}
 					</Panel>
 					<Panel header="Marital status" key="5">
 						<MultiList
@@ -450,7 +466,7 @@ const App = () => (
 			</Col>
 			<Col span={16}>
 				<DataSearch
-					autosuggest={true}
+					autosuggest={false}
 					componentId="search"
 					componentType="DATASEARCH"
 					dataField={[
@@ -462,7 +478,8 @@ const App = () => (
 						'name_last.search',
 						'name_first',
 						'name_first.keyword',
-						'residence_place_full'
+						'residence_place_full',
+						'tags'
 					]}
 					debounce={0}
 					defaultValue={undefined}
@@ -491,6 +508,7 @@ const App = () => (
 					style={{
 						marginBottom: 20
 					}}
+					URLParams={true}
 				/>
 
 				<SelectedFilters />
