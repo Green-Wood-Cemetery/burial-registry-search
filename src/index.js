@@ -60,7 +60,7 @@ function renderItem(res, triggerClickAnalytics) {
 	let death_place = getNestedValue(res,"death_place_full");
 	let death_cause = getNestedValue(res,"cause_of_death");
 	let birth_place = getNestedValue(res,"birth_place_full");
-	let tags =  getNestedValue(res, "tags");
+	let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
 	// remove array's square brackets for display
 	tags = tags.substring(1, tags.length-1);
 	return (
@@ -82,7 +82,7 @@ function renderItem(res, triggerClickAnalytics) {
 					{/*<Descriptions.Item label="Date of burial">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>*/}
 					<Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_current_grave")}</Descriptions.Item>
 					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_current_lot")}</Descriptions.Item>
-					<Descriptions.Item label="Cemetery ID">{getNestedValue(res, "intern_id")}</Descriptions.Item>
+					<Descriptions.Item label="Internment ID">{getNestedValue(res, "intern_id")}</Descriptions.Item>
 					<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
 					<Descriptions.Item label="Tags">{tags}</Descriptions.Item>
 				</Descriptions>
@@ -148,7 +148,29 @@ const App = () => (
 					{/*		showSearch={false}*/}
 					{/*		showCheckbox/>*/}
 					{/*</Panel>*/}
-					<Panel header="Registry volumes" key="9">
+					<Panel header="Registry" key="9">
+						<DataSearch
+							autosuggest={false}
+							componentId="idSearch"
+							filterLabel={"Internment ID"}
+							componentType="DATASEARCH"
+							dataField={['intern_id']}
+							debounce={0}
+							defaultValue={undefined}
+							fieldWeights={[1]}
+							fuzziness={0}
+							highlight={false}
+							placeholder="Search Internment IDs"
+							queryFormat="and"
+							showFilter={true}
+							size={10}
+							strictSelection={false}
+							style={{
+								marginBottom: 20
+							}}
+							URLParams={true}
+							title="ID"
+						/>
 						<MultiList
 							componentId="registry_volume_facet"
 							dataField="registry_volume.keyword"
@@ -158,7 +180,24 @@ const App = () => (
 							}}
 							filterLabel="Registry volume"
 							showSearch={false}
-							showCheckbox/>
+							showCheckbox
+							URLParams={true}
+							title="Volume"
+						/>
+						<MultiList
+							componentId="registry_page_facet"
+							dataField="registry_page.keyword"
+							size={200}
+							style={{
+								marginBottom: 20
+							}}
+							sortBy="asc"
+							filterLabel="Registry page"
+							showSearch={false}
+							showCount={false}
+							URLParams={true}
+							title="Page"
+						/>
 						{/*<MultiList*/}
 						{/*	componentId="registry_volume_facet"*/}
 						{/*	dataField="registry_volume.keyword"*/}
@@ -419,6 +458,28 @@ const App = () => (
 							filterLabel="Death year range"
 							includeNullValues
 						/>
+					</Panel>
+					<Panel header="Date of internment" key="6">
+						<DynamicRangeSlider
+							componentId="intern_year_facet"
+							dataField="intern_year"
+							rangeLabels={(min, max) => ({
+								start: min,
+								end: max,
+							})}
+							stepValue={1}
+							showHistogram={true}
+							showFilter={true}
+							interval={2}
+							react={{
+								and: ["CategoryFilter", "SearchFilter"]
+							}}
+							loader="Loading ..."
+							filterLabel="Intern year range"
+							includeNullValues
+							URLParams={true}
+						/>
+					</Panel>
 						{/*<DateRange*/}
 						{/*	componentId="death_date_facet"*/}
 						{/*	title="Range"*/}
@@ -439,7 +500,6 @@ const App = () => (
 						{/*		marginBottom: 20*/}
 						{/*	}}*/}
 						{/*/>*/}
-					</Panel>
 					<Panel header="Age" key="7">
 						<DynamicRangeSlider
 							componentId="death_age_facet"
@@ -517,12 +577,14 @@ const App = () => (
 				  componentId="result"
 				  dataField="_score"
 				  pagination={true}
+				  URLParams
 				  react={{
 				    and: [
 				    	'death_cause_facet',
 						'residence_city_facet',
 						'death_date_facet',
 						'death_year_facet',
+						'intern_year_facet',
 						'death_age_facet',
 						'residence_state_facet',
 						'place_of_death_facet',
@@ -538,7 +600,8 @@ const App = () => (
 						'cemetery_facet',
 						'search',
 						'registry_volume_facet',
-						'registry_page_facet'
+						'registry_page_facet',
+						'idSearch'
 				    ]
 				  }}
 				  renderItem={renderItem}

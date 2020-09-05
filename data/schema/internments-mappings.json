@@ -517,7 +517,7 @@
         }
       },
       "registry_page": {
-        "type": "text",
+        "type": "integer",
         "fields": {
           "keyword": {
             "type": "keyword",
@@ -526,7 +526,7 @@
         }
       },
       "registry_volume": {
-        "type": "text",
+        "type": "integer",
         "fields": {
           "keyword": {
             "type": "keyword",

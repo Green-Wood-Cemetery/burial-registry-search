@@ -60,9 +60,9 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         image_filename = row[0]
 
         # --- PARSE REGISTRY VOL AND PAGE
-        m = re.search('V\w+\s+(\d+)_0?0?(\d+)', image_filename)
-        registry_volume = m.group(1)
-        registry_page = m.group(2)
+        m = re.search('V\w+\s+0?0?(\d+)_0?0?(\d+)', image_filename)
+        registry_volume = int(m.group(1))
+        registry_page = int(m.group(2))
 
         # --- INTERNMENT ID (1)
         intern_id = row[1]
