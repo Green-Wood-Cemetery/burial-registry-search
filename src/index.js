@@ -198,28 +198,6 @@ const App = () => (
 							URLParams={true}
 							title="Page"
 						/>
-						{/*<MultiList*/}
-						{/*	componentId="registry_volume_facet"*/}
-						{/*	dataField="registry_volume.keyword"*/}
-						{/*	size={100}*/}
-						{/*	style={{*/}
-						{/*		marginBottom: 20*/}
-						{/*	}}*/}
-						{/*	title="Volume"*/}
-						{/*	filterLabel="Registry volume"*/}
-						{/*	showSearch={true}*/}
-						{/*	showCheckbox/>*/}
-						{/*<MultiList*/}
-						{/*	componentId="registry_page_facet"*/}
-						{/*	dataField="registry_page.keyword"*/}
-						{/*	size={100}*/}
-						{/*	style={{*/}
-						{/*		marginBottom: 20*/}
-						{/*	}}*/}
-						{/*	title={"Page"}*/}
-						{/*	filterLabel="Registry page"*/}
-						{/*	showSearch={false}*/}
-						{/*	showCheckbox/>*/}
 					</Panel>
 					<Panel header="Cause of death" key="1">
 						<MultiList
@@ -597,6 +575,7 @@ const App = () => (
 						'place_of_birth_country_facet',
 						'place_of_birth_state_facet',
 						'place_of_birth_city_facet',
+						'place_of_residence_country_facet',
 						'cemetery_facet',
 						'search',
 						'registry_volume_facet',
