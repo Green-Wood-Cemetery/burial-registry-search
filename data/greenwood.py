@@ -207,10 +207,14 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             age_full += str(int(age_months)) + " months"
         if row[19] is not None and row[19] != '':
             age_days = row[19]
-#             print('days: ' + str(int(age_days)))
+            age_days = re.sub('\s*1/2', '.5', age_days)
+            age_days = re.sub('\s*3/4', '.75', age_days)
+            age_days = re.sub('\d+\s+Hrs?', '0', age_days)
+            age_days = re.sub('\d+\s+Hours?', '0', age_days)
+            age_days = float(age_days)
             if age_full != '':
                 age_full += ", "
-            age_full += str(int(age_days)) + " days"
+            age_full += str(age_days) + " days"
 
         # --- MARITAL STATUS (20)
         marital_status = 'Unknown'

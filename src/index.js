@@ -52,7 +52,7 @@ function getNestedValue(obj, path) {
 function renderItem(res, triggerClickAnalytics) {
 	let { image, url, description, title } = {"description":"death_city","image":"","showRest":true,"title":"surname","url":""};
 	// image = getNestedValue(res,image);
-	image = "/registry/registry.png";
+	image = "/registry/record-image_.jpg";
 	title = getNestedValue(res,"name_full");
 	url = getNestedValue(res,url);
 	let death = getNestedValue(res,"death_date_iso");
@@ -187,7 +187,7 @@ const App = () => (
 						<MultiList
 							componentId="registry_page_facet"
 							dataField="registry_page.keyword"
-							size={200}
+							size={600}
 							style={{
 								marginBottom: 20
 							}}
