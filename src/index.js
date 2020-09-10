@@ -52,7 +52,7 @@ function getNestedValue(obj, path) {
 function renderItem(res, triggerClickAnalytics) {
 	let { image, url, description, title } = {"description":"death_city","image":"","showRest":true,"title":"surname","url":""};
 	// image = getNestedValue(res,image);
-	image = "/registry/record-image_.jpg";
+	image = "/registry/300/Volume 1_0235.jpg";
 	title = getNestedValue(res,"name_full");
 	url = getNestedValue(res,url);
 	let death = getNestedValue(res,"death_date_iso");
