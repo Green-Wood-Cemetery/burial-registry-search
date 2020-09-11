@@ -70,7 +70,7 @@ function renderItem(res, triggerClickAnalytics) {
 			</Col>
 			<Col span={image ? 18 : 24}>
 				<Descriptions title={title} column={1} size="small" bordered>
-					<Descriptions.Item label="Date of interment">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>
+					<Descriptions.Item label="Date of interment">{getNestedValue(res, "interment_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
 					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
@@ -79,10 +79,9 @@ function renderItem(res, triggerClickAnalytics) {
 					<Descriptions.Item label="Age">{getNestedValue(res,"age_full")}</Descriptions.Item>
 					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
 					<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
-					{/*<Descriptions.Item label="Date of burial">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>*/}
 					<Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_current_grave")}</Descriptions.Item>
 					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_current_lot")}</Descriptions.Item>
-					<Descriptions.Item label="Interment ID">{getNestedValue(res, "intern_id")}</Descriptions.Item>
+					<Descriptions.Item label="Interment ID">{getNestedValue(res, "interment_id")}</Descriptions.Item>
 					<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
 					<Descriptions.Item label="Tags">{tags}</Descriptions.Item>
 				</Descriptions>
@@ -154,7 +153,7 @@ const App = () => (
 							componentId="idSearch"
 							filterLabel={"Interment ID"}
 							componentType="DATASEARCH"
-							dataField={['intern_id']}
+							dataField={['interment_id']}
 							debounce={0}
 							defaultValue={undefined}
 							fieldWeights={[1]}
@@ -439,8 +438,8 @@ const App = () => (
 					</Panel>
 					<Panel header="Date of interment" key="6">
 						<DynamicRangeSlider
-							componentId="intern_year_facet"
-							dataField="intern_year"
+							componentId="interment_year_facet"
+							dataField="interment_year"
 							rangeLabels={(min, max) => ({
 								start: min,
 								end: max,
@@ -453,7 +452,7 @@ const App = () => (
 								and: ["CategoryFilter", "SearchFilter"]
 							}}
 							loader="Loading ..."
-							filterLabel="Intern year range"
+							filterLabel="Interment year range"
 							includeNullValues
 							URLParams={true}
 						/>
@@ -562,7 +561,7 @@ const App = () => (
 						'residence_city_facet',
 						'death_date_facet',
 						'death_year_facet',
-						'intern_year_facet',
+						'interment_year_facet',
 						'death_age_facet',
 						'residence_state_facet',
 						'place_of_death_facet',
