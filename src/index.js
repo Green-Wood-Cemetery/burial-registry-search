@@ -70,7 +70,7 @@ function renderItem(res, triggerClickAnalytics) {
 			</Col>
 			<Col span={image ? 18 : 24}>
 				<Descriptions title={title} column={1} size="small" bordered>
-					<Descriptions.Item label="Date of internment">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>
+					<Descriptions.Item label="Date of interment">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
 					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
@@ -82,7 +82,7 @@ function renderItem(res, triggerClickAnalytics) {
 					{/*<Descriptions.Item label="Date of burial">{getNestedValue(res, "intern_date_display")}</Descriptions.Item>*/}
 					<Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_current_grave")}</Descriptions.Item>
 					<Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_current_lot")}</Descriptions.Item>
-					<Descriptions.Item label="Internment ID">{getNestedValue(res, "intern_id")}</Descriptions.Item>
+					<Descriptions.Item label="Interment ID">{getNestedValue(res, "intern_id")}</Descriptions.Item>
 					<Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
 					<Descriptions.Item label="Tags">{tags}</Descriptions.Item>
 				</Descriptions>
@@ -152,7 +152,7 @@ const App = () => (
 						<DataSearch
 							autosuggest={false}
 							componentId="idSearch"
-							filterLabel={"Internment ID"}
+							filterLabel={"Interment ID"}
 							componentType="DATASEARCH"
 							dataField={['intern_id']}
 							debounce={0}
@@ -160,7 +160,7 @@ const App = () => (
 							fieldWeights={[1]}
 							fuzziness={0}
 							highlight={false}
-							placeholder="Search Internment IDs"
+							placeholder="Search Interment IDs"
 							queryFormat="and"
 							showFilter={true}
 							size={10}
@@ -437,7 +437,7 @@ const App = () => (
 							includeNullValues
 						/>
 					</Panel>
-					<Panel header="Date of internment" key="6">
+					<Panel header="Date of interment" key="6">
 						<DynamicRangeSlider
 							componentId="intern_year_facet"
 							dataField="intern_year"

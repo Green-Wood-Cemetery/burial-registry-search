@@ -417,7 +417,7 @@
       "death_year": {
         "type": "long"
       },
-      "intern_number": {
+      "interment_number": {
         "type": "text"
       },
       "image_filename": {
@@ -429,7 +429,7 @@
           }
         }
       },
-      "intern_date_display": {
+      "interment_date_display": {
         "type": "text",
         "fields": {
           "keyword": {
@@ -438,10 +438,10 @@
           }
         }
       },
-      "intern_date_iso": {
+      "interment_date_iso": {
         "type": "date"
       },
-      "intern_year": {
+      "interment_year": {
         "type": "long"
       },
       "marital_status": {

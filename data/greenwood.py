@@ -44,7 +44,7 @@ def get_google_geocode_results(address_or_zipcode):
     return results
 
 
-internments = []
+interments = []
 
 # Using the values_only because you want to return the cells' values
 for row in sheet.iter_rows(min_row=3, values_only=True):
@@ -64,28 +64,28 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         registry_volume = m.group(1)
         registry_page = m.group(2)
 
-        # --- INTERNMENT ID (1)
-        intern_id = row[1]
+        # --- INTERMENT ID (1)
+        interment_id = row[1]
 
-        # --- INTERNMENT DATE (2-4)
-        intern_date_display = ''
-        intern_date_iso = ''
-        intern_year = ''
-        # internment month
+        # --- INTERMENT DATE (2-4)
+        interment_date_display = ''
+        interment_date_iso = ''
+        interment_year = ''
+        # interment month
         if row[2] is not None and row[2] != '':
-            intern_date_display += row[2] + " "
-        # internment day
+            interment_date_display += row[2] + " "
+        # interment day
         if row[3] is not None and row[3] != '':
-            intern_date_display += str(int(row[3])) + ", "
-        # internment year
+            interment_date_display += str(int(row[3])) + ", "
+        # interment year
         if row[4] is not None and row[4] != '':
-            intern_date_display += str(int(row[4]))
-            intern_year = int(row[4])
-        intern_date = ''
-        if intern_date_display != '':
-            dt = dateparser.parse(intern_date_display)
+            interment_date_display += str(int(row[4]))
+            interment_year = int(row[4])
+        interment_date = ''
+        if interment_date_display != '':
+            dt = dateparser.parse(interment_date_display)
             if dt is not None:
-                intern_date_iso = dt.strftime("%Y-%m-%d")
+                interment_date_iso = dt.strftime("%Y-%m-%d")
 
         # --- NAME (5-9)
         name_salutation = ''
@@ -206,7 +206,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
                 age_full += ", "
             age_full += str(int(age_months)) + " months"
         if row[19] is not None and row[19] != '':
-            age_days = row[19]
+            age_days = str(row[19])
             age_days = re.sub('\s*1/2', '.5', age_days)
             age_days = re.sub('\s*3/4', '.75', age_days)
             age_days = re.sub('\d+\s+Hrs?', '0', age_days)
@@ -401,15 +401,15 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         if row[38] is not None:
             notes = row[38]
 
-        internment = {
+        interment = {
             "cemetery": cemetery,
-            "intern_id": intern_id,
+            "interment_id": interment_id,
             "image_filename": image_filename,
             "registry_volume": registry_volume,
             "registry_page": registry_page,
-            "intern_date_display" : intern_date_display,
-            "intern_date_iso": intern_date_iso,
-            "intern_year": intern_year,
+            "interment_date_display" : interment_date_display,
+            "interment_date_iso": interment_date_iso,
+            "interment_year": interment_year,
             "name_salutation": name_salutation,
             "name_first": name_first,
             "name_middle": name_middle,
@@ -491,13 +491,13 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "tags": tags
         }
 
-        # make sure you can json serialize, otherwise dump error and internment
+        # make sure you can json serialize, otherwise dump error and interment
         try:
-            json_temp = json.dumps(internment)
-            internments.append(internment)
+            json_temp = json.dumps(interment)
+            interments.append(interment)
         except Exception as e:
             logging.fatal(getattr(e, 'message', repr(e)))
-            logging.fatal(internment)
+            logging.fatal(interment)
             # exit()
 
-print(json.dumps(internments))
+print(json.dumps(interments))
