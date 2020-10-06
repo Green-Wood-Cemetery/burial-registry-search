@@ -50,9 +50,13 @@ function getNestedValue(obj, path) {
 }
 
 function renderItem(res, triggerClickAnalytics) {
-	let { image, url, description, title } = {"description":"death_city","image":"","showRest":true,"title":"surname","url":""};
+	let { image_thumb, image_url, url, description, title } = {"description":"death_city","image":"","showRest":true,"title":"surname","url":""};
 	// image = getNestedValue(res,image);
-	image = "/registry/300/Volume 1_0235.jpg";
+	image_thumb = "/registry/300/Volume 1_0235.jpg";
+	image_url = "https://www.green-wood.com/scans/volume " +
+		getNestedValue(res, "registry_volume").replace(/^0+/, '') +
+		"/" + getNestedValue(res, "image_filename") +
+		".jpg";
 	title = getNestedValue(res,"name_full");
 	url = getNestedValue(res,url);
 	let death = getNestedValue(res,"death_date_iso");
@@ -65,10 +69,10 @@ function renderItem(res, triggerClickAnalytics) {
 	tags = tags.substring(1, tags.length-1);
 	return (
 		<Row onClick={triggerClickAnalytics} type="flex" gutter={16} key={res._id} style={{margin:'20px auto',borderBottom:'1px solid #ededed'}}>
-			<Col span={image ? 6 : 0}>
-				{image &&  <a href={image} target='registry_image'><img src={image} alt={title} width='200px;'/></a> }
+			<Col span={image_url ? 6 : 0}>
+				{image_url &&  <a href={image_url} target='registry_image'><img src={image_thumb} alt={title} width='200px;'/></a> }
 			</Col>
-			<Col span={image ? 18 : 24}>
+			<Col span={image_url ? 18 : 24}>
 				<Descriptions title={title} column={1} size="small" bordered>
 					<Descriptions.Item label="Date of interment">{getNestedValue(res, "interment_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>

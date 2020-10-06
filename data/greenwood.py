@@ -153,11 +153,11 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         birth_geo_lng = None
         birth_geo_formatted_address = ''
         if row[14] is not None:
-            birth_city = row[14]
+            birth_city = str(row[14])
         if row[15] is not None:
-            birth_state = row[15]
+            birth_state = str(row[15])
         if row[16] is not None:
-            birth_country = row[16]
+            birth_country = str(row[16])
         birth_place_full = (birth_city + " " + birth_state + " " + birth_country).strip()
         ' '.join(birth_place_full.split())
         if birth_place_full != '' and do_geocode_birth is True:
@@ -242,13 +242,13 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         residence_geo_lng = None
         residence_geo_formatted_address = ''
         if row[21] is not None:
-            residence_street = row[21]
+            residence_street = str(row[21])
         if row[22] is not None:
-            residence_city = row[22]
+            residence_city = str(row[22])
         if row[23] is not None:
-            residence_state = row[23]
+            residence_state = str(row[23])
         if row[24] is not None:
-            residence_country = row[24]
+            residence_country = str(row[24])
         residence_place_full = (residence_street + " " + residence_city + " " + residence_state + " " + residence_country).strip()
         ' '.join(residence_place_full.split())
         if residence_place_full != '' and do_geocode_residence is True:
