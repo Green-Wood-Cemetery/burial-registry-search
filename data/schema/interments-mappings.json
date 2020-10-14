@@ -516,15 +516,6 @@
           }
         }
       },
-      "registry_page": {
-        "type": "integer",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
       "registry_volume": {
         "type": "integer",
         "fields": {

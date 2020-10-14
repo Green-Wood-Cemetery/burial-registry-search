@@ -406,7 +406,6 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "interment_id": interment_id,
             "image_filename": image_filename,
             "registry_volume": registry_volume,
-            "registry_page": registry_page,
             "interment_date_display" : interment_date_display,
             "interment_date_iso": interment_date_iso,
             "interment_year": interment_year,

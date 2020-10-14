@@ -16,3 +16,7 @@ see: [https://github.com/Keyang/node-csvtojson](https://github.com/Keyang/node-c
 ### jq
 
 see: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)
+
+### env vars
+
+see: [https://vercel.com/green-wood/burial-registry-search/settings/environment-variables](https://vercel.com/green-wood/burial-registry-search/settings/environment-variables)
