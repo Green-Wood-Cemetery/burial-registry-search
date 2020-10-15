@@ -24,6 +24,12 @@ do_geocode_death = False
 cemetery = "Green-Wood Cemetery, Brooklyn, NY, USA"
 
 
+# load synonym dictionaries
+with open('dictionaries/cause-of-death.json') as f:
+  cause_of_death_dict = json.load(f)
+with open('dictionaries/marital-status.json') as g:
+    marital_status_dict = json.load(g)
+
 def get_google_geocode_results(address_or_zipcode):
     results = None
     api_key = GOOGLE_API_KEY
@@ -217,9 +223,13 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             age_full += str(age_days) + " days"
 
         # --- MARITAL STATUS (20)
-        marital_status = 'Unknown'
+        marital_status = 'Not recorded'
         if row[20] is not None and row[20] != '':
             marital_status = row[20].capitalize().strip()
+        # normalize variants
+        for key in marital_status_dict.keys():
+            if key == marital_status.lower():
+                marital_status = (marital_status_dict[key])
 
         # --- PLACE OF RESIDENCE (21-24)
         residence_street = ''
@@ -372,9 +382,11 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         cause_of_death = ''
         if row[33] is not None:
             cause_of_death = row[33].strip()
-        if cause_of_death.lower() == "consumption":
-            if "Tuberculosis" not in tags:
-                tags.append("Tuberculosis")
+
+        # add synonyms as tags
+        for key in cause_of_death_dict.keys():
+            if key == cause_of_death.lower():
+                tags.append(cause_of_death_dict[key])
 
         # --- REMOVAL FROM (34)
         removal_from = ''
