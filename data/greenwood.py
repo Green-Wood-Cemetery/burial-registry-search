@@ -6,6 +6,10 @@ import logging
 from nameparser import HumanName
 from openpyxl import load_workbook
 import argparse
+import sqlite3
+
+connection = sqlite3.connect("gender/gender.db")
+cursor = connection.cursor()
 
 # command line arguments
 parser = argparse.ArgumentParser(description='Spreadsheet to JSON')
@@ -96,18 +100,24 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # --- NAME (5-9)
         name_salutation = ''
         name_first = ''
+        name_first_gender = 'Unknown'
         name_middle = ''
         name_last = ''
         name_infant = ''
         name_full = ''
         if row[5] is not None:
-            name_salutation = row[5]
+            name_salutation = row[5].strip()
         if row[6] is not None:
-            name_first = row[6]
+            name_first = row[6].strip()
+            # just get first part of any first name (eg: Mary Jane)
+            name_first_gender_temp = name_first.split(' ')[0]
+            gender_row = cursor.execute("SELECT gender from namegenderpro where name = '" + name_first_gender_temp + "' COLLATE NOCASE").fetchone()
+            if gender_row:
+                name_first_gender = gender_row[0]
         if row[7] is not None:
-            name_middle = row[7]
+            name_middle = row[7].strip()
         if row[8] is not None:
-            name_last = row[8]
+            name_last = row[8].strip()
 
         name = HumanName(name_salutation + " " + name_first + " " + name_middle + " " + name_last)
         name_full = name.full_name
@@ -216,7 +226,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             age_days = re.sub('\s*1/2', '.5', age_days)
             age_days = re.sub('\s*3/4', '.75', age_days)
             age_days = re.sub('\d+\s+Hrs?', '0', age_days)
-            age_days = re.sub('\d+\s+Hours?', '0', age_days)
+            age_days = re.sub('\w+\s+[Hh]ours?', '0', age_days)
             age_days = float(age_days)
             if age_full != '':
                 age_full += ", "
@@ -427,6 +437,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "name_last": name_last,
             "name_full": name_full,
             "name_infant": name_infant,
+            "gender_guess": name_first_gender,
             "burial_location_current_lot": burial_location_current_lot,
             "burial_location_current_grave": burial_location_current_grave,
             "burial_location_previous_lot": burial_location_previous_lot,
@@ -512,3 +523,4 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             # exit()
 
 print(json.dumps(interments))
+connection.close()

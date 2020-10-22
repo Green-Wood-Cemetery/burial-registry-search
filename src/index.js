@@ -151,7 +151,7 @@ const App = () => (
 					{/*		showSearch={false}*/}
 					{/*		showCheckbox/>*/}
 					{/*</Panel>*/}
-					<Panel header="Registry" key="9">
+					<Panel header="Registry" key="10">
 						<DataSearch
 							autosuggest={false}
 							componentId="idSearch"
@@ -420,7 +420,19 @@ const App = () => (
 							filterLabel="Marital status"
 							showCheckbox/>
 					</Panel>
-					<Panel header="Date of death" key="6">
+					<Panel header="Gender (guess based on first name)" key="6">
+						<MultiList
+							componentId="gender_guess_facet"
+							dataField="gender_guess.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							filterLabel="Gender"
+							showCheckbox/>
+					</Panel>
+					<Panel header="Date of death" key="7">
 						<DynamicRangeSlider
 							componentId="death_year_facet"
 							dataField="death_year"
@@ -440,7 +452,7 @@ const App = () => (
 							includeNullValues
 						/>
 					</Panel>
-					<Panel header="Date of interment" key="6">
+					<Panel header="Date of interment" key="8">
 						<DynamicRangeSlider
 							componentId="interment_year_facet"
 							dataField="interment_year"
@@ -481,7 +493,7 @@ const App = () => (
 						{/*		marginBottom: 20*/}
 						{/*	}}*/}
 						{/*/>*/}
-					<Panel header="Age" key="7">
+					<Panel header="Age" key="9">
 						<DynamicRangeSlider
 							componentId="death_age_facet"
 							dataField="age_years"
@@ -583,7 +595,8 @@ const App = () => (
 						'search',
 						'registry_volume_facet',
 						'registry_page_facet',
-						'idSearch'
+						'idSearch',
+						'gender_guess_facet'
 				    ]
 				  }}
 				  renderItem={renderItem}

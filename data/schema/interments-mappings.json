@@ -417,6 +417,15 @@
       "death_year": {
         "type": "long"
       },
+      "gender_guess": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
       "interment_number": {
         "type": "text"
       },
