@@ -54,7 +54,7 @@ function renderItem(res, triggerClickAnalytics) {
 	// image = getNestedValue(res,image);
 	image_thumb = "/registry/300/Volume 1_0235.jpg";
 	image_url = "https://www.green-wood.com/scans/volume " +
-		getNestedValue(res, "registry_volume").replace(/^0+/, '') +
+		getNestedValue(res, "registry_volume") +
 		"/" + getNestedValue(res, "image_filename") +
 		".jpg";
 	title = getNestedValue(res,"name_full");
@@ -185,6 +185,7 @@ const App = () => (
 							showSearch={false}
 							showCheckbox
 							URLParams={true}
+							sort="asc"
 							title="Volume"
 						/>
 						<MultiList
