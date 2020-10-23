@@ -1,48 +1,32 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {
-	ReactiveBase,
 	DataSearch,
-	DateRange,
-	MultiList,
-	SelectedFilters,
 	DynamicRangeSlider,
-	SingleDropdownList,
-	ReactiveList
+	MultiList,
+	ReactiveBase,
+	ReactiveList,
+	SelectedFilters
 } from '@appbaseio/reactivesearch';
-
-import {
-	ReactiveGoogleMap,
-	ReactiveOpenStreetMap
-} from '@appbaseio/reactivemaps';
-
-import {
-	Row,
-	Button,
-	Col,
-	Card,
-	Collapse,
-	Descriptions,
-	Switch,
-	Tree,
-	Popover,
-	Affix
-} from 'antd';
+import {Col, Collapse, Descriptions, Row} from 'antd';
 import 'antd/dist/antd.css';
+
+// import {
+// 	ReactiveGoogleMap,
+// 	ReactiveOpenStreetMap
+// } from '@appbaseio/reactivemaps';
 const { Panel } = Collapse;
 
 
 function getNestedValue(obj, path) {
 	const keys = path.split('.');
-	const currentObject = obj;
 	const nestedValue = keys.reduce((value, key) => {
 		if (value) {
 		return value[key];
 		}
 		return '';
-	}, currentObject);
+	}, obj);
 	if (typeof nestedValue === 'object') {
 		return JSON.stringify(nestedValue);
 	}
@@ -50,20 +34,14 @@ function getNestedValue(obj, path) {
 }
 
 function renderItem(res, triggerClickAnalytics) {
-	let { image_thumb, image_url, url, description, title } = {"description":"death_city","image":"","showRest":true,"title":"surname","url":""};
-	// image = getNestedValue(res,image);
-	image_thumb = "/registry/300/Volume 1_0235.jpg";
-	image_url = "https://www.green-wood.com/scans/volume " +
+	let image_thumb = "/registry/300/Volume 1_0235.jpg";
+	let image_url = "https://www.green-wood.com/scans/volume " +
 		getNestedValue(res, "registry_volume") +
 		"/" + getNestedValue(res, "image_filename") +
 		".jpg";
-	title = getNestedValue(res,"name_full");
-	url = getNestedValue(res,url);
-	let death = getNestedValue(res,"death_date_iso");
-	let aged = "(aged " + getNestedValue(res,"age_years") + " years)";
+	let title = getNestedValue(res,"name_full");
 	let death_place = getNestedValue(res,"death_place_full");
 	let death_cause = getNestedValue(res,"cause_of_death");
-	let birth_place = getNestedValue(res,"birth_place_full");
 	let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
 	// remove array's square brackets for display
 	tags = tags.substring(1, tags.length-1);
@@ -103,29 +81,25 @@ function renderItem(res, triggerClickAnalytics) {
 				{/*	</Panel>*/}
 				{/*</Collapse>*/}
 			</Col>
-			<div style={{padding:'20px'}}>
-				{url ? <Button shape="circle" icon="link" style={{ marginRight: '5px' }} onClick={() => window.open(url, '_blank')} />
-: null}
-			</div>
 		</Row>
 	);
-};
+}
 
-let onPopoverClickPlaceOfDeath = function(item) {
-	if (typeof item !== 'undefined') {
-		return <div>{item.death_geo_formatted_address}</div>;
-	}
-};
-let onPopoverClickPlaceOfResidence = function(item) {
-	if (typeof item !== 'undefined') {
-		return <div>{item.residence_geo_formatted_address}</div>;
-	}
-};
-let onPopoverClickPlaceOfBirth = function(item) {
-	if (typeof item !== 'undefined') {
-		return <div>{item.birth_geo_formatted_address}</div>;
-	}
-};
+// let onPopoverClickPlaceOfDeath = function(item) {
+// 	if (typeof item !== 'undefined') {
+// 		return <div>{item.death_geo_formatted_address}</div>;
+// 	}
+// };
+// let onPopoverClickPlaceOfResidence = function(item) {
+// 	if (typeof item !== 'undefined') {
+// 		return <div>{item.residence_geo_formatted_address}</div>;
+// 	}
+// };
+// let onPopoverClickPlaceOfBirth = function(item) {
+// 	if (typeof item !== 'undefined') {
+// 		return <div>{item.birth_geo_formatted_address}</div>;
+// 	}
+// };
 
 const CREDENTIALS = process.env.REACT_APP_ES_CREDENTIALS;
 const ENDPOINT = process.env.REACT_APP_ES_ENDPOINT;
@@ -134,11 +108,11 @@ const App = () => (
 	<ReactiveBase
 		app={INDEX}
 		url={ENDPOINT}
-		credentials={CREDENTIALS}
-	>
+		credentials={CREDENTIALS}>
+
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
-				<Collapse defaultActiveKey={['8', '9', '1', '2']}>
+				<Collapse defaultActiveKey={['10', '1']}>
 					{/*<Panel header="Cemetery" key="8">*/}
 					{/*	<MultiList*/}
 					{/*		componentId="cemetery_facet"*/}
@@ -185,7 +159,7 @@ const App = () => (
 							showSearch={false}
 							showCheckbox
 							URLParams={true}
-							sort="asc"
+							sortBy="asc"
 							title="Volume"
 						/>
 						<MultiList
@@ -471,7 +445,7 @@ const App = () => (
 							loader="Loading ..."
 							filterLabel="Interment year range"
 							includeNullValues
-							URLParams={true}
+							URLParams={false}
 						/>
 					</Panel>
 						{/*<DateRange*/}
