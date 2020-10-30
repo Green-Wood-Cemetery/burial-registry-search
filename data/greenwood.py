@@ -30,9 +30,11 @@ cemetery = "Green-Wood Cemetery, Brooklyn, NY, USA"
 
 # load synonym dictionaries
 with open('dictionaries/cause-of-death.json') as f:
-  cause_of_death_dict = json.load(f)
+    cause_of_death_dict = json.load(f)
 with open('dictionaries/marital-status.json') as g:
     marital_status_dict = json.load(g)
+with open('dictionaries/city-to-state.json') as g:
+    city_state_dict = json.load(g)
 
 def get_google_geocode_results(address_or_zipcode):
     results = None
@@ -63,8 +65,9 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
 
         # --- TAGS (39)
         tags = []
-        if row[39] is not None:
-            tags = re.findall(r'"(.*?)"', row[39])
+        if len(row) > 39:
+            if row[39] is not None:
+                tags = re.findall(r'"(.*?)"', row[39])
 
         # --- REGISTRY IMAGE FILENAME (0)
         image_filename = row[0]
@@ -262,13 +265,19 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         residence_geo_lng = None
         residence_geo_formatted_address = ''
         if row[21] is not None:
-            residence_street = str(row[21])
+            residence_street = str(row[21]).strip()
         if row[22] is not None:
-            residence_city = str(row[22])
+            residence_city = str(row[22]).strip()
+            # infer state in some cases using a mapping dictionary
+            if row[23] is None:
+                for key in city_state_dict.keys():
+                    if key == residence_city.lower():
+                        residence_state = (city_state_dict[key])
         if row[23] is not None:
-            residence_state = str(row[23])
+            residence_state = str(row[23]).strip()
         if row[24] is not None:
-            residence_country = str(row[24])
+            residence_country = str(row[24]).strip()
+
         residence_place_full = (residence_street + " " + residence_city + " " + residence_state + " " + residence_country).strip()
         ' '.join(residence_place_full.split())
         if residence_place_full != '' and do_geocode_residence is True:
@@ -325,15 +334,20 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         death_geo_lng = None
         death_geo_formatted_address = ''
         if row[25] is not None:
-            death_location = row[25]
+            death_location = str(row[25]).strip()
         if row[26] is not None:
-            death_street = row[26]
+            death_street = str(row[26]).strip()
         if row[27] is not None:
-            death_city = row[27]
+            death_city = str(row[27]).strip()
+            # infer state in some cases using a mapping dictionary
+            if row[28] is None:
+                for key in city_state_dict.keys():
+                    if key == death_city.lower():
+                        death_state = (city_state_dict[key])
         if row[28] is not None:
-            death_state = row[28]
+            death_state = str(row[28]).strip()
         if row[29] is not None:
-            death_country = row[29]
+            death_country = str(row[29]).strip()
         death_place_full = (death_location + " " + death_street + " " + death_city + " " + death_state + " " + death_country).strip()
         ' '.join(death_place_full.split())
         if death_place_full != '' and do_geocode_death is True:
@@ -421,7 +435,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # --- NOTES (38)
         notes = ''
         if row[38] is not None:
-            notes = row[38]
+            notes = str(row[38]).strip()
 
         interment = {
             "cemetery": cemetery,
