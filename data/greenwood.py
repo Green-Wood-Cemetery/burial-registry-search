@@ -22,6 +22,10 @@ GOOGLE_API_KEY = args.key
 # sheet = workbook.active
 sheet = workbook[args.sheet]
 
+# logging config
+logging.basicConfig(filename='import.log', filemode='a', format='%(levelname)s - %(message)s')
+
+
 do_geocode_birth = False
 do_geocode_residence = False
 do_geocode_death = False
@@ -55,6 +59,12 @@ def get_google_geocode_results(address_or_zipcode):
         pass
     return results
 
+def isfloat(value):
+  try:
+    float(value)
+    return True
+  except ValueError:
+    return False
 
 interments = []
 
@@ -94,11 +104,15 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         if row[4] is not None and row[4] != '':
             interment_date_display += str(int(row[4]))
             interment_year = int(row[4])
+            if interment_year > 2020:
+                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " has an interment_year greater than 2020: " + str(interment_year) )
         interment_date = ''
         if interment_date_display != '':
             dt = dateparser.parse(interment_date_display)
             if dt is not None:
                 interment_date_iso = dt.strftime("%Y-%m-%d")
+            else:
+                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " unable to parse interment date: " + interment_date_display )
 
         # --- NAME (5-9)
         name_salutation = ''
@@ -230,15 +244,16 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             age_days = re.sub('\s*3/4', '.75', age_days)
             age_days = re.sub('\d+\s+Hrs?', '0', age_days)
             age_days = re.sub('\w+\s+[Hh]ours?', '0', age_days)
-            age_days = float(age_days)
-            if age_full != '':
-                age_full += ", "
-            age_full += str(age_days) + " days"
+            if isfloat(age_days):
+                age_days = float(age_days)
+                if age_full != '':
+                    age_full += ", "
+                age_full += str(age_days) + " days"
 
         # --- MARITAL STATUS (20)
         marital_status = 'Not recorded'
         if row[20] is not None and row[20] != '':
-            marital_status = row[20].capitalize().strip()
+            marital_status = row[20].strip().capitalize()
         # normalize variants
         for key in marital_status_dict.keys():
             if key == marital_status.lower():
@@ -396,11 +411,16 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         if row[32] is not None and row[32] != '':
             death_date_display += str(int(row[32]))
             death_year = int(row[32])
+            if death_year > 2020:
+                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " has a death year greater than 2020: " + str(death_year) )
+
         death_date = ''
         if death_date_display != '':
             dt = dateparser.parse(death_date_display)
             if dt is not None:
                 death_date_iso = dt.strftime("%Y-%m-%d")
+            else:
+                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " unable to parse death date: " + death_date_display )
 
         # --- CAUSE OF DEATH (33)
         cause_of_death = ''
