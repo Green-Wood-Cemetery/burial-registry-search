@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "New York",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "New York County",
+    "birth_geo_formatted_address": "110 Varick St, New York, NY 10013, USA",
+    "birth_geo_lat": 40.7244857,
+    "birth_geo_lng": -74.0057381,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New York",
+    "birth_geo_state_short": "NY",
+    "birth_geo_street_name_long": "Varick Street",
+    "birth_geo_street_name_short": "Varick St",
+    "birth_geo_street_number": "110",
+    "birth_geo_zip": "10013",
+    "birth_place_geocode_input": "Alemia New York United States"
+}

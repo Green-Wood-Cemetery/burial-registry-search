@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Boston",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Suffolk County",
+    "birth_geo_formatted_address": "1705 Columbus Ave, Roxbury, MA 02119, USA",
+    "birth_geo_lat": 42.32032,
+    "birth_geo_lng": -71.09857339999999,
+    "birth_geo_neighborhood": "Roxbury",
+    "birth_geo_state_long": "Massachusetts",
+    "birth_geo_state_short": "MA",
+    "birth_geo_street_name_long": "Columbus Avenue",
+    "birth_geo_street_name_short": "Columbus Ave",
+    "birth_geo_street_number": "1705",
+    "birth_geo_zip": "02119",
+    "birth_place_geocode_input": "White Roxbury Massachusetts United States"
+}

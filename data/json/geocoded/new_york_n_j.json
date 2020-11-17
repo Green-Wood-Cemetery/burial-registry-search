@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "West New York",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Hudson County",
+    "birth_geo_formatted_address": "West New York, NJ 07093, USA",
+    "birth_geo_lat": 40.7878788,
+    "birth_geo_lng": -74.0143064,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New Jersey",
+    "birth_geo_state_short": "NJ",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "07093",
+    "birth_place_geocode_input": "New York  N J"
+}

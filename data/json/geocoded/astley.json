@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Toronto",
+    "birth_geo_country_long": "Canada",
+    "birth_geo_country_short": "CA",
+    "birth_geo_county": "Toronto Division",
+    "birth_geo_formatted_address": "42 Carnforth Rd, North York, ON M4A 2K7, Canada",
+    "birth_geo_lat": 43.7391667,
+    "birth_geo_lng": -79.3166667,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Ontario",
+    "birth_geo_state_short": "ON",
+    "birth_geo_street_name_long": "Carnforth Road",
+    "birth_geo_street_name_short": "Carnforth Rd",
+    "birth_geo_street_number": "42",
+    "birth_geo_zip": "M4A 2K7",
+    "birth_place_geocode_input": "Astley"
+}

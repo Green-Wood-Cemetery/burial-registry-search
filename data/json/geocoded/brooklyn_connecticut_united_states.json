@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Brooklyn",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Windham County",
+    "birth_geo_formatted_address": "Brooklyn, CT 06234, USA",
+    "birth_geo_lat": 41.7881236,
+    "birth_geo_lng": -71.9497216,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Connecticut",
+    "birth_geo_state_short": "CT",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "06234",
+    "birth_place_geocode_input": "Brooklyn Connecticut United States"
+}

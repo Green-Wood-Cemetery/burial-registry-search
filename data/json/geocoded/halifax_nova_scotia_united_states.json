@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Halifax",
+    "birth_geo_country_long": "Canada",
+    "birth_geo_country_short": "CA",
+    "birth_geo_county": "Halifax Regional Municipality",
+    "birth_geo_formatted_address": "1969 Upper Water St #904, Halifax, NS B3J 3R7, Canada",
+    "birth_geo_lat": 44.6526515,
+    "birth_geo_lng": -63.5745077,
+    "birth_geo_neighborhood": "South End",
+    "birth_geo_state_long": "Nova Scotia",
+    "birth_geo_state_short": "NS",
+    "birth_geo_street_name_long": "Upper Water Street",
+    "birth_geo_street_name_short": "Upper Water St",
+    "birth_geo_street_number": "1969",
+    "birth_geo_zip": "B3J 3R7",
+    "birth_place_geocode_input": "Halifax Nova Scotia United States"
+}

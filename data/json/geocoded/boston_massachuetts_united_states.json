@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Boston",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Suffolk County",
+    "birth_geo_formatted_address": "Boston, MA, USA",
+    "birth_geo_lat": 42.3600825,
+    "birth_geo_lng": -71.0588801,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Massachusetts",
+    "birth_geo_state_short": "MA",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "Boston Massachuetts United States"
+}

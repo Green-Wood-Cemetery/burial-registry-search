@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "White Plains",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Westchester County",
+    "birth_geo_formatted_address": "456 North St, White Plains, NY 10605, USA",
+    "birth_geo_lat": 41.0220659,
+    "birth_geo_lng": -73.7393249,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New York",
+    "birth_geo_state_short": "NY",
+    "birth_geo_street_name_long": "North Street",
+    "birth_geo_street_name_short": "North St",
+    "birth_geo_street_number": "456",
+    "birth_geo_zip": "10605",
+    "birth_place_geocode_input": "White Plain West Chruch"
+}

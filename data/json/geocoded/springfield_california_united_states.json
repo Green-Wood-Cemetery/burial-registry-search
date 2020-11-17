@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Springfield",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Tuolumne County",
+    "birth_geo_formatted_address": "Springfield, CA 95370, USA",
+    "birth_geo_lat": 38.020966,
+    "birth_geo_lng": -120.413277,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "California",
+    "birth_geo_state_short": "CA",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "95370",
+    "birth_place_geocode_input": "Springfield California United States"
+}

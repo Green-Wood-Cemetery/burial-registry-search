@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Burlington",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Burlington County",
+    "birth_geo_formatted_address": "Burlington, NJ 08016, USA",
+    "birth_geo_lat": 40.071222,
+    "birth_geo_lng": -74.86488729999999,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New Jersey",
+    "birth_geo_state_short": "NJ",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "08016",
+    "birth_place_geocode_input": "Burlington New Jersey United States"
+}

@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Tulsa",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Tulsa County",
+    "birth_geo_formatted_address": "7718 E 91st St suite 240, Tulsa, OK 74133, USA",
+    "birth_geo_lat": 36.08912,
+    "birth_geo_lng": -95.839625,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Oklahoma",
+    "birth_geo_state_short": "OK",
+    "birth_geo_street_name_long": "East 91st Street",
+    "birth_geo_street_name_short": "E 91st St",
+    "birth_geo_street_number": "7718",
+    "birth_geo_zip": "74133",
+    "birth_place_geocode_input": "Maps  Map"
+}

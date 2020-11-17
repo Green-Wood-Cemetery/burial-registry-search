@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "New York",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "New York County",
+    "birth_geo_formatted_address": "81 Avenue A, New York, NY 10009, USA",
+    "birth_geo_lat": 40.7251823,
+    "birth_geo_lng": -73.984478,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New York",
+    "birth_geo_state_short": "NY",
+    "birth_geo_street_name_long": "Avenue A",
+    "birth_geo_street_name_short": "Avenue A",
+    "birth_geo_street_number": "81",
+    "birth_geo_zip": "10009",
+    "birth_place_geocode_input": "Sing Sing New York United States"
+}

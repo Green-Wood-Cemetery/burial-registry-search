@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Cambridge",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Middlesex County",
+    "birth_geo_formatted_address": "545 Concord Ave Suite 15, Cambridge, MA 02138, USA",
+    "birth_geo_lat": 42.388209,
+    "birth_geo_lng": -71.14268799999999,
+    "birth_geo_neighborhood": "Cambridge Highlands",
+    "birth_geo_state_long": "Massachusetts",
+    "birth_geo_state_short": "MA",
+    "birth_geo_street_name_long": "Concord Avenue",
+    "birth_geo_street_name_short": "Concord Ave",
+    "birth_geo_street_number": "545",
+    "birth_geo_zip": "02138",
+    "birth_place_geocode_input": "New Aleaw"
+}

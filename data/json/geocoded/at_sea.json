@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Fort Collins",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Larimer County",
+    "birth_geo_formatted_address": "2243 Centre Ave Unit 300, Fort Collins, CO 80526, USA",
+    "birth_geo_lat": 40.5592922,
+    "birth_geo_lng": -105.0871974,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Colorado",
+    "birth_geo_state_short": "CO",
+    "birth_geo_street_name_long": "Centre Avenue",
+    "birth_geo_street_name_short": "Centre Ave",
+    "birth_geo_street_number": "2243",
+    "birth_geo_zip": "80526",
+    "birth_place_geocode_input": "At Sea"
+}

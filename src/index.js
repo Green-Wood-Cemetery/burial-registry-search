@@ -338,6 +338,28 @@ const App = () => (
 					</Panel>
 					<Panel header="Place of birth" key="4">
 						<MultiList
+							componentId="place_of_birth_geo_country_facet"
+							dataField="birth_geo_country_long.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="Country (Geocode)"
+							filterLabel="Place of birth: country (geocode)"
+							showCheckbox/>
+						<MultiList
+							componentId="place_of_birth_geo_state_facet"
+							dataField="birth_geo_state_long.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="State (Geocode)"
+							filterLabel="Place of birth: state (geocode)"
+							showCheckbox/>
+						<MultiList
 							componentId="place_of_birth_country_facet"
 							dataField="birth_country.keyword"
 							showSearch={false}

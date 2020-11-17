@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Vancouver",
+    "birth_geo_country_long": "Canada",
+    "birth_geo_country_short": "CA",
+    "birth_geo_county": "Metro Vancouver",
+    "birth_geo_formatted_address": "375 Water St, Vancouver, BC V6B 5C6, Canada",
+    "birth_geo_lat": 49.2849885,
+    "birth_geo_lng": -123.1107974,
+    "birth_geo_neighborhood": "Central Vancouver",
+    "birth_geo_state_long": "British Columbia",
+    "birth_geo_state_short": "BC",
+    "birth_geo_street_name_long": "Water Street",
+    "birth_geo_street_name_short": "Water St",
+    "birth_geo_street_number": "375",
+    "birth_geo_zip": "V6B 5C6",
+    "birth_place_geocode_input": "-"
+}

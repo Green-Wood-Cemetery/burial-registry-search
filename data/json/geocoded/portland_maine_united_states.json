@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Portland",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Cumberland County",
+    "birth_geo_formatted_address": "Portland, ME, USA",
+    "birth_geo_lat": 43.6590993,
+    "birth_geo_lng": -70.2568189,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Maine",
+    "birth_geo_state_short": "ME",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "Portland Maine  United States"
+}

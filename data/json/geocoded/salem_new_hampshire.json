@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Salem",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Rockingham County",
+    "birth_geo_formatted_address": "Salem, NH 03079, USA",
+    "birth_geo_lat": 42.78855530000001,
+    "birth_geo_lng": -71.2008912,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New Hampshire",
+    "birth_geo_state_short": "NH",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "03079",
+    "birth_place_geocode_input": "Salem New Hampshire"
+}

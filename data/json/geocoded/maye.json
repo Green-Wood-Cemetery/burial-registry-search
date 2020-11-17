@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Overland Park",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Johnson County",
+    "birth_geo_formatted_address": "12609 Ballentine St, Overland Park, KS 66213, USA",
+    "birth_geo_lat": 38.8998908,
+    "birth_geo_lng": -94.7100112,
+    "birth_geo_neighborhood": "Nottingham Place",
+    "birth_geo_state_long": "Kansas",
+    "birth_geo_state_short": "KS",
+    "birth_geo_street_name_long": "Ballentine Street",
+    "birth_geo_street_name_short": "Ballentine St",
+    "birth_geo_street_number": "12609",
+    "birth_geo_zip": "66213",
+    "birth_place_geocode_input": "Maye"
+}

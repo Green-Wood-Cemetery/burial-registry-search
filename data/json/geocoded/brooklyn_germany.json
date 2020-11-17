@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Brooklyn",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Kings County",
+    "birth_geo_formatted_address": "410 Utica Ave, Brooklyn, NY 11213, USA",
+    "birth_geo_lat": 40.6645291,
+    "birth_geo_lng": -73.93183739999999,
+    "birth_geo_neighborhood": "Crown Heights",
+    "birth_geo_state_long": "New York",
+    "birth_geo_state_short": "NY",
+    "birth_geo_street_name_long": "Utica Avenue",
+    "birth_geo_street_name_short": "Utica Ave",
+    "birth_geo_street_number": "410",
+    "birth_geo_zip": "11213",
+    "birth_place_geocode_input": "Brooklyn  Germany"
+}

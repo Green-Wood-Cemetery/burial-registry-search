@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Louisville",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Jefferson County",
+    "birth_geo_formatted_address": "Louisville, KY, USA",
+    "birth_geo_lat": 38.2526647,
+    "birth_geo_lng": -85.7584557,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Kentucky",
+    "birth_geo_state_short": "KY",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "Louisville"
+}

@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Tulsa",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Tulsa County",
+    "birth_geo_formatted_address": "5333 S Mingo Rd, Tulsa, OK 74146, USA",
+    "birth_geo_lat": 36.0869823,
+    "birth_geo_lng": -95.8681441,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Oklahoma",
+    "birth_geo_state_short": "OK",
+    "birth_geo_street_name_long": "South Mingo Road",
+    "birth_geo_street_name_short": "S Mingo Rd",
+    "birth_geo_street_number": "5333",
+    "birth_geo_zip": "74146",
+    "birth_place_geocode_input": "Ls"
+}

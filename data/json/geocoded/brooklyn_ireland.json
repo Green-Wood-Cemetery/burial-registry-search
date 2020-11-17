@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Brooklyn",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Jackson County",
+    "birth_geo_formatted_address": "124 S Main St A, Brooklyn, MI 49230, USA",
+    "birth_geo_lat": 42.1050306,
+    "birth_geo_lng": -84.2481201,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Michigan",
+    "birth_geo_state_short": "MI",
+    "birth_geo_street_name_long": "South Main Street",
+    "birth_geo_street_name_short": "S Main St",
+    "birth_geo_street_number": "124",
+    "birth_geo_zip": "49230",
+    "birth_place_geocode_input": "Brooklyn  Ireland"
+}

@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Cambridge",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Middlesex County",
+    "birth_geo_formatted_address": "237 Garden St, Cambridge, MA 02138, USA",
+    "birth_geo_lat": 42.3867011,
+    "birth_geo_lng": -71.135342,
+    "birth_geo_neighborhood": "Neighborhood Nine",
+    "birth_geo_state_long": "Massachusetts",
+    "birth_geo_state_short": "MA",
+    "birth_geo_street_name_long": "Garden Street",
+    "birth_geo_street_name_short": "Garden St",
+    "birth_geo_street_number": "237",
+    "birth_geo_zip": "02138",
+    "birth_place_geocode_input": "Briston"
+}

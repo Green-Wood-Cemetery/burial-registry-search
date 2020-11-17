@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Wheeling",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Cook County",
+    "birth_geo_formatted_address": "45 W Hintz Rd, Wheeling, IL 60090, USA",
+    "birth_geo_lat": 42.1223118,
+    "birth_geo_lng": -87.91632779999999,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Illinois",
+    "birth_geo_state_short": "IL",
+    "birth_geo_street_name_long": "West Hintz Road",
+    "birth_geo_street_name_short": "W Hintz Rd",
+    "birth_geo_street_number": "45",
+    "birth_geo_zip": "60090",
+    "birth_place_geocode_input": "Hls"
+}

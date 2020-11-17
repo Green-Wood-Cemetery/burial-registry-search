@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Montreal",
+    "birth_geo_country_long": "Canada",
+    "birth_geo_country_short": "CA",
+    "birth_geo_county": "Montreal",
+    "birth_geo_formatted_address": "Montreal, QC, Canada",
+    "birth_geo_lat": 45.5016889,
+    "birth_geo_lng": -73.567256,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Quebec",
+    "birth_geo_state_short": "QC",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "Montrea"
+}

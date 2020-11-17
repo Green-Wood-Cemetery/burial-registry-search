@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "New York",
+    "birth_geo_country_long": "United Kingdom",
+    "birth_geo_country_short": "GB",
+    "birth_geo_county": "Lincolnshire",
+    "birth_geo_formatted_address": "New York, Lincoln LN4 4YD, UK",
+    "birth_geo_lat": 53.07901099999999,
+    "birth_geo_lng": -0.1378359,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "England",
+    "birth_geo_state_short": "England",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "LN4 4YD",
+    "birth_place_geocode_input": "New York England"
+}

@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "St. Louis",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "",
+    "birth_geo_formatted_address": "St. Louis, MO, USA",
+    "birth_geo_lat": 38.6270025,
+    "birth_geo_lng": -90.19940419999999,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Missouri",
+    "birth_geo_state_short": "MO",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "St Louis  United States"
+}

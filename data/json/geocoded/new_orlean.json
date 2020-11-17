@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "New Orleans",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Orleans Parish",
+    "birth_geo_formatted_address": "New Orleans, LA, USA",
+    "birth_geo_lat": 29.95106579999999,
+    "birth_geo_lng": -90.0715323,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Louisiana",
+    "birth_geo_state_short": "LA",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "New Orlean"
+}

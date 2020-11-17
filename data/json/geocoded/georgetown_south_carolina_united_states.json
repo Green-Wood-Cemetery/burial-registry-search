@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Georgetown",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Georgetown County",
+    "birth_geo_formatted_address": "Georgetown, SC 29440, USA",
+    "birth_geo_lat": 33.376834,
+    "birth_geo_lng": -79.2944964,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "South Carolina",
+    "birth_geo_state_short": "SC",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "29440",
+    "birth_place_geocode_input": "Georgetown South Carolina United States"
+}

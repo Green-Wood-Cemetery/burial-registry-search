@@ -7,6 +7,9 @@ from nameparser import HumanName
 from openpyxl import load_workbook
 import argparse
 import sqlite3
+from inflection import parameterize
+from os import path
+import time
 
 connection = sqlite3.connect("gender/gender.db")
 cursor = connection.cursor()
@@ -23,10 +26,11 @@ GOOGLE_API_KEY = args.key
 sheet = workbook[args.sheet]
 
 # logging config
-logging.basicConfig(filename='import.log', filemode='a', format='%(levelname)s - %(message)s')
+timestr = time.strftime("%Y%m%d-%H%M%S")
+logging.basicConfig(filename='logs/import-' + timestr + '.log', filemode='a', format='%(levelname)s - %(message)s')
 
 
-do_geocode_birth = False
+do_geocode_birth = True
 do_geocode_residence = False
 do_geocode_death = False
 cemetery = "Green-Wood Cemetery, Brooklyn, NY, USA"
@@ -39,6 +43,8 @@ with open('dictionaries/marital-status.json') as g:
     marital_status_dict = json.load(g)
 with open('dictionaries/city-to-state.json') as g:
     city_state_dict = json.load(g)
+with open('dictionaries/states.json') as g:
+    state_dict = json.load(g)
 
 def get_google_geocode_results(address_or_zipcode):
     results = None
@@ -67,6 +73,7 @@ def isfloat(value):
     return False
 
 interments = []
+interments_geocoded_birth_place = []
 
 # Using the values_only because you want to return the cells' values
 for row in sheet.iter_rows(min_row=3, values_only=True):
@@ -185,15 +192,30 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         birth_geo_lat = None
         birth_geo_lng = None
         birth_geo_formatted_address = ''
+
+        # BIRTH CITY
         if row[14] is not None:
-            birth_city = str(row[14])
+            birth_city = str(row[14]).strip()
+            # city is really a state, and state is empty, move it over
+            for key in state_dict.keys():
+                if key == birth_city.lower() and row[15] is None:
+                    birth_city = ''
+                    birth_state = key
+
+        # BIRTH STATE
         if row[15] is not None:
-            birth_state = str(row[15])
+            birth_state = str(row[15]).strip()
+
+        # BIRTH COUNTRY
         if row[16] is not None:
             birth_country = str(row[16])
+
         birth_place_full = (birth_city + " " + birth_state + " " + birth_country).strip()
         ' '.join(birth_place_full.split())
-        if birth_place_full != '' and do_geocode_birth is True:
+
+        # perform google geocoding if switched on and serialized file doesn't already exist
+        birth_place_geocode_filename = 'json/geocoded/' + parameterize(birth_place_full.lower().strip(), separator="_") + '.json'
+        if birth_place_full != '' and do_geocode_birth is True and path.exists(birth_place_geocode_filename) is False:
             geocode_results = get_google_geocode_results(birth_place_full)
             if geocode_results is not None:
                 birth_geo_lat = geocode_results['geometry']['location']['lat']
@@ -224,6 +246,56 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
                             birth_geo_county = component['long_name']
                         if type == 'postal_code':
                             birth_geo_zip = component['long_name']
+                # geocoded birthplace
+                if do_geocode_birth is True:
+                    interment_geocoded_birth_place =  {
+                        "birth_place_geocode_input": birth_place_full,
+                        "birth_geo_lat": birth_geo_lat,
+                        "birth_geo_lng": birth_geo_lng,
+                        "birth_geo_street_number": birth_geo_street_number,
+                        "birth_geo_street_name_long": birth_geo_street_name_long,
+                        "birth_geo_street_name_short": birth_geo_street_name_short,
+                        "birth_geo_neighborhood": birth_geo_neighborhood,
+                        "birth_geo_city": birth_geo_city,
+                        "birth_geo_county": birth_geo_county,
+                        "birth_geo_state_short": birth_geo_state_short,
+                        "birth_geo_state_long": birth_geo_state_long,
+                        "birth_geo_country_long": birth_geo_country_long,
+                        "birth_geo_country_short": birth_geo_country_short,
+                        "birth_geo_zip": birth_geo_zip,
+                        "birth_geo_formatted_address": birth_geo_formatted_address
+                    }
+                    try:
+                        json_temp = json.dumps(interment_geocoded_birth_place)
+                        f = open(birth_place_geocode_filename, 'w')
+                        json.dump(interment_geocoded_birth_place, f, indent=4, sort_keys=True)
+                        f.close()
+                    except Exception as e:
+                        logging.fatal(getattr(e, 'message', repr(e)))
+                        logging.fatal(interment_geocoded_birth_place)
+                        # exit()
+            else:
+                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " can't geocode birth place: " + birth_place_full)
+        else:
+            # load serialized geocodes
+            if path.exists(birth_place_geocode_filename):
+                with open(birth_place_geocode_filename) as json_file:
+                    data = json.load(json_file)
+                    birth_place_geocode_input = data['birth_place_geocode_input']
+                    birth_geo_lat = data['birth_geo_lat']
+                    birth_geo_lng = data['birth_geo_lng']
+                    birth_geo_street_number = data['birth_geo_street_number']
+                    birth_geo_street_name_long = data['birth_geo_street_name_long']
+                    birth_geo_street_name_short = data['birth_geo_street_name_short']
+                    birth_geo_neighborhood = data['birth_geo_neighborhood']
+                    birth_geo_city = data['birth_geo_city']
+                    birth_geo_county = data['birth_geo_county']
+                    birth_geo_state_short = data['birth_geo_state_short']
+                    birth_geo_state_long = data['birth_geo_state_long']
+                    birth_geo_country_long = data['birth_geo_country_long']
+                    birth_geo_country_short = data['birth_geo_country_short']
+                    birth_geo_zip = data['birth_geo_zip']
+                    birth_geo_formatted_address = data['birth_geo_formatted_address']
 
         # --- AGE (17-19)
         age_years = None
@@ -546,7 +618,6 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "note": notes,
             "tags": tags
         }
-
         # make sure you can json serialize, otherwise dump error and interment
         try:
             json_temp = json.dumps(interment)

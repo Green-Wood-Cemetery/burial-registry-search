@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Morristown",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Morris County",
+    "birth_geo_formatted_address": "Morristown, NJ 07960, USA",
+    "birth_geo_lat": 40.79676670000001,
+    "birth_geo_lng": -74.4815438,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New Jersey",
+    "birth_geo_state_short": "NJ",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "07960",
+    "birth_place_geocode_input": "Morristown New Jersey United States"
+}

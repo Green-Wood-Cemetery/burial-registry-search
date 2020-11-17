@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Saint-Lambert",
+    "birth_geo_country_long": "Canada",
+    "birth_geo_country_short": "CA",
+    "birth_geo_county": "Champlain",
+    "birth_geo_formatted_address": "5 Rue Riverside, Saint-Lambert, QC J4S 1B7, Canada",
+    "birth_geo_lat": 45.4862519,
+    "birth_geo_lng": -73.50762069999999,
+    "birth_geo_neighborhood": "Pr\u00e9ville",
+    "birth_geo_state_long": "Qu\u00e9bec",
+    "birth_geo_state_short": "QC",
+    "birth_geo_street_name_long": "Rue Riverside",
+    "birth_geo_street_name_short": "Rue Riverside",
+    "birth_geo_street_number": "5",
+    "birth_geo_zip": "J4S 1B7",
+    "birth_place_geocode_input": "Montreal  Country"
+}

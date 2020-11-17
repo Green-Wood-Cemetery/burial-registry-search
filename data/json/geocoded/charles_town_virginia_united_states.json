@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Charles Town",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Jefferson County",
+    "birth_geo_formatted_address": "Charles Town, WV 25414, USA",
+    "birth_geo_lat": 39.28899029999999,
+    "birth_geo_lng": -77.8597175,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "West Virginia",
+    "birth_geo_state_short": "WV",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "25414",
+    "birth_place_geocode_input": "Charles Town Virginia United States"
+}

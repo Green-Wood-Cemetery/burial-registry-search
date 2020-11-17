@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Boston",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Suffolk County",
+    "birth_geo_formatted_address": "Roxbury, Boston, MA, USA",
+    "birth_geo_lat": 42.3151978,
+    "birth_geo_lng": -71.0913748,
+    "birth_geo_neighborhood": "Roxbury",
+    "birth_geo_state_long": "Massachusetts",
+    "birth_geo_state_short": "MA",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "Roxbury Boston United States"
+}

@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Washington",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "District of Columbia",
+    "birth_geo_formatted_address": "Washington, DC, USA",
+    "birth_geo_lat": 38.9071923,
+    "birth_geo_lng": -77.0368707,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "District of Columbia",
+    "birth_geo_state_short": "DC",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "District Of Columbia"
+}

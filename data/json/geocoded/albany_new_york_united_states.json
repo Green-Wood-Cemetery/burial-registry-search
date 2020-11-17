@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Albany",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Albany County",
+    "birth_geo_formatted_address": "Albany, NY, USA",
+    "birth_geo_lat": 42.6525793,
+    "birth_geo_lng": -73.7562317,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "New York",
+    "birth_geo_state_short": "NY",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "Albany New York United States"
+}

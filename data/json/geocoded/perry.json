@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Rogers",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Benton County",
+    "birth_geo_formatted_address": "203 N 24th St ste d, Rogers, AR 72756, USA",
+    "birth_geo_lat": 36.3358398,
+    "birth_geo_lng": -94.1513669,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "Arkansas",
+    "birth_geo_state_short": "AR",
+    "birth_geo_street_name_long": "North 24th Street",
+    "birth_geo_street_name_short": "N 24th St",
+    "birth_geo_street_number": "203",
+    "birth_geo_zip": "72756",
+    "birth_place_geocode_input": "Perry"
+}

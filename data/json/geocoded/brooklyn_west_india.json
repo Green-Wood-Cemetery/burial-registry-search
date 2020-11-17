@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "Brooklyn",
+    "birth_geo_country_long": "United States",
+    "birth_geo_country_short": "US",
+    "birth_geo_county": "Kings County",
+    "birth_geo_formatted_address": "325 Rogers Ave, Brooklyn, NY 11225, USA",
+    "birth_geo_lat": 40.6653386,
+    "birth_geo_lng": -73.9535497,
+    "birth_geo_neighborhood": "Crown Heights",
+    "birth_geo_state_long": "New York",
+    "birth_geo_state_short": "NY",
+    "birth_geo_street_name_long": "Rogers Avenue",
+    "birth_geo_street_name_short": "Rogers Ave",
+    "birth_geo_street_number": "325",
+    "birth_geo_zip": "11225",
+    "birth_place_geocode_input": "Brooklyn  West India"
+}

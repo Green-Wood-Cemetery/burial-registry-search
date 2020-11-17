@@ -1,0 +1,17 @@
+{
+    "birth_geo_city": "London",
+    "birth_geo_country_long": "United Kingdom",
+    "birth_geo_country_short": "GB",
+    "birth_geo_county": "Greater London",
+    "birth_geo_formatted_address": "London, UK",
+    "birth_geo_lat": 51.5073509,
+    "birth_geo_lng": -0.1277583,
+    "birth_geo_neighborhood": "",
+    "birth_geo_state_long": "England",
+    "birth_geo_state_short": "England",
+    "birth_geo_street_name_long": "",
+    "birth_geo_street_name_short": "",
+    "birth_geo_street_number": "",
+    "birth_geo_zip": "",
+    "birth_place_geocode_input": "London  England"
+}
