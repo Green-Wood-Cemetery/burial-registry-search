@@ -10,6 +10,7 @@ import sqlite3
 from inflection import parameterize
 from os import path
 import time
+import googlemaps
 
 connection = sqlite3.connect("gender/gender.db")
 cursor = connection.cursor()
@@ -21,7 +22,10 @@ parser.add_argument('-key', type=str, help='google api key')
 parser.add_argument('-sheet', type=str, help='worksheet to transform')
 args = parser.parse_args()
 workbook = load_workbook(filename=args.input, data_only=True)
+
 GOOGLE_API_KEY = args.key
+gmaps = googlemaps.Client(key=GOOGLE_API_KEY)
+
 # sheet = workbook.active
 sheet = workbook[args.sheet]
 
@@ -31,8 +35,8 @@ logging.basicConfig(filename='logs/import-' + timestr + '.log', filemode='a', fo
 
 
 do_geocode_birth = True
-do_geocode_residence = False
-do_geocode_death = False
+do_geocode_residence = True
+do_geocode_death = True
 cemetery = "Green-Wood Cemetery, Brooklyn, NY, USA"
 
 
@@ -46,9 +50,10 @@ with open('dictionaries/city-to-state.json') as g:
 with open('dictionaries/states.json') as g:
     state_dict = json.load(g)
 
+# =====================================================================================================================
+# GOOGLE GEOCODE API LOOKUP
+# =====================================================================================================================
 def get_google_geocode_results(address_or_zipcode):
-    results = None
-    api_key = GOOGLE_API_KEY
     base_url = "https://maps.googleapis.com/maps/api/geocode/json"
     endpoint = f"{base_url}?address={address_or_zipcode}&key={api_key}"
     # see how our endpoint includes our API key? Yes this is yet another reason to restrict the key
@@ -65,6 +70,109 @@ def get_google_geocode_results(address_or_zipcode):
         pass
     return results
 
+# =====================================================================================================================
+# GEOCODE PLACE
+# =====================================================================================================================
+def geocode_place(vol, id, type, place):
+    d = {}
+    keys = [
+        'place_geocode_input',
+        'geo_lat', 'geo_lng',
+        'geo_formatted_address',
+        'geo_street_number',
+        'geo_street_name_long',
+        'geo_street_name_short',
+        'geo_neighborhood',
+        'geo_country_long',
+        'geo_country_short',
+        'geo_city',
+        'geo_state_long',
+        'geo_state_short',
+        'geo_county',
+        'geo_zip',
+        'geo_other',
+        'google_place_id'
+    ]
+    # initialize empty dictionary
+    for i in keys:
+        d[i] = ''
+    d['place_geocode_input'] = place
+
+    # return empty dictionary if no place is specified
+    if place == '':
+        return d
+
+    geocode_filename = 'json/places/' + parameterize(place.lower().strip(), separator="_") + '.json'
+    if place != '' and path.exists(geocode_filename) is False:
+
+        # geocode_results = get_google_geocode_results(place)
+        gmaps_result = gmaps.geocode(place)
+        if len(gmaps_result) != 0:
+            geocode_results = gmaps_result[0]
+        else:
+            geocode_results = None
+
+        if geocode_results is not None:
+            d['google_place_id'] = geocode_results['place_id']
+            d['place_geocode_input'] = place
+            d['geo_lat'] = geocode_results['geometry']['location']['lat']
+            d['geo_lng'] = geocode_results['geometry']['location']['lng']
+            d['geo_formatted_address'] = geocode_results['formatted_address']
+            for component in geocode_results['address_components']:
+                for geo_type in component['types']:
+                    if geo_type == 'street_number':
+                        d['geo_street_number'] = component['short_name']
+                    if geo_type == 'route':
+                        d['geo_street_name_long'] = component['long_name']
+                        d['geo_street_name_short'] = component['short_name']
+                    if geo_type == 'neighborhood':
+                        d['geo_neighborhood'] = component['long_name']
+                    if geo_type == 'country':
+                        d['geo_country_short'] = component['short_name']
+                        d['geo_country_long'] = component['long_name']
+                    if geo_type == 'sublocality':
+                        d['geo_city'] = component['long_name']
+                    if geo_type == 'locality':
+                        d['geo_city'] = component['long_name']
+                    if geo_type == 'administrative_area_level_1':
+                        d['geo_state_long'] = component['long_name']
+                        d['geo_state_short'] = component['short_name']
+                    if geo_type == 'administrative_area_level_2':
+                        d['geo_county'] = component['long_name']
+                    if geo_type == 'postal_code':
+                        d['geo_zip'] = component['long_name']
+                    if geo_type == 'establishment':
+                        d['geo_other'] = component['long_name']
+                    if geo_type == 'natural_feature':
+                        d['geo_other'] = component['long_name']
+            try:
+                f = open(geocode_filename, 'w')
+                json.dump(d, f, indent=4, sort_keys=True)
+                f.close()
+                return d
+            except Exception as e:
+                logging.fatal(getattr(e, 'message', repr(e)))
+        else:
+            logging.warning("VOLUME " + vol + " INTERMENT ID " + str(int(id)) + " unable geocode " + type + " place: " + place)
+            # serialize empty geo place
+            f = open(geocode_filename, 'w')
+            json.dump(d, f, indent=4, sort_keys=True)
+            f.close()
+            return d
+    else:
+        # return serialized geocodes
+        if path.exists(geocode_filename):
+            with open(geocode_filename) as json_file:
+                place_json = json.load(json_file)
+                if place_json["google_place_id"] == "":
+                    logging.warning("VOLUME " + vol + " INTERMENT ID " + str(int(id)) + " unable to geocode " + type + " place: " + place)
+                return place_json
+        else:
+            return d
+
+# =====================================================================================================================
+# IS FLOAT?
+# =====================================================================================================================
 def isfloat(value):
   try:
     float(value)
@@ -72,8 +180,10 @@ def isfloat(value):
   except ValueError:
     return False
 
+# =====================================================================================================================
+# MAIN
+# =====================================================================================================================
 interments = []
-interments_geocoded_birth_place = []
 
 # Using the values_only because you want to return the cells' values
 for row in sheet.iter_rows(min_row=3, values_only=True):
@@ -132,7 +242,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         if row[5] is not None:
             name_salutation = row[5].strip()
         if row[6] is not None:
-            name_first = row[6].strip()
+            name_first = str(row[6]).strip()
             # just get first part of any first name (eg: Mary Jane)
             name_first_gender_temp = name_first.split(' ')[0]
             gender_row = cursor.execute("SELECT gender from namegenderpro where name = '" + name_first_gender_temp + "' COLLATE NOCASE").fetchone()
@@ -210,92 +320,14 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         if row[16] is not None:
             birth_country = str(row[16])
 
+        # BIRTH PLACE FULL - concatenate all of the available fields
         birth_place_full = (birth_city + " " + birth_state + " " + birth_country).strip()
         ' '.join(birth_place_full.split())
 
-        # perform google geocoding if switched on and serialized file doesn't already exist
-        birth_place_geocode_filename = 'json/geocoded/' + parameterize(birth_place_full.lower().strip(), separator="_") + '.json'
-        if birth_place_full != '' and do_geocode_birth is True and path.exists(birth_place_geocode_filename) is False:
-            geocode_results = get_google_geocode_results(birth_place_full)
-            if geocode_results is not None:
-                birth_geo_lat = geocode_results['geometry']['location']['lat']
-                birth_geo_lng = geocode_results['geometry']['location']['lng']
-                birth_geo_formatted_address = geocode_results['formatted_address']
-                for component in geocode_results['address_components']:
-                    # logging.warning(component)
-                    for type in component['types']:
-                        # logging.warning(type)
-                        if type == 'street_number':
-                            birth_geo_street_number = component['short_name']
-                        if type == 'route':
-                            birth_geo_street_name_long = component['long_name']
-                            birth_geo_street_name_short = component['short_name']
-                        if type == 'neighborhood':
-                            birth_geo_neighborhood = component['long_name']
-                        if type == 'country':
-                            birth_geo_country_short = component['short_name']
-                            birth_geo_country_long = component['long_name']
-                        if type == 'sublocality':
-                            birth_geo_city = component['long_name']
-                        if type == 'locality':
-                            birth_geo_city = component['long_name']
-                        if type == 'administrative_area_level_1':
-                            birth_geo_state_long = component['long_name']
-                            birth_geo_state_short = component['short_name']
-                        if type == 'administrative_area_level_2':
-                            birth_geo_county = component['long_name']
-                        if type == 'postal_code':
-                            birth_geo_zip = component['long_name']
-                # geocoded birthplace
-                if do_geocode_birth is True:
-                    interment_geocoded_birth_place =  {
-                        "birth_place_geocode_input": birth_place_full,
-                        "birth_geo_lat": birth_geo_lat,
-                        "birth_geo_lng": birth_geo_lng,
-                        "birth_geo_street_number": birth_geo_street_number,
-                        "birth_geo_street_name_long": birth_geo_street_name_long,
-                        "birth_geo_street_name_short": birth_geo_street_name_short,
-                        "birth_geo_neighborhood": birth_geo_neighborhood,
-                        "birth_geo_city": birth_geo_city,
-                        "birth_geo_county": birth_geo_county,
-                        "birth_geo_state_short": birth_geo_state_short,
-                        "birth_geo_state_long": birth_geo_state_long,
-                        "birth_geo_country_long": birth_geo_country_long,
-                        "birth_geo_country_short": birth_geo_country_short,
-                        "birth_geo_zip": birth_geo_zip,
-                        "birth_geo_formatted_address": birth_geo_formatted_address
-                    }
-                    try:
-                        json_temp = json.dumps(interment_geocoded_birth_place)
-                        f = open(birth_place_geocode_filename, 'w')
-                        json.dump(interment_geocoded_birth_place, f, indent=4, sort_keys=True)
-                        f.close()
-                    except Exception as e:
-                        logging.fatal(getattr(e, 'message', repr(e)))
-                        logging.fatal(interment_geocoded_birth_place)
-                        # exit()
-            else:
-                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " can't geocode birth place: " + birth_place_full)
-        else:
-            # load serialized geocodes
-            if path.exists(birth_place_geocode_filename):
-                with open(birth_place_geocode_filename) as json_file:
-                    data = json.load(json_file)
-                    birth_place_geocode_input = data['birth_place_geocode_input']
-                    birth_geo_lat = data['birth_geo_lat']
-                    birth_geo_lng = data['birth_geo_lng']
-                    birth_geo_street_number = data['birth_geo_street_number']
-                    birth_geo_street_name_long = data['birth_geo_street_name_long']
-                    birth_geo_street_name_short = data['birth_geo_street_name_short']
-                    birth_geo_neighborhood = data['birth_geo_neighborhood']
-                    birth_geo_city = data['birth_geo_city']
-                    birth_geo_county = data['birth_geo_county']
-                    birth_geo_state_short = data['birth_geo_state_short']
-                    birth_geo_state_long = data['birth_geo_state_long']
-                    birth_geo_country_long = data['birth_geo_country_long']
-                    birth_geo_country_short = data['birth_geo_country_short']
-                    birth_geo_zip = data['birth_geo_zip']
-                    birth_geo_formatted_address = data['birth_geo_formatted_address']
+        # GEOCODE: BIRTH PLACE
+        if do_geocode_birth:
+            birth_place_geocoded = geocode_place(registry_volume, interment_id, 'birth', birth_place_full)
+
 
         # --- AGE (17-19)
         age_years = None
@@ -367,37 +399,10 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
 
         residence_place_full = (residence_street + " " + residence_city + " " + residence_state + " " + residence_country).strip()
         ' '.join(residence_place_full.split())
-        if residence_place_full != '' and do_geocode_residence is True:
-            geocode_results = get_google_geocode_results(residence_place_full)
-            if geocode_results is not None:
-                residence_geo_lat = geocode_results['geometry']['location']['lat']
-                residence_geo_lng = geocode_results['geometry']['location']['lng']
-                residence_geo_formatted_address = geocode_results['formatted_address']
-                for component in geocode_results['address_components']:
-                    # logging.warning(component)
-                    for type in component['types']:
-                        # logging.warning(type)
-                        if type == 'street_number':
-                            residence_geo_street_number = component['short_name']
-                        if type == 'route':
-                            residence_geo_street_name_long = component['long_name']
-                            residence_geo_street_name_short = component['short_name']
-                        if type == 'neighborhood':
-                            residence_geo_neighborhood = component['long_name']
-                        if type == 'country':
-                            residence_geo_country_short = component['short_name']
-                            residence_geo_country_long = component['long_name']
-                        if type == 'sublocality':
-                            residence_geo_city = component['long_name']
-                        if type == 'locality':
-                            residence_geo_city = component['long_name']
-                        if type == 'administrative_area_level_1':
-                            residence_geo_state_long = component['long_name']
-                            residence_geo_state_short = component['short_name']
-                        if type == 'administrative_area_level_2':
-                            residence_geo_county = component['long_name']
-                        if type == 'postal_code':
-                            residence_geo_zip = component['long_name']
+
+        # GEOCODE: RESIDENCE PLACE
+        if do_geocode_residence:
+            residence_place_geocoded = geocode_place(registry_volume, interment_id, 'residence', residence_place_full)
 
         # --- PLACE OF DEATH (25-29)
         death_location = ''
@@ -437,37 +442,10 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             death_country = str(row[29]).strip()
         death_place_full = (death_location + " " + death_street + " " + death_city + " " + death_state + " " + death_country).strip()
         ' '.join(death_place_full.split())
-        if death_place_full != '' and do_geocode_death is True:
-            geocode_results = get_google_geocode_results(death_place_full)
-            if geocode_results is not None:
-                death_geo_lat = geocode_results['geometry']['location']['lat']
-                death_geo_lng = geocode_results['geometry']['location']['lng']
-                death_geo_formatted_address = geocode_results['formatted_address']
-                for component in geocode_results['address_components']:
-                    # logging.warning(component)
-                    for type in component['types']:
-                        # logging.warning(type)
-                        if type == 'street_number':
-                            death_geo_street_number = component['short_name']
-                        if type == 'route':
-                            death_geo_street_name_long = component['long_name']
-                            death_geo_street_name_short = component['short_name']
-                        if type == 'neighborhood':
-                            death_geo_neighborhood = component['long_name']
-                        if type == 'country':
-                            death_geo_country_short = component['short_name']
-                            death_geo_country_long = component['long_name']
-                        if type == 'sublocality':
-                            death_geo_city = component['long_name']
-                        if type == 'locality':
-                            death_geo_city = component['long_name']
-                        if type == 'administrative_area_level_1':
-                            death_geo_state_long = component['long_name']
-                            death_geo_state_short = component['short_name']
-                        if type == 'administrative_area_level_2':
-                            death_geo_county = component['long_name']
-                        if type == 'postal_code':
-                            death_geo_zip = component['long_name']
+
+        # GEOCODE: DEATH PLACE
+        if do_geocode_death:
+            death_place_geocoded = geocode_place(registry_volume, interment_id, 'death', death_place_full)
 
         # --- DEATH DATE (30-32)
         death_date_display = ''
@@ -552,19 +530,19 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "birth_state": birth_state,
             "birth_country": birth_country,
             "birth_place_full": birth_place_full,
-            "birth_geo_location": {"lat": birth_geo_lat,"lon": birth_geo_lng},
-            "birth_geo_street_number": birth_geo_street_number,
-            "birth_geo_street_name_long": birth_geo_street_name_long,
-            "birth_geo_street_name_short": birth_geo_street_name_short,
-            "birth_geo_neighborhood": birth_geo_neighborhood,
-            "birth_geo_city": birth_geo_city,
-            "birth_geo_county": birth_geo_county,
-            "birth_geo_state_short": birth_geo_state_short,
-            "birth_geo_state_long": birth_geo_state_long,
-            "birth_geo_country_long": birth_geo_country_long,
-            "birth_geo_country_short": birth_geo_country_short,
-            "birth_geo_zip": birth_geo_zip,
-            "birth_geo_formatted_address": birth_geo_formatted_address,
+            "birth_geo_location": {"lat": birth_place_geocoded['geo_lat'],"lon": birth_place_geocoded['geo_lng']},
+            "birth_geo_street_number": birth_place_geocoded['geo_street_number'],
+            "birth_geo_street_name_long": birth_place_geocoded['geo_street_name_long'],
+            "birth_geo_street_name_short": birth_place_geocoded['geo_street_name_short'],
+            "birth_geo_neighborhood": birth_place_geocoded['geo_neighborhood'],
+            "birth_geo_city": birth_place_geocoded['geo_city'],
+            "birth_geo_county": birth_place_geocoded['geo_county'],
+            "birth_geo_state_short": birth_place_geocoded['geo_state_short'],
+            "birth_geo_state_long": birth_place_geocoded['geo_state_long'],
+            "birth_geo_country_long": birth_place_geocoded['geo_country_long'],
+            "birth_geo_country_short": birth_place_geocoded['geo_country_short'],
+            "birth_geo_zip": birth_place_geocoded['geo_zip'],
+            "birth_geo_formatted_address": birth_place_geocoded['geo_formatted_address'],
             "age_years": age_years,
             "age_months": age_months,
             "age_days": age_days,
@@ -575,38 +553,38 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "residence_state": residence_state,
             "residence_country": residence_country,
             "residence_place_full": residence_place_full,
-            "residence_geo_location": {"lat": residence_geo_lat, "lon": residence_geo_lng},
-            "residence_geo_street_number": residence_geo_street_number,
-            "residence_geo_street_name_long": residence_geo_street_name_long,
-            "residence_geo_street_name_short": residence_geo_street_name_short,
-            "residence_geo_neighborhood": residence_geo_neighborhood,
-            "residence_geo_city": residence_geo_city,
-            "residence_geo_county": residence_geo_county,
-            "residence_geo_state_short": residence_geo_state_short,
-            "residence_geo_state_long": residence_geo_state_long,
-            "residence_geo_country_long": residence_geo_country_long,
-            "residence_geo_country_short": residence_geo_country_short,
-            "residence_geo_zip": residence_geo_zip,
-            "residence_geo_formatted_address": residence_geo_formatted_address,
+            "residence_geo_location": {"lat": residence_place_geocoded['geo_lat'],"lon": residence_place_geocoded['geo_lng']},
+            "residence_geo_street_number": residence_place_geocoded['geo_street_number'],
+            "residence_geo_street_name_long": residence_place_geocoded['geo_street_name_long'],
+            "residence_geo_street_name_short": residence_place_geocoded['geo_street_name_short'],
+            "residence_geo_neighborhood": residence_place_geocoded['geo_neighborhood'],
+            "residence_geo_city": residence_place_geocoded['geo_city'],
+            "residence_geo_county": residence_place_geocoded['geo_county'],
+            "residence_geo_state_short": residence_place_geocoded['geo_state_short'],
+            "residence_geo_state_long": residence_place_geocoded['geo_state_long'],
+            "residence_geo_country_long": residence_place_geocoded['geo_country_long'],
+            "residence_geo_country_short": residence_place_geocoded['geo_country_short'],
+            "residence_geo_zip": residence_place_geocoded['geo_zip'],
+            "residence_geo_formatted_address": residence_place_geocoded['geo_formatted_address'],
             "death_location": death_location,
             "death_street": death_street,
             "death_city": death_city,
             "death_state": death_state,
             "death_country": death_country,
             "death_place_full": death_place_full,
-            "death_geo_location": {"lat": death_geo_lat, "lon": death_geo_lng},
-            "death_geo_street_number": death_geo_street_number,
-            "death_geo_street_name_long": death_geo_street_name_long,
-            "death_geo_street_name_short": death_geo_street_name_short,
-            "death_geo_neighborhood": death_geo_neighborhood,
-            "death_geo_city": death_geo_city,
-            "death_geo_county": death_geo_county,
-            "death_geo_state_short": death_geo_state_short,
-            "death_geo_state_long": death_geo_state_long,
-            "death_geo_country_long": death_geo_country_long,
-            "death_geo_country_short": death_geo_country_short,
-            "death_geo_zip": death_geo_zip,
-            "death_geo_formatted_address": death_geo_formatted_address,
+            "death_geo_location": {"lat": death_place_geocoded['geo_lat'],"lon": death_place_geocoded['geo_lng']},
+            "death_geo_street_number": death_place_geocoded['geo_street_number'],
+            "death_geo_street_name_long": death_place_geocoded['geo_street_name_long'],
+            "death_geo_street_name_short": death_place_geocoded['geo_street_name_short'],
+            "death_geo_neighborhood": death_place_geocoded['geo_neighborhood'],
+            "death_geo_city": death_place_geocoded['geo_city'],
+            "death_geo_county": death_place_geocoded['geo_county'],
+            "death_geo_state_short": death_place_geocoded['geo_state_short'],
+            "death_geo_state_long": death_place_geocoded['geo_state_long'],
+            "death_geo_country_long": death_place_geocoded['geo_country_long'],
+            "death_geo_country_short": death_place_geocoded['geo_country_short'],
+            "death_geo_zip": death_place_geocoded['geo_zip'],
+            "death_geo_formatted_address": death_place_geocoded['geo_formatted_address'],
             "death_date_display" : death_date_display,
             "death_date_iso": death_date_iso,
             "death_year": death_year,

@@ -15,3 +15,5 @@ data/transform_dev.sh
 data/gender/
 
 data/delete_all_docs_dev.sh
+
+data/json/places/

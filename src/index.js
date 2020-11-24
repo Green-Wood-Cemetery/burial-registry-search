@@ -35,7 +35,7 @@ function getNestedValue(obj, path) {
 
 function renderItem(res, triggerClickAnalytics) {
 	let image_thumb = "/registry/300/Volume 1_0235.jpg";
-	let image_url = "https://www.green-wood.com/scans/volume " +
+	let image_url = "https://www.green-wood.com/scans/Volume " +
 		getNestedValue(res, "registry_volume") +
 		"/" + getNestedValue(res, "image_filename") +
 		".jpg";
@@ -360,6 +360,17 @@ const App = () => (
 							filterLabel="Place of birth: state (geocode)"
 							showCheckbox/>
 						<MultiList
+							componentId="place_of_birth_geo_city_facet"
+							dataField="birth_geo_city.keyword"
+							showSearch={false}
+							size={100}
+							style={{
+								marginBottom: 20
+							}}
+							title="City (Geocode)"
+							filterLabel="Place of birth: city (geocode)"
+							showCheckbox/>
+						<MultiList
 							componentId="place_of_birth_country_facet"
 							dataField="birth_country.keyword"
 							showSearch={false}
@@ -593,7 +604,10 @@ const App = () => (
 						'registry_volume_facet',
 						'registry_page_facet',
 						'idSearch',
-						'gender_guess_facet'
+						'gender_guess_facet',
+						'place_of_birth_geo_country_facet',
+						'place_of_birth_geo_state_facet',
+						'place_of_birth_geo_city_facet'
 				    ]
 				  }}
 				  renderItem={renderItem}
