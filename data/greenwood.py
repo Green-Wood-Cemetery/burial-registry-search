@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser(description='Spreadsheet to JSON')
 parser.add_argument('-input', type=str, help='spreadsheet in xslx format')
 parser.add_argument('-key', type=str, help='google api key')
 parser.add_argument('-sheet', type=str, help='worksheet to transform')
+parser.add_argument('-vol', type=str, help='registry volume number')
 args = parser.parse_args()
 workbook = load_workbook(filename=args.input, data_only=True)
 
@@ -31,8 +32,7 @@ sheet = workbook[args.sheet]
 
 # logging config
 timestr = time.strftime("%Y%m%d-%H%M%S")
-logging.basicConfig(filename='logs/import-' + timestr + '.log', filemode='a', format='%(levelname)s - %(message)s')
-
+logging.basicConfig(filename='logs/import-volume-' + args.vol + '-' + timestr + '.log', filemode='a', format='%(levelname)s - %(message)s')
 
 do_geocode_birth = True
 do_geocode_residence = True
@@ -311,6 +311,12 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
                 if key == birth_city.lower() and row[15] is None:
                     birth_city = ''
                     birth_state = key
+            # long s variant of massachusetts
+            if 'mafs' == birth_city.lower() and row[15] is None:
+                birth_city = ''
+                birth_state = 'Massachusetts'
+                if row[16] is None:
+                    birth_country = 'United States'
 
         # BIRTH STATE
         if row[15] is not None:
@@ -387,6 +393,14 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             residence_street = str(row[21]).strip()
         if row[22] is not None:
             residence_city = str(row[22]).strip()
+
+            # long s variant of massachusetts
+            if 'mafs' == residence_city.lower() and row[23] is None:
+                residence_city = ''
+                residence_state = 'Massachusetts'
+                if row[24] is None:
+                    residence_country = 'United States'
+
             # infer state in some cases using a mapping dictionary
             if row[23] is None:
                 for key in city_state_dict.keys():
@@ -431,6 +445,14 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             death_street = str(row[26]).strip()
         if row[27] is not None:
             death_city = str(row[27]).strip()
+
+            # long s variant of massachusetts
+            if 'mafs' == death_city.lower() and row[28] is None:
+                death_city = ''
+                death_state = 'Massachusetts'
+                if row[29] is None:
+                    death_country = 'United States'
+
             # infer state in some cases using a mapping dictionary
             if row[28] is None:
                 for key in city_state_dict.keys():
