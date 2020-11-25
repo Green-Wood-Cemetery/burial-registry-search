@@ -70,10 +70,8 @@ def get_google_geocode_results(address_or_zipcode):
         pass
     return results
 
-# =====================================================================================================================
-# GEOCODE PLACE
-# =====================================================================================================================
-def geocode_place(vol, id, type, place):
+
+def get_geocode_dict():
     d = {}
     keys = [
         'place_geocode_input',
@@ -96,11 +94,19 @@ def geocode_place(vol, id, type, place):
     # initialize empty dictionary
     for i in keys:
         d[i] = ''
-    d['place_geocode_input'] = place
+    return d
 
+# =====================================================================================================================
+# GEOCODE PLACE
+# =====================================================================================================================
+def geocode_place(vol, id, type, place):
+
+    d = get_geocode_dict()
     # return empty dictionary if no place is specified
     if place == '':
         return d
+    else:
+        d['place_geocode_input'] = place
 
     geocode_filename = 'json/places/' + parameterize(place.lower().strip(), separator="_") + '.json'
     if place != '' and path.exists(geocode_filename) is False:
@@ -333,7 +339,8 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # GEOCODE: BIRTH PLACE
         if do_geocode_birth:
             birth_place_geocoded = geocode_place(registry_volume, interment_id, 'birth', birth_place_full)
-
+        else:
+            birth_place_geocoded = get_geocode_dict()
 
         # --- AGE (17-19)
         age_years = None
@@ -361,13 +368,17 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
                 age_full += str(age_days) + " days"
 
         # --- MARITAL STATUS (20)
+        valid_status = ['Not recorded', 'Married', 'Single', 'Widow', 'Unknown']
         marital_status = 'Not recorded'
         if row[20] is not None and row[20] != '':
-            marital_status = row[20].strip().capitalize()
+            marital_status = str(row[20]).strip().capitalize()
         # normalize variants
         for key in marital_status_dict.keys():
             if key == marital_status.lower():
                 marital_status = (marital_status_dict[key])
+        if marital_status not in valid_status:
+            logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " has a marital status of: " + marital_status)
+
 
         # --- PLACE OF RESIDENCE (21-24)
         residence_street = ''
@@ -417,6 +428,8 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # GEOCODE: RESIDENCE PLACE
         if do_geocode_residence:
             residence_place_geocoded = geocode_place(registry_volume, interment_id, 'residence', residence_place_full)
+        else:
+            residence_place_geocoded = get_geocode_dict()
 
         # --- PLACE OF DEATH (25-29)
         death_location = ''
@@ -468,6 +481,8 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # GEOCODE: DEATH PLACE
         if do_geocode_death:
             death_place_geocoded = geocode_place(registry_volume, interment_id, 'death', death_place_full)
+        else:
+            death_place_geocoded = get_geocode_dict()
 
         # --- DEATH DATE (30-32)
         death_date_display = ''
@@ -564,6 +579,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "birth_geo_country_long": birth_place_geocoded['geo_country_long'],
             "birth_geo_country_short": birth_place_geocoded['geo_country_short'],
             "birth_geo_zip": birth_place_geocoded['geo_zip'],
+            "birth_geo_place_id": birth_place_geocoded['google_place_id'],
             "birth_geo_formatted_address": birth_place_geocoded['geo_formatted_address'],
             "age_years": age_years,
             "age_months": age_months,
@@ -587,6 +603,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "residence_geo_country_long": residence_place_geocoded['geo_country_long'],
             "residence_geo_country_short": residence_place_geocoded['geo_country_short'],
             "residence_geo_zip": residence_place_geocoded['geo_zip'],
+            "residence_geo_place_id": residence_place_geocoded['google_place_id'],
             "residence_geo_formatted_address": residence_place_geocoded['geo_formatted_address'],
             "death_location": death_location,
             "death_street": death_street,
@@ -606,6 +623,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             "death_geo_country_long": death_place_geocoded['geo_country_long'],
             "death_geo_country_short": death_place_geocoded['geo_country_short'],
             "death_geo_zip": death_place_geocoded['geo_zip'],
+            "death_geo_place_id": death_place_geocoded['google_place_id'],
             "death_geo_formatted_address": death_place_geocoded['geo_formatted_address'],
             "death_date_display" : death_date_display,
             "death_date_iso": death_date_iso,

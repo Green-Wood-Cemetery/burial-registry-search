@@ -158,6 +158,15 @@
           }
         }
       },
+      "birth_geo_place_id": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
       "birth_place_full": {
         "type": "text",
         "fields": {
@@ -378,7 +387,15 @@
           }
         }
       },
-      "death_location": {
+      "death_geo_place_id": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },      "death_location": {
         "type": "text",
         "fields": {
           "keyword": {
@@ -683,6 +700,15 @@
         }
       },
       "residence_geo_zip": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "residence_geo_place_id": {
         "type": "text",
         "fields": {
           "keyword": {
