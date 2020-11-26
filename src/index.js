@@ -39,6 +39,23 @@ function renderItem(res, triggerClickAnalytics) {
 		getNestedValue(res, "registry_volume") +
 		"/" + getNestedValue(res, "image_filename") +
 		".jpg";
+	let birth_place_url = '';
+	let birth_place_id = getNestedValue(res, 'birth_geo_place_id');
+	if (birth_place_id !== '') {
+		birth_place_url =
+			"https://www.google.com/maps/search/?api=1&query=" +
+			getNestedValue(res, 'birth_geo_formatted_address') + "&query_place_id=" +
+			getNestedValue(res, 'birth_geo_place_id');
+	}
+
+	let residence_place_url = '';
+	let residence_place_id = getNestedValue(res, 'residence_geo_place_id');
+	if (residence_place_id !== '') {
+		residence_place_url =
+			"https://www.google.com/maps/search/?api=1&query=" +
+			getNestedValue(res, 'residence_geo_formatted_address') + "&query_place_id=" +
+			getNestedValue(res, 'residence_geo_place_id');
+	}
 	let title = getNestedValue(res,"name_full");
 	let death_place = getNestedValue(res,"death_place_full");
 	let death_cause = getNestedValue(res,"cause_of_death");
@@ -56,8 +73,8 @@ function renderItem(res, triggerClickAnalytics) {
 					<Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
 					<Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
 					<Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
-					<Descriptions.Item label="Place of residence">{getNestedValue(res, "residence_place_full")}</Descriptions.Item>
-					<Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place_full")}</Descriptions.Item>
+					<Descriptions.Item label="Place of residence">{ <a href={residence_place_url} target='gmap'>{getNestedValue(res, "residence_place_full")}</a>}</Descriptions.Item>
+					<Descriptions.Item label="Place of birth">{ <a href={birth_place_url} target='gmap'>{getNestedValue(res, "birth_place_full")}</a> }</Descriptions.Item>
 					<Descriptions.Item label="Age">{getNestedValue(res,"age_full")}</Descriptions.Item>
 					<Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
 					<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>

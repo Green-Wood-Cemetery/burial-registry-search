@@ -49,6 +49,8 @@ with open('dictionaries/city-to-state.json') as g:
     city_state_dict = json.load(g)
 with open('dictionaries/states.json') as g:
     state_dict = json.load(g)
+with open('dictionaries/name-abbrev.json') as g:
+    name_abbrev_dict = json.load(g)
 
 # =====================================================================================================================
 # GOOGLE GEOCODE API LOOKUP
@@ -245,17 +247,23 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         name_last = ''
         name_infant = ''
         name_full = ''
+
         if row[5] is not None:
             name_salutation = row[5].strip()
+
         if row[6] is not None:
             name_first = str(row[6]).strip()
-            # just get first part of any first name (eg: Mary Jane)
+
+            # try to guess gender using first namegenderpro database
+            # just grab first part of any first name (eg: Mary Jane)
             name_first_gender_temp = name_first.split(' ')[0]
             gender_row = cursor.execute("SELECT gender from namegenderpro where name = '" + name_first_gender_temp + "' COLLATE NOCASE").fetchone()
             if gender_row:
-                name_first_gender = gender_row[0]
+                    name_first_gender = gender_row[0]
+
         if row[7] is not None:
             name_middle = row[7].strip()
+
         if row[8] is not None:
             name_last = row[8].strip()
 
@@ -263,17 +271,15 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         name_full = name.full_name
 
         if row[9] is not None:
-            name_infant = row[9]
-            if name_infant != '':
-                name_full += " (" + name_infant + ")"
+          name_infant = row[9]
+          if name_infant != '':
+              name_full += " (" + name_infant + ")"
 
-        #--- expand abbreviated first names in tags
-        if name_first.lower() == "geo":
-            if "George" not in tags:
-                tags.append("George")
-        if name_first.lower() == "wm":
-            if "William" not in tags:
-                tags.append("William")
+        #--- expand abbreviated first names in tags using name-abbrev dictionary
+        for key in name_abbrev_dict.keys():
+            if key == name_first.lower():
+                if name_abbrev_dict[key] not in tags:
+                    tags.append(name_abbrev_dict[key])
 
         #--- BURIAL LOCATION (10-13)
         burial_location_current_lot = ''
@@ -349,7 +355,10 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         age_full = ''
         if row[17] is not None and row[17] != '':
             age_years = row[17]
-            age_full += str(int(age_years) )+ " years"
+            age_full += str(int(age_years)) + " years"
+            if age_years > 120:
+                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " has an age greater than 120 years: " + str(int(age_years)))
+
         if row[18] is not None and row[18] != '':
             age_months = row[18]
             if age_full != '':
