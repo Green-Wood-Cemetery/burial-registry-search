@@ -205,12 +205,21 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
                 tags = re.findall(r'"(.*?)"', row[39])
 
         # --- REGISTRY IMAGE FILENAME (0)
-        image_filename = row[0]
+        image_filename = str(row[0]).strip()
 
         # --- PARSE REGISTRY VOL AND PAGE
-        m = re.search('V\w+\s+(\d+)_(\d+)', image_filename)
-        registry_volume = m.group(1)
-        registry_page = m.group(2)
+        try:
+            m = re.search('[Vv]olume\s+(\d+)_(\d+)', image_filename)
+            if m == None:
+                logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " unable to parse image filename: " + image_filename)
+                exit()
+            registry_volume = m.group(1)
+            registry_page = m.group(2)
+            image_filename = "Volume " + registry_volume + "_" + registry_page
+            # todo; check if image exists on server
+        except re.error:
+            logging.warning("VOLUME " + str(registry_volume) + " INTERMENT ID " + str(int(interment_id)) + " unable to parse image filename: " + image_filename)
+            exit()
 
         # --- INTERMENT ID (1)
         interment_id = row[1]
