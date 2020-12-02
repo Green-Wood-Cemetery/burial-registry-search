@@ -258,7 +258,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         name_full = ''
 
         if row[5] is not None:
-            name_salutation = row[5].strip()
+            name_salutation = str(row[5]).strip()
 
         if row[6] is not None:
             name_first = str(row[6]).strip()
@@ -271,10 +271,10 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
                     name_first_gender = gender_row[0]
 
         if row[7] is not None:
-            name_middle = row[7].strip()
+            name_middle = str(row[7]).strip()
 
         if row[8] is not None:
-            name_last = row[8].strip()
+            name_last = str(row[8]).strip()
 
         name = HumanName(name_salutation + " " + name_first + " " + name_middle + " " + name_last)
         name_full = name.full_name

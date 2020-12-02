@@ -1,5 +1,7 @@
 {
   "diarrhoea": "diarrhea",
   "consumption": "Tuberculosis",
+  "phthisis pulmonalis": "Tuberculosis",
+  "phthisis": "Tuberculosis",
   "scarlatina": "Scarlet Fever"
 }

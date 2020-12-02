@@ -129,7 +129,7 @@ const App = () => (
 
 		<Row gutter={16} style={{ padding: 20 }}>
 			<Col span={8}>
-				<Collapse defaultActiveKey={['10', '1']}>
+				<Collapse defaultActiveKey={['10', '1', '6']}>
 					{/*<Panel header="Cemetery" key="8">*/}
 					{/*	<MultiList*/}
 					{/*		componentId="cemetery_facet"*/}
@@ -203,6 +203,7 @@ const App = () => (
 							marginBottom: 20
 						  }}
 						  filterLabel="Cause of death"
+						  URLParams={true}
 						 showCheckbox/>
 					</Panel>
 					<Panel header="Place of death" key="2" forceRender>
@@ -443,6 +444,7 @@ const App = () => (
 								marginBottom: 20
 							}}
 							filterLabel="Marital status"
+							URLParams={true}
 							showCheckbox/>
 					</Panel>
 					<Panel header="Gender (guess based on first name)" key="6">
@@ -454,7 +456,8 @@ const App = () => (
 							style={{
 								marginBottom: 20
 							}}
-							filterLabel="Gender"
+							filterLabel="Gender guess"
+							URLParams={true}
 							showCheckbox/>
 					</Panel>
 					<Panel header="Date of death" key="7">
@@ -537,6 +540,7 @@ const App = () => (
 							}}
 							loader="Loading ..."
 							filterLabel="Age Range"
+							URLParams={true}
 							includeNullValues
 						/>
 					</Panel>
