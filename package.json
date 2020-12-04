@@ -2,6 +2,7 @@
   "dependencies": {
     "@appbaseio/reactivemaps": "^3.0.0-beta.10",
     "@appbaseio/reactivesearch": "3.11.7",
+    "@mrodrig/json-2-csv-cli": "^3.7.12",
     "antd": "^4.4.2",
     "dotenv": "^8.2.0",
     "react": "16.8.6",

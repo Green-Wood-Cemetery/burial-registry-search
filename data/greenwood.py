@@ -511,7 +511,10 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
             death_date_display += row[30] + " "
         # death day
         if row[31] is not None and row[31] != '':
-            death_date_display += str(int(row[31])) + ", "
+            # correct capital letter O used instead of zero
+            death_day = str(row[31]).strip()
+            death_day = death_day.replace("O","0").replace(".0", "")
+            death_date_display += death_day + ", "
         # death year
         if row[32] is not None and row[32] != '':
             death_date_display += str(int(row[32]))
@@ -540,12 +543,12 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # --- REMOVAL FROM (34)
         removal_from = ''
         if row[34] is not None:
-            removal_from = row[34]
+            removal_from = str(row[34]).strip()
 
         # --- UNDERTAKER (35)
         undertaker = ''
         if row[35] is not None:
-            undertaker = row[35]
+            undertaker = str(row[35]).strip()
 
         # --- REMOVED (36)
         removed = False
@@ -555,7 +558,7 @@ for row in sheet.iter_rows(min_row=3, values_only=True):
         # --- REMOVED DATE (37)
         removed_date = ''
         if row[37] is not None:
-            removed_date = row[37]
+            removed_date = str(row[37]).strip()
 
         # --- NOTES (38)
         notes = ''
