@@ -1,17 +1,20 @@
 {
+  "name": "greenwood",
+  "version": "1.0.0",
+  "description": "Green-Wood Cemetery Registry Search",
+  "main": "index.js",
+  "author": "bmckinney",
+  "license": "Apache-2.0",
   "dependencies": {
-    "@appbaseio/reactivemaps": "^3.0.0-beta.10",
-    "@appbaseio/reactivesearch": "3.11.7",
+    "@appbaseio/reactivemaps": "3.0.0-beta.11",
+    "@appbaseio/reactivesearch": "3.16.1",
     "@mrodrig/json-2-csv-cli": "^3.7.12",
     "antd": "^4.4.2",
     "dotenv": "^8.2.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "react-expand-collapse": "latest"
   },
-  "name": "82kp7",
-  "description": null,
-  "version": "0.0.0",
   "devDependencies": {
     "react-scripts": "1.0.0"
   },
