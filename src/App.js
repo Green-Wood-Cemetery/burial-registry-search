@@ -603,6 +603,7 @@ const App = () => (
                     ]}
                     placeholder="Search"
                     queryFormat="and"
+                    searchOperators={true}
                     showFilter={true}
                     size={20}
                     strictSelection={false}

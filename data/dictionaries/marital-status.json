@@ -1,6 +1,12 @@
 {
   "widowed": "Widow",
+  "w": "Widow",
   "widower": "Widow",
   "widoder": "Widow",
-  "unmarried": "Single"
+  "unmarried": "Single",
+  "single": "Single",
+  "s": "Single",
+  "married": "Married",
+  "m": "Married",
+  "unknown": "Unknown"
 }

@@ -17,3 +17,9 @@ data/gender/
 data/delete_all_docs_dev.sh
 
 data/json/places/
+
+data/lib/__pycache__/
+
+venv/
+
+data/test.xlsx
