@@ -497,9 +497,9 @@ class Interment:
         geocode_string_source = ''
 
         # ditto processing
-        if re.search(r'"', value):
+        if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             # simple ditto
-            if re.search(r'^"$', value):
+            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_birth_place_display()
             else:
                 # complicated ditto, needs human review
@@ -617,9 +617,9 @@ class Interment:
         geocode_string_source = ''
 
         # ditto processing
-        if re.search(r'"', value):
+        if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             # simple ditto
-            if re.search(r'^"$', value):
+            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_death_place_display()
             else:
                 # complicated ditto, needs human review
@@ -1316,12 +1316,14 @@ class Interment:
 
         name_temp = self.__name_raw
         infant_no_first_name = False
+        is_ditto = False
 
         # ditto processing
-        if re.search(r"\bDo\b", name_temp):
+        if re.search(r'"', name_temp) or re.search(r"\bDo\b", name_temp, re.IGNORECASE):
+            is_ditto = True
             # simple ditto
-            if re.search(r"^Do$", name_temp, re.IGNORECASE):
-                name_temp = self.get_previous().get_name_raw()
+            if re.search(r'^"$', name_temp) or re.search(r"^Do$", name_temp, re.IGNORECASE):
+                name_temp = self.get_previous().get_name_full()
             else:
                 # complicated ditto, needs human review
                 self.set_needs_review(True)
@@ -1332,8 +1334,8 @@ class Interment:
 
             # child, no surname
             if re.search(r"child no name", name_temp, re.IGNORECASE):
+                self.__name_full = name_temp
                 name_temp = None
-                self.__name_full = self.__name_raw
 
             if name_temp is not None:
                 # "a male child of" or "a female child of"
@@ -1370,14 +1372,17 @@ class Interment:
             name = HumanName(name_temp)
             if infant_no_first_name:
                 self.__name_last = name.last
-                self.__name_full = name.last
+                if is_ditto:
+                    self.__name_full = self.get_previous().get_name_full()
+                else:
+                    self.__name_full = self.__name_raw
             else:
                 self.__name_first = name.first
                 self.__name_last = name.last
                 self.__name_middle = name.middle
                 self.__name_salutation = name.title
                 self.__name_suffix = name.suffix
-                self.__name_full = name.full_name
+                self.__name_full = name_temp
 
                 if self.__name_first is not None:
                     self.guess_gender()
