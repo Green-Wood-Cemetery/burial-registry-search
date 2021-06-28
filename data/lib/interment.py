@@ -1177,14 +1177,17 @@ class Interment:
     # CAUSE OF DEATH
     def set_cause_of_death_raw(self, value):
         self.__cause_of_death_raw = value
-        # ditto?
+
+        # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
-            if self.get_previous().__cause_of_death_display is not None \
-                    and self.get_previous().__cause_of_death_display != '':
+            # simple ditto
+            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 self.__cause_of_death_display = self.get_previous().__cause_of_death_display
             else:
-                self.__cause_of_death_comments = 'Unable to determine disease'
-                self.__needs_review = True
+                # complicated ditto, needs human review
+                self.__cause_of_death_display = value
+                self.__cause_of_death_comments = 'Unable to resolve ditto marks'
+                self.set_needs_review(True)
         elif value == '-':
             self.__cause_of_death_display = ''
         else:
