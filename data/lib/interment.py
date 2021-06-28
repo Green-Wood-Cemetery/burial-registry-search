@@ -761,6 +761,7 @@ class Interment:
         place_temp = " ".join(place_reassembled)
         if place_temp != self.__residence_place_city_raw:
             self.__residence_place_city_raw_expand_abbreviations = place_temp
+            self.__residence_place_city_full = place_temp
 
     def get_residence_place_city_raw(self):
         return self.__residence_place_city_raw
