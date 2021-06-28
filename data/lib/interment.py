@@ -550,9 +550,9 @@ class Interment:
             self.__birth_place_full = value
 
         # warning if raw place doesn't appear in geocoded result at all
-        if self.__birth_place_full.lower().find(geocode_string_source.lower()) == -1:
-            self.__needs_review = True
-            self.__birth_place_comments += "Can't find transcribed place in geocoded place."
+        # if self.__birth_place_full.lower().find(geocode_string_source.lower()) == -1:
+        #     self.__needs_review = True
+        #     self.__birth_place_comments += "Can't find transcribed place in geocoded place."
 
     def get_birth_geo_location(self):
         return self.__birth_geo_location
@@ -670,9 +670,9 @@ class Interment:
             self.__death_place_full = value
 
         # warning if raw place doesn't appear in geocoded result at all
-        if self.__death_place_full.lower().find(geocode_string_source.lower()) == -1:
-            self.__needs_review = True
-            self.__death_place_comments += "Can't find transcribed place in geocoded place."
+        # if self.__death_place_full.lower().find(geocode_string_source.lower()) == -1:
+        #     self.__needs_review = True
+        #     self.__death_place_comments += "Can't find transcribed place in geocoded place."
 
     def get_death_geo_location(self):
         return self.__death_geo_location
@@ -708,7 +708,7 @@ class Interment:
         return self.__death_geo_country_short
 
     def get_death_geo_zip(self):
-        return self.__death_geo_street_name_short
+        return self.__death_geo_zip
 
     def get_death_geo_place_id(self):
         return self.__death_geo_place_id
@@ -855,12 +855,54 @@ class Interment:
             self.__residence_place_full = geocode_place_temp
 
         # warning if raw place doesn't appear in geocoded result at all
-        if self.__residence_place_full.lower().find(geocode_place_temp.lower()) == -1:
-            self.__needs_review = True
-            self.__residence_place_comments += "Can't find transcribed place in geocoded place."
+        # if self.__residence_place_full.lower().find(geocode_place_temp.lower()) == -1:
+        #     self.__needs_review = True
+        #     self.__residence_place_comments += "Can't find transcribed place in geocoded place."
 
     def get_residence_place_full(self):
         return self.__residence_place_full
+
+    def get_residence_geo_location(self):
+        return self.__residence_geo_location
+
+    def get_residence_geo_street_number(self):
+        return self.__residence_geo_street_number
+
+    def get_residence_geo_street_name_long(self):
+        return self.__residence_geo_street_name_long
+
+    def get_residence_geo_street_name_short(self):
+        return self.__residence_geo_street_name_short
+
+    def get_residence_geo_neighborhood(self):
+        return self.__residence_geo_neighborhood
+
+    def get_residence_geo_city(self):
+        return self.__residence_geo_city
+
+    def get_residence_geo_county(self):
+        return self.__residence_geo_county
+
+    def get_residence_geo_state_short(self):
+        return self.__residence_geo_state_short
+
+    def get_residence_geo_state_long(self):
+        return self.__residence_geo_state_long
+
+    def get_residence_geo_country_long(self):
+        return self.__residence_geo_country_long
+
+    def get_residence_geo_country_short(self):
+        return self.__residence_geo_country_short
+
+    def get_residence_geo_zip(self):
+        return self.__residence_geo_zip
+
+    def get_residence_geo_place_id(self):
+        return self.__residence_geo_place_id
+
+    def get_residence_geo_formatted_address(self):
+        return self.__residence_geo_formatted_address
 
     # IS PLOT OWNER
     def is_plot_owner(self):
