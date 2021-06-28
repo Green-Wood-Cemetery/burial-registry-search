@@ -110,6 +110,10 @@ ws.append([
     "Age: Days\n[TRANSCRIBED]",
     "Age: Hours\n[TRANSCRIBED]",
     "Age: Display\n[DISPLAYED VALUE]",
+    "Age: Years\n[SEARCH ONLY]",
+    "Age: Months\n[SEARCH ONLY]",
+    "Age: Days\n[SEARCH ONLY]",
+    "Age: Hours\n[SEARCH ONLY]",
     "Marital Status: Married\n[TRANSCRIBED]",
     "Marital Status: Single\n[TRANSCRIBED]",
     "Marital Status: Merged\n[DISPLAYED VALUE]",
@@ -219,6 +223,10 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
             i.get_age_days_raw(),
             i.get_age_hours_raw(),
             i.get_age_display(),
+            i.get_age_years(),
+            i.get_age_months(),
+            i.get_age_days(),
+            i.get_age_hours(),
             i.get_marital_status_married_raw(),
             i.get_marital_status_single_raw(),
             i.get_marital_status(),
@@ -262,8 +270,11 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
         count += 1
 print(']')
 
-# hide parsed name columns except for last name
-for col in ['J', 'K', 'L', 'M']:
-    ws.column_dimensions[col].hidden = True
+# # hide parsed name columns except for last name
+# for col in ['J', 'K', 'L', 'M']:
+#     ws.column_dimensions[col].hidden = True
+# # hide age columns
+# for col in ['AD', 'AE', 'AF', 'AG']:
+#     ws.column_dimensions[col].hidden = True
 
 wb.save("test.xlsx")

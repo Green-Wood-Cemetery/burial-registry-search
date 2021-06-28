@@ -995,7 +995,9 @@ class Interment:
             self.__age_months = 0
         elif self.__age_months_raw.isnumeric():
             self.__age_months = int(self.__age_months_raw)
-            self.__age_display += " " + str(int(self.__age_months_raw))
+            if self.__age_display != "":
+                self.__age_display += ", "
+            self.__age_display += str(int(self.__age_months_raw))
             if self.__age_months > 1:
                 self.__age_display += " months"
             else:
@@ -1022,7 +1024,9 @@ class Interment:
             self.__age_days = 0
         elif self.__age_days_raw.isnumeric():
             self.__age_days = int(self.__age_days_raw)
-            self.__age_display += " " + str(int(self.__age_days_raw)) + " days"
+            if self.__age_display != "":
+                self.__age_display += ", "
+            self.__age_display += str(int(self.__age_days_raw)) + " days"
             if self.__age_days > 31:
                 self.__age_days_comments = "Age in months is greater than 31"
                 self.set_needs_review(True)
@@ -1071,7 +1075,9 @@ class Interment:
         self.__age_hours_raw = value
         if self.__age_hours_raw.isnumeric() or isinstance(value, float):
             self.__age_hours = int(self.__age_hours_raw)
-            self.__age_display += " " + str(int(self.__age_hours_raw))
+            if self.__age_display != "":
+                self.__age_display += ", "
+            self.__age_display += str(int(self.__age_hours_raw))
             if self.__age_hours > 1:
                 self.__age_display += " hours"
             else:
@@ -1108,6 +1114,7 @@ class Interment:
                 self.__marital_status_married_comments = 'Marital status is ditto but no previous value found'
                 self.__needs_review = True
         elif self.__marital_status_married_raw != '' and self.__marital_status_married_raw is not None:
+            # print(self.__marital_status_married_raw)
             marital_status_key_found = False
             for key in marital_status_dict.keys():
                 if key == self.__marital_status_married_raw.lower():
@@ -1116,8 +1123,17 @@ class Interment:
             if not marital_status_key_found:
                 self.__marital_status_married_comments = 'Marital status not found in list'
                 self.__needs_review = True
+
+                # check for age in hours
+                if re.match(r'(\d+)\s+hours?', self.__marital_status_married_raw, re.IGNORECASE) is not None:
+                    self.__age_days = 0
+                    hours_temp = re.sub(r'\s+hours?', '', self.__marital_status_married_raw, flags=re.IGNORECASE)
+                    self.set_age_hours_raw(hours_temp)
+
+                self.__marital_status_married = "Not recorded"
         else:
             self.__marital_status_married = "Not recorded"
+
 
     # SINGLE COLUMN
     def get_marital_status_single_raw(self):
