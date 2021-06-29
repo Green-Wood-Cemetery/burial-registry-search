@@ -137,7 +137,7 @@ ws.append([
     "Late Residence: City\n[DISPLAYED]",
     "Late Residence: Street\n[TRANSCRIBED]",
     "Late Residence: Street\n[DISPLAYED]",
-    "Late Residence: Geocoded\n[DISPLAYED]",
+    "Late Residence: Geocoded\n[GEOCODE]",
     "Late Residence: Faulty Geocode\n[ADMIN]",
     "Late Residence: Street Number\n[GEOCODE]",
     "Late Residence: Street Name Long\n[GEOCODE]",
@@ -184,9 +184,8 @@ ws.append([
     "Remarks\n[TRANSCRIBED]",
     "Remarks\n[DISPLAYED]",
     "Has Diagram\n[ADMIN]",
-    "Needs Review\n[ADMIN]"
-
-
+    "Needs Review\n[ADMIN]",
+    "Needs Review Comments\n[ADMIN]"
 ])
 for cell in ws["1:1"]:
     cell.style = header
@@ -231,6 +230,8 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
             i.set_has_diagram(True)
         if row[NEEDS_REVIEW] is not None:
             i.set_needs_review(True)
+
+        i.set_needs_review_comments()
 
         # print(i.to_json() + ",")
 
@@ -344,8 +345,8 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
             i.get_remarks_raw(),
             i.get_remarks_display(),
             i.get_has_diagram(),
-            i.get_needs_review()
-
+            i.get_needs_review(),
+            i.get_needs_review_comments()
         ])
 
         # add image links

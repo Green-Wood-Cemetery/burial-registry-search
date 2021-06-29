@@ -102,6 +102,7 @@ class Interment:
         self.__name_infant = None
         self.__name_gender_guess = 'Unknown'
         self.__is_plot_owner = False
+        self.__name_comments = ''
 
         # DATES:
         # INTERMENT
@@ -173,9 +174,11 @@ class Interment:
 
         # RESIDENCE
         self.__residence_place_city_raw = None
+        self.__residence_city_comments = ''
         self.__residence_place_city_full = None
         self.__residence_place_city_raw_expand_abbreviations = None
         self.__residence_place_street_raw = None
+        self.__residence_street_comments = ''
         self.__residence_place_street_full = None
         self.__residence_place_street_raw_expand_abbreviations = None
         self.__residence_place_full = None
@@ -201,56 +204,56 @@ class Interment:
         self.__burial_location_lot_raw = None
         self.__burial_location_lot = None
         self.__burial_location_lot_strike = None
-        self.__burial_location_lot_comments = None
-        self.__burial_location_lot_strike_comments = None
+        self.__burial_location_lot_comments = ''
+        self.__burial_location_lot_strike_comments = ''
         self.__burial_location_grave_raw = None
         self.__burial_location_grave = None
         self.__burial_location_grave_strike = None
-        self.__burial_location_grave_comments = None
-        self.__burial_location_grave_strike_comments = None
+        self.__burial_location_grave_comments = ''
+        self.__burial_location_grave_strike_comments = ''
 
         # AGE
         self.__age_display = ''
         self.__age_years_raw = None
         self.__age_years = None
-        self.__age_years_comments = None
+        self.__age_years_comments = ''
         self.__age_months_raw = None
         self.__age_months = None
-        self.__age_months_comments = None
+        self.__age_months_comments = ''
         self.__age_days_raw = None
         self.__age_days = None
-        self.__age_days_comments = None
+        self.__age_days_comments = ''
         self.__age_hours_raw = None
         self.__age_hours = None
-        self.__age_hours_comments = None
+        self.__age_hours_comments = ''
 
         # MARITAL STATUS
         self.__marital_status_raw = None
         self.__marital_status = 'Not recorded'
-        self.__marital_status_comments = None
+        self.__marital_status_comments = ''
 
         self.__marital_status_married_raw = None
         self.__marital_status_married = 'Not recorded'
-        self.__marital_status_married_comments = None
+        self.__marital_status_married_comments = ''
 
         self.__marital_status_single_raw = None
         self.__marital_status_single = 'Not recorded'
-        self.__marital_status_single_comments = None
+        self.__marital_status_single_comments = ''
 
         # CAUSE OF DEATH
         self.__cause_of_death_raw = None
         self.__cause_of_death_display = None
-        self.__cause_of_death_comments = None
+        self.__cause_of_death_comments = ''
 
         # UNDERTAKER
         self.__undertaker_raw = None
         self.__undertaker_display = None
-        self.__undertaker_comments = None
+        self.__undertaker_comments = ''
 
         # REMARKS
         self.__remarks_raw = None
         self.__remarks_display = None
-        self.__remarks_comments = None
+        self.__remarks_comments = ''
 
         # DIAGRAM
         self.__has_diagram = False
@@ -260,6 +263,8 @@ class Interment:
         # ADMINISTRATIVE
         self.__needs_review = False
         # self.__admin_review_notes = None
+        self.__needs_review_comments = ''
+        self.__geocode_comments = ''
 
     # INTERMENT ID
     def set_id(self, value):
@@ -415,7 +420,7 @@ class Interment:
                 self.__death_date_iso = dt.strftime("%Y-%m-%d")
             else:
                 self.__needs_review = True
-                self.__death_date_comments = "Unable to parse death date: " + display_temp + '"'
+                self.__death_date_comments = "Unable to parse death date: " + display_temp
 
     def set_death_date_year(self, value):
         self.__death_date_year = value
@@ -503,6 +508,7 @@ class Interment:
                 value = self.get_previous().get_birth_place_display()
             else:
                 # complicated ditto, needs human review
+                self.__birth_place_comments = 'Unable to resolve ditto in birth place'
                 self.set_needs_review(True)
 
         # expand any abbreviations
@@ -623,6 +629,7 @@ class Interment:
                 value = self.get_previous().get_death_place_display()
             else:
                 # complicated ditto, needs human review
+                self.__death_place_comments = 'Unable to resolve ditto in death place'
                 self.set_needs_review(True)
 
         # expand any abbreviations
@@ -744,6 +751,7 @@ class Interment:
                 value = self.get_previous().get_residence_place_city_full()
             else:
                 # complicated ditto, needs human review
+                self.__residence_city_comments = 'Unable to resolve ditto in late residence city'
                 self.set_needs_review(True)
 
         self.__residence_place_city_full = value
@@ -785,6 +793,7 @@ class Interment:
                 value = self.get_previous().get_residence_place_street_full()
             else:
                 # complicated ditto, needs human review
+                self.__residence_street_comments = 'Unable to resolve ditto in residence street'
                 self.set_needs_review(True)
 
         self.__residence_place_street_full = value
@@ -1228,7 +1237,7 @@ class Interment:
             else:
                 # complicated ditto, needs human review
                 self.__cause_of_death_display = value
-                self.__cause_of_death_comments = 'Unable to resolve ditto marks'
+                self.__cause_of_death_comments = 'Unable to resolve ditto marks in cause of death'
                 self.set_needs_review(True)
         elif value == '-':
             self.__cause_of_death_display = ''
@@ -1319,6 +1328,47 @@ class Interment:
     def set_needs_review(self, value):
         self.__needs_review = value
 
+    def get_needs_review_comments(self):
+        return self.__needs_review_comments
+
+    def set_needs_review_comments(self):
+        sep = ", "
+        available_comments = [
+            self.__registry_volume_page_comments,
+            self.__interment_date_comments,
+            self.__death_date_comments,
+            self.__birth_place_comments,
+            self.__death_place_comments,
+            self.__residence_place_comments,
+            self.__burial_location_lot_comments,
+            self.__burial_location_lot_strike_comments,
+            self.__burial_location_grave_comments,
+            self.__burial_location_grave_strike_comments,
+            self.__age_years_comments,
+            self.__age_months_comments,
+            self.__age_days_comments,
+            self.__age_hours_comments,
+            self.__marital_status_comments,
+            self.__marital_status_married_comments,
+            self.__marital_status_single_comments,
+            self.__cause_of_death_comments,
+            self.__undertaker_comments,
+            self.__remarks_comments,
+            self.__geocode_comments,
+            self.__name_comments,
+            self.__residence_city_comments,
+            self.__residence_street_comments
+        ]
+        comments = []
+        for comment in available_comments:
+            if comment != '':
+                comments.append(comment)
+        all_comments = ''
+        all_comments = sep.join(comments)
+        # if all_comments != '':
+        #     print(all_comments)
+        self.__needs_review_comments =  all_comments
+
     # CLASS FUNCTIONS
     def parse_burial_location_lot_raw(self):
         lot_raw = self.__burial_location_lot_raw
@@ -1337,15 +1387,15 @@ class Interment:
             self.__burial_location_lot = re.sub(r'\[.+\]', '', lot_raw).strip()
             if self.__burial_location_lot_strike != '' and self.__burial_location_lot_strike is not None:
                 if not self.contains_numbers(self.__burial_location_lot_strike):
-                    self.__burial_location_lot_strike_comments = "Contains no numbers."
+                    self.__burial_location_lot_strike_comments = "Burial location contains no numbers."
             if self.__burial_location_lot != '' and self.__burial_location_lot is not None:
                 if not self.contains_numbers(self.__burial_location_lot):
-                    self.__burial_location_lot_comments = "Contains no numbers."
+                    self.__burial_location_lot_comments = "Burial location contains no numbers."
         else:
             self.__burial_location_lot = lot_raw
             if self.__burial_location_lot != '' and self.__burial_location_lot is not None:
                 if not self.contains_numbers(self.__burial_location_lot):
-                    self.__burial_location_lot_comments = "Contains no numbers."
+                    self.__burial_location_lot_comments = "Burial location contains no numbers."
 
     def parse_burial_location_grave_raw(self):
         grave_raw = self.__burial_location_grave_raw
@@ -1388,6 +1438,7 @@ class Interment:
                 name_temp = self.get_previous().get_name_full()
             else:
                 # complicated ditto, needs human review
+                self.__name_comments = 'Unable to resolve ditto marks in name'
                 self.set_needs_review(True)
 
         # infant parsing
@@ -1493,12 +1544,10 @@ class Interment:
                             break
                     if self.__interment_date_year is None:
                         self.__needs_review = True
-                        self.__interment_date_comments += "Couldn't find interment year range for " + \
-                                                          "interment id " + str(self.__id) + \
-                                                          " in dictionaries/interment_year_ranges.json"
+                        self.__interment_date_comments += "Can't find interment year"
                 else:
                     self.__needs_review = True
-                    self.__interment_date_comments += "Couldn't find volume " + \
+                    self.__interment_date_comments += "Can't find volume " + \
                                                       self.__registry_volume + \
                                                       " in dictionaries/interment_year_ranges.json"
 
@@ -1513,11 +1562,10 @@ class Interment:
                             break
                     if self.__death_date_year is None:
                         self.__needs_review = True
-                        self.__death_date_comments += "Couldn't find death year range for " + \
-                            "interment id " + str(self.__id) + " in dictionaries/death_year_ranges.json"
+                        self.__death_date_comments += "Can't find death year"
                 else:
                     self.__needs_review = True
-                    self.__death_date_comments += "Couldn't find volume " + \
+                    self.__death_date_comments += "Can't find volume " + \
                         self.__registry_volume + " in dictionaries/death_year_ranges.json"
 
     # ==================================================================================================================
@@ -1585,10 +1633,11 @@ class Interment:
                 except Exception as e:
                     logging.fatal(getattr(e, 'message', repr(e)))
             else:
-                logging.warning(
-                    '"' + vol + '","' + str(int(intern_id)) + '","' + "Unable geocode " + place_type + " place: " +
-                    place + '"')
+                # logging.warning(
+                #     '"' + vol + '","' + str(int(intern_id)) + '","' + "Unable geocode " + place_type + " place: " +
+                #     place + '"')
                 # serialize empty geo place
+                self.__geocode_comments = "Unable geocode " + place_type + " place: " + place
                 h = open(geocode_filename, 'w')
                 json.dump(d, h, indent=4, sort_keys=True)
                 h.close()
@@ -1599,8 +1648,9 @@ class Interment:
                 with open(geocode_filename) as json_file:
                     place_json = json.load(json_file)
                     if place_json["google_place_id"] == "":
-                        logging.warning('"' + vol + '","' + str(
-                            int(intern_id)) + '","' + "Unable geocode " + place_type + " place: " + place + '"')
+                        # logging.warning('"' + vol + '","' + str(
+                        #     int(intern_id)) + '","' + "Unable geocode " + place_type + " place: " + place + '"')
+                        self.__geocode_comments = "Unable geocode " + place_type + " place: " + place
                     return place_json
             else:
                 return d
