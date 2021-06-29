@@ -384,6 +384,9 @@ class Interment:
 
         if month is not None and month != '':
             self.__death_date_month_raw = month
+            # fix strange month abbreviations
+            month = re.sub('Jany', 'Jan', month, re.I)
+            month = re.sub('Feby', 'Feb', month, re.I)
             self.__death_date_month_display = month
             display_temp += month + " "
         else:
@@ -1160,11 +1163,13 @@ class Interment:
         self.__marital_status_married_raw = value
         # ditto
         if self.__marital_status_married_raw == '"':
-            if self.get_previous().__marital_status_married != 'Not recorded':
-                self.__marital_status_married = self.get_previous().__marital_status_married
-            else:
-                self.__marital_status_married_comments = 'Marital status is ditto but no previous value found'
-                self.__needs_review = True
+            # if self.get_previous().__marital_status_married != 'Not recorded':
+            #     self.__marital_status_married = self.get_previous().__marital_status_married
+            # else:
+            #     self.__marital_status_married_comments = 'Marital status is ditto but no previous value found'
+            #     self.__needs_review = True
+            self.__marital_status_married = "Married"
+
         elif self.__marital_status_married_raw != '' and self.__marital_status_married_raw is not None:
             # print(self.__marital_status_married_raw)
             marital_status_key_found = False
@@ -1387,15 +1392,15 @@ class Interment:
             self.__burial_location_lot = re.sub(r'\[.+\]', '', lot_raw).strip()
             if self.__burial_location_lot_strike != '' and self.__burial_location_lot_strike is not None:
                 if not self.contains_numbers(self.__burial_location_lot_strike):
-                    self.__burial_location_lot_strike_comments = "Burial location contains no numbers."
+                    self.__burial_location_lot_strike_comments = "Burial location contains no numbers"
             if self.__burial_location_lot != '' and self.__burial_location_lot is not None:
                 if not self.contains_numbers(self.__burial_location_lot):
-                    self.__burial_location_lot_comments = "Burial location contains no numbers."
+                    self.__burial_location_lot_comments = "Burial location contains no numbers"
         else:
             self.__burial_location_lot = lot_raw
             if self.__burial_location_lot != '' and self.__burial_location_lot is not None:
                 if not self.contains_numbers(self.__burial_location_lot):
-                    self.__burial_location_lot_comments = "Burial location contains no numbers."
+                    self.__burial_location_lot_comments = "Burial location contains no numbers"
 
     def parse_burial_location_grave_raw(self):
         grave_raw = self.__burial_location_grave_raw
@@ -1414,15 +1419,15 @@ class Interment:
             self.__burial_location_grave = re.sub(r'\[.+\]', '', grave_raw).strip()
             if self.__burial_location_grave_strike != '' and self.__burial_location_grave_strike is not None:
                 if not self.contains_numbers(self.__burial_location_grave_strike):
-                    self.__burial_location_grave_strike_comments = "Contains no numbers."
+                    self.__burial_location_grave_strike_comments = "Grave location contains no numbers."
             if self.__burial_location_grave != '' and self.__burial_location_grave is not None:
                 if not self.contains_numbers(self.__burial_location_grave):
-                    self.__burial_location_grave_comments = "Contains no numbers."
+                    self.__burial_location_grave_comments = "Grave location contains no numbers."
         else:
             self.__burial_location_grave = grave_raw
             if self.__burial_location_grave != '' and self.__burial_location_grave is not None:
                 if not self.contains_numbers(self.__burial_location_grave):
-                    self.__burial_location_grave_comments = "Contains no numbers."
+                    self.__burial_location_grave_comments = "Grave location contains no numbers."
 
     def parse_name(self):
 
