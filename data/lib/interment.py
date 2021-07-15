@@ -109,6 +109,7 @@ class Interment:
         self.__interment_date_month_raw = None
         self.__interment_date_month_display = None
         self.__interment_date_comments = ''
+        self.__interment_date_iso_comments = ''
         self.__interment_date_day_raw = None
         self.__interment_date_day_display = None
         self.__interment_date_year = None
@@ -118,12 +119,15 @@ class Interment:
         self.__death_date_month_raw = None
         self.__death_date_month_display = None
         self.__death_date_comments = ''
+        self.__death_date_iso_comments = ''
+        self.__missing_death_date_comments = ''
         self.__death_date_day_raw = None
         self.__death_date_day_display = None
         self.__death_date_day_full = None
         self.__death_date_year = None
         self.__death_date_display = None
         self.__death_date_iso = None
+        self.__death_month_cached = None
 
         # PLACES:
         # BIRTH
@@ -211,6 +215,10 @@ class Interment:
         self.__burial_location_grave_strike = None
         self.__burial_location_grave_comments = ''
         self.__burial_location_grave_strike_comments = ''
+        self.__burial_origin = ''
+        self.__from_cemetery = ''
+        self.__is_removal_from = False
+        self.__is_removed_to = False
 
         # AGE
         self.__age_display = ''
@@ -265,6 +273,7 @@ class Interment:
         # self.__admin_review_notes = None
         self.__needs_review_comments = ''
         self.__geocode_comments = ''
+        self.__transcriber_requests_review = False
 
     # INTERMENT ID
     def set_id(self, value):
@@ -351,7 +360,7 @@ class Interment:
                 self.__interment_date_iso = dt.strftime("%Y-%m-%d")
             else:
                 self.__needs_review = True
-                self.__interment_date_comments = "Unable to parse interment date: " + display_temp + '"'
+                self.__interment_date_iso_comments = "Unable to parse interment date: " + display_temp + '"'
 
     def set_interment_date_year(self, value):
         self.__interment_date_year = value
@@ -388,9 +397,12 @@ class Interment:
             month = re.sub('Jany', 'Jan', month, re.I)
             month = re.sub('Feby', 'Feb', month, re.I)
             self.__death_date_month_display = month
+            self.__death_month_cached = month
             display_temp += month + " "
         else:
             if previous_entry is not None:
+                if previous_entry.get_death_month_cached() is not None:
+                    self.__death_month_cached = previous_entry.get_death_month_cached()
                 if previous_entry.get_death_date_month_display() is not None:
                     self.__death_date_month_display = previous_entry.get_death_date_month_display()
                     display_temp += self.__death_date_month_display + " "
@@ -409,8 +421,15 @@ class Interment:
                     self.__death_date_day_display = previous_entry.get_death_date_day_display()
                     display_temp += str(int(self.__death_date_day_display)) + ", "
             else:
-                self.__needs_review = True
-                self.__death_date_comments = "Unable to parse death day"
+                # if day is None, don't assume month or year since it's likely a removal
+                self.__death_date_year = None
+                display_temp = ''
+
+                # needs review if not a removal
+                if not self.__is_removal_from and self.__burial_origin == '':
+                    self.__needs_review = True
+                    self.__missing_death_date_comments = "No day of death - possibly a removal?"
+                    # print('set missing death date comment')
 
         # generate iso date
         if display_temp != '':
@@ -423,7 +442,7 @@ class Interment:
                 self.__death_date_iso = dt.strftime("%Y-%m-%d")
             else:
                 self.__needs_review = True
-                self.__death_date_comments = "Unable to parse death date: " + display_temp
+                self.__death_date_iso_comments = "Unable to parse death date: " + display_temp
 
     def set_death_date_year(self, value):
         self.__death_date_year = value
@@ -442,6 +461,9 @@ class Interment:
 
     def get_death_date_month_display(self):
         return self.__death_date_month_display
+
+    def get_death_month_cached(self):
+        return self.__death_month_cached
 
     def get_death_date_day_raw(self):
         return self.__death_date_day_raw
@@ -503,6 +525,7 @@ class Interment:
     def set_birth_place_raw(self, value):
         self.__birth_place_raw = value
         geocode_string_source = ''
+        skip_geocode = False
 
         # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
@@ -510,9 +533,17 @@ class Interment:
             if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_birth_place_display()
             else:
-                # complicated ditto, needs human review
-                self.__birth_place_comments = 'Unable to resolve ditto in birth place'
-                self.set_needs_review(True)
+                # check for ditto New York State: " State
+                if value == '" State':
+                    value = "New York State"
+                # check for ditto Brooklyn Eastern District
+                elif value == '" Eastern District' or value == '" Ed' or value == '" ED' or value == '"Ed':
+                    value = "Brooklyn Eastern District"
+                else:
+                    # complicated ditto, needs human review
+                    self.__birth_place_comments = 'Unable to resolve ditto in birth place'
+                    self.set_needs_review(True)
+                    skip_geocode = True
 
         # expand any abbreviations
         place_temp = value
@@ -528,9 +559,14 @@ class Interment:
         if place_temp != self.__birth_place_raw:
             value = place_temp
 
+        # check for removals
+        if re.search(r'removal from', value, re.IGNORECASE):
+            self.__burial_origin = value
+            value = ''
+
         self.__birth_place_display = value
 
-        if do_geocode_birth and value != '':
+        if do_geocode_birth and value != '' and not skip_geocode:
             geocode_string_source = value
             birth_place_geocoded = self.geocode_place('birth', value)
         else:
@@ -622,6 +658,8 @@ class Interment:
 
     # PLACE: DEATH
     def set_death_place_raw(self, value):
+        if value is None:
+            value = ''
         self.__death_place_raw = value
         geocode_string_source = ''
 
@@ -631,9 +669,16 @@ class Interment:
             if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_death_place_display()
             else:
-                # complicated ditto, needs human review
-                self.__death_place_comments = 'Unable to resolve ditto in death place'
-                self.set_needs_review(True)
+                # check for ditto New York State: " State
+                if value == '" State':
+                    value = "New York State"
+                # check for ditto Brooklyn Eastern District
+                elif value == '" Eastern District' or value == '" Ed' or value == '" ED' or value == '"Ed':
+                    value = "Brooklyn Eastern District"
+                else:
+                    # complicated ditto, needs human review
+                    self.__death_place_comments = 'Unable to resolve ditto in death place'
+                    self.set_needs_review(True)
 
         # expand any abbreviations
         place_temp = value
@@ -753,9 +798,16 @@ class Interment:
             if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_residence_place_city_full()
             else:
+                # check for ditto New York State: " State
+                if value == '" State':
+                    value = "New York State"
+                # check for ditto Brooklyn Eastern District
+                elif value == '" Eastern District' or value == '" Ed' or value == '" ED' or value == '"Ed':
+                    value = "Brooklyn Eastern District"
                 # complicated ditto, needs human review
-                self.__residence_city_comments = 'Unable to resolve ditto in late residence city'
-                self.set_needs_review(True)
+                else:
+                    self.__residence_city_comments = 'Unable to resolve ditto in late residence city'
+                    self.set_needs_review(True)
 
         self.__residence_place_city_full = value
 
@@ -785,6 +837,8 @@ class Interment:
 
     # PLACE: RESIDENCE STREET
     def set_residence_place_street_raw(self, value):
+        if value is None:
+            value = ''
         if value.strip() == '-':
             value = ''
         self.__residence_place_street_raw = value
@@ -972,6 +1026,9 @@ class Interment:
     def get_burial_location_grave_strike_comments(self):
         return self.__burial_location_grave_strike_comments
 
+    def get_burial_origin(self):
+        return self.__burial_origin
+
     # AGE
     def get_age_years_raw(self):
         return self.__age_years_raw
@@ -1072,6 +1129,12 @@ class Interment:
         # convert to string if float or int
         if isinstance(value, float):
             value = str(int(value))
+
+        # check for 'from cemetery' and add it to display remarks later
+        elif value is not None and re.search(r'from cemetery', value, re.IGNORECASE):
+            value = re.sub(r'\s*from cemetery\s*', '', value, flags=re.IGNORECASE)
+            self.__from_cemetery = self.__age_days_raw
+
         self.__age_days_raw = value
         days_temp = ''
         hours_temp = None
@@ -1089,30 +1152,33 @@ class Interment:
             self.__age_days = 0
         elif self.__age_days_raw == '':
             self.__age_days = 0
-        elif re.match(r'\d+\s+Hrs?', self.__age_days_raw) is not None:
-            self.__age_days = 0
-            hours_temp = re.sub(r'\s+Hrs?', '', self.__age_days_raw)
-        elif re.match(r'(\d+)\s+[Hh]ours?', self.__age_days_raw) is not None:
-            self.__age_days = 0
-            hours_temp = re.sub(r'\s+[Hh]ours?', '', self.__age_days_raw)
-        elif self.__age_days_raw.find(r'1/2') != -1:
-            days_temp = re.sub(r'\s*1/2', '', self.__age_days_raw)
-            hours_temp = '12'
-        elif self.__age_days_raw.find(r'1/4') != -1:
-            days_temp = re.sub(r'\s*1/4', '', self.__age_days_raw)
-            hours_temp = '6'
-        elif self.__age_days_raw.find(r'3/4') != -1:
-            days_temp = re.sub(r'\s*3/4', '', self.__age_days_raw)
-            hours_temp = '18'
-        elif re.match(r'\d+\s+Hrs?', self.__age_days_raw) is not None:
-            self.__age_days = 0
-            hours_temp = re.sub(r'\s+Hrs?', '', self.__age_days_raw)
-        elif re.match(r'(\d+)\s+[Hh]ours?', self.__age_days_raw) is not None:
-            self.__age_days = 0
-            hours_temp = re.sub(r'\s+[Hh]ours?', '', self.__age_days_raw)
+
+        # this is too crazy, let humans review it
+        # elif re.match(r'\d+\s+Hrs?', self.__age_days_raw) is not None:
+        #     self.__age_days = 0
+        #     hours_temp = re.sub(r'\s+Hrs?', '', self.__age_days_raw)
+        # elif re.match(r'(\d+)\s+[Hh]ours?', self.__age_days_raw) is not None:
+        #     self.__age_days = 0
+        #     hours_temp = re.sub(r'\s+[Hh]ours?', '', self.__age_days_raw)
+        # elif self.__age_days_raw.find(r'1/2') != -1:
+        #     days_temp = re.sub(r'\s*1/2', '', self.__age_days_raw)
+        #     hours_temp = '12'
+        # elif self.__age_days_raw.find(r'1/4') != -1:
+        #     days_temp = re.sub(r'\s*1/4', '', self.__age_days_raw)
+        #     hours_temp = '6'
+        # elif self.__age_days_raw.find(r'3/4') != -1:
+        #     days_temp = re.sub(r'\s*3/4', '', self.__age_days_raw)
+        #     hours_temp = '18'
+        # elif re.match(r'\d+\s+Hrs?', self.__age_days_raw) is not None:
+        #     self.__age_days = 0
+        #     hours_temp = re.sub(r'\s+Hrs?', '', self.__age_days_raw)
+        # elif re.match(r'(\d+)\s+[Hh]ours?', self.__age_days_raw) is not None:
+        #     self.__age_days = 0
+        #     hours_temp = re.sub(r'\s+[Hh]ours?', '', self.__age_days_raw)
+
         else:
             self.__age_days = 0
-            self.__age_days_comments = "Age in days isn't a number or dash"
+            self.__age_days_comments = "Age in days isn't a number"
             self.set_needs_review(True)
 
         if self.contains_numbers(days_temp) and days_temp != '':
@@ -1173,21 +1239,28 @@ class Interment:
         elif self.__marital_status_married_raw != '' and self.__marital_status_married_raw is not None:
             # print(self.__marital_status_married_raw)
             marital_status_key_found = False
-            for key in marital_status_dict.keys():
-                if key == self.__marital_status_married_raw.lower():
-                    self.__marital_status_married = (marital_status_dict[key])
-                    marital_status_key_found = True
-            if not marital_status_key_found:
-                self.__marital_status_married_comments = 'Marital status not found in list'
-                self.__needs_review = True
 
-                # check for age in hours
-                if re.match(r'(\d+)\s+hours?', self.__marital_status_married_raw, re.IGNORECASE) is not None:
-                    self.__age_days = 0
-                    hours_temp = re.sub(r'\s+hours?', '', self.__marital_status_married_raw, flags=re.IGNORECASE)
-                    self.set_age_hours_raw(hours_temp)
-
+            # check for 'from cemetery' and add it to display remarks later
+            if re.search(r'from cemetery', self.__marital_status_married_raw, re.IGNORECASE):
                 self.__marital_status_married = "Not recorded"
+                self.__from_cemetery = self.__marital_status_married_raw
+
+            else:
+                for key in marital_status_dict.keys():
+                    if key == self.__marital_status_married_raw.lower():
+                        self.__marital_status_married = (marital_status_dict[key])
+                        marital_status_key_found = True
+                if not marital_status_key_found:
+                    # check for age in hours
+                    if re.match(r'(\d+)\s+hours?', self.__marital_status_married_raw, re.IGNORECASE) is not None:
+                        self.__age_days = 0
+                        hours_temp = re.sub(r'\s+hours?', '', self.__marital_status_married_raw, flags=re.IGNORECASE)
+                        self.set_age_hours_raw(hours_temp)
+                    else:
+                        self.__marital_status_married_comments = 'Marital status not found in list'
+                        self.__needs_review = True
+
+                    self.__marital_status_married = "Not recorded"
         else:
             self.__marital_status_married = "Not recorded"
 
@@ -1200,17 +1273,18 @@ class Interment:
         return self.__marital_status_single
 
     def get_marital_status_single_comments(self):
-        return self.__marital_status_single_omments
+        return self.__marital_status_single_comments
 
     def set_marital_status_single_raw(self, value):
         self.__marital_status_single_raw = value
         # ditto
         if self.__marital_status_single_raw == '"':
-            if self.get_previous().__marital_status_single != 'Not recorded':
-                self.__marital_status_single = self.get_previous().__marital_status_single
-            else:
-                self.__marital_status_single_comments = 'Marital status is ditto but no previous value found'
-                self.__needs_review = True
+            # if self.get_previous().__marital_status_single != 'Not recorded':
+            #     self.__marital_status_single = self.get_previous().__marital_status_single
+            # else:
+            #     self.__marital_status_single_comments = 'Marital status is ditto but no previous value found'
+            #     self.__needs_review = True
+            self.__marital_status_single = "Single"
         elif self.__marital_status_single_raw != '' and self.__marital_status_single_raw is not None:
             marital_status_key_found = False
             for key in marital_status_dict.keys():
@@ -1232,6 +1306,8 @@ class Interment:
 
     # CAUSE OF DEATH
     def set_cause_of_death_raw(self, value):
+        if value is None:
+            value = ''
         self.__cause_of_death_raw = value
 
         # ditto processing
@@ -1254,6 +1330,8 @@ class Interment:
         if m is not None:
             self.__cause_of_death_display = m.group(1)
             self.__ultimate_month = 'REQUIRED'
+            self.__needs_review = True
+            self.__cause_of_death_comments = "Need to adjust death date to ultimate month."
 
     def get_cause_of_death_raw(self):
         return self.__cause_of_death_raw
@@ -1266,6 +1344,8 @@ class Interment:
 
     # UNDERTAKER
     def set_undertaker_raw(self, value):
+        if value is None:
+            value = ''
         self.__undertaker_raw = value
         # ditto?
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
@@ -1290,18 +1370,38 @@ class Interment:
 
     # REMARKS
     def set_remarks_raw(self, value):
+        if value is None:
+            value = ''
         self.__remarks_raw = value
-        # ditto?
+
+        # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
-            if self.get_previous().__remarks_display is not None and self.get_previous().__remarks_display != '':
-                self.__remarks_display = self.get_previous().__remarks_display
+            # simple ditto
+            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+                if self.get_previous().__remarks_display is not None and self.get_previous().__remarks_display != '':
+                    self.__remarks_display = self.get_previous().__remarks_display
             else:
-                self.__remarks_comments = 'Unable to determine remarks'
+                # complicated ditto, needs human review
+                self.__remarks_comments = 'Unable to resolve ditto in remarks'
                 self.__needs_review = True
+                self.__remarks_display = ''
+
         elif value == '-':
             self.__remarks_display = ''
         else:
             self.__remarks_display = value
+
+        # removal from?
+        if re.search('removal from', self.__remarks_display, re.IGNORECASE):
+            self.__is_removal_from = True
+
+        # removed to?
+        if re.search('removed to', self.__remarks_display, re.IGNORECASE):
+            self.__is_removed_to = True
+
+        # append from cemetery if it was found earlier
+        if self.__from_cemetery is not None and self.__from_cemetery != '':
+            self.__remarks_display += " " + self.__from_cemetery
 
     def get_remarks_raw(self):
         return self.__remarks_raw
@@ -1333,6 +1433,14 @@ class Interment:
     def set_needs_review(self, value):
         self.__needs_review = value
 
+    def get_transcriber_requests_review(self):
+        return self.__transcriber_requests_review
+
+    def set_transcriber_requests_review(self, value):
+        self.__transcriber_requests_review = value
+        if value:
+            self.__needs_review = True
+
     def get_needs_review_comments(self):
         return self.__needs_review_comments
 
@@ -1342,6 +1450,9 @@ class Interment:
             self.__registry_volume_page_comments,
             self.__interment_date_comments,
             self.__death_date_comments,
+            self.__death_date_iso_comments,
+            self.__missing_death_date_comments,
+            self.__interment_date_iso_comments,
             self.__birth_place_comments,
             self.__death_place_comments,
             self.__residence_place_comments,
@@ -1368,11 +1479,13 @@ class Interment:
         for comment in available_comments:
             if comment != '':
                 comments.append(comment)
+        if self.__transcriber_requests_review:
+            comments.append("Transcriber requests review")
         all_comments = ''
         all_comments = sep.join(comments)
         # if all_comments != '':
         #     print(all_comments)
-        self.__needs_review_comments =  all_comments
+        self.__needs_review_comments = all_comments
 
     # CLASS FUNCTIONS
     def parse_burial_location_lot_raw(self):
@@ -1393,14 +1506,17 @@ class Interment:
             if self.__burial_location_lot_strike != '' and self.__burial_location_lot_strike is not None:
                 if not self.contains_numbers(self.__burial_location_lot_strike):
                     self.__burial_location_lot_strike_comments = "Burial location contains no numbers"
+                    self.__needs_review = True
             if self.__burial_location_lot != '' and self.__burial_location_lot is not None:
                 if not self.contains_numbers(self.__burial_location_lot):
                     self.__burial_location_lot_comments = "Burial location contains no numbers"
+                    self.__needs_review = True
         else:
             self.__burial_location_lot = lot_raw
             if self.__burial_location_lot != '' and self.__burial_location_lot is not None:
                 if not self.contains_numbers(self.__burial_location_lot):
                     self.__burial_location_lot_comments = "Burial location contains no numbers"
+                    self.__needs_review = True
 
     def parse_burial_location_grave_raw(self):
         grave_raw = self.__burial_location_grave_raw
@@ -1420,14 +1536,17 @@ class Interment:
             if self.__burial_location_grave_strike != '' and self.__burial_location_grave_strike is not None:
                 if not self.contains_numbers(self.__burial_location_grave_strike):
                     self.__burial_location_grave_strike_comments = "Grave location contains no numbers."
+                    self.__needs_review = True
             if self.__burial_location_grave != '' and self.__burial_location_grave is not None:
                 if not self.contains_numbers(self.__burial_location_grave):
                     self.__burial_location_grave_comments = "Grave location contains no numbers."
+                    self.__needs_review = True
         else:
             self.__burial_location_grave = grave_raw
             if self.__burial_location_grave != '' and self.__burial_location_grave is not None:
                 if not self.contains_numbers(self.__burial_location_grave):
                     self.__burial_location_grave_comments = "Grave location contains no numbers."
+                    self.__needs_review = True
 
     def parse_name(self):
 
@@ -1540,9 +1659,11 @@ class Interment:
 
     # try to set interment year based on volume and id in dictionaries/interment_year_ranges.json
     def determine_interment_year(self):
+        found_volume = False
         if self.__registry_volume is not None and self.__id > 0:
             for vols in interment_year_dict:
                 if vols['volume'] == self.__registry_volume:
+                    found_volume = True
                     for range_item in vols['ranges']:
                         if range_item['begin'] <= self.__id <= range_item['end']:
                             self.__interment_date_year = range_item['year']
@@ -1550,17 +1671,20 @@ class Interment:
                     if self.__interment_date_year is None:
                         self.__needs_review = True
                         self.__interment_date_comments += "Can't find interment year"
-                else:
-                    self.__needs_review = True
-                    self.__interment_date_comments += "Can't find volume " + \
-                                                      self.__registry_volume + \
-                                                      " in dictionaries/interment_year_ranges.json"
+                    break
+            if not found_volume:
+                self.__needs_review = True
+                self.__interment_date_comments += "Can't find volume " + \
+                                                  self.__registry_volume + \
+                                                  " in dictionaries/interment_year_ranges.json"
 
     # try to set death year based on volume and id in dictionaries/death_year_ranges.json
     def determine_death_year(self):
+        found_volume = False
         if self.__registry_volume is not None and self.__id > 0:
             for vols in death_year_dict:
                 if vols['volume'] == self.__registry_volume:
+                    found_volume = True
                     for range_item in vols['ranges']:
                         if range_item['begin'] <= self.__id <= range_item['end']:
                             self.__death_date_year = range_item['year']
@@ -1568,10 +1692,11 @@ class Interment:
                     if self.__death_date_year is None:
                         self.__needs_review = True
                         self.__death_date_comments += "Can't find death year"
-                else:
-                    self.__needs_review = True
-                    self.__death_date_comments += "Can't find volume " + \
-                        self.__registry_volume + " in dictionaries/death_year_ranges.json"
+                    break
+            if not found_volume:
+                self.__needs_review = True
+                self.__death_date_comments += "Can't find volume " + \
+                    self.__registry_volume + " in dictionaries/death_year_ranges.json"
 
     # ==================================================================================================================
     # GEOCODE PLACE
@@ -1585,6 +1710,8 @@ class Interment:
         if place == '':
             return d
         else:
+            if place == 'Brooklyn Eastern District':
+                place = 'Brooklyn'
             d['place_geocode_input'] = place
 
         geocode_filename = 'json/places/' + parameterize(place.lower().strip(), separator="_") + '.json'
@@ -1642,7 +1769,8 @@ class Interment:
                 #     '"' + vol + '","' + str(int(intern_id)) + '","' + "Unable geocode " + place_type + " place: " +
                 #     place + '"')
                 # serialize empty geo place
-                self.__geocode_comments = "Unable geocode " + place_type + " place: " + place
+                self.__geocode_comments = "Unable to geocode " + place_type + " place: " + place
+                self.__needs_review = True
                 h = open(geocode_filename, 'w')
                 json.dump(d, h, indent=4, sort_keys=True)
                 h.close()
@@ -1655,7 +1783,8 @@ class Interment:
                     if place_json["google_place_id"] == "":
                         # logging.warning('"' + vol + '","' + str(
                         #     int(intern_id)) + '","' + "Unable geocode " + place_type + " place: " + place + '"')
-                        self.__geocode_comments = "Unable geocode " + place_type + " place: " + place
+                        self.__geocode_comments = "Unable to geocode " + place_type + " place: " + place
+                        self.__needs_review = True
                     return place_json
             else:
                 return d

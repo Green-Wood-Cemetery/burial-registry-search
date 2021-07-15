@@ -7,7 +7,7 @@ from nameparser import HumanName
 from openpyxl import load_workbook
 from openpyxl import Workbook
 from openpyxl.styles import NamedStyle
-from openpyxl.styles import Font, Color, Alignment, Border, Side, colors
+from openpyxl.styles import Font, Color, Alignment, Border, Side, colors, PatternFill
 from openpyxl.comments import Comment
 import argparse
 import sqlite3
@@ -76,6 +76,7 @@ header = NamedStyle(name="header")
 header.font = Font(bold=True)
 header.alignment = Alignment(horizontal="center")
 header.border = Border(bottom=Side(border_style="thin"))
+header.fill = PatternFill("solid", fgColor="D3D3D3")
 
 content = NamedStyle(name="content")
 content.alignment = Alignment(horizontal="left")
@@ -183,7 +184,9 @@ ws.append([
     "Undertaker\n[DISPLAYED]",
     "Remarks\n[TRANSCRIBED]",
     "Remarks\n[DISPLAYED]",
+    "Burial Origin\n[ADMIN]",
     "Has Diagram\n[ADMIN]",
+    "Transcriber Review\n[ADMIN]",
     "Needs Review\n[ADMIN]",
     "Needs Review Comments\n[ADMIN]"
 ])
@@ -221,7 +224,6 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
         i.set_residence_place_geocode()
 
         i.set_death_place_raw(row[DEATH_LOCATION])
-        i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY])
 
         i.set_cause_of_death_raw(row[CAUSE_OF_DEATH])
         i.set_undertaker_raw(row[UNDERTAKER])
@@ -229,7 +231,10 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
         if row[HAS_DIAGRAM] is not None:
             i.set_has_diagram(True)
         if row[NEEDS_REVIEW] is not None:
-            i.set_needs_review(True)
+            i.set_transcriber_requests_review(True)
+
+        # set death day next to last since "removal" status should be determined first
+        i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY])
 
         i.set_needs_review_comments()
 
@@ -344,7 +349,9 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
             i.get_undertaker_display(),
             i.get_remarks_raw(),
             i.get_remarks_display(),
+            i.get_burial_origin(),
             i.get_has_diagram(),
+            i.get_transcriber_requests_review(),
             i.get_needs_review(),
             i.get_needs_review_comments()
         ])
@@ -358,18 +365,29 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
         # idcell = ws.cell(row=count, column=1)
         # idcell.comment = Comment(u'This is the comment', u'Comment Author', )
 
+        # needs review fill color
+        fill = PatternFill("solid", fgColor="FFD1DC")
         for cell in ws[count:count]:
             cell.style = content
+            if i.get_needs_review():
+                cell.fill = fill
 
         previous = i
         count += 1
 print(']')
 
-# # hide parsed name columns except for last name
-# for col in ['J', 'K', 'L', 'M']:
-#     ws.column_dimensions[col].hidden = True
-# # hide age columns
-# for col in ['AD', 'AE', 'AF', 'AG']:
+# hide most geocode fields
+for col in ['AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN',
+            'BG', 'BH', 'BI', 'BJ', 'BK', 'BL', 'BM', 'BN', 'BO', 'BP', 'BQ', 'BR', 'BS', 'BT',
+            'BY', 'BZ', 'CA', 'CB', 'CC', 'CD', 'CE', 'CF', 'CG', 'CH', 'CI', 'CJ', 'CK', 'CL']:
+    ws.column_dimensions[col].hidden = True
+
+# hide iso dates
+# for col in ['G', 'CQ']:
 #     ws.column_dimensions[col].hidden = True
 
-wb.save("test.xlsx")
+# hide results of name parsing
+for col in ['J', 'K', 'L', 'M', 'N']:
+    ws.column_dimensions[col].hidden = True
+
+wb.save("excel/output/Volume_"+args.vol+"_processed.xlsx")
