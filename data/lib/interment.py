@@ -410,7 +410,7 @@ class Interment:
                 self.__needs_review = True
                 self.__death_date_comments = "Unable to parse interment month"
 
-        if day is not None and day != '"' and day != '-':
+        if day is not None and day != '"' and day != '-' and day != '' and day != "'":
             self.__death_date_day_raw = day
             self.__death_date_day_display = int(day)
             display_temp += str(int(day)) + ", "
@@ -673,7 +673,7 @@ class Interment:
                 if value == '" State':
                     value = "New York State"
                 # check for ditto Brooklyn Eastern District
-                elif value == '" Eastern District' or value == '" Ed' or value == '" ED' or value == '"Ed':
+                elif value == 'ƒ District' or value == '" Ed' or value == '" ED' or value == '"Ed':
                     value = "Brooklyn Eastern District"
                 else:
                     # complicated ditto, needs human review
@@ -1373,6 +1373,7 @@ class Interment:
         if value is None:
             value = ''
         self.__remarks_raw = value
+        self.__remarks_display = ''
 
         # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
@@ -1628,10 +1629,14 @@ class Interment:
         # try to guess gender using first namegenderpro database
         # just grab first part of any first name (eg: Mary Jane)
         name_first_gender_temp = self.__name_first.split(' ')[0]
-        gender_row = cursor.execute(
-            "SELECT gender from namegenderpro where name = '" + name_first_gender_temp + "' COLLATE NOCASE").fetchone()
-        if gender_row:
-            self.__name_gender_guess = gender_row[0]
+        try:
+            gender_row = cursor.execute(
+                "SELECT gender from namegenderpro where name = '" + name_first_gender_temp + "' COLLATE NOCASE").fetchone()
+            if gender_row:
+                self.__name_gender_guess = gender_row[0]
+        except sqlite3.OperationalError as e:
+            print(e)
+            return
 
     def parse_registry_volume_page(self):
         try:
