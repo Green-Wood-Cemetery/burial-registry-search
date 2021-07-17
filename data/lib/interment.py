@@ -410,7 +410,7 @@ class Interment:
                 self.__needs_review = True
                 self.__death_date_comments = "Unable to parse interment month"
 
-        if day is not None and day != '"' and day != '-' and day != '' and day != "'":
+        if day is not None and str(day).isdigit():
             self.__death_date_day_raw = day
             self.__death_date_day_display = int(day)
             display_temp += str(int(day)) + ", "
@@ -523,81 +523,85 @@ class Interment:
 
     # PLACE: BIRTH
     def set_birth_place_raw(self, value):
-        self.__birth_place_raw = value
-        geocode_string_source = ''
-        skip_geocode = False
 
-        # ditto processing
-        if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
-            # simple ditto
-            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
-                value = self.get_previous().get_birth_place_display()
-            else:
-                # check for ditto New York State: " State
-                if value == '" State':
-                    value = "New York State"
-                # check for ditto Brooklyn Eastern District
-                elif value == '" Eastern District' or value == '" Ed' or value == '" ED' or value == '"Ed':
-                    value = "Brooklyn Eastern District"
+        if value is not None and value != '':
+
+            self.__birth_place_raw = value
+            geocode_string_source = ''
+            skip_geocode = False
+
+            # ditto processing
+            if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
+                # simple ditto
+                if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+                    value = self.get_previous().get_birth_place_display()
                 else:
-                    # complicated ditto, needs human review
-                    self.__birth_place_comments = 'Unable to resolve ditto in birth place'
-                    self.set_needs_review(True)
-                    skip_geocode = True
+                    # check for ditto New York State: " State
+                    if value == '" State':
+                        value = "New York State"
+                    # check for ditto Brooklyn Eastern District
+                    elif value == '" Eastern District' or value == '" Ed' or value == '" ED' or value == '"Ed':
+                        value = "Brooklyn Eastern District"
+                    else:
+                        # complicated ditto, needs human review
+                        self.__birth_place_comments = 'Unable to resolve ditto in birth place'
+                        self.set_needs_review(True)
+                        skip_geocode = True
 
-        # expand any abbreviations
-        place_temp = value
-        place_parts = place_temp.split()
-        place_reassembled = []
-        for place_part in place_parts:
-            if len(place_part) < 6:
-                for key in place_abbrev_dict.keys():
-                    if key == place_part.lower():
-                        place_part = place_abbrev_dict[key]
-            place_reassembled.append(place_part)
-        place_temp = " ".join(place_reassembled)
-        if place_temp != self.__birth_place_raw:
-            value = place_temp
+            if value is not None and value != '':
+                # expand any abbreviations
+                place_temp = value
+                place_parts = place_temp.split()
+                place_reassembled = []
+                for place_part in place_parts:
+                    if len(place_part) < 6:
+                        for key in place_abbrev_dict.keys():
+                            if key == place_part.lower():
+                                place_part = place_abbrev_dict[key]
+                    place_reassembled.append(place_part)
+                place_temp = " ".join(place_reassembled)
+                if place_temp != self.__birth_place_raw:
+                    value = place_temp
 
-        # check for removals
-        if re.search(r'removal from', value, re.IGNORECASE):
-            self.__burial_origin = value
-            value = ''
+                # check for removals
+                if re.search(r'removal from', value, re.IGNORECASE):
+                    self.__burial_origin = value
+                    value = ''
 
-        self.__birth_place_display = value
+                self.__birth_place_display = value
 
-        if do_geocode_birth and value != '' and not skip_geocode:
-            geocode_string_source = value
-            birth_place_geocoded = self.geocode_place('birth', value)
-        else:
-            birth_place_geocoded = get_geocode_dict()
+                if do_geocode_birth and value != '' and not skip_geocode:
+                    geocode_string_source = value
+                    birth_place_geocoded = self.geocode_place('birth', value)
+                else:
+                    birth_place_geocoded = get_geocode_dict()
 
-        # set the geo attributes
-        self.__birth_geo_location = {"lat": birth_place_geocoded['geo_lat'], "lon": birth_place_geocoded['geo_lng']}
-        self.__birth_geo_street_number = birth_place_geocoded['geo_street_number']
-        self.__birth_geo_street_name_long = birth_place_geocoded['geo_street_name_long']
-        self.__birth_geo_street_name_short = birth_place_geocoded['geo_street_name_short']
-        self.__birth_geo_neighborhood = birth_place_geocoded['geo_neighborhood']
-        self.__birth_geo_city = birth_place_geocoded['geo_city']
-        self.__birth_geo_county = birth_place_geocoded['geo_county']
-        self.__birth_geo_state_short = birth_place_geocoded['geo_state_short']
-        self.__birth_geo_state_long = birth_place_geocoded['geo_state_long']
-        self.__birth_geo_country_long = birth_place_geocoded['geo_country_long']
-        self.__birth_geo_country_short = birth_place_geocoded['geo_country_short']
-        self.__birth_geo_zip = birth_place_geocoded['geo_zip']
-        self.__birth_geo_place_id = birth_place_geocoded['google_place_id']
-        self.__birth_geo_formatted_address = birth_place_geocoded['geo_formatted_address']
+                # set the geo attributes
+                self.__birth_geo_location = {"lat": birth_place_geocoded['geo_lat'], "lon": birth_place_geocoded['geo_lng']}
+                self.__birth_geo_street_number = birth_place_geocoded['geo_street_number']
+                self.__birth_geo_street_name_long = birth_place_geocoded['geo_street_name_long']
+                self.__birth_geo_street_name_short = birth_place_geocoded['geo_street_name_short']
+                self.__birth_geo_neighborhood = birth_place_geocoded['geo_neighborhood']
+                self.__birth_geo_city = birth_place_geocoded['geo_city']
+                self.__birth_geo_county = birth_place_geocoded['geo_county']
+                self.__birth_geo_state_short = birth_place_geocoded['geo_state_short']
+                self.__birth_geo_state_long = birth_place_geocoded['geo_state_long']
+                self.__birth_geo_country_long = birth_place_geocoded['geo_country_long']
+                self.__birth_geo_country_short = birth_place_geocoded['geo_country_short']
+                self.__birth_geo_zip = birth_place_geocoded['geo_zip']
+                self.__birth_geo_place_id = birth_place_geocoded['google_place_id']
+                self.__birth_geo_formatted_address = birth_place_geocoded['geo_formatted_address']
 
-        # set full birth place description to geo-formatted address
-        if birth_place_geocoded['geo_formatted_address'] != "":
-            self.__birth_place_full = birth_place_geocoded['geo_formatted_address']
-        else:
-            self.__birth_place_full = value
+                # set full birth place description to geo-formatted address
+                if birth_place_geocoded['geo_formatted_address'] != "":
+                    self.__birth_place_full = birth_place_geocoded['geo_formatted_address']
+                else:
+                    self.__birth_place_full = value
 
-        # warning if raw place doesn't appear in geocoded result at all
-        # if self.__birth_place_full.lower().find(geocode_string_source.lower()) == -1:
-        #     self.__needs_review = True
-        #     self.__birth_place_comments += "Can't find transcribed place in geocoded place."
+                # warning if raw place doesn't appear in geocoded result at all
+                # if self.__birth_place_full.lower().find(geocode_string_source.lower()) == -1:
+                #     self.__needs_review = True
+                #     self.__birth_place_comments += "Can't find transcribed place in geocoded place."
 
     def get_birth_geo_location(self):
         return self.__birth_geo_location
@@ -681,53 +685,54 @@ class Interment:
                     self.set_needs_review(True)
 
         # expand any abbreviations
-        place_temp = value
-        place_parts = place_temp.split()
-        place_reassembled = []
-        for place_part in place_parts:
-            if len(place_part) < 6:
-                for key in place_abbrev_dict.keys():
-                    if key == place_part.lower():
-                        place_part = place_abbrev_dict[key]
-            place_reassembled.append(place_part)
-        place_temp = " ".join(place_reassembled)
-        if place_temp != self.__death_place_raw:
-            value = place_temp
+        if value is not None:
+            place_temp = value
+            place_parts = place_temp.split()
+            place_reassembled = []
+            for place_part in place_parts:
+                if len(place_part) < 6:
+                    for key in place_abbrev_dict.keys():
+                        if key == place_part.lower():
+                            place_part = place_abbrev_dict[key]
+                place_reassembled.append(place_part)
+            place_temp = " ".join(place_reassembled)
+            if place_temp != self.__death_place_raw:
+                value = place_temp
 
-        self.__death_place_display = value
+            self.__death_place_display = value
 
-        if do_geocode_death and value != '':
-            geocode_string_source = value
-            death_place_geocoded = self.geocode_place('death', value)
-        else:
-            death_place_geocoded = get_geocode_dict()
+            if do_geocode_death and value != '':
+                geocode_string_source = value
+                death_place_geocoded = self.geocode_place('death', value)
+            else:
+                death_place_geocoded = get_geocode_dict()
 
-        # set the geo attributes
-        self.__death_geo_location = {"lat": death_place_geocoded['geo_lat'], "lon": death_place_geocoded['geo_lng']}
-        self.__death_geo_street_number = death_place_geocoded['geo_street_number']
-        self.__death_geo_street_name_long = death_place_geocoded['geo_street_name_long']
-        self.__death_geo_street_name_short = death_place_geocoded['geo_street_name_short']
-        self.__death_geo_neighborhood = death_place_geocoded['geo_neighborhood']
-        self.__death_geo_city = death_place_geocoded['geo_city']
-        self.__death_geo_county = death_place_geocoded['geo_county']
-        self.__death_geo_state_short = death_place_geocoded['geo_state_short']
-        self.__death_geo_state_long = death_place_geocoded['geo_state_long']
-        self.__death_geo_country_long = death_place_geocoded['geo_country_long']
-        self.__death_geo_country_short = death_place_geocoded['geo_country_short']
-        self.__death_geo_zip = death_place_geocoded['geo_zip']
-        self.__death_geo_place_id = death_place_geocoded['google_place_id']
-        self.__death_geo_formatted_address = death_place_geocoded['geo_formatted_address']
+            # set the geo attributes
+            self.__death_geo_location = {"lat": death_place_geocoded['geo_lat'], "lon": death_place_geocoded['geo_lng']}
+            self.__death_geo_street_number = death_place_geocoded['geo_street_number']
+            self.__death_geo_street_name_long = death_place_geocoded['geo_street_name_long']
+            self.__death_geo_street_name_short = death_place_geocoded['geo_street_name_short']
+            self.__death_geo_neighborhood = death_place_geocoded['geo_neighborhood']
+            self.__death_geo_city = death_place_geocoded['geo_city']
+            self.__death_geo_county = death_place_geocoded['geo_county']
+            self.__death_geo_state_short = death_place_geocoded['geo_state_short']
+            self.__death_geo_state_long = death_place_geocoded['geo_state_long']
+            self.__death_geo_country_long = death_place_geocoded['geo_country_long']
+            self.__death_geo_country_short = death_place_geocoded['geo_country_short']
+            self.__death_geo_zip = death_place_geocoded['geo_zip']
+            self.__death_geo_place_id = death_place_geocoded['google_place_id']
+            self.__death_geo_formatted_address = death_place_geocoded['geo_formatted_address']
 
-        # set full birth place description to geo-formatted address
-        if death_place_geocoded['geo_formatted_address'] != "":
-            self.__death_place_full = death_place_geocoded['geo_formatted_address']
-        else:
-            self.__death_place_full = value
+            # set full birth place description to geo-formatted address
+            if death_place_geocoded['geo_formatted_address'] != "":
+                self.__death_place_full = death_place_geocoded['geo_formatted_address']
+            else:
+                self.__death_place_full = value
 
-        # warning if raw place doesn't appear in geocoded result at all
-        # if self.__death_place_full.lower().find(geocode_string_source.lower()) == -1:
-        #     self.__needs_review = True
-        #     self.__death_place_comments += "Can't find transcribed place in geocoded place."
+            # warning if raw place doesn't appear in geocoded result at all
+            # if self.__death_place_full.lower().find(geocode_string_source.lower()) == -1:
+            #     self.__needs_review = True
+            #     self.__death_place_comments += "Can't find transcribed place in geocoded place."
 
     def get_death_geo_location(self):
         return self.__death_geo_location
@@ -812,19 +817,20 @@ class Interment:
         self.__residence_place_city_full = value
 
         # expand any abbreviations
-        place_temp = value
-        place_parts = place_temp.split()
-        place_reassembled = []
-        for place_part in place_parts:
-            if len(place_part) < 6:
-                for key in place_abbrev_dict.keys():
-                    if key == place_part.lower():
-                        place_part = place_abbrev_dict[key]
-            place_reassembled.append(place_part)
-        place_temp = " ".join(place_reassembled)
-        if place_temp != self.__residence_place_city_raw:
-            self.__residence_place_city_raw_expand_abbreviations = place_temp
-            self.__residence_place_city_full = place_temp
+        if value is not None:
+            place_temp = value
+            place_parts = place_temp.split()
+            place_reassembled = []
+            for place_part in place_parts:
+                if len(place_part) < 6:
+                    for key in place_abbrev_dict.keys():
+                        if key == place_part.lower():
+                            place_part = place_abbrev_dict[key]
+                place_reassembled.append(place_part)
+            place_temp = " ".join(place_reassembled)
+            if place_temp != self.__residence_place_city_raw:
+                self.__residence_place_city_raw_expand_abbreviations = place_temp
+                self.__residence_place_city_full = place_temp
 
     def get_residence_place_city_raw(self):
         return self.__residence_place_city_raw
@@ -1419,6 +1425,9 @@ class Interment:
 
     def set_has_diagram(self, value):
         self.__has_diagram = value
+        if value is not None and value != '':
+            self.__has_diagram = True
+            # print('Diagram: "' + value + '"')
 
     # ULTIMATE MONTH FOR DEATH DATE
     def get_ultimate_month(self):
@@ -1439,8 +1448,9 @@ class Interment:
 
     def set_transcriber_requests_review(self, value):
         self.__transcriber_requests_review = value
-        if value:
+        if value is not None and value != '':
             self.__needs_review = True
+            # print('Review: "' + value + '"')
 
     def get_needs_review_comments(self):
         return self.__needs_review_comments
@@ -1640,7 +1650,7 @@ class Interment:
 
     def parse_registry_volume_page(self):
         try:
-            m = re.search(r'[Vv]olume\s+(\d+)_(\d+)', self.get_registry_image_filename_raw())
+            m = re.search(r'Volume\s+(\d+)_(\d+)', self.get_registry_image_filename_raw(), re.IGNORECASE)
             if m is None:
                 self.__needs_review = True
                 self.__registry_volume_page_comments = "Unable to parse transcribed image filename: " + \

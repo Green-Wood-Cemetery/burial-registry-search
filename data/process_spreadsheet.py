@@ -32,29 +32,58 @@ workbook = load_workbook(filename=args.input, data_only=True)
 sheet = workbook[args.sheet]
 
 # spreadsheet column constants
+
+# vols 16-20
+# IMAGE_FILENAME = 0
+# INTERMENT_ID = 1
+# INTERMENT_MONTH = 2
+# INTERMENT_DAY = 3
+# NAME = 4
+# LOT_LOCATION = 5
+# GRAVE_LOCATION = 6
+# BIRTH_PLACE = 7
+# AGE_YEARS = 8
+# AGE_MONTHS = 9
+# AGE_DAYS = 10
+# MARITAL_STATUS_MARRIED = 11
+# MARITAL_STATUS_SINGLE = 12
+# RESIDENCE_CITY = 13
+# RESIDENCE_STREET = 14
+# DEATH_LOCATION = 15
+# DEATH_MONTH = 16
+# DEATH_DAY = 17
+# CAUSE_OF_DEATH = 18
+# UNDERTAKER = 19
+# NOTES = 20
+# HAS_DIAGRAM = 21
+# NEEDS_REVIEW = 22
+
+# vols 21 -
 IMAGE_FILENAME = 0
 INTERMENT_ID = 1
 INTERMENT_MONTH = 2
 INTERMENT_DAY = 3
-NAME = 4
-LOT_LOCATION = 5
-GRAVE_LOCATION = 6
-BIRTH_PLACE = 7
-AGE_YEARS = 8
-AGE_MONTHS = 9
-AGE_DAYS = 10
-MARITAL_STATUS_MARRIED = 11
-MARITAL_STATUS_SINGLE = 12
-RESIDENCE_CITY = 13
-RESIDENCE_STREET = 14
-DEATH_LOCATION = 15
-DEATH_MONTH = 16
-DEATH_DAY = 17
-CAUSE_OF_DEATH = 18
-UNDERTAKER = 19
-NOTES = 20
-HAS_DIAGRAM = 21
-NEEDS_REVIEW = 22
+INTERMENT_YEAR = 4
+NAME = 5
+LOT_LOCATION = 6
+GRAVE_LOCATION = 7
+BIRTH_PLACE = 8
+AGE_YEARS = 9
+AGE_MONTHS = 10
+AGE_DAYS = 11
+MARITAL_STATUS_MARRIED = 12
+MARITAL_STATUS_SINGLE = 13
+RESIDENCE_CITY = 14
+RESIDENCE_STREET = 15
+DEATH_LOCATION = 16
+DEATH_MONTH = 17
+DEATH_DAY = 18
+DEATH_YEAR = 19
+CAUSE_OF_DEATH = 20
+UNDERTAKER = 21
+NOTES = 22
+HAS_DIAGRAM = 23
+NEEDS_REVIEW = 24
 
 # =====================================================================================================================
 # MAIN
@@ -228,10 +257,8 @@ for row in sheet.iter_rows(min_row=4, values_only=True):
         i.set_cause_of_death_raw(row[CAUSE_OF_DEATH])
         i.set_undertaker_raw(row[UNDERTAKER])
         i.set_remarks_raw(row[NOTES])
-        if row[HAS_DIAGRAM] is not None:
-            i.set_has_diagram(True)
-        if row[NEEDS_REVIEW] is not None:
-            i.set_transcriber_requests_review(True)
+        i.set_has_diagram(row[HAS_DIAGRAM])
+        i.set_transcriber_requests_review(row[NEEDS_REVIEW])
 
         # set death day next to last since "removal" status should be determined first
         i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY])
