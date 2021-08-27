@@ -25,6 +25,7 @@ parser.add_argument('-input', type=str, help='spreadsheet in xslx format')
 parser.add_argument('-key', type=str, help='google api key')
 parser.add_argument('-sheet', type=str, help='worksheet to transform')
 parser.add_argument('-vol', type=str, help='registry volume number')
+parser.add_argument('-row_start', type=int, help='row to start parsing, skipping header rows')
 args = parser.parse_args()
 workbook = load_workbook(filename=args.input, data_only=True)
 
@@ -223,7 +224,7 @@ for cell in ws["1:1"]:
     cell.style = header
 
 print('[')
-for row in sheet.iter_rows(min_row=4, values_only=True):
+for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
 
     if row[INTERMENT_ID] is not None and count < max:
 

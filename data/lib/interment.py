@@ -410,7 +410,9 @@ class Interment:
                 self.__needs_review = True
                 self.__death_date_comments = "Unable to parse interment month"
 
-        if day is not None and str(day).isdigit():
+        # print('death day = "' + str(day) + '"')
+        if day is not None and (isinstance(day, float) or str(day).isdigit()):
+            # print('got death day')
             self.__death_date_day_raw = day
             self.__death_date_day_display = int(day)
             display_temp += str(int(day)) + ", "
@@ -476,8 +478,9 @@ class Interment:
         return self.__name_raw
 
     def set_name_raw(self, value):
-        self.__name_raw = value.strip()
-        self.parse_name()
+        if value is not None and value != '':
+            self.__name_raw = value.strip()
+            self.parse_name()
 
     def get_name_full(self):
         return self.__name_full
@@ -533,7 +536,8 @@ class Interment:
             # ditto processing
             if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
                 # simple ditto
-                if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+                if re.search(r'^["\s]+$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+                    # print('place of birth ditto value = ' + value)
                     value = self.get_previous().get_birth_place_display()
                 else:
                     # check for ditto New York State: " State
@@ -670,7 +674,7 @@ class Interment:
         # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             # simple ditto
-            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+            if re.search(r'^["\s]+$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_death_place_display()
             else:
                 # check for ditto New York State: " State
@@ -800,7 +804,7 @@ class Interment:
         # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             # simple ditto
-            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+            if re.search(r'^["\s]+$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_residence_place_city_full()
             else:
                 # check for ditto New York State: " State
@@ -852,7 +856,7 @@ class Interment:
         # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             # simple ditto
-            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+            if re.search(r'^["\s]+$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_residence_place_street_full()
             else:
                 # complicated ditto, needs human review
@@ -1319,7 +1323,7 @@ class Interment:
         # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             # simple ditto
-            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+            if re.search(r'^["\s]+$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 self.__cause_of_death_display = self.get_previous().__cause_of_death_display
             else:
                 # complicated ditto, needs human review
@@ -1354,7 +1358,7 @@ class Interment:
             value = ''
         self.__undertaker_raw = value
         # ditto?
-        if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
+        if re.search(r'^["\s]+$', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             if self.get_previous().__undertaker_display is not None and self.get_previous().__undertaker_display != '':
                 self.__undertaker_display = self.get_previous().__undertaker_display
             else:
@@ -1384,7 +1388,7 @@ class Interment:
         # ditto processing
         if re.search(r'"', value) or re.search(r"\bDo\b", value, re.IGNORECASE):
             # simple ditto
-            if re.search(r'^"$', value) or re.search(r"^Do$", value, re.IGNORECASE):
+            if re.search(r'^["\s]+$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 if self.get_previous().__remarks_display is not None and self.get_previous().__remarks_display != '':
                     self.__remarks_display = self.get_previous().__remarks_display
             else:
@@ -1503,7 +1507,7 @@ class Interment:
         lot_raw = self.__burial_location_lot_raw
 
         # simple ditto processing
-        if re.search(r'^"$', lot_raw):
+        if re.search(r'^["\s]+$', lot_raw):
             self.__burial_location_lot = self.get_previous().get_burial_location_lot()
             self.__burial_location_lot_strike = self.get_previous().get_burial_location_lot_strike()
             return
@@ -1533,7 +1537,7 @@ class Interment:
         grave_raw = self.__burial_location_grave_raw
 
         # simple ditto processing
-        if re.search(r'^"$', grave_raw):
+        if re.search(r'^["\s]+$', grave_raw):
             self.__burial_location_grave = self.get_previous().get_burial_location_grave()
             self.__burial_location_grave_strike = self.get_previous().get_burial_location_grave_strike()
             return
@@ -1569,7 +1573,7 @@ class Interment:
         if re.search(r'"', name_temp) or re.search(r"\bDo\b", name_temp, re.IGNORECASE):
             is_ditto = True
             # simple ditto
-            if re.search(r'^"$', name_temp) or re.search(r"^Do$", name_temp, re.IGNORECASE):
+            if re.search(r'^["\s]+$', name_temp) or re.search(r"^Do$", name_temp, re.IGNORECASE):
                 name_temp = self.get_previous().get_name_full()
             else:
                 # complicated ditto, needs human review
