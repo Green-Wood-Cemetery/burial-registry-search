@@ -26,6 +26,7 @@ parser.add_argument('-key', type=str, help='google api key')
 parser.add_argument('-sheet', type=str, help='worksheet to transform')
 parser.add_argument('-vol', type=str, help='registry volume number')
 parser.add_argument('-row_start', type=int, help='row to start parsing, skipping header rows')
+parser.add_argument('-marital_status_cols', type=int, help='number of columns used to indicate marital status')
 args = parser.parse_args()
 workbook = load_workbook(filename=args.input, data_only=True)
 
@@ -59,7 +60,34 @@ sheet = workbook[args.sheet]
 # HAS_DIAGRAM = 21
 # NEEDS_REVIEW = 22
 
-# vols 21 -
+# vols 21 - 28
+# IMAGE_FILENAME = 0
+# INTERMENT_ID = 1
+# INTERMENT_MONTH = 2
+# INTERMENT_DAY = 3
+# INTERMENT_YEAR = 4
+# NAME = 5
+# LOT_LOCATION = 6
+# GRAVE_LOCATION = 7
+# BIRTH_PLACE = 8
+# AGE_YEARS = 9
+# AGE_MONTHS = 10
+# AGE_DAYS = 11
+# MARITAL_STATUS_MARRIED = 12
+# MARITAL_STATUS_SINGLE = 13
+# RESIDENCE_CITY = 14
+# RESIDENCE_STREET = 15
+# DEATH_LOCATION = 16
+# DEATH_MONTH = 17
+# DEATH_DAY = 18
+# DEATH_YEAR = 19
+# CAUSE_OF_DEATH = 20
+# UNDERTAKER = 21
+# NOTES = 22
+# HAS_DIAGRAM = 23
+# NEEDS_REVIEW = 24
+
+# vols 29 - (single column for marital status)
 IMAGE_FILENAME = 0
 INTERMENT_ID = 1
 INTERMENT_MONTH = 2
@@ -73,18 +101,19 @@ AGE_YEARS = 9
 AGE_MONTHS = 10
 AGE_DAYS = 11
 MARITAL_STATUS_MARRIED = 12
-MARITAL_STATUS_SINGLE = 13
-RESIDENCE_CITY = 14
-RESIDENCE_STREET = 15
-DEATH_LOCATION = 16
-DEATH_MONTH = 17
-DEATH_DAY = 18
-DEATH_YEAR = 19
-CAUSE_OF_DEATH = 20
-UNDERTAKER = 21
-NOTES = 22
-HAS_DIAGRAM = 23
-NEEDS_REVIEW = 24
+MARITAL_STATUS_SINGLE = 12
+MARITAL_STATUS_SINGLE_COLUMN = 12
+RESIDENCE_CITY = 13
+RESIDENCE_STREET = 14
+DEATH_LOCATION = 15
+DEATH_MONTH = 16
+DEATH_DAY = 17
+DEATH_YEAR = 18
+CAUSE_OF_DEATH = 19
+UNDERTAKER = 20
+NOTES = 21
+HAS_DIAGRAM = 22
+NEEDS_REVIEW = 23
 
 # =====================================================================================================================
 # MAIN
@@ -240,14 +269,20 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
         i.set_age_years_raw(row[AGE_YEARS])
         i.set_age_months_raw(row[AGE_MONTHS])
         i.set_age_days_raw(row[AGE_DAYS])
-        i.set_marital_status_married_raw(row[MARITAL_STATUS_MARRIED])
-        i.set_marital_status_single_raw(row[MARITAL_STATUS_SINGLE])
 
-        # merge marital status columns for display
-        if i.get_marital_status_married() == 'Not recorded' and i.get_marital_status_single() != 'Not recorded':
-            i.set_marital_status(i.get_marital_status_single())
-        else:
-            i.set_marital_status(i.get_marital_status_married())
+        # 2-COLUMN MARITAL STATUS
+        if args.marital_status_cols == 2:
+            i.set_marital_status_married_raw(row[MARITAL_STATUS_MARRIED])
+            i.set_marital_status_single_raw(row[MARITAL_STATUS_SINGLE])
+            # merge marital status columns for display
+            if i.get_marital_status_married() == 'Not recorded' and i.get_marital_status_single() != 'Not recorded':
+                i.set_marital_status(i.get_marital_status_single())
+            else:
+                i.set_marital_status(i.get_marital_status_married())
+
+        # 1-COLUMN MARITAL STATUS
+        if args.marital_status_cols == 1:
+            i.set_marital_status_combined_raw(row[MARITAL_STATUS_SINGLE_COLUMN])
 
         i.set_residence_place_street_raw(row[RESIDENCE_STREET])
         i.set_residence_place_city_raw(row[RESIDENCE_CITY])

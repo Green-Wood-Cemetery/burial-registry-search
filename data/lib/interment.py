@@ -1249,6 +1249,46 @@ class Interment:
     def get_marital_status_married_comments(self):
         return self.__marital_status_married_omments
 
+    def set_marital_status_combined_raw(self, value):
+        # set one of the 2 raw columns so we can see the transcribed value somewhere
+        self.__marital_status_married_raw = value
+        self.__marital_status_raw = value
+        # ditto
+        if self.__marital_status_raw == '"':
+            if self.get_previous().__marital_status != 'Not recorded':
+                self.__marital_status = self.get_previous().__marital_status
+            else:
+                self.__marital_status_comments = 'Marital status is ditto but no previous value found'
+                self.__needs_review = True
+
+        elif self.__marital_status_raw != '' and self.__marital_status_raw is not None:
+            # print(self.__marital_status_married_raw)
+            marital_status_key_found = False
+
+            # check for 'from cemetery' and add it to display remarks later
+            if re.search(r'from cemetery', self.__marital_status_raw, re.IGNORECASE):
+                self.__marital_status = "Not recorded"
+                self.__from_cemetery = self.__marital_status_raw
+
+            else:
+                for key in marital_status_dict.keys():
+                    if key == self.__marital_status_raw.lower():
+                        self.__marital_status = (marital_status_dict[key])
+                        marital_status_key_found = True
+                if not marital_status_key_found:
+                    # check for age in hours
+                    if re.match(r'(\d+)\s+hours?', self.__marital_status_raw, re.IGNORECASE) is not None:
+                        self.__age_days = 0
+                        hours_temp = re.sub(r'\s+hours?', '', self.__marital_status_raw, flags=re.IGNORECASE)
+                        self.set_age_hours_raw(hours_temp)
+                    else:
+                        self.__marital_status_comments = 'Marital status not found in list'
+                        self.__needs_review = True
+
+                    self.__marital_status = "Not recorded"
+        else:
+            self.__marital_status = "Not recorded"
+
     def set_marital_status_married_raw(self, value):
         self.__marital_status_married_raw = value
         # ditto
