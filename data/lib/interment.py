@@ -79,6 +79,7 @@ class Interment:
 
         # INTERMENT ID
         self.__id = 0
+        self.__interment_id_comments = ''
 
         # PREVIOUS INTERMENT
         self.__previous = None
@@ -277,7 +278,14 @@ class Interment:
 
     # INTERMENT ID
     def set_id(self, value):
-        self.__id = int(value)
+        if value is not None and value != '':
+            self.__id = int(value)
+            print('ID: ' + str(self.__id))
+        else:
+            self.__id = None
+            self.__needs_review = True
+            self.__interment_id_comments = "Missing interment ID"
+            print('ID: missing')
 
     def get_id(self):
         return self.__id
@@ -328,7 +336,7 @@ class Interment:
             self.__interment_date_month_display = month
             display_temp += month + " "
         else:
-            if previous_entry is not None:
+            if previous_entry is not None and self.__id is not None:
                 if previous_entry.get_interment_date_month_display() is not None:
                     self.__interment_date_month_display = previous_entry.get_interment_date_month_display()
                     display_temp += self.__interment_date_month_display + " "
@@ -341,7 +349,7 @@ class Interment:
             self.__interment_date_day_display = int(day)
             display_temp += str(int(day)) + ", "
         else:
-            if previous_entry is not None:
+            if previous_entry is not None and self.__id is not None:
                 if previous_entry.get_interment_date_day_display() is not None:
                     self.__interment_date_day_display = previous_entry.get_interment_date_day_display()
                     display_temp += str(int(self.__interment_date_day_display)) + ", "
@@ -797,7 +805,7 @@ class Interment:
 
     # PLACE: RESIDENCE CITY
     def set_residence_place_city_raw(self, value):
-        if value.strip() == '-':
+        if value is None or value.strip() == '-':
             value = ''
         self.__residence_place_city_raw = value
 
@@ -1086,6 +1094,8 @@ class Interment:
         # convert to string if float or int
         if isinstance(value, float):
             value = str(int(value))
+        if isinstance(value, int):
+            value = str(value)
         self.__age_years_raw = value
         if self.__age_years_raw is None:
             self.__age_years = 0
@@ -1112,6 +1122,8 @@ class Interment:
         # convert to string if float or int
         if isinstance(value, float):
             value = str(int(value))
+        if isinstance(value, int):
+            value = str(value)
         self.__age_months_raw = value
         if self.__age_months_raw is None:
             self.__age_months = 0
@@ -1139,6 +1151,8 @@ class Interment:
         # convert to string if float or int
         if isinstance(value, float):
             value = str(int(value))
+        if isinstance(value, int):
+            value = str(value)
 
         # check for 'from cemetery' and add it to display remarks later
         elif value is not None and re.search(r'from cemetery', value, re.IGNORECASE):
@@ -1488,7 +1502,8 @@ class Interment:
             self.__geocode_comments,
             self.__name_comments,
             self.__residence_city_comments,
-            self.__residence_street_comments
+            self.__residence_street_comments,
+            self.__interment_id_comments
         ]
         comments = []
         for comment in available_comments:
@@ -1679,7 +1694,10 @@ class Interment:
     # try to set interment year based on volume and id in dictionaries/interment_year_ranges.json
     def determine_interment_year(self):
         found_volume = False
-        if self.__registry_volume is not None and self.__id > 0:
+        if self.__registry_volume is not None \
+                and self.__id is not None \
+                and self.__id != '' \
+                and self.__id > 0:
             for vols in interment_year_dict:
                 if vols['volume'] == self.__registry_volume:
                     found_volume = True
@@ -1696,11 +1714,17 @@ class Interment:
                 self.__interment_date_comments += "Can't find volume " + \
                                                   self.__registry_volume + \
                                                   " in dictionaries/interment_year_ranges.json"
+        else:
+            self.__needs_review = True
+            self.__interment_date_comments += "Can't determine interment year since ID is missing."
 
     # try to set death year based on volume and id in dictionaries/death_year_ranges.json
     def determine_death_year(self):
         found_volume = False
-        if self.__registry_volume is not None and self.__id > 0:
+        if self.__registry_volume is not None \
+                and self.__id is not None \
+                and self.__id != '' \
+                and self.__id > 0:
             for vols in death_year_dict:
                 if vols['volume'] == self.__registry_volume:
                     found_volume = True
@@ -1716,6 +1740,9 @@ class Interment:
                 self.__needs_review = True
                 self.__death_date_comments += "Can't find volume " + \
                     self.__registry_volume + " in dictionaries/death_year_ranges.json"
+        else:
+            self.__needs_review = True
+            self.__death_date_comments += "Can't determine death year since ID is missing."
 
     # ==================================================================================================================
     # GEOCODE PLACE

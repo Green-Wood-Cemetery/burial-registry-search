@@ -5,4 +5,6 @@
 # python3 process_spreadsheet.py -input 'excel/input/Volume 20.xlsx' -vol '20' -sheet 'Volume 20'
 # python3 process_spreadsheet.py -input 'excel/input/Volume 21 - modified.xlsx' -vol '21' -sheet 'VOLUME 21'
 # python3 process_spreadsheet.py -input 'excel/input/VOLUME_21 Final Data.xlsx' -vol '21' -sheet 'VOLUME 21' -row_start 3
-python3 process_spreadsheet.py -input 'excel/input/VOLUME_22 Final Data modified.xlsx' -vol '22' -sheet 'VOLUME 22' -row_start 4
+# python3 process_spreadsheet.py -input 'excel/input/VOLUME_22 Final Data modified.xlsx' -vol '22' -sheet 'VOLUME 22' -row_start 4
+# python3 process_spreadsheet.py -input 'excel/input/VOLUME_27 Final Data.xlsx' -vol '27' -sheet 'Volume 27' -row_start 6
+python3 process_spreadsheet.py -input 'excel/input/Volume 28 - modified.xlsx' -vol '28' -sheet 'Volume 28' -row_start 3

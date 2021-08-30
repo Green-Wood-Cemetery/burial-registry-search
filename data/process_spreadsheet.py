@@ -226,8 +226,8 @@ for cell in ws["1:1"]:
 print('[')
 for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
 
-    if row[INTERMENT_ID] is not None and count < max:
-
+    # if row[INTERMENT_ID] is not None and count < max:
+    if count < max:
         i = Interment()
         i.set_previous(previous)
         i.set_id(row[INTERMENT_ID])
