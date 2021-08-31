@@ -62,6 +62,7 @@ if 16 <= args.vol <= 20:
     NEEDS_REVIEW = 22
 
 # vols 21 - 28
+# there are now columns for interment and death years
 elif 21 <= args.vol <= 28:
     IMAGE_FILENAME = 0
     INTERMENT_ID = 1
@@ -89,7 +90,8 @@ elif 21 <= args.vol <= 28:
     HAS_DIAGRAM = 23
     NEEDS_REVIEW = 24
 
-# vols 29 - ? (single column for marital status)
+# vols 29 - ?
+# marital status is now one column instead of two
 elif 29 <= args.vol <= 50:
     IMAGE_FILENAME = 0
     INTERMENT_ID = 1

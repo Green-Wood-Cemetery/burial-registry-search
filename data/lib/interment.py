@@ -279,7 +279,13 @@ class Interment:
     # INTERMENT ID
     def set_id(self, value):
         if value is not None and value != '':
-            self.__id = int(value)
+            if isinstance(value, int):
+                self.__id = int(value)
+            if isinstance(value, float):
+                self.__id = int(value)
+            # a temp value for missing left hand page
+            if isinstance(value, str):
+                self.__id = value
             # print('ID: ' + str(self.__id))
         else:
             self.__id = None
@@ -1739,6 +1745,7 @@ class Interment:
         if self.__registry_volume is not None \
                 and self.__id is not None \
                 and self.__id != '' \
+                and isinstance(self.__id, int) \
                 and self.__id > 0:
             for vols in interment_year_dict:
                 if vols['volume'] == self.__registry_volume:
@@ -1758,7 +1765,7 @@ class Interment:
                                                   " in dictionaries/interment_year_ranges.json"
         else:
             self.__needs_review = True
-            self.__interment_date_comments += "Can't determine interment year since ID is missing."
+            self.__interment_date_comments += "Can't determine interment year since ID is missing or not an integer"
 
     # try to set death year based on volume and id in dictionaries/death_year_ranges.json
     def determine_death_year(self):
@@ -1766,6 +1773,7 @@ class Interment:
         if self.__registry_volume is not None \
                 and self.__id is not None \
                 and self.__id != '' \
+                and isinstance(self.__id, int) \
                 and self.__id > 0:
             for vols in death_year_dict:
                 if vols['volume'] == self.__registry_volume:
@@ -1785,7 +1793,7 @@ class Interment:
         else:
             self.__death_date_year = None
             self.__needs_review = True
-            self.__death_date_comments += "Can't determine death year since ID is missing."
+            self.__death_date_comments += "Can't determine death year since ID is missing or not an integer"
 
     # ==================================================================================================================
     # GEOCODE PLACE
