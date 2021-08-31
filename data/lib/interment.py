@@ -863,6 +863,11 @@ class Interment:
     def set_residence_place_street_raw(self, value):
         if value is None:
             value = ''
+        # convert to string if float or int
+        if isinstance(value, float):
+            value = str(int(value))
+        if isinstance(value, int):
+            value = str(value)
         if value.strip() == '-':
             value = ''
         self.__residence_place_street_raw = value
@@ -1256,6 +1261,8 @@ class Interment:
         return self.__marital_status_married_omments
 
     def set_marital_status_combined_raw(self, value):
+        if value is not None and value.strip() == '-':
+            value = ''
         # set one of the 2 raw columns so we can see the transcribed value somewhere
         self.__marital_status_married_raw = value
         self.__marital_status_raw = value
