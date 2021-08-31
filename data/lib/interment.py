@@ -280,12 +280,12 @@ class Interment:
     def set_id(self, value):
         if value is not None and value != '':
             self.__id = int(value)
-            print('ID: ' + str(self.__id))
+            # print('ID: ' + str(self.__id))
         else:
             self.__id = None
             self.__needs_review = True
             self.__interment_id_comments = "Missing interment ID"
-            print('ID: missing')
+            # print('ID: missing')
 
     def get_id(self):
         return self.__id
@@ -448,7 +448,7 @@ class Interment:
 
             self.__death_date_display = display_temp
             dt = dateparser.parse(display_temp)
-            if dt is not None:
+            if dt is not None and self.__death_date_year is not None:
                 self.__death_date_iso = dt.strftime("%Y-%m-%d")
             else:
                 self.__needs_review = True
@@ -1555,6 +1555,8 @@ class Interment:
         all_comments = sep.join(comments)
         # if all_comments != '':
         #     print(all_comments)
+        print('ID: ' + str(self.__id) + ' [' + all_comments + ']')
+
         self.__needs_review_comments = all_comments
 
     # CLASS FUNCTIONS
@@ -1781,6 +1783,7 @@ class Interment:
                 self.__death_date_comments += "Can't find volume " + \
                     self.__registry_volume + " in dictionaries/death_year_ranges.json"
         else:
+            self.__death_date_year = None
             self.__needs_review = True
             self.__death_date_comments += "Can't determine death year since ID is missing."
 

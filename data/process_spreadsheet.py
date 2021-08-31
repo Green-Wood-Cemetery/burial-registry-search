@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser(description='Spreadsheet to JSON')
 parser.add_argument('-input', type=str, help='spreadsheet in xslx format')
 parser.add_argument('-key', type=str, help='google api key')
 parser.add_argument('-sheet', type=str, help='worksheet to transform')
-parser.add_argument('-vol', type=str, help='registry volume number')
+parser.add_argument('-vol', type=int, help='registry volume number')
 parser.add_argument('-row_start', type=int, help='row to start parsing, skipping header rows')
 parser.add_argument('-marital_status_cols', type=int, help='number of columns used to indicate marital status')
 args = parser.parse_args()
@@ -36,84 +36,116 @@ sheet = workbook[args.sheet]
 # spreadsheet column constants
 
 # vols 16-20
-# IMAGE_FILENAME = 0
-# INTERMENT_ID = 1
-# INTERMENT_MONTH = 2
-# INTERMENT_DAY = 3
-# NAME = 4
-# LOT_LOCATION = 5
-# GRAVE_LOCATION = 6
-# BIRTH_PLACE = 7
-# AGE_YEARS = 8
-# AGE_MONTHS = 9
-# AGE_DAYS = 10
-# MARITAL_STATUS_MARRIED = 11
-# MARITAL_STATUS_SINGLE = 12
-# RESIDENCE_CITY = 13
-# RESIDENCE_STREET = 14
-# DEATH_LOCATION = 15
-# DEATH_MONTH = 16
-# DEATH_DAY = 17
-# CAUSE_OF_DEATH = 18
-# UNDERTAKER = 19
-# NOTES = 20
-# HAS_DIAGRAM = 21
-# NEEDS_REVIEW = 22
+if 16 <= args.vol <= 20:
+    IMAGE_FILENAME = 0
+    INTERMENT_ID = 1
+    INTERMENT_MONTH = 2
+    INTERMENT_DAY = 3
+    NAME = 4
+    LOT_LOCATION = 5
+    GRAVE_LOCATION = 6
+    BIRTH_PLACE = 7
+    AGE_YEARS = 8
+    AGE_MONTHS = 9
+    AGE_DAYS = 10
+    MARITAL_STATUS_MARRIED = 11
+    MARITAL_STATUS_SINGLE = 12
+    RESIDENCE_CITY = 13
+    RESIDENCE_STREET = 14
+    DEATH_LOCATION = 15
+    DEATH_MONTH = 16
+    DEATH_DAY = 17
+    CAUSE_OF_DEATH = 18
+    UNDERTAKER = 19
+    NOTES = 20
+    HAS_DIAGRAM = 21
+    NEEDS_REVIEW = 22
 
 # vols 21 - 28
-# IMAGE_FILENAME = 0
-# INTERMENT_ID = 1
-# INTERMENT_MONTH = 2
-# INTERMENT_DAY = 3
-# INTERMENT_YEAR = 4
-# NAME = 5
-# LOT_LOCATION = 6
-# GRAVE_LOCATION = 7
-# BIRTH_PLACE = 8
-# AGE_YEARS = 9
-# AGE_MONTHS = 10
-# AGE_DAYS = 11
-# MARITAL_STATUS_MARRIED = 12
-# MARITAL_STATUS_SINGLE = 13
-# RESIDENCE_CITY = 14
-# RESIDENCE_STREET = 15
-# DEATH_LOCATION = 16
-# DEATH_MONTH = 17
-# DEATH_DAY = 18
-# DEATH_YEAR = 19
-# CAUSE_OF_DEATH = 20
-# UNDERTAKER = 21
-# NOTES = 22
-# HAS_DIAGRAM = 23
-# NEEDS_REVIEW = 24
+elif 21 <= args.vol <= 28:
+    IMAGE_FILENAME = 0
+    INTERMENT_ID = 1
+    INTERMENT_MONTH = 2
+    INTERMENT_DAY = 3
+    INTERMENT_YEAR = 4
+    NAME = 5
+    LOT_LOCATION = 6
+    GRAVE_LOCATION = 7
+    BIRTH_PLACE = 8
+    AGE_YEARS = 9
+    AGE_MONTHS = 10
+    AGE_DAYS = 11
+    MARITAL_STATUS_MARRIED = 12
+    MARITAL_STATUS_SINGLE = 13
+    RESIDENCE_CITY = 14
+    RESIDENCE_STREET = 15
+    DEATH_LOCATION = 16
+    DEATH_MONTH = 17
+    DEATH_DAY = 18
+    DEATH_YEAR = 19
+    CAUSE_OF_DEATH = 20
+    UNDERTAKER = 21
+    NOTES = 22
+    HAS_DIAGRAM = 23
+    NEEDS_REVIEW = 24
 
-# vols 29 - (single column for marital status)
-IMAGE_FILENAME = 0
-INTERMENT_ID = 1
-INTERMENT_MONTH = 2
-INTERMENT_DAY = 3
-INTERMENT_YEAR = 4
-NAME = 5
-LOT_LOCATION = 6
-GRAVE_LOCATION = 7
-BIRTH_PLACE = 8
-AGE_YEARS = 9
-AGE_MONTHS = 10
-AGE_DAYS = 11
-MARITAL_STATUS_MARRIED = 12
-MARITAL_STATUS_SINGLE = 12
-MARITAL_STATUS_SINGLE_COLUMN = 12
-RESIDENCE_CITY = 13
-RESIDENCE_STREET = 14
-DEATH_LOCATION = 15
-DEATH_MONTH = 16
-DEATH_DAY = 17
-DEATH_YEAR = 18
-CAUSE_OF_DEATH = 19
-UNDERTAKER = 20
-NOTES = 21
-HAS_DIAGRAM = 22
-NEEDS_REVIEW = 23
+# vols 29 - ? (single column for marital status)
+elif 29 <= args.vol <= 50:
+    IMAGE_FILENAME = 0
+    INTERMENT_ID = 1
+    INTERMENT_MONTH = 2
+    INTERMENT_DAY = 3
+    INTERMENT_YEAR = 4
+    NAME = 5
+    LOT_LOCATION = 6
+    GRAVE_LOCATION = 7
+    BIRTH_PLACE = 8
+    AGE_YEARS = 9
+    AGE_MONTHS = 10
+    AGE_DAYS = 11
+    MARITAL_STATUS_MARRIED = 12
+    MARITAL_STATUS_SINGLE = 12
+    MARITAL_STATUS_SINGLE_COLUMN = 12
+    RESIDENCE_CITY = 13
+    RESIDENCE_STREET = 14
+    DEATH_LOCATION = 15
+    DEATH_MONTH = 16
+    DEATH_DAY = 17
+    DEATH_YEAR = 18
+    CAUSE_OF_DEATH = 19
+    UNDERTAKER = 20
+    NOTES = 21
+    HAS_DIAGRAM = 22
+    NEEDS_REVIEW = 23
+
+# default
+else:
+    IMAGE_FILENAME = 0
+    INTERMENT_ID = 1
+    INTERMENT_MONTH = 2
+    INTERMENT_DAY = 3
+    INTERMENT_YEAR = 4
+    NAME = 5
+    LOT_LOCATION = 6
+    GRAVE_LOCATION = 7
+    BIRTH_PLACE = 8
+    AGE_YEARS = 9
+    AGE_MONTHS = 10
+    AGE_DAYS = 11
+    MARITAL_STATUS_MARRIED = 12
+    MARITAL_STATUS_SINGLE = 12
+    MARITAL_STATUS_SINGLE_COLUMN = 12
+    RESIDENCE_CITY = 13
+    RESIDENCE_STREET = 14
+    DEATH_LOCATION = 15
+    DEATH_MONTH = 16
+    DEATH_DAY = 17
+    DEATH_YEAR = 18
+    CAUSE_OF_DEATH = 19
+    UNDERTAKER = 20
+    NOTES = 21
+    HAS_DIAGRAM = 22
+    NEEDS_REVIEW = 23
 
 # =====================================================================================================================
 # MAIN
@@ -453,4 +485,4 @@ for col in ['AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'A
 for col in ['J', 'K', 'L', 'M', 'N']:
     ws.column_dimensions[col].hidden = True
 
-wb.save("excel/output/Volume_"+args.vol+"_processed.xlsx")
+wb.save("excel/output/Volume_" + str(args.vol) + "_processed.xlsx")
