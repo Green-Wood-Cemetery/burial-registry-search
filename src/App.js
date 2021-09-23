@@ -60,7 +60,7 @@ function renderItem(res, triggerClickAnalytics) {
         residence_place_url =
             "https://www.google.com/maps/search/?api=1&query=" +
             getNestedValue(res, 'residence_geo_formatted_address') + "&query_place_id=" +
-            getNestedValue(res, 'residence_geo_place_id');
+            getNestedValue(res, 'residence_place_geo_place_id');
     }
     // let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
     // remove array's square brackets for display
@@ -75,16 +75,16 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Date of interment">{getNestedValue(res, "interment_date_display")}</Descriptions.Item>
                     <Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
                     <Descriptions.Item label="Place of death">{getNestedValue(res,"death_place_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Cause of death">{getNestedValue(res,"cause_of_death")}</Descriptions.Item>
+                    <Descriptions.Item label="Cause of death">{getNestedValue(res,"cause_of_death_display")}</Descriptions.Item>
                     <Descriptions.Item label="Place of residence">{ <a href={residence_place_url} target='gmap'>{getNestedValue(res, "residence_place_geo_formatted_address")}</a>}</Descriptions.Item>
                     <Descriptions.Item label="Place of birth">{ <a href={birth_place_url} target='gmap'>{getNestedValue(res, "birth_place_displayed")}</a> }</Descriptions.Item>
-                    <Descriptions.Item label="Age">{getNestedValue(res,"age_full")}</Descriptions.Item>
+                    <Descriptions.Item label="Age">{getNestedValue(res,"age_display")}</Descriptions.Item>
                     <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
                     <Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
-                    <Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_current_grave")}</Descriptions.Item>
-                    <Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_current_lot")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
                     <Descriptions.Item label="Interment ID">{getNestedValue(res, "interment_id")}</Descriptions.Item>
-                    <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
+                    <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
                     {/*<Descriptions.Item label="Tags">{tags}</Descriptions.Item>*/}
                 </Descriptions>
 
@@ -200,7 +200,7 @@ const App = () => (
                     <Panel header="Cause of death" key="1">
                         <MultiList
                             componentId="death_cause_facet"
-                            dataField="cause_of_death.keyword"
+                            dataField="cause_of_death_display.keyword"
                             size={100}
                             style={{
                                 marginBottom: 20
@@ -212,7 +212,7 @@ const App = () => (
                     <Panel header="Undertaker" key="11">
                         <MultiList
                             componentId="undertaker_facet"
-                            dataField="undertaker.keyword"
+                            dataField="undertaker_display.keyword"
                             size={100}
                             style={{
                                 marginBottom: 20
