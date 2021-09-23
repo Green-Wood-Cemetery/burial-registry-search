@@ -62,14 +62,13 @@ function renderItem(res, triggerClickAnalytics) {
             getNestedValue(res, 'residence_geo_formatted_address') + "&query_place_id=" +
             getNestedValue(res, 'residence_geo_place_id');
     }
-    let title = getNestedValue(res,"name_display");
     // let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
     // remove array's square brackets for display
     // tags = tags.substring(1, tags.length-1);
     return (
         <Row onClick={triggerClickAnalytics} type="flex" gutter={16} key={res._id} style={{margin:'20px auto',borderBottom:'1px solid #ededed'}}>
             <Col span={image_url ? 6 : 0}>
-                {image_url &&  <a href={image_url} target='registry_image'><img src={image_thumb} alt={title} width='200px;'/></a> }
+                {image_url &&  <a href={image_url} target='registry_image'><img src={image_thumb} alt={getNestedValue(res,"name_display")} width='200px;'/></a> }
             </Col>
             <Col span={image_url ? 18 : 24}>
                 <Descriptions title={getNestedValue(res,"name_display")} column={1} size="small" bordered>
@@ -86,7 +85,7 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_current_lot")}</Descriptions.Item>
                     <Descriptions.Item label="Interment ID">{getNestedValue(res, "interment_id")}</Descriptions.Item>
                     <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker")}</Descriptions.Item>
-                    <Descriptions.Item label="Tags">{tags}</Descriptions.Item>
+                    {/*<Descriptions.Item label="Tags">{tags}</Descriptions.Item>*/}
                 </Descriptions>
 
                 {/*<Collapse ghost={true} defaultActiveKey={[]}>*/}
