@@ -77,6 +77,112 @@ class Interment:
 
     def __init__(self):
 
+        # elastic search fields
+        self.es_fields = []
+        self.es_fields.append({'name': 'interment_id', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'cemetery', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'registry_volume', 'type': 'long', 'keywords': True})
+        self.es_fields.append({'name': 'registry_image', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'interment_date_month_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'interment_date_day_transcribed', 'type': 'long', 'keywords': False})
+        self.es_fields.append({'name': 'interment_date_year_transcribed', 'type': 'long', 'keywords': False})
+        self.es_fields.append({'name': 'interment_date_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'interment_date_iso', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'name_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'name_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'name_last', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'name_first', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'name_middle', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'name_salutation', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'name_suffix', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'is_lot_owner', 'type': 'boolean', 'keywords': False})
+        self.es_fields.append({'name': 'gender_guess', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'burial_location_lot_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'burial_location_lot_current', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'burial_location_lot_current', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'burial_location_grave_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'burial_location_grave_current', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'burial_location_grave_previous', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_place_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_place_displayed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_formatted_address', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_is_faulty', 'type': 'boolean', 'keywords': False})
+        self.es_fields.append({'name': 'birth_geo_street_number', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_street_name_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_street_name_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_neighborhood', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_city', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_county', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_state_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_state_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_country_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_country_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_zip', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_geo_place_id', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'birth_place_geo_location', 'type': 'geo_point', 'keywords': False})
+        self.es_fields.append({'name': 'age_years_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'age_months_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'age_days_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'age_hours_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'age_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'age_years', 'type': 'long', 'keywords': False})
+        self.es_fields.append({'name': 'age_months', 'type': 'long', 'keywords': False})
+        self.es_fields.append({'name': 'age_days', 'type': 'long', 'keywords': False})
+        self.es_fields.append({'name': 'age_hours', 'type': 'long', 'keywords': False})
+        self.es_fields.append({'name': 'marital_status_married_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'marital_status_single_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'marital_status', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_city_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_city_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_street_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_street_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_formatted_address', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_is_faulty', 'type': 'boolean', 'keywords': False})
+        self.es_fields.append({'name': 'residence_place_geo_street_number', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_street_number_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_street_number_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_neighborhood', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_city', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_county', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_state_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_state_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_country_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_country_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_zip', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_place_id', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'residence_place_geo_location', 'type': 'geo_point', 'keywords': False})
+        self.es_fields.append({'name': 'death_place_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_formatted_address', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_is_faulty', 'type': 'boolean', 'keywords': False})
+        self.es_fields.append({'name': 'death_place_geo_street_number', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_street_number_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_street_number_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_neighborhood', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_city', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_county', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_state_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_state_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_country_long', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_country_short', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_zip', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_place_id', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_place_geo_location', 'type': 'geo_point', 'keywords': False})
+        self.es_fields.append({'name': 'death_date_month_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_date_day_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_date_year_transcribed', 'type': 'long', 'keywords': True})
+        self.es_fields.append({'name': 'death_date_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_date_iso', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'death_date_ult_month', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'cause_of_death_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'cause_of_death_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'undertaker_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'undertaker_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'remarks_transcribed', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'remarks_display', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'burial_origin', 'type': 'text', 'keywords': True})
+        self.es_fields.append({'name': 'has_diagram', 'type': 'boolean', 'keywords': False})
+
         # INTERMENT ID
         self.__id = 0
         self.__interment_id_comments = ''
@@ -85,12 +191,15 @@ class Interment:
         self.__previous = None
 
         # REGISTRY
+        # filename
         self.__registry_image_filename_raw = None
         self.__registry_image_filename = None
+        self.__registry_image_link = ''
+        # volume
         self.__registry_volume = None
+        # page
         self.__registry_page = None
         self.__registry_volume_page_comments = ''
-        self.__registry_image_link = ''
 
         # NAME
         self.__name_raw = None
@@ -116,6 +225,7 @@ class Interment:
         self.__interment_date_year = None
         self.__interment_date_display = None
         self.__interment_date_iso = None
+
         # DEATH
         self.__death_date_month_raw = None
         self.__death_date_month_display = None
@@ -240,11 +350,9 @@ class Interment:
         self.__marital_status_raw = None
         self.__marital_status = 'Not recorded'
         self.__marital_status_comments = ''
-
         self.__marital_status_married_raw = None
         self.__marital_status_married = 'Not recorded'
         self.__marital_status_married_comments = ''
-
         self.__marital_status_single_raw = None
         self.__marital_status_single = 'Not recorded'
         self.__marital_status_single_comments = ''
@@ -253,6 +361,9 @@ class Interment:
         self.__cause_of_death_raw = None
         self.__cause_of_death_display = None
         self.__cause_of_death_comments = ''
+        self.cause_of_death_transcribed_es_name = 'cause_of_death_transcribed'
+        self.cause_of_death_transcribed_es_type = 'text'
+        self.cause_of_death_transcribed_es_keyword = True
 
         # UNDERTAKER
         self.__undertaker_raw = None

@@ -43,7 +43,7 @@ function renderItem(res, triggerClickAnalytics) {
     let image_thumb = "/registry/300/Volume 1_0235.jpg";
     let image_url = "https://www.green-wood.com/scans/Volume " +
         getNestedValue(res, "registry_volume") +
-        "/" + getNestedValue(res, "image_filename") +
+        "/" + getNestedValue(res, "registry_image") +
         ".jpg";
     let birth_place_url = '';
     let birth_place_id = getNestedValue(res, 'birth_geo_place_id');
@@ -62,25 +62,23 @@ function renderItem(res, triggerClickAnalytics) {
             getNestedValue(res, 'residence_geo_formatted_address') + "&query_place_id=" +
             getNestedValue(res, 'residence_geo_place_id');
     }
-    let title = getNestedValue(res,"name_full");
-    let death_place = getNestedValue(res,"death_place_full");
-    let death_cause = getNestedValue(res,"cause_of_death");
-    let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
+    let title = getNestedValue(res,"name_display");
+    // let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
     // remove array's square brackets for display
-    tags = tags.substring(1, tags.length-1);
+    // tags = tags.substring(1, tags.length-1);
     return (
         <Row onClick={triggerClickAnalytics} type="flex" gutter={16} key={res._id} style={{margin:'20px auto',borderBottom:'1px solid #ededed'}}>
             <Col span={image_url ? 6 : 0}>
                 {image_url &&  <a href={image_url} target='registry_image'><img src={image_thumb} alt={title} width='200px;'/></a> }
             </Col>
             <Col span={image_url ? 18 : 24}>
-                <Descriptions title={title} column={1} size="small" bordered>
+                <Descriptions title={getNestedValue(res,"name_display")} column={1} size="small" bordered>
                     <Descriptions.Item label="Date of interment">{getNestedValue(res, "interment_date_display")}</Descriptions.Item>
                     <Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Place of death">{death_place}</Descriptions.Item>
-                    <Descriptions.Item label="Cause of death">{death_cause}</Descriptions.Item>
-                    <Descriptions.Item label="Place of residence">{ <a href={residence_place_url} target='gmap'>{getNestedValue(res, "residence_place_full")}</a>}</Descriptions.Item>
-                    <Descriptions.Item label="Place of birth">{ <a href={birth_place_url} target='gmap'>{getNestedValue(res, "birth_place_full")}</a> }</Descriptions.Item>
+                    <Descriptions.Item label="Place of death">{getNestedValue(res,"death_place_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Cause of death">{getNestedValue(res,"cause_of_death")}</Descriptions.Item>
+                    <Descriptions.Item label="Place of residence">{ <a href={residence_place_url} target='gmap'>{getNestedValue(res, "residence_place_geo_formatted_address")}</a>}</Descriptions.Item>
+                    <Descriptions.Item label="Place of birth">{ <a href={birth_place_url} target='gmap'>{getNestedValue(res, "birth_place_displayed")}</a> }</Descriptions.Item>
                     <Descriptions.Item label="Age">{getNestedValue(res,"age_full")}</Descriptions.Item>
                     <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
                     <Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
@@ -185,20 +183,20 @@ const App = () => (
                             sortBy="asc"
                             title="Volume"
                         />
-                        <MultiList
-                            componentId="registry_page_facet"
-                            dataField="registry_page.keyword"
-                            size={600}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            sortBy="asc"
-                            filterLabel="Registry page"
-                            showSearch={false}
-                            showCount={false}
-                            URLParams={true}
-                            title="Page"
-                        />
+                        {/*<MultiList*/}
+                        {/*    componentId="registry_page_facet"*/}
+                        {/*    dataField="registry_page.keyword"*/}
+                        {/*    size={600}*/}
+                        {/*    style={{*/}
+                        {/*        marginBottom: 20*/}
+                        {/*    }}*/}
+                        {/*    sortBy="asc"*/}
+                        {/*    filterLabel="Registry page"*/}
+                        {/*    showSearch={false}*/}
+                        {/*    showCount={false}*/}
+                        {/*    URLParams={true}*/}
+                        {/*    title="Page"*/}
+                        {/*/>*/}
                     </Panel>
                     <Panel header="Cause of death" key="1">
                         <MultiList
@@ -227,7 +225,7 @@ const App = () => (
                     <Panel header="Place of death" key="2" forceRender>
                         <MultiList
                             componentId="place_of_death_country_facet"
-                            dataField="death_country.keyword"
+                            dataField="death_place_geo_country_long.keyword"
                             showSearch={false}
                             size={100}
                             style={{
@@ -238,7 +236,7 @@ const App = () => (
                             showCheckbox/>
                         <MultiList
                             componentId="place_of_death_state_facet"
-                            dataField="death_state.keyword"
+                            dataField="death_place_geo_state_long.keyword"
                             showSearch={false}
                             size={100}
                             style={{
@@ -249,7 +247,7 @@ const App = () => (
                             showCheckbox/>
                         <MultiList
                             componentId="place_of_death_city_facet"
-                            dataField="death_city.keyword"
+                            dataField="death_place_geo_city.keyword"
                             showSearch={false}
                             size={100}
                             style={{
@@ -269,17 +267,17 @@ const App = () => (
                         {/*	title="Neighborhood"*/}
                         {/*	filterLabel="Place of death: neighborhood"*/}
                         {/*	showCheckbox/>*/}
-                        <MultiList
-                            componentId="place_of_death_hospital_facet"
-                            dataField="death_location.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="Location"
-                            filterLabel="Place of death: location"
-                            showCheckbox/>
+                        {/*<MultiList*/}
+                        {/*    componentId="place_of_death_hospital_facet"*/}
+                        {/*    dataField="death_location.keyword"*/}
+                        {/*    showSearch={false}*/}
+                        {/*    size={100}*/}
+                        {/*    style={{*/}
+                        {/*        marginBottom: 20*/}
+                        {/*    }}*/}
+                        {/*    title="Location"*/}
+                        {/*    filterLabel="Place of death: location"*/}
+                        {/*    showCheckbox/>*/}
                         {/*<ReactiveOpenStreetMap*/}
                         {/*	componentId="place_of_death"*/}
                         {/*	dataField="death_geo_location"*/}
@@ -317,7 +315,7 @@ const App = () => (
                     <Panel header="Place of residence" key="3">
                         <MultiList
                             componentId="place_of_residence_country_facet"
-                            dataField="residence_country.keyword"
+                            dataField="residence_place_geo_country_long.keyword"
                             showSearch={false}
                             size={100}
                             style={{
@@ -328,7 +326,7 @@ const App = () => (
                             showCheckbox/>
                         <MultiList
                             componentId="residence_state_facet"
-                            dataField="residence_state.keyword"
+                            dataField="residence_place_geo_state_long.keyword"
                             showSearch={false}
                             size={100}
                             style={{
@@ -339,7 +337,7 @@ const App = () => (
                             showCheckbox/>
                         <MultiList
                             componentId="residence_city_facet"
-                            dataField="residence_city.keyword"
+                            dataField="residence_place_geo_city.keyword"
                             showSearch={false}
                             size={100}
                             style={{
@@ -406,39 +404,39 @@ const App = () => (
                             title="City (Geocode)"
                             filterLabel="Place of birth: city (geocode)"
                             showCheckbox/>
-                        <MultiList
-                            componentId="place_of_birth_country_facet"
-                            dataField="birth_country.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="Country"
-                            filterLabel="Place of birth: country"
-                            showCheckbox/>
-                        <MultiList
-                            componentId="place_of_birth_state_facet"
-                            dataField="birth_state.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="State"
-                            filterLabel="Place of birth: state"
-                            showCheckbox/>
-                        <MultiList
-                            componentId="place_of_birth_city_facet"
-                            dataField="birth_city.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="City"
-                            filterLabel="Place of birth: city"
-                            showCheckbox/>
+                        {/*<MultiList*/}
+                        {/*    componentId="place_of_birth_country_facet"*/}
+                        {/*    dataField="birth_country.keyword"*/}
+                        {/*    showSearch={false}*/}
+                        {/*    size={100}*/}
+                        {/*    style={{*/}
+                        {/*        marginBottom: 20*/}
+                        {/*    }}*/}
+                        {/*    title="Country"*/}
+                        {/*    filterLabel="Place of birth: country"*/}
+                        {/*    showCheckbox/>*/}
+                        {/*<MultiList*/}
+                        {/*    componentId="place_of_birth_state_facet"*/}
+                        {/*    dataField="birth_state.keyword"*/}
+                        {/*    showSearch={false}*/}
+                        {/*    size={100}*/}
+                        {/*    style={{*/}
+                        {/*        marginBottom: 20*/}
+                        {/*    }}*/}
+                        {/*    title="State"*/}
+                        {/*    filterLabel="Place of birth: state"*/}
+                        {/*    showCheckbox/>*/}
+                        {/*<MultiList*/}
+                        {/*    componentId="place_of_birth_city_facet"*/}
+                        {/*    dataField="birth_city.keyword"*/}
+                        {/*    showSearch={false}*/}
+                        {/*    size={100}*/}
+                        {/*    style={{*/}
+                        {/*        marginBottom: 20*/}
+                        {/*    }}*/}
+                        {/*    title="City"*/}
+                        {/*    filterLabel="Place of birth: city"*/}
+                        {/*    showCheckbox/>*/}
                         {/*<ReactiveOpenStreetMap*/}
                         {/*	componentId="place_of_birth_map"*/}
                         {/*	dataField="birth_geo_location"*/}
@@ -481,7 +479,7 @@ const App = () => (
                     <Panel header="Date of death" key="7">
                         <DynamicRangeSlider
                             componentId="death_year_facet"
-                            dataField="death_year"
+                            dataField="death_date_year_transcribed"
                             rangeLabels={(min, max) => ({
                                 start: min,
                                 end: max,
@@ -501,7 +499,7 @@ const App = () => (
                     <Panel header="Date of interment" key="8">
                         <DynamicRangeSlider
                             componentId="interment_year_facet"
-                            dataField="interment_year"
+                            dataField="interment_date_year_transcribed"
                             rangeLabels={(min, max) => ({
                                 start: min,
                                 end: max,
@@ -579,8 +577,7 @@ const App = () => (
                         'name_last.search',
                         'name_first',
                         'name_first.keyword',
-                        'residence_place_full',
-                        'tags'
+                        'residence_place_geo_formatted_address'
                     ]}
                     debounce={0}
                     defaultValue={undefined}
