@@ -3,10 +3,19 @@
 import pandas as pd
 import json
 import ast
+import argparse
+import sys
 
-xslx_url = 'https://github.com/Green-Wood-Cemetery/burial-registry-search/blob/master/data/excel/output/Volume_33_processed.xlsx?raw=true'
+parser = argparse.ArgumentParser(description='Converts XLSX to Elasticsearch JSON')
+parser.add_argument('-url', type=str, help='spreadsheet url')
+parser.add_argument('-file', type=str, help='spreadsheet file')
+parser.add_argument('-vol', type=int, help='registry volume number')
+args = parser.parse_args()
 
-volume = 33
+# xslx_url = 'https://github.com/Green-Wood-Cemetery/burial-registry-search/blob/master/data/excel/output/Volume_33_processed.xlsx?raw=true'
+
+volume = args.vol
+
 # rename excel column headings to elasticsearch json values
 new_cols = [
     "interment_id",
@@ -115,7 +124,15 @@ new_cols = [
     "has_diagram"
 ]
 
-df = pd.read_excel(xslx_url, names=new_cols, usecols='A:CZ', keep_default_na=False)
+if args.url:
+    df = pd.read_excel(args.url, names=new_cols, usecols='A:CZ', keep_default_na=False)
+elif args.file:
+    df = pd.read_excel(args.file, names=new_cols, usecols='A:CZ', keep_default_na=False)
+else:
+    sys.exit("Please indicate input file or url.")
+
+# replace NaN with empty string
+df = df.fillna('')
 es_dict = df.to_dict(orient='records')
 
 # add cemetery and volume props
