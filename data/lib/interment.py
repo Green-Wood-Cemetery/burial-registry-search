@@ -222,7 +222,10 @@ class Interment:
         self.__interment_date_iso_comments = ''
         self.__interment_date_day_raw = None
         self.__interment_date_day_display = None
+        self.__interment_date_year_raw = None
         self.__interment_date_year = None
+        self.__interment_date_year_display = None
+        self.__interment_date_year_cached = None
         self.__interment_date_display = None
         self.__interment_date_iso = None
 
@@ -235,8 +238,10 @@ class Interment:
         self.__death_date_day_raw = None
         self.__death_date_day_display = None
         self.__death_date_day_full = None
+        self.__death_date_year_raw = None
         self.__death_date_year = None
         self.__death_date_display = None
+        self.__death_date_year_cached = None
         self.__death_date_iso = None
         self.__death_month_cached = None
 
@@ -415,9 +420,9 @@ class Interment:
         return self.__previous
 
     # REGISTRY PROPERTIES
-    def set_registry_image_filename_raw(self, value):
+    def set_registry_image_filename_raw(self, value, lookup_years):
         self.__registry_image_filename_raw = value
-        self.parse_registry_volume_page()
+        self.parse_registry_volume_page(lookup_years)
 
     def get_registry_image_filename_raw(self):
         return self.__registry_image_filename_raw
@@ -444,7 +449,7 @@ class Interment:
         return self.__registry_page
 
     # DATES: INTERMENT
-    def set_interment_date(self, month, day):
+    def set_interment_date(self, month, day, year):
         display_temp = ''
         previous_entry = self.__previous
 
@@ -474,6 +479,22 @@ class Interment:
                 self.__needs_review = True
                 self.__interment_date_comments = "Unable to parse interment day"
 
+        if year is not None and (isinstance(year, float) or str(year).isdigit()):
+            self.__interment_date_year_raw = year
+            self.__interment_date_year_display = year
+            self.__interment_date_year = year
+            self.__interment_date_year_cached = year
+        else:
+            if previous_entry is not None:
+                if previous_entry.get_interment_date_year_cached() is not None:
+                    self.__interment_date_year_cached = previous_entry.get_interment_date_year_cached()
+                if previous_entry.get_interment_date_year_display() is not None:
+                    self.__interment_date_year_display = previous_entry.get_interment_date_year_display()
+                    self.__interment_date_year = previous_entry.get_interment_date_year_display()
+            else:
+                self.__needs_review = True
+                self.__interment_date_comments = "Unable to parse interment year"
+
         # generate iso date
         if display_temp != '':
             if self.__interment_date_year is not None:
@@ -492,6 +513,15 @@ class Interment:
 
     def get_interment_date_year(self):
         return self.__interment_date_year
+
+    def get_interment_date_year_raw(self):
+        return self.__interment_date_year_raw
+
+    def get_interment_date_year_display(self):
+        return self.__interment_date_year_display
+
+    def get_interment_date_year_cached(self):
+        return self.__interment_date_year_cached
 
     def get_interment_date_display(self):
         return self.__interment_date_display
@@ -512,7 +542,7 @@ class Interment:
         return self.__interment_date_day_display
 
     # DATES: DEATH
-    def set_death_date(self, month, day):
+    def set_death_date(self, month, day, year):
         display_temp = ''
         previous_entry = self.__previous
 
@@ -521,6 +551,7 @@ class Interment:
             # fix strange month abbreviations
             month = re.sub('Jany', 'Jan', month, re.I)
             month = re.sub('Feby', 'Feb', month, re.I)
+            month = re.sub('Febuary', 'February', month, re.I)
             self.__death_date_month_display = month
             self.__death_month_cached = month
             display_temp += month + " "
@@ -558,6 +589,22 @@ class Interment:
                     self.__missing_death_date_comments = "No day of death - possibly a removal?"
                     # print('set missing death date comment')
 
+        if year is not None and (isinstance(year, float) or str(year).isdigit()):
+            self.__death_date_year_raw = year
+            self.__death_date_year_display = year
+            self.__death_date_year = year
+            self.__death_year_cached = year
+        else:
+            if previous_entry is not None:
+                if previous_entry.get_death_year_cached() is not None:
+                    self.__death_year_cached = previous_entry.get_death_year_cached()
+                if previous_entry.get_death_date_year_display() is not None:
+                    self.__death_date_year_display = previous_entry.get_death_date_year_display()
+                    self.__death_date_year = previous_entry.get_death_date_year_display()
+            else:
+                self.__needs_review = True
+                self.__death_date_comments = "Unable to parse death year"
+
         # generate iso date
         if display_temp != '':
             if self.__death_date_year is not None:
@@ -576,6 +623,12 @@ class Interment:
 
     def get_death_date_year(self):
         return self.__death_date_year
+
+    def get_death_date_year_display(self):
+        return self.__death_date_year_display
+
+    def get_death_year_cached(self):
+        return self.__death_year_cached
 
     def get_death_date_display(self):
         return self.__death_date_display
@@ -1833,7 +1886,7 @@ class Interment:
             print(e)
             return
 
-    def parse_registry_volume_page(self):
+    def parse_registry_volume_page(self, lookup_years):
         try:
             m = re.search(r'Volume\s+(\d+)_(\d+)', self.get_registry_image_filename_raw(), re.IGNORECASE)
             if m is None:
@@ -1846,8 +1899,10 @@ class Interment:
                 # normalize filename to match convention used on the image file server
                 self.__registry_image_filename = "Volume " + self.__registry_volume + "_" + self.__registry_page
 
-                self.determine_interment_year()
-                self.determine_death_year()
+                # no year columns from transcriber, lookup in dictionary
+                if lookup_years:
+                    self.determine_interment_year()
+                    self.determine_death_year()
 
                 # todo: check if image exists on server
                 self.__registry_image_link = "https://www.green-wood.com/scans/Volume%20" + m.group(1) + "/Volume%20" + m.group(1) + "_" + m.group(2) + ".jpg"

@@ -27,6 +27,7 @@ parser.add_argument('-sheet', type=str, help='worksheet to transform')
 parser.add_argument('-vol', type=int, help='registry volume number')
 parser.add_argument('-row_start', type=int, help='row to start parsing, skipping header rows')
 parser.add_argument('-marital_status_cols', type=int, help='number of columns used to indicate marital status')
+parser.add_argument('-lookup_years', type=str, help='set to "Y" if no interment or death year columns are available' )
 args = parser.parse_args()
 workbook = load_workbook(filename=args.input, data_only=True)
 
@@ -291,11 +292,19 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
 
     # if row[INTERMENT_ID] is not None and count < max:
     if count < max:
+        # lookup death and interment years if no columns are available
+        lookup_years = False
+        if args.lookup_years == 'Y':
+            lookup_years = True
         i = Interment()
         i.set_previous(previous)
         i.set_id(row[INTERMENT_ID])
-        i.set_registry_image_filename_raw(str(row[IMAGE_FILENAME]).strip())
-        i.set_interment_date(row[INTERMENT_MONTH], row[INTERMENT_DAY])
+        i.set_registry_image_filename_raw(str(row[IMAGE_FILENAME]).strip(), lookup_years)
+        # set death day next to last since "removal" status should be determined first
+        if lookup_years:
+            i.set_interment_date(row[INTERMENT_MONTH], row[INTERMENT_DAY], None)
+        else:
+            i.set_interment_date(row[INTERMENT_MONTH], row[INTERMENT_DAY], row[INTERMENT_YEAR])
         i.set_name_raw(row[NAME])
         i.set_burial_location_lot_raw(row[LOT_LOCATION])
         i.set_burial_location_grave_raw(row[GRAVE_LOCATION])
@@ -331,7 +340,10 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
         i.set_transcriber_requests_review(row[NEEDS_REVIEW])
 
         # set death day next to last since "removal" status should be determined first
-        i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY])
+        if lookup_years:
+            i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY], None)
+        else:
+            i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY], row[DEATH_YEAR])
 
         i.set_needs_review_comments()
 
