@@ -27,7 +27,8 @@ parser.add_argument('-sheet', type=str, help='worksheet to transform')
 parser.add_argument('-vol', type=int, help='registry volume number')
 parser.add_argument('-row_start', type=int, help='row to start parsing, skipping header rows')
 parser.add_argument('-marital_status_cols', type=int, help='number of columns used to indicate marital status')
-parser.add_argument('-lookup_years', type=str, help='set to "Y" if no interment or death year columns are available' )
+parser.add_argument('-lookup_years', type=str, help='set to "Y" if no interment or death year columns are available')
+parser.add_argument('-year_prefix', type=str, help='first two digits of year to prepend to any year abbreviations')
 args = parser.parse_args()
 workbook = load_workbook(filename=args.input, data_only=True)
 
@@ -154,6 +155,10 @@ else:
 # MAIN
 # =====================================================================================================================
 interments = []
+
+year_prefix = "19"
+if args.year_prefix:
+    year_prefix = args.year_prefix
 
 count = 2
 max = 999999
@@ -301,10 +306,18 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
         i.set_id(row[INTERMENT_ID])
         i.set_registry_image_filename_raw(str(row[IMAGE_FILENAME]).strip(), lookup_years)
         # set death day next to last since "removal" status should be determined first
+
+        # expand any year abbreviations
+        interment_year_transcribed = row[INTERMENT_YEAR]
+        if interment_year_transcribed is not None and (isinstance(interment_year_transcribed, float) or str(interment_year_transcribed).isdigit()):
+            if len(str(int(interment_year_transcribed))) == 2:
+                interment_year_transcribed = int(year_prefix + str(int(interment_year_transcribed)))
+
         if lookup_years:
             i.set_interment_date(row[INTERMENT_MONTH], row[INTERMENT_DAY], None)
         else:
-            i.set_interment_date(row[INTERMENT_MONTH], row[INTERMENT_DAY], row[INTERMENT_YEAR])
+            i.set_interment_date(row[INTERMENT_MONTH], row[INTERMENT_DAY], interment_year_transcribed)
+
         i.set_name_raw(row[NAME])
         i.set_burial_location_lot_raw(row[LOT_LOCATION])
         i.set_burial_location_grave_raw(row[GRAVE_LOCATION])
@@ -339,11 +352,17 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
         i.set_has_diagram(row[HAS_DIAGRAM])
         i.set_transcriber_requests_review(row[NEEDS_REVIEW])
 
+        # expand any year abbreviations
+        death_year_transcribed = row[DEATH_YEAR]
+        if death_year_transcribed is not None and (isinstance(death_year_transcribed, float) or str(death_year_transcribed).isdigit()):
+            if len(str(int(death_year_transcribed))) == 2:
+                death_year_transcribed = int(year_prefix + str(int(death_year_transcribed)))
+
         # set death day next to last since "removal" status should be determined first
         if lookup_years:
             i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY], None)
         else:
-            i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY], row[DEATH_YEAR])
+            i.set_death_date(row[DEATH_MONTH], row[DEATH_DAY], death_year_transcribed)
 
         i.set_needs_review_comments()
 
