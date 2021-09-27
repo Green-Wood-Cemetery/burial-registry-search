@@ -80,9 +80,12 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Place of birth">{ <a href={birth_place_url} target='gmap'>{getNestedValue(res, "birth_place_displayed")}</a> }</Descriptions.Item>
                     <Descriptions.Item label="Age">{getNestedValue(res,"age_display")}</Descriptions.Item>
                     <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
+                    <Descriptions.Item label="Gender (guess)">{getNestedValue(res,"gender_guess")}</Descriptions.Item>
                     <Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
                     <Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
                     <Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
+                    <Descriptions.Item label="Is lot owner?">{getNestedValue(res, "is_lot_owner")}</Descriptions.Item>
+                    <Descriptions.Item label="Registry volume">{getNestedValue(res, "registry_volume")}</Descriptions.Item>
                     <Descriptions.Item label="Interment ID">{getNestedValue(res, "interment_id")}</Descriptions.Item>
                     <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
                     {/*<Descriptions.Item label="Tags">{tags}</Descriptions.Item>*/}
@@ -567,9 +570,9 @@ const App = () => (
                     componentId="search"
                     componentType="DATASEARCH"
                     dataField={[
-                        'undertaker',
-                        'cause_of_death',
-                        'name_full',
+                        'undertaker_display',
+                        'cause_of_death_display',
+                        'name_display',
                         'name_last',
                         'name_last.autosuggest',
                         'name_last.english',

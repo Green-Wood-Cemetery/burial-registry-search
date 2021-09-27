@@ -12,6 +12,7 @@ import googlemaps
 from inflection import parameterize
 import pandas as pd
 from dotenv import load_dotenv
+import humanize
 
 load_dotenv()
 connection = sqlite3.connect("gender/gender.db")
@@ -862,9 +863,19 @@ class Interment:
                 elif value == 'ƒ District' or value == '" Ed' or value == '" ED' or value == '"Ed':
                     value = "Brooklyn Eastern District"
                 else:
-                    # complicated ditto, needs human review
-                    self.__death_place_comments = 'Unable to resolve ditto in death place'
-                    self.set_needs_review(True)
+
+                    if re.search(r'\d+\"\s+(st|ave|place)', value, re.IGNORECASE):
+                        # convert street numbers followed by double quotes to ordinals
+                        print("found street ord: " + value)
+                        value = re.sub(r'(\d+\")\s+',
+                                       lambda m: humanize.ordinal(m.group(1)[:-1]) + " ",
+                                       value,
+                                       re.IGNORECASE)
+                        print("street after: " + value)
+                    else:
+                        # complicated ditto, needs human review
+                        self.__death_place_comments = 'Unable to resolve ditto in death place'
+                        self.set_needs_review(True)
 
         # expand any abbreviations
         if value is not None:
@@ -1042,9 +1053,19 @@ class Interment:
             if re.search(r'^["\s]+$', value) or re.search(r"^Do$", value, re.IGNORECASE):
                 value = self.get_previous().get_residence_place_street_full()
             else:
-                # complicated ditto, needs human review
-                self.__residence_street_comments = 'Unable to resolve ditto in residence street'
-                self.set_needs_review(True)
+
+                if re.search(r'\d+\"\s+(st|ave|place)', value, re.IGNORECASE):
+                    # convert street numbers followed by double quotes to ordinals
+                    print("found street ord: " + value)
+                    value = re.sub(r'(\d+\")\s+',
+                                   lambda m: humanize.ordinal(m.group(1)[:-1]) + " ",
+                                   value,
+                                   re.IGNORECASE)
+                    print("street after: " + value)
+                else:
+                    # complicated ditto, needs human review
+                    self.__residence_street_comments = 'Unable to resolve ditto in residence street'
+                    self.set_needs_review(True)
 
         self.__residence_place_street_full = value
 
@@ -1623,10 +1644,21 @@ class Interment:
                 if self.get_previous().__remarks_display is not None and self.get_previous().__remarks_display != '':
                     self.__remarks_display = self.get_previous().__remarks_display
             else:
-                # complicated ditto, needs human review
-                self.__remarks_comments = 'Unable to resolve ditto in remarks'
-                self.__needs_review = True
-                self.__remarks_display = ''
+
+                if re.search(r'\d+\"\s+', value, re.IGNORECASE):
+                    # convert date followed by double quotes to ordinals
+                    print("found date ord: " + value)
+                    value = re.sub(r'(\d+\")\s+',
+                                   lambda m: humanize.ordinal(m.group(1)[:-1]) + " ",
+                                   value,
+                                   re.IGNORECASE)
+                    print("date after: " + value)
+                else:
+                    # complicated ditto, needs human review
+                    self.__remarks_comments = 'Unable to resolve ditto in remarks'
+                    self.__needs_review = True
+
+                self.__remarks_display = value
 
         elif value == '-':
             self.__remarks_display = ''
@@ -1783,17 +1815,18 @@ class Interment:
             self.__burial_location_grave_strike = " ".join(grave_strike_temp.split())
             self.__burial_location_grave = re.sub(r'\[.+\]', '', grave_raw).strip()
             if self.__burial_location_grave_strike != '' and self.__burial_location_grave_strike is not None:
-                if not self.contains_numbers(self.__burial_location_grave_strike):
+                if not self.contains_numbers(self.__burial_location_grave_strike) and \
+                        self.__burial_location_grave_strike != '-':
                     self.__burial_location_grave_strike_comments = "Grave location contains no numbers."
                     self.__needs_review = True
             if self.__burial_location_grave != '' and self.__burial_location_grave is not None:
-                if not self.contains_numbers(self.__burial_location_grave):
+                if not self.contains_numbers(self.__burial_location_grave) and self.__burial_location_grave != '-':
                     self.__burial_location_grave_comments = "Grave location contains no numbers."
                     self.__needs_review = True
         else:
             self.__burial_location_grave = grave_raw
             if self.__burial_location_grave != '' and self.__burial_location_grave is not None:
-                if not self.contains_numbers(self.__burial_location_grave):
+                if not self.contains_numbers(self.__burial_location_grave) and self.__burial_location_grave != '-':
                     self.__burial_location_grave_comments = "Grave location contains no numbers."
                     self.__needs_review = True
 
@@ -2095,4 +2128,3 @@ class Interment:
             return True
         except ValueError:
             return False
-

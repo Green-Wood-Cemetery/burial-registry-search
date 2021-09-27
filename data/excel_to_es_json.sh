@@ -17,3 +17,7 @@
 #python3 excel_to_es_json.py -file excel/output/Volume_33_processed.xlsx -vol 33 > json/greenwood-volume-33.json
 
 python3 excel_to_es_json.py -file excel/output/Volume_34_processed.xlsx -vol 34 > json/greenwood-volume-34.json
+python3 excel_to_es_json.py -file excel/output/Volume_38_processed.xlsx -vol 38 > json/greenwood-volume-38.json
+python3 excel_to_es_json.py -file excel/output/Volume_39_processed.xlsx -vol 39 > json/greenwood-volume-39.json
+python3 excel_to_es_json.py -file excel/output/Volume_40_processed.xlsx -vol 40 > json/greenwood-volume-40.json
+python3 excel_to_es_json.py -file excel/output/Volume_41_processed.xlsx -vol 41 > json/greenwood-volume-41.json
