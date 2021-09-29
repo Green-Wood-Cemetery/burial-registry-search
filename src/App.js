@@ -487,6 +487,7 @@ const App = () => (
                                 end: max,
                             })}
                             stepValue={1}
+                            tooltipTrigger={"always"}
                             showHistogram={true}
                             showFilter={true}
                             interval={2}
@@ -495,7 +496,7 @@ const App = () => (
                             }}
                             loader="Loading ..."
                             filterLabel="Death year range"
-                            includeNullValues
+                            URLParams={true}
                         />
                     </Panel>
                     <Panel header="Date of interment" key="8">
@@ -507,6 +508,7 @@ const App = () => (
                                 end: max,
                             })}
                             stepValue={1}
+                            tooltipTrigger={"always"}
                             showHistogram={true}
                             showFilter={true}
                             interval={2}
@@ -516,7 +518,7 @@ const App = () => (
                             loader="Loading ..."
                             filterLabel="Interment year range"
                             includeNullValues
-                            URLParams={false}
+                            URLParams={true}
                         />
                     </Panel>
                     {/*<DateRange*/}
@@ -550,6 +552,7 @@ const App = () => (
                                 }
                             )}
                             stepValue={1}
+                            tooltipTrigger={"always"}
                             showHistogram={true}
                             showFilter={true}
                             interval={2}
