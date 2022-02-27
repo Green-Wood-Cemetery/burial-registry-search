@@ -37,14 +37,13 @@ with open('dictionaries/death_year_ranges.json') as g:
 with open('dictionaries/place-abbrev.json') as g:
     place_abbrev_dict = json.load(g)
 
-do_geocode_birth = True
-do_geocode_residence = True
-do_geocode_death = True
+do_geocode_birth = False
+do_geocode_residence = False
+do_geocode_death = False
 cemetery = "Green-Wood Cemetery, Brooklyn, NY, USA"
 
-GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
-gmaps = googlemaps.Client(key=GOOGLE_API_KEY)
-
+# GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
+# gmaps = googlemaps.Client(key=GOOGLE_API_KEY)
 
 # static functions
 def get_geocode_dict():

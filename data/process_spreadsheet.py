@@ -346,7 +346,7 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
 
         i.set_death_place_raw(row[DEATH_LOCATION])
 
-        i.set_cause_of_death_raw(row[CAUSE_OF_DEATH])
+        i.set_cause_of_death_raw(str(row[CAUSE_OF_DEATH]))
         i.set_undertaker_raw(row[UNDERTAKER])
         i.set_remarks_raw(row[NOTES])
         i.set_has_diagram(row[HAS_DIAGRAM])
@@ -504,8 +504,9 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
         count += 1
 print(']')
 
-# hide most geocode fields
-for col in ['AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN',
+# hide all geocode fields
+for col in ['Y', 'BE', 'BW', 'BX',
+            'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN',
             'BG', 'BH', 'BI', 'BJ', 'BK', 'BL', 'BM', 'BN', 'BO', 'BP', 'BQ', 'BR', 'BS', 'BT',
             'BY', 'BZ', 'CA', 'CB', 'CC', 'CD', 'CE', 'CF', 'CG', 'CH', 'CI', 'CJ', 'CK', 'CL']:
     ws.column_dimensions[col].hidden = True
@@ -516,6 +517,10 @@ for col in ['AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'A
 
 # hide results of name parsing
 for col in ['J', 'K', 'L', 'M', 'N']:
+    ws.column_dimensions[col].hidden = True
+
+# hide gender guess
+for col in ['P']:
     ws.column_dimensions[col].hidden = True
 
 wb.save("excel/output/Volume_" + str(args.vol) + "_processed.xlsx")

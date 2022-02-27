@@ -1,0 +1,10 @@
+openpyxl
+argparse
+logging
+nameparser
+dateparser
+googlemaps
+inflection
+pandas
+python-dotenv
+humanize
