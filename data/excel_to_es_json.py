@@ -5,11 +5,13 @@ import json
 import ast
 import argparse
 import sys
+import datetime
 
 parser = argparse.ArgumentParser(description='Converts XLSX to Elasticsearch JSON')
 parser.add_argument('-url', type=str, help='spreadsheet url')
 parser.add_argument('-file', type=str, help='spreadsheet file')
 parser.add_argument('-vol', type=int, help='registry volume number')
+parser.add_argument('--geocode', action=argparse.BooleanOptionalAction, help='process geocoded locations')
 args = parser.parse_args()
 
 # xslx_url = 'https://github.com/Green-Wood-Cemetery/burial-registry-search/blob/master/data/excel/output/Volume_33_processed.xlsx?raw=true'
@@ -135,6 +137,15 @@ else:
 df = df.fillna('')
 es_dict = df.to_dict(orient='records')
 
+
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, z):
+        if isinstance(z, datetime.datetime):
+            return str(z)
+        else:
+            return super().default(z)
+
+
 # add cemetery and volume props
 for i in es_dict:
 
@@ -143,9 +154,10 @@ for i in es_dict:
     i["registry_volume"] = volume
 
     # convert lat/lon strings to json
-    i["residence_place_geo_location"] = ast.literal_eval(i["residence_place_geo_location"])
-    i["birth_place_geo_location"] = ast.literal_eval(i["birth_place_geo_location"])
-    i["death_place_geo_location"] = ast.literal_eval(i["death_place_geo_location"])
+    if args.geocode:
+        i["residence_place_geo_location"] = ast.literal_eval(i["residence_place_geo_location"])
+        i["birth_place_geo_location"] = ast.literal_eval(i["birth_place_geo_location"])
+        i["death_place_geo_location"] = ast.literal_eval(i["death_place_geo_location"])
 
     # convert empty values to numbers
     if i["age_years"] == "":
@@ -157,16 +169,24 @@ for i in es_dict:
     if i["age_hours"] == "":
         i["age_hours"] = 0
 
+    # todo: catch float that should be integer in reviewed spreadsheet
+    # "interment_id": 199623.0,
+    # "registry_image": "Volume 27_002",
+    # "interment_date_month_transcribed": "December",
+    # "interment_date_day_transcribed": 23.0,
+    # "interment_date_year_transcribed": 1879.0,
+
     if not i["has_diagram"]:
         i["has_diagram"] = False
 
-    if "death_place_geo_formatted_address_extra" in i:
-        del i["death_place_geo_formatted_address_extra"]
-    if "birth_geo_formatted_address_extra" in i:
-        del i["birth_geo_formatted_address_extra"]
-    if "residence_place_geo_formatted_address_extra" in i:
-        del i["residence_place_geo_formatted_address_extra"]
+    if args.geocode:
+        if "death_place_geo_formatted_address_extra" in i:
+            del i["death_place_geo_formatted_address_extra"]
+        if "birth_geo_formatted_address_extra" in i:
+            del i["birth_geo_formatted_address_extra"]
+        if "residence_place_geo_formatted_address_extra" in i:
+            del i["residence_place_geo_formatted_address_extra"]
 
 # dump and print json
-json_string = json.dumps(es_dict, indent=2, sort_keys=False)
+json_string = json.dumps(es_dict, indent=2, sort_keys=False, cls=DateTimeEncoder)
 print(json_string)
