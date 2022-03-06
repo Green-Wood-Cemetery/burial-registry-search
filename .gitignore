@@ -23,3 +23,5 @@ data/lib/__pycache__/
 venv/
 
 data/test.xlsx
+
+data/elasticsearch/

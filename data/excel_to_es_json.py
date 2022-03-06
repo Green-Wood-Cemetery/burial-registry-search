@@ -6,6 +6,9 @@ import ast
 import argparse
 import sys
 import datetime
+import re
+import logging
+import time
 
 parser = argparse.ArgumentParser(description='Converts XLSX to Elasticsearch JSON')
 parser.add_argument('-url', type=str, help='spreadsheet url')
@@ -14,7 +17,10 @@ parser.add_argument('-vol', type=int, help='registry volume number')
 parser.add_argument('--geocode', action=argparse.BooleanOptionalAction, help='process geocoded locations')
 args = parser.parse_args()
 
-# xslx_url = 'https://github.com/Green-Wood-Cemetery/burial-registry-search/blob/master/data/excel/output/Volume_33_processed.xlsx?raw=true'
+
+# logging config
+timestr = time.strftime("%Y%m%d-%H%M%S")
+logging.basicConfig(filename='logs/excel_to_es-volume-' + str(args.vol) + '-' + timestr + '.csv', filemode='a', format='%(message)s')
 
 volume = args.vol
 
@@ -169,12 +175,36 @@ for i in es_dict:
     if i["age_hours"] == "":
         i["age_hours"] = 0
 
-    # todo: catch float that should be integer in reviewed spreadsheet
-    # "interment_id": 199623.0,
-    # "registry_image": "Volume 27_002",
-    # "interment_date_month_transcribed": "December",
-    # "interment_date_day_transcribed": 23.0,
-    # "interment_date_year_transcribed": 1879.0,
+    # fix bad lot owner values
+    if i["is_lot_owner"] == 0:
+        i["is_lot_owner"] = False
+    if i["is_lot_owner"] == 1:
+        i["is_lot_owner"] = True
+
+    # fix bad has diagram values
+    if i["has_diagram"] == 0:
+        i["has_diagram"] = False
+    if i["has_diagram"] == 1:
+        i["has_diagram"] = True
+
+    # need to catch cases where the reviewer changes number types to float
+    # instead of integer when editing the spreadsheet
+    if isinstance(i["interment_id"], float):
+        i["interment_id"] = int(i["interment_id"])
+    if isinstance(i["interment_date_day_transcribed"], float):
+        i["interment_date_day_transcribed"] = int(i["interment_date_day_transcribed"])
+    if isinstance(i["interment_date_year_transcribed"], float):
+        i["interment_date_year_transcribed"] = int(i["interment_date_year_transcribed"])
+    if isinstance(i["age_years"], float):
+        i["age_years"] = int(i["age_years"])
+    if isinstance(i["age_months"], float):
+        i["age_months"] = int(i["age_months"])
+    if isinstance(i["age_days"], float):
+        i["age_days"] = int(i["age_days"])
+    if isinstance(i["age_hours"], float):
+        i["age_hours"] = int(i["age_hours"])
+    if isinstance(i["death_date_year_transcribed"], float):
+        i["death_date_year_transcribed"] = int(i["death_date_year_transcribed"])
 
     if not i["has_diagram"]:
         i["has_diagram"] = False
@@ -186,6 +216,21 @@ for i in es_dict:
             del i["birth_geo_formatted_address_extra"]
         if "residence_place_geo_formatted_address_extra" in i:
             del i["residence_place_geo_formatted_address_extra"]
+
+    # --- PARSE REGISTRY VOL AND PAGE
+    try:
+        m = re.search('[Vv]olume\s+(\d+)_(\d+)', i["registry_image"])
+        if m is None:
+            logging.warning("Unable to parse volume page: " + i["registry_image"])
+            exit()
+        # registry_volume = m.group(1)
+        registry_page = m.group(2)
+        i["registry_page"] = registry_page
+        # image_filename = "Volume " + registry_volume + "_" + registry_page
+        # todo: check if image exists on server
+    except re.error:
+        logging.warning("Unable to parse volume page: " + i["registry_image"])
+        exit()
 
 # dump and print json
 json_string = json.dumps(es_dict, indent=2, sort_keys=False, cls=DateTimeEncoder)

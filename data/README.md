@@ -2,6 +2,12 @@ The bash script grabs the google spreadsheet as a CSV file, converts it to JSON 
 
 ## Prerequisites
 
+### elasticsearch-loader
+
+see: [https://github.com/moshe/elasticsearch_loader](https://github.com/moshe/elasticsearch_loader)
+
+install: `pip3 install elasticsearch-loader`
+
 ### node
 
 ### npm

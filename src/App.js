@@ -45,23 +45,25 @@ function renderItem(res, triggerClickAnalytics) {
         getNestedValue(res, "registry_volume") +
         "/" + getNestedValue(res, "registry_image") +
         ".jpg";
-    let birth_place_url = '';
-    let birth_place_id = getNestedValue(res, 'birth_geo_place_id');
-    if (birth_place_id !== '') {
-        birth_place_url =
-            "https://www.google.com/maps/search/?api=1&query=" +
-            getNestedValue(res, 'birth_geo_formatted_address') + "&query_place_id=" +
-            getNestedValue(res, 'birth_geo_place_id');
-    }
 
-    let residence_place_url = '';
-    let residence_place_id = getNestedValue(res, 'residence_geo_place_id');
-    if (residence_place_id !== '') {
-        residence_place_url =
-            "https://www.google.com/maps/search/?api=1&query=" +
-            getNestedValue(res, 'residence_geo_formatted_address') + "&query_place_id=" +
-            getNestedValue(res, 'residence_place_geo_place_id');
-    }
+    // let birth_place_url = '';
+    // let birth_place_id = getNestedValue(res, 'birth_geo_place_id');
+    // if (birth_place_id !== '') {
+    //     birth_place_url =
+    //         "https://www.google.com/maps/search/?api=1&query=" +
+    //         getNestedValue(res, 'birth_geo_formatted_address') + "&query_place_id=" +
+    //         getNestedValue(res, 'birth_geo_place_id');
+    // }
+
+    // let residence_place_url = '';
+    // let residence_place_id = getNestedValue(res, 'residence_geo_place_id');
+    // if (residence_place_id !== '') {
+    //     residence_place_url =
+    //         "https://www.google.com/maps/search/?api=1&query=" +
+    //         getNestedValue(res, 'residence_geo_formatted_address') + "&query_place_id=" +
+    //         getNestedValue(res, 'residence_place_geo_place_id');
+    // }
+
     // let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
     // remove array's square brackets for display
     // tags = tags.substring(1, tags.length-1);
@@ -76,16 +78,18 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
                     <Descriptions.Item label="Place of death">{getNestedValue(res,"death_place_display")}</Descriptions.Item>
                     <Descriptions.Item label="Cause of death">{getNestedValue(res,"cause_of_death_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Place of residence">{ <a href={residence_place_url} target='gmap'>{getNestedValue(res, "residence_place_geo_formatted_address")}</a>}</Descriptions.Item>
-                    <Descriptions.Item label="Place of birth">{ <a href={birth_place_url} target='gmap'>{getNestedValue(res, "birth_place_displayed")}</a> }</Descriptions.Item>
+                    <Descriptions.Item label="Place of residence">{getNestedValue(res, "residence_place_street_display") }, &nbsp;
+                        {getNestedValue(res, "residence_place_city_display") }</Descriptions.Item>
+                    <Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place_displayed")}</Descriptions.Item>
                     <Descriptions.Item label="Age">{getNestedValue(res,"age_display")}</Descriptions.Item>
                     <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
                     <Descriptions.Item label="Gender (guess)">{getNestedValue(res,"gender_guess")}</Descriptions.Item>
-                    <Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>
+                    {/*<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>*/}
                     <Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
                     <Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
                     <Descriptions.Item label="Is lot owner?">{getNestedValue(res, "is_lot_owner")}</Descriptions.Item>
                     <Descriptions.Item label="Registry volume">{getNestedValue(res, "registry_volume")}</Descriptions.Item>
+                    <Descriptions.Item label="Registry page">{getNestedValue(res, "registry_page")}</Descriptions.Item>
                     <Descriptions.Item label="Interment ID">{getNestedValue(res, "interment_id")}</Descriptions.Item>
                     <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
                     {/*<Descriptions.Item label="Tags">{tags}</Descriptions.Item>*/}
@@ -212,6 +216,7 @@ const App = () => (
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
+
                     <Panel header="Undertaker" key="11">
                         <MultiList
                             componentId="undertaker_facet"
@@ -224,234 +229,49 @@ const App = () => (
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
-                    <Panel header="Place of death" key="2" forceRender>
+
+                    <Panel header="Place of death" key="2">
                         <MultiList
-                            componentId="place_of_death_country_facet"
-                            dataField="death_place_geo_country_long.keyword"
-                            showSearch={false}
+                            componentId="death_place_display_facet"
+                            dataField="death_place_display.keyword"
                             size={100}
                             style={{
                                 marginBottom: 20
                             }}
-                            title="Country"
-                            filterLabel="Place of death: country"
+                            title="Place of death"
+                            filterLabel="Place of death"
+                            URLParams={true}
                             showCheckbox/>
-                        <MultiList
-                            componentId="place_of_death_state_facet"
-                            dataField="death_place_geo_state_long.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="State"
-                            filterLabel="Place of death: state"
-                            showCheckbox/>
-                        <MultiList
-                            componentId="place_of_death_city_facet"
-                            dataField="death_place_geo_city.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="City"
-                            filterLabel="Place of death: city"
-                            showCheckbox/>
-                        {/*<MultiList*/}
-                        {/*	componentId="place_of_death_neighborhood_facet"*/}
-                        {/*	dataField="death_geo_neighborhood.keyword"*/}
-                        {/*	showSearch={false}*/}
-                        {/*	size={100}*/}
-                        {/*	style={{*/}
-                        {/*		marginBottom: 20*/}
-                        {/*	}}*/}
-                        {/*	title="Neighborhood"*/}
-                        {/*	filterLabel="Place of death: neighborhood"*/}
-                        {/*	showCheckbox/>*/}
-                        {/*<MultiList*/}
-                        {/*    componentId="place_of_death_hospital_facet"*/}
-                        {/*    dataField="death_location.keyword"*/}
-                        {/*    showSearch={false}*/}
-                        {/*    size={100}*/}
-                        {/*    style={{*/}
-                        {/*        marginBottom: 20*/}
-                        {/*    }}*/}
-                        {/*    title="Location"*/}
-                        {/*    filterLabel="Place of death: location"*/}
-                        {/*    showCheckbox/>*/}
-                        {/*<ReactiveOpenStreetMap*/}
-                        {/*	componentId="place_of_death"*/}
-                        {/*	dataField="death_geo_location"*/}
-                        {/*	title="Place of death"*/}
-                        {/*	size={1000}*/}
-                        {/*	autoCenter*/}
-                        {/*	style={{ height: '300px', width: '100%'}}*/}
-                        {/*	defaultZoom={2}*/}
-                        {/*	showSearchAsMove={false}*/}
-                        {/*	onPopoverClick={onPopoverClickPlaceOfDeath}*/}
-                        {/*	showMarkers={true}*/}
-                        {/*	// center={{ lat: 40.691265, lng: -73.9777743 }}*/}
-                        {/*/>*/}
-                        {/*<MultiList*/}
-                        {/*	componentId="place_of_death_facet"*/}
-                        {/*	dataField="place_of_death.keyword"*/}
-                        {/*	showSearch={false}*/}
-                        {/*	size={100}*/}
-                        {/*	style={{*/}
-                        {/*		marginBottom: 20*/}
-                        {/*	}}*/}
-                        {/*	title="Place of death"*/}
-                        {/*	filterLabel="Place of death"*/}
-                        {/*	showCheckbox/>*/}
-                        {/*<ReactiveGoogleMap*/}
-                        {/*	componentId="place_of_death"*/}
-                        {/*	dataField="death_location"*/}
-                        {/*	title="Place of death"*/}
-                        {/*	style={{ height: '300px', width: '100%'}}*/}
-                        {/*	zoom={25}*/}
-                        {/*	showSearchAsMove={false}*/}
-                        {/*	searchAsMove={false}*/}
-                        {/*/>*/}
                     </Panel>
+
                     <Panel header="Place of residence" key="3">
-                        <MultiList
-                            componentId="place_of_residence_country_facet"
-                            dataField="residence_place_geo_country_long.keyword"
-                            showSearch={false}
+                         <MultiList
+                            componentId="residence_place_city_display_facet"
+                            dataField="residence_place_city_display.keyword"
                             size={100}
                             style={{
                                 marginBottom: 20
                             }}
-                            title="Country"
-                            filterLabel="Place of residence: country"
+                            title="Place of residence"
+                            filterLabel="Place of residence"
+                            URLParams={true}
                             showCheckbox/>
-                        <MultiList
-                            componentId="residence_state_facet"
-                            dataField="residence_place_geo_state_long.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="State"
-                            filterLabel="State"
-                            showCheckbox/>
-                        <MultiList
-                            componentId="residence_city_facet"
-                            dataField="residence_place_geo_city.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="City"
-                            filterLabel="Residence: city"
-                            showCheckbox/>
-                        {/*<MultiList*/}
-                        {/*	componentId="residence_neighborhood_facet"*/}
-                        {/*	dataField="residence_geo_neighborhood.keyword"*/}
-                        {/*	showSearch={false}*/}
-                        {/*	size={100}*/}
-                        {/*	style={{*/}
-                        {/*		marginBottom: 20*/}
-                        {/*	}}*/}
-                        {/*	title="Neighborhood"*/}
-                        {/*	filterLabel="Residence: neighborhood"*/}
-                        {/*	showCheckbox/>*/}
-                        {/*<ReactiveOpenStreetMap*/}
-                        {/*	componentId="place_of_residence_map"*/}
-                        {/*	dataField="residence_geo_location"*/}
-                        {/*	title="Place of residence"*/}
-                        {/*	size={1000}*/}
-                        {/*	autoCenter*/}
-                        {/*	style={{ height: '300px', width: '100%'}}*/}
-                        {/*	defaultZoom={2}*/}
-                        {/*	showSearchAsMove={false}*/}
-                        {/*	onPopoverClick={onPopoverClickPlaceOfResidence}*/}
-                        {/*	showMarkers={true}*/}
-                        {/*/>*/}
                     </Panel>
+
                     <Panel header="Place of birth" key="4">
-                        <MultiList
-                            componentId="place_of_birth_geo_country_facet"
-                            dataField="birth_geo_country_long.keyword"
-                            showSearch={false}
+                         <MultiList
+                            componentId="birth_place_displayed_facet"
+                            dataField="birth_place_displayed.keyword"
                             size={100}
                             style={{
                                 marginBottom: 20
                             }}
-                            title="Country (Geocode)"
-                            filterLabel="Place of birth: country (geocode)"
+                            title="Place of birth"
+                            filterLabel="Place of birth"
+                            URLParams={true}
                             showCheckbox/>
-                        <MultiList
-                            componentId="place_of_birth_geo_state_facet"
-                            dataField="birth_geo_state_long.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="State (Geocode)"
-                            filterLabel="Place of birth: state (geocode)"
-                            showCheckbox/>
-                        <MultiList
-                            componentId="place_of_birth_geo_city_facet"
-                            dataField="birth_geo_city.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            title="City (Geocode)"
-                            filterLabel="Place of birth: city (geocode)"
-                            showCheckbox/>
-                        {/*<MultiList*/}
-                        {/*    componentId="place_of_birth_country_facet"*/}
-                        {/*    dataField="birth_country.keyword"*/}
-                        {/*    showSearch={false}*/}
-                        {/*    size={100}*/}
-                        {/*    style={{*/}
-                        {/*        marginBottom: 20*/}
-                        {/*    }}*/}
-                        {/*    title="Country"*/}
-                        {/*    filterLabel="Place of birth: country"*/}
-                        {/*    showCheckbox/>*/}
-                        {/*<MultiList*/}
-                        {/*    componentId="place_of_birth_state_facet"*/}
-                        {/*    dataField="birth_state.keyword"*/}
-                        {/*    showSearch={false}*/}
-                        {/*    size={100}*/}
-                        {/*    style={{*/}
-                        {/*        marginBottom: 20*/}
-                        {/*    }}*/}
-                        {/*    title="State"*/}
-                        {/*    filterLabel="Place of birth: state"*/}
-                        {/*    showCheckbox/>*/}
-                        {/*<MultiList*/}
-                        {/*    componentId="place_of_birth_city_facet"*/}
-                        {/*    dataField="birth_city.keyword"*/}
-                        {/*    showSearch={false}*/}
-                        {/*    size={100}*/}
-                        {/*    style={{*/}
-                        {/*        marginBottom: 20*/}
-                        {/*    }}*/}
-                        {/*    title="City"*/}
-                        {/*    filterLabel="Place of birth: city"*/}
-                        {/*    showCheckbox/>*/}
-                        {/*<ReactiveOpenStreetMap*/}
-                        {/*	componentId="place_of_birth_map"*/}
-                        {/*	dataField="birth_geo_location"*/}
-                        {/*	title="Place of birth"*/}
-                        {/*	size={1000}*/}
-                        {/*	autoCenter*/}
-                        {/*	style={{ height: '300px', width: '100%'}}*/}
-                        {/*	defaultZoom={2}*/}
-                        {/*	showSearchAsMove={false}*/}
-                        {/*	onPopoverClick={onPopoverClickPlaceOfBirth}*/}
-                        {/*	showMarkers={true}*/}
-                        {/*/>*/}
                     </Panel>
+
                     <Panel header="Marital status" key="5">
                         <MultiList
                             componentId="marital_status_facet"
@@ -582,7 +402,7 @@ const App = () => (
                         'name_last.search',
                         'name_first',
                         'name_first.keyword',
-                        'residence_place_geo_formatted_address'
+                        'birth_place_displayed',
                     ]}
                     debounce={0}
                     defaultValue={undefined}
@@ -600,7 +420,6 @@ const App = () => (
                     highlight={false}
                     highlightField={[
                         'surname',
-                        'late_residence_city',
                         'forename'
                     ]}
                     placeholder="Search"
@@ -626,32 +445,20 @@ const App = () => (
                             and: [
                                 'undertaker_facet',
                                 'death_cause_facet',
-                                'residence_city_facet',
                                 'death_date_facet',
                                 'death_year_facet',
                                 'interment_year_facet',
                                 'death_age_facet',
-                                'residence_state_facet',
-                                'place_of_death_facet',
                                 'marital_status_facet',
-                                'place_of_death_country_facet',
-                                'place_of_death_state_facet',
-                                'place_of_death_city_facet',
-                                'place_of_death_neighborhood_facet',
-                                'place_of_death_hospital_facet',
-                                'place_of_birth_country_facet',
-                                'place_of_birth_state_facet',
-                                'place_of_birth_city_facet',
-                                'place_of_residence_country_facet',
                                 'cemetery_facet',
                                 'search',
                                 'registry_volume_facet',
                                 'registry_page_facet',
                                 'idSearch',
                                 'gender_guess_facet',
-                                'place_of_birth_geo_country_facet',
-                                'place_of_birth_geo_state_facet',
-                                'place_of_birth_geo_city_facet'
+                                'death_place_display_facet',
+                                'residence_place_city_display_facet',
+                                'birth_place_displayed_facet'
                             ]
                         }}
                         renderItem={renderItem}

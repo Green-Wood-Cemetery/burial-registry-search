@@ -82,6 +82,7 @@ class Interment:
         self.es_fields.append({'name': 'interment_id', 'type': 'text', 'keywords': True})
         self.es_fields.append({'name': 'cemetery', 'type': 'text', 'keywords': True})
         self.es_fields.append({'name': 'registry_volume', 'type': 'long', 'keywords': True})
+        self.es_fields.append({'name': 'registry_page', 'type': 'text', 'keywords': True})
         self.es_fields.append({'name': 'registry_image', 'type': 'text', 'keywords': True})
         self.es_fields.append({'name': 'interment_date_month_transcribed', 'type': 'text', 'keywords': True})
         self.es_fields.append({'name': 'interment_date_day_transcribed', 'type': 'long', 'keywords': False})
