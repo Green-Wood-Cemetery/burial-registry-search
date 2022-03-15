@@ -23,13 +23,17 @@
 #python3 excel_to_es_json.py -file excel/output/Volume_41_processed.xlsx -vol 41 > json/greenwood-volume-41.json
 
 # process spreadsheets reviewed by Stacy
-# FAILED - too many columns, should be A-DC not A-DE python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_22_processed_SL_COMPLETE.xlsx -vol 22 > json/greenwood-volume-22.json
+# FAILED - too many columns, should be A-DC not A-DE
+# python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_22_processed_SL_COMPLETE.xlsx -vol 22 > json/greenwood-volume-22.json
+python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_22_processed_SL_COMPLETE_fixed.xlsx -vol 22 > json/greenwood-volume-22.json
 # SUCCESS
-python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_26_processed_SL_COMPLETE.xlsx -vol 26 > json/greenwood-volume-26.json
+# python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_26_processed_SL_COMPLETE.xlsx -vol 26 > json/greenwood-volume-26.json
 # SUCCESS
-python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_27_processed_SL_COMPLETE.xlsx -vol 27 > json/greenwood-volume-27.json
+# python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_27_processed_SL_COMPLETE.xlsx -vol 27 > json/greenwood-volume-27.json
 # SUCCESS
-python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_32_processed_SL_COMPLETE.xlsx -vol 32 > json/greenwood-volume-32.json
+# python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_32_processed_SL_COMPLETE.xlsx -vol 32 > json/greenwood-volume-32.json
 # SUCCESS
-python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_33_processed_SL_COMPLETE.xlsx -vol 33 > json/greenwood-volume-33.json
-# FAILED - too many columns, should be A-DC, not A-DD python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_38_processed_SL_COMPLETE.xlsx -vol 38 > json/greenwood-volume-38.json
+# python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_33_processed_SL_COMPLETE.xlsx -vol 33 > json/greenwood-volume-33.json
+# FAILED - too many columns, should be A-DC, not A-DD
+# python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_38_processed_SL_COMPLETE.xlsx -vol 38 > json/greenwood-volume-38.json
+# python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_38_processed_SL_COMPLETE_fixed.xlsx -vol 38 > json/greenwood-volume-38.json

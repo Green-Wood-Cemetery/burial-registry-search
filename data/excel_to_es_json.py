@@ -153,8 +153,10 @@ class DateTimeEncoder(json.JSONEncoder):
 
 
 # add cemetery and volume props
+row_count = 0
 for i in es_dict:
 
+    row_count = row_count + 1
     # add cemetery and volume props
     i["cemetery"] = "Green-Wood Cemetery, Brooklyn, NY, USA"
     i["registry_volume"] = volume
@@ -186,6 +188,22 @@ for i in es_dict:
         i["has_diagram"] = False
     if i["has_diagram"] == 1:
         i["has_diagram"] = True
+
+    # more boolean conversions...
+    if i["birth_geo_is_faulty"] == 0:
+        i["birth_geo_is_faulty"] = False
+    if i["birth_geo_is_faulty"] == 1:
+        i["birth_geo_is_faulty"] = True
+    if i["death_place_geo_is_faulty"] == 0:
+        i["death_place_geo_is_faulty"] = False
+    if i["death_place_geo_is_faulty"] == 1:
+        i["death_place_geo_is_faulty"] = True
+    if i["residence_place_geo_is_faulty"] == 0:
+        i["residence_place_geo_is_faulty"] = False
+    if i["residence_place_geo_is_faulty"] == 1:
+        i["residence_place_geo_is_faulty"] = True
+    if i["birth_geo_is_faulty"] == "UNKNOWN":
+        i["birth_geo_is_faulty"] = True
 
     # need to catch cases where the reviewer changes number types to float
     # instead of integer when editing the spreadsheet
@@ -221,16 +239,18 @@ for i in es_dict:
     try:
         m = re.search('[Vv]olume\s+(\d+)_(\d+)', i["registry_image"])
         if m is None:
-            logging.warning("Unable to parse volume page: " + i["registry_image"])
-            exit()
+            logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
+            # exit()
+            continue
         # registry_volume = m.group(1)
         registry_page = m.group(2)
         i["registry_page"] = registry_page
         # image_filename = "Volume " + registry_volume + "_" + registry_page
         # todo: check if image exists on server
     except re.error:
-        logging.warning("Unable to parse volume page: " + i["registry_image"])
-        exit()
+        logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
+        # exit()
+        continue
 
 # dump and print json
 json_string = json.dumps(es_dict, indent=2, sort_keys=False, cls=DateTimeEncoder)
