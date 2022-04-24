@@ -21,31 +21,52 @@
 #python3 process_spreadsheet.py -input 'excel/input/VOLUME_38 Final Data.xlsx' -vol 38 -sheet 'Volume38' -row_start 12 -marital_status_cols 1 -lookup_years N -year_prefix '18'
 #python3 process_spreadsheet.py -input 'excel/input/VOLUME_39 Final Data.xlsx' -vol 39 -sheet 'VOLUME 39' -row_start 5 -marital_status_cols 1 -lookup_years N -year_prefix '18'
 #python3 process_spreadsheet.py -input 'excel/input/VOLUME_40 Final Data.xlsx' -vol 40 -sheet 'Volume 40' -row_start 12 -marital_status_cols 1 -lookup_years N -year_prefix '18'
-#python3 process_spreadsheet.py -input 'excel/input/VOLUME_41 Final Data.xlsx' -vol 41 -sheet 'VOLUME 41' -row_start 5 -marital_status_cols 1 -lookup_years N -year_prefix '18'
+# python3 process_spreadsheet.py -input 'excel/input/VOLUME_41 Final Data.xlsx' -vol 41 -sheet 'VOLUME 41' -row_start 5 -marital_status_cols 1 -lookup_years N -year_prefix '18'
 
 
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_24 Final Data.xlsx' -vol 24 -sheet 'Volume 24' -row_start 3 -marital_status_cols 2 -lookup_years N -year_prefix '18'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_24 Final Data.xlsx' -vol 24 -sheet 'Volume 24' -row_start 3 -marital_status_cols 2 -lookup_years N -year_prefix '18'
 # FAILURE python3 process_spreadsheet.py -input 'excel/input/VOLUME_25 Final Data.xlsx' -vol 25 -sheet 'Volume 25' -row_start 59 -marital_status_cols 2 -lookup_years N -year_prefix '18'
-# FIXED python3 process_spreadsheet.py -input 'excel/input/VOLUME_25 Final Data_withHalfPageEndVol24.xlsx' -vol 25 -sheet 'Volume 25' -row_start 3 -marital_status_cols 2 -lookup_years N -year_prefix '18'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_35 Final Data.xlsx' -vol 35 -sheet 'Volume35' -row_start 5 -marital_status_cols 1 -lookup_years N -year_prefix '18'
-# FIXED python3 process_spreadsheet.py -input 'excel/input/VOLUME_36 Final Data.xlsx' -vol 36 -sheet 'Volume 36' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '18'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_37 Final Data.xlsx' -vol 37 -sheet 'Volume 37' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '18'
+# FIXED
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_25 Final Data_withHalfPageEndVol24.xlsx' -vol 25 -sheet 'Volume 25' -row_start 3 -marital_status_cols 2 -lookup_years N -year_prefix '18'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_35 Final Data.xlsx' -vol 35 -sheet 'Volume35' -row_start 5 -marital_status_cols 1 -lookup_years N -year_prefix '18'
+# FIXED
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_36 Final Data.xlsx' -vol 36 -sheet 'Volume 36' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '18'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_37 Final Data.xlsx' -vol 37 -sheet 'Volume 37' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '18'
 # VOL 42 spans 1899 - 1900
-# FIXED python3 process_spreadsheet.py -input 'excel/input/VOLUME_42 Final Data.xlsx' -vol 42 -sheet 'Volume 42' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '18'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_43 Final Data.xlsx' -vol 43 -sheet 'Volume 43' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_46 Final Data.xlsx' -vol 46 -sheet 'Volume46' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_47 Final Data.xlsx' -vol 47 -sheet 'VOLUME47' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# FIXED python3 process_spreadsheet.py -input 'excel/input/VOLUME_48 Final Data.xlsx' -vol 48 -sheet 'Volume48' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_49 Final Data.xlsx' -vol 49 -sheet 'Sheet1' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_50 Final Data.xlsx' -vol 50 -sheet 'Volume50' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_51 Final Data.xlsx' -vol 51 -sheet 'Volume 51' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_52 Final Data.xlsx' -vol 52 -sheet 'Volume52' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_53 Final Data.xlsx' -vol 53 -sheet 'Volume53' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_54 Final Data.xlsx' -vol 54 -sheet 'Volume 54' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# FIXED python3 process_spreadsheet.py -input 'excel/input/VOLUME_55 Final Data.xlsx' -vol 55 -sheet 'Volume 55' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_56 Final Data.xlsx' -vol 56 -sheet 'Volume 56' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# FIXED python3 process_spreadsheet.py -input 'excel/input/VOLUME_57 Final Data.xlsx' -vol 57 -sheet 'Volume 57' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_58 Final Data.xlsx' -vol 58 -sheet 'Volume 58' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
-# SUCCESS python3 process_spreadsheet.py -input 'excel/input/VOLUME_59 Final Data.xlsx' -vol 59 -sheet 'Sheet1' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# FIXED
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_42 Final Data.xlsx' -vol 42 -sheet 'Volume 42' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '18'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_43 Final Data.xlsx' -vol 43 -sheet 'Volume 43' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_46 Final Data.xlsx' -vol 46 -sheet 'Volume46' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_47 Final Data.xlsx' -vol 47 -sheet 'VOLUME47' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# FIXED
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_48 Final Data.xlsx' -vol 48 -sheet 'Volume48' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_49 Final Data.xlsx' -vol 49 -sheet 'Sheet1' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_50 Final Data.xlsx' -vol 50 -sheet 'Volume50' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_51 Final Data.xlsx' -vol 51 -sheet 'Volume 51' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_52 Final Data.xlsx' -vol 52 -sheet 'Volume52' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_53 Final Data.xlsx' -vol 53 -sheet 'Volume53' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_54 Final Data.xlsx' -vol 54 -sheet 'Volume 54' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# FIXED
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_55 Final Data.xlsx' -vol 55 -sheet 'Volume 55' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_56 Final Data.xlsx' -vol 56 -sheet 'Volume 56' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# FIXED
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_57 Final Data.xlsx' -vol 57 -sheet 'Volume 57' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_58 Final Data.xlsx' -vol 58 -sheet 'Volume 58' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+# SUCCESS
+python3 process_spreadsheet.py -input 'excel/input/VOLUME_59 Final Data.xlsx' -vol 59 -sheet 'Sheet1' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
 # FAILURE - several columns have wrong values - python3 process_spreadsheet.py -input 'excel/input/VOLUME_60 Final Data.xlsx' -vol 60 -sheet 'Volume60' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
 

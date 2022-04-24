@@ -164,6 +164,8 @@ count = 2
 max = 999999
 # Using the values_only because you want to return the cells' values
 
+_see_r_column_regex = re.compile(r'see r column', re.IGNORECASE)
+
 previous = Interment()
 
 wb = Workbook()
@@ -349,7 +351,12 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
         i.set_cause_of_death_raw(str(row[CAUSE_OF_DEATH]))
         i.set_undertaker_raw(row[UNDERTAKER])
         i.set_remarks_raw(row[NOTES])
+
         i.set_has_diagram(row[HAS_DIAGRAM])
+        # check if grave location has "see r column"
+        if bool(_see_r_column_regex.search(row[GRAVE_LOCATION])):
+            i.set_has_diagram('Diagram')
+
         i.set_transcriber_requests_review(row[NEEDS_REVIEW])
 
         # expand any year abbreviations
