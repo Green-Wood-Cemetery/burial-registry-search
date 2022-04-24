@@ -25,7 +25,7 @@
 # process spreadsheets reviewed by Stacy
 # FAILED - too many columns, should be A-DC not A-DE
 # python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_22_processed_SL_COMPLETE.xlsx -vol 22 > json/greenwood-volume-22.json
-python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_22_processed_SL_COMPLETE_fixed.xlsx -vol 22 > json/greenwood-volume-22.json
+# python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_22_processed_SL_COMPLETE_fixed.xlsx -vol 22 > json/greenwood-volume-22.json
 # SUCCESS
 # python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_26_processed_SL_COMPLETE.xlsx -vol 26 > json/greenwood-volume-26.json
 # SUCCESS
@@ -37,3 +37,12 @@ python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_22_processe
 # FAILED - too many columns, should be A-DC, not A-DD
 # python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_38_processed_SL_COMPLETE.xlsx -vol 38 > json/greenwood-volume-38.json
 # python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_38_processed_SL_COMPLETE_fixed.xlsx -vol 38 > json/greenwood-volume-38.json
+
+# Apr 24, 2022
+# removed the first two empty rows (no interment ids)
+# python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_29_processed_SL_COMPLETE.xlsx -vol 29 > json/greenwood-volume-29.json
+# removed the first empty row (no interment id)
+# python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_30_processed_SL_COMPLETE.xlsx -vol 30 > json/greenwood-volume-30.json
+# python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_34_processed_SL_COMPLETE.xlsx -vol 34 > json/greenwood-volume-34.json
+# python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_39_processed_SL_COMPLETE.xlsx -vol 39 > json/greenwood-volume-39.json
+python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_40_processed_SL_COMPLETE.xlsx -vol 40 > json/greenwood-volume-40.json
