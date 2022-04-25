@@ -83,15 +83,19 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place_displayed")}</Descriptions.Item>
                     <Descriptions.Item label="Age">{getNestedValue(res,"age_display")}</Descriptions.Item>
                     <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
-                    <Descriptions.Item label="Gender (guess)">{getNestedValue(res,"gender_guess")}</Descriptions.Item>
+                    {/*<Descriptions.Item label="Gender (guess)">{getNestedValue(res,"gender_guess")}</Descriptions.Item>*/}
                     {/*<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>*/}
-                    <Descriptions.Item label="Grave location">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
-                    <Descriptions.Item label="Grave lot number">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave location (current)">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave lot number (current)">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave location (previous)">{getNestedValue(res, "burial_location_grave_previous")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave lot number (previous)">{getNestedValue(res, "burial_location_lot_previous")}</Descriptions.Item>
                     <Descriptions.Item label="Is lot owner?">{getNestedValue(res, "is_lot_owner")}</Descriptions.Item>
                     <Descriptions.Item label="Registry volume">{getNestedValue(res, "registry_volume")}</Descriptions.Item>
                     <Descriptions.Item label="Registry page">{getNestedValue(res, "registry_page")}</Descriptions.Item>
                     <Descriptions.Item label="Interment ID">{getNestedValue(res, "interment_id")}</Descriptions.Item>
                     <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Remarks">{getNestedValue(res, "remarks_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Has diagram?">{getNestedValue(res, "has_diagram")}</Descriptions.Item>
                     {/*<Descriptions.Item label="Tags">{tags}</Descriptions.Item>*/}
                 </Descriptions>
 
@@ -285,19 +289,19 @@ const App = () => (
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
-                    <Panel header="Gender (guess based on first name)" key="6">
-                        <MultiList
-                            componentId="gender_guess_facet"
-                            dataField="gender_guess.keyword"
-                            showSearch={false}
-                            size={100}
-                            style={{
-                                marginBottom: 20
-                            }}
-                            filterLabel="Gender guess"
-                            URLParams={true}
-                            showCheckbox/>
-                    </Panel>
+                    {/*<Panel header="Gender (guess based on first name)" key="6">*/}
+                    {/*    <MultiList*/}
+                    {/*        componentId="gender_guess_facet"*/}
+                    {/*        dataField="gender_guess.keyword"*/}
+                    {/*        showSearch={false}*/}
+                    {/*        size={100}*/}
+                    {/*        style={{*/}
+                    {/*            marginBottom: 20*/}
+                    {/*        }}*/}
+                    {/*        filterLabel="Gender guess"*/}
+                    {/*        URLParams={true}*/}
+                    {/*        showCheckbox/>*/}
+                    {/*</Panel>*/}
                     <Panel header="Date of death" key="7">
                         <DynamicRangeSlider
                             componentId="death_year_facet"
