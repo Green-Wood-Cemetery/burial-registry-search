@@ -40,7 +40,7 @@ function getNestedValue(obj, path) {
 }
 
 function renderItem(res, triggerClickAnalytics) {
-    let image_thumb = "./registry/300/Volume 1_0235.jpg";
+    let image_thumb = "./registry/thumbnail.jpg";
     let image_url = "https://www.green-wood.com/scans/Volume " +
         getNestedValue(res, "registry_volume") +
         "/" + getNestedValue(res, "registry_image") +
