@@ -18,10 +18,6 @@ import {
 
 import 'antd/dist/antd.css';
 
-// import {
-// 	ReactiveGoogleMap,
-// 	ReactiveOpenStreetMap
-// } from '@appbaseio/reactivemaps';
 const { Panel } = Collapse;
 
 
@@ -46,23 +42,17 @@ function renderItem(res, triggerClickAnalytics) {
         "/" + getNestedValue(res, "registry_image") +
         ".jpg";
 
-    // let birth_place_url = '';
-    // let birth_place_id = getNestedValue(res, 'birth_geo_place_id');
-    // if (birth_place_id !== '') {
-    //     birth_place_url =
-    //         "https://www.google.com/maps/search/?api=1&query=" +
-    //         getNestedValue(res, 'birth_geo_formatted_address') + "&query_place_id=" +
-    //         getNestedValue(res, 'birth_geo_place_id');
-    // }
-
-    // let residence_place_url = '';
-    // let residence_place_id = getNestedValue(res, 'residence_geo_place_id');
-    // if (residence_place_id !== '') {
-    //     residence_place_url =
-    //         "https://www.google.com/maps/search/?api=1&query=" +
-    //         getNestedValue(res, 'residence_geo_formatted_address') + "&query_place_id=" +
-    //         getNestedValue(res, 'residence_place_geo_place_id');
-    // }
+    let residence_place_composed = '';
+    let residence_street = getNestedValue(res, "residence_place_street_display");
+    let residence_city = getNestedValue(res, "residence_place_city_display");
+    if (residence_street !== '') {
+        residence_place_composed += residence_street;
+        if (residence_city !== '') {
+            residence_place_composed += ', &nbsp;' + residence_city;
+        }
+    } else {
+        residence_place_composed = residence_city;
+    }
 
     // let tags =  getNestedValue(res, "tags").replace(/['"]+/g, '');
     // remove array's square brackets for display
@@ -78,13 +68,10 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
                     <Descriptions.Item label="Place of death">{getNestedValue(res,"death_place_display")}</Descriptions.Item>
                     <Descriptions.Item label="Cause of death">{getNestedValue(res,"cause_of_death_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Place of residence">{getNestedValue(res, "residence_place_street_display") }, &nbsp;
-                        {getNestedValue(res, "residence_place_city_display") }</Descriptions.Item>
+                    <Descriptions.Item label="Place of residence">{residence_place_composed}</Descriptions.Item>
                     <Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place_displayed")}</Descriptions.Item>
                     <Descriptions.Item label="Age">{getNestedValue(res,"age_display")}</Descriptions.Item>
                     <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
-                    {/*<Descriptions.Item label="Gender (guess)">{getNestedValue(res,"gender_guess")}</Descriptions.Item>*/}
-                    {/*<Descriptions.Item label="Cemetery">{getNestedValue(res,"cemetery")}</Descriptions.Item>*/}
                     <Descriptions.Item label="Grave location (current)">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
                     <Descriptions.Item label="Grave lot number (current)">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
                     <Descriptions.Item label="Grave location (previous)">{getNestedValue(res, "burial_location_grave_previous")}</Descriptions.Item>
@@ -96,7 +83,6 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
                     <Descriptions.Item label="Remarks">{getNestedValue(res, "remarks_display")}</Descriptions.Item>
                     <Descriptions.Item label="Has diagram?">{getNestedValue(res, "has_diagram")}</Descriptions.Item>
-                    {/*<Descriptions.Item label="Tags">{tags}</Descriptions.Item>*/}
                 </Descriptions>
 
                 {/*<Collapse ghost={true} defaultActiveKey={[]}>*/}
