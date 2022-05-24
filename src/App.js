@@ -64,25 +64,25 @@ function renderItem(res, triggerClickAnalytics) {
             </Col>
             <Col span={image_url ? 18 : 24}>
                 <Descriptions title={getNestedValue(res,"name_display")} column={1} size="small" bordered>
-                    <Descriptions.Item label="Date of interment">{getNestedValue(res, "interment_date_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Birthplace">{getNestedValue(res, "birth_place_displayed")}</Descriptions.Item>
+                    <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
+                    <Descriptions.Item label="Age at death">{getNestedValue(res,"age_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Late residence">{residence_place_composed}</Descriptions.Item>
                     <Descriptions.Item label="Place of death">{getNestedValue(res,"death_place_display")}</Descriptions.Item>
                     <Descriptions.Item label="Cause of death">{getNestedValue(res,"cause_of_death_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Place of residence">{residence_place_composed}</Descriptions.Item>
-                    <Descriptions.Item label="Place of birth">{getNestedValue(res, "birth_place_displayed")}</Descriptions.Item>
-                    <Descriptions.Item label="Age">{getNestedValue(res,"age_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
-                    <Descriptions.Item label="Grave location (current)">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
-                    <Descriptions.Item label="Grave lot number (current)">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
-                    <Descriptions.Item label="Grave location (previous)">{getNestedValue(res, "burial_location_grave_previous")}</Descriptions.Item>
-                    <Descriptions.Item label="Grave lot number (previous)">{getNestedValue(res, "burial_location_lot_previous")}</Descriptions.Item>
-                    <Descriptions.Item label="Is lot owner?">{getNestedValue(res, "is_lot_owner")}</Descriptions.Item>
-                    <Descriptions.Item label="Registry volume">{getNestedValue(res, "registry_volume")}</Descriptions.Item>
-                    <Descriptions.Item label="Registry page">{getNestedValue(res, "registry_page")}</Descriptions.Item>
-                    <Descriptions.Item label="Interment ID">{getNestedValue(res, "interment_id")}</Descriptions.Item>
-                    <Descriptions.Item label="Undertaker">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Remarks">{getNestedValue(res, "remarks_display")}</Descriptions.Item>
-                    <Descriptions.Item label="Has diagram?">{getNestedValue(res, "has_diagram")}</Descriptions.Item>
+                    <Descriptions.Item label="Date of death">{getNestedValue(res, "death_date_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Date of interment">{getNestedValue(res, "interment_date_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Lot number (of current burial site)">{getNestedValue(res, "burial_location_lot_current")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave number (of current burial site)">{getNestedValue(res, "burial_location_grave_current")}</Descriptions.Item>
+                    <Descriptions.Item label="Lot number (of previous burial site)">{getNestedValue(res, "burial_location_lot_previous")}</Descriptions.Item>
+                    <Descriptions.Item label="Grave number (of previous burial site)">{getNestedValue(res, "burial_location_grave_previous")}</Descriptions.Item>
+                    <Descriptions.Item label="Diagram available (see digital image)">{getNestedValue(res, "has_diagram")}</Descriptions.Item>
+                    <Descriptions.Item label="Lot owner?">{getNestedValue(res, "is_lot_owner")}</Descriptions.Item>
+                    <Descriptions.Item label="Undertaker / Funeral Director">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Notes & Remarks">{getNestedValue(res, "remarks_display")}</Descriptions.Item>
+                    <Descriptions.Item label="Burial Registry Volume">{getNestedValue(res, "registry_volume")}</Descriptions.Item>
+                    <Descriptions.Item label="Burial Registry Page">{getNestedValue(res, "registry_page")}</Descriptions.Item>
+                    <Descriptions.Item label="Interment Number">{getNestedValue(res, "interment_id")}</Descriptions.Item>
                 </Descriptions>
 
                 {/*<Collapse ghost={true} defaultActiveKey={[]}>*/}

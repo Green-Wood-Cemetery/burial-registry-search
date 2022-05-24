@@ -6,8 +6,7 @@
   "author": "bmckinney",
   "license": "Apache-2.0",
   "dependencies": {
-    "@appbaseio/reactivemaps": "3.0.0-beta.11",
-    "@appbaseio/reactivesearch": "3.24.1",
+    "@appbaseio/reactivesearch": "^3.30.2",
     "@mrodrig/json-2-csv-cli": "^3.7.12",
     "antd": "^4.4.2",
     "dotenv": "^8.2.0",
