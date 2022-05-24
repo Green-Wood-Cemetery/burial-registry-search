@@ -142,11 +142,11 @@ const App = () => (
                     {/*		showSearch={false}*/}
                     {/*		showCheckbox/>*/}
                     {/*</Panel>*/}
-                    <Panel header="Registry" key="10">
+                    <Panel header="Burial registry" key="10">
                         <DataSearch
                             autosuggest={false}
                             componentId="idSearch"
-                            filterLabel={"Interment ID"}
+                            filterLabel={"Interment Number"}
                             componentType="DATASEARCH"
                             dataField={['interment_id']}
                             debounce={0}
@@ -154,7 +154,7 @@ const App = () => (
                             fieldWeights={[1]}
                             fuzziness={0}
                             highlight={false}
-                            placeholder="Search Interment IDs"
+                            placeholder="Search interment numbers"
                             queryFormat="and"
                             showFilter={true}
                             size={10}
@@ -172,7 +172,7 @@ const App = () => (
                             style={{
                                 marginBottom: 20
                             }}
-                            filterLabel="Registry volume"
+                            filterLabel="Burial registry volume"
                             showSearch={false}
                             showCheckbox
                             URLParams={true}
@@ -207,7 +207,7 @@ const App = () => (
                             showCheckbox/>
                     </Panel>
 
-                    <Panel header="Undertaker" key="11">
+                    <Panel header="Undertaker / Funeral Director" key="11">
                         <MultiList
                             componentId="undertaker_facet"
                             dataField="undertaker_display.keyword"
@@ -215,7 +215,7 @@ const App = () => (
                             style={{
                                 marginBottom: 20
                             }}
-                            filterLabel="Undertaker"
+                            filterLabel="Undertaker / Funeral Director"
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
@@ -234,7 +234,7 @@ const App = () => (
                             showCheckbox/>
                     </Panel>
 
-                    <Panel header="Place of residence" key="3">
+                    <Panel header="Late residence" key="3">
                          <MultiList
                             componentId="residence_place_city_display_facet"
                             dataField="residence_place_city_display.keyword"
@@ -242,13 +242,13 @@ const App = () => (
                             style={{
                                 marginBottom: 20
                             }}
-                            title="Place of residence"
-                            filterLabel="Place of residence"
+                            title="Late residence"
+                            filterLabel="Late residence"
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
 
-                    <Panel header="Place of birth" key="4">
+                    <Panel header="Birthplace" key="4">
                          <MultiList
                             componentId="birth_place_displayed_facet"
                             dataField="birth_place_displayed.keyword"
@@ -256,8 +256,8 @@ const App = () => (
                             style={{
                                 marginBottom: 20
                             }}
-                            title="Place of birth"
-                            filterLabel="Place of birth"
+                            title="Birthplace"
+                            filterLabel="Birthplace"
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
@@ -351,7 +351,7 @@ const App = () => (
                     {/*		marginBottom: 20*/}
                     {/*	}}*/}
                     {/*/>*/}
-                    <Panel header="Age" key="9">
+                    <Panel header="Age at death" key="9">
                         <DynamicRangeSlider
                             componentId="death_age_facet"
                             dataField="age_years"
