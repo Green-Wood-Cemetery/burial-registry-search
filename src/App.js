@@ -37,7 +37,13 @@ function getNestedValue(obj, path) {
 
 function renderItem(res, triggerClickAnalytics) {
     let image_thumb = "./registry/thumbnail.jpg";
-    let image_url = "https://www.green-wood.com/scans/Volume " +
+    // let image_url = "https://www.green-wood.com/scans/Volume " +
+    //     getNestedValue(res, "registry_volume") +
+    //     "/" + getNestedValue(res, "registry_image") +
+    //     ".jpg";
+    let  image_url = null;
+
+    let registry_page_url = "https://www.green-wood.com/scans/Volume " +
         getNestedValue(res, "registry_volume") +
         "/" + getNestedValue(res, "registry_image") +
         ".jpg";
@@ -48,7 +54,7 @@ function renderItem(res, triggerClickAnalytics) {
     if (residence_street !== '') {
         residence_place_composed += residence_street;
         if (residence_city !== '') {
-            residence_place_composed += ', &nbsp;' + residence_city;
+            residence_place_composed += ', ' + residence_city;
         }
     } else {
         residence_place_composed = residence_city;
@@ -63,7 +69,12 @@ function renderItem(res, triggerClickAnalytics) {
                 {image_url &&  <a href={image_url} target='registry_image'><img src={image_thumb} alt={getNestedValue(res,"name_display")} width='200px;'/></a> }
             </Col>
             <Col span={image_url ? 18 : 24}>
-                <Descriptions title={getNestedValue(res,"name_display")} column={1} size="small" bordered>
+                <Descriptions
+                    title={getNestedValue(res,"name_display")}
+                    column={{
+                        sm: 1
+                    }}
+                    bordered>
                     <Descriptions.Item label="Birthplace">{getNestedValue(res, "birth_place_displayed")}</Descriptions.Item>
                     <Descriptions.Item label="Marital status">{getNestedValue(res,"marital_status")}</Descriptions.Item>
                     <Descriptions.Item label="Age at death">{getNestedValue(res,"age_display")}</Descriptions.Item>
@@ -81,7 +92,7 @@ function renderItem(res, triggerClickAnalytics) {
                     <Descriptions.Item label="Undertaker / Funeral Director">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
                     <Descriptions.Item label="Notes & Remarks">{getNestedValue(res, "remarks_display")}</Descriptions.Item>
                     <Descriptions.Item label="Burial Registry Volume">{getNestedValue(res, "registry_volume")}</Descriptions.Item>
-                    <Descriptions.Item label="Burial Registry Page">{getNestedValue(res, "registry_page")}</Descriptions.Item>
+                    <Descriptions.Item label="Burial Registry Page">{<a href={registry_page_url} target='registry_image'>{getNestedValue(res, "registry_page")} - click to view digital image in a new tab</a>}</Descriptions.Item>
                     <Descriptions.Item label="Interment Number">{getNestedValue(res, "interment_id")}</Descriptions.Item>
                 </Descriptions>
 
