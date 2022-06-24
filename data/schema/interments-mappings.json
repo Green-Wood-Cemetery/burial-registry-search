@@ -175,6 +175,15 @@
           }
         }
       },
+      "burial_location_lot_previous": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
       "burial_location_grave_transcribed": {
         "type": "text",
         "fields": {
