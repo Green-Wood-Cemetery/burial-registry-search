@@ -157,8 +157,8 @@ function renderItem(res, triggerClickAnalytics) {
                             { getNestedValue(res, "undertaker_display").length > 0 && (
                                 <Descriptions.Item label="Undertaker / Funeral Director">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
                             )}
-                            { getNestedValue(res, "undertaker_display").length > 0 && (
-                                <Descriptions.Item label="Notes & Remarks">{getNestedValue(res, "undertaker_display")}</Descriptions.Item>
+                            { getNestedValue(res, "remarks_display").length > 0 && (
+                                <Descriptions.Item label="Notes & Remarks">{getNestedValue(res, "remarks_display")}</Descriptions.Item>
                             )}
                             { getNestedValue(res, "registry_volume").length > 0 && (
                                 <Descriptions.Item label="Burial Registry Volume">{getNestedValue(res, "registry_volume")}</Descriptions.Item>
@@ -563,6 +563,7 @@ const App = () => {
                                 "death_place_transcribed",
                                 "death_date_display",
                                 "death_date_iso",
+                                "interment_date_display",
                                 "interment_date_iso",
                                 "cause_of_death_display",
                                 "undertaker_transcribed",
