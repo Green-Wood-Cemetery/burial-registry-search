@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
     DataSearch,
@@ -14,8 +14,8 @@ import {
     Collapse,
     Descriptions,
     Row,
-    Drawer,
-    Button,
+    // Drawer,
+    // Button,
     Tooltip,
 } from 'antd';
 
@@ -225,15 +225,15 @@ const INDEX = process.env.REACT_APP_ES_INDEX;
 
 const App = () => {
 
-    const [visible, setVisible] = useState(false);
-
-    const showDrawer = () => {
-      setVisible(true);
-    };
-
-    const onClose = () => {
-        setVisible(false);
-    };
+    // const [visible, setVisible] = useState(false);
+    //
+    // const showDrawer = () => {
+    //   setVisible(true);
+    // };
+    //
+    // const onClose = () => {
+    //     setVisible(false);
+    // };
 
     return (
             <ReactiveBase
@@ -244,14 +244,18 @@ const App = () => {
                 // enableAppbase={true}
             >
 
-                <Drawer
-                    id="filters"
-                    title="Search Filters"
-                    onClose={onClose}
-                    placement="left"
-                    width={378}
-                    visible={visible}
-                >
+            {/*<Drawer*/}
+            {/*    id="filters"*/}
+            {/*    title="Search Filters"*/}
+            {/*    onClose={onClose}*/}
+            {/*    placement="left"*/}
+            {/*    width={378}*/}
+            {/*    visible={visible}*/}
+            {/*>*/}
+
+            <Row gutter={16} style={{ padding: 20 }}>
+            <Col>
+
                 <Collapse defaultActiveKey={['33']}>
 
                     {/*<Panel header="Cemetery" key="8">*/}
@@ -325,12 +329,13 @@ const App = () => {
                          <MultiList
                             componentId="birth_place_displayed_facet"
                             dataField="birth_place_displayed.keyword"
-                            size={100}
+                            size={500}
                             style={{
                                 marginBottom: 20
                             }}
                             title="Birthplace"
                             filterLabel="Birthplace"
+                            sortBy="asc"
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
@@ -378,12 +383,13 @@ const App = () => {
                          <MultiList
                             componentId="residence_place_city_display_facet"
                             dataField="residence_place_city_display.keyword"
-                            size={100}
+                            size={500}
                             style={{
                                 marginBottom: 20
                             }}
                             title="Late residence"
                             filterLabel="Late residence"
+                            sortBy="asc"
                             URLParams={true}
                             showCheckbox/>
                     </Panel>
@@ -392,13 +398,14 @@ const App = () => {
                         <MultiList
                             componentId="death_place_display_facet"
                             dataField="death_place_display.keyword"
-                            size={100}
+                            size={500}
                             style={{
                                 marginBottom: 20
                             }}
                             title="Place of death"
                             filterLabel="Place of death"
                             URLParams={true}
+                            sortBy="asc"
                             showCheckbox/>
                     </Panel>
 
@@ -538,8 +545,10 @@ const App = () => {
                         {/*/>*/}
                     </Panel>
                 </Collapse>
-                </Drawer>
+            </Col>
 
+            {/*</Drawer>*/}
+            <Col span={16}>
                        <DataSearch
                             autosuggest={false}
                             componentId="search"
@@ -619,15 +628,15 @@ const App = () => {
                             }}
                             URLParams={false}
                         />
-                        <Button
-                            type="primary"
-                            onClick={showDrawer}
-                            style={{
-                                marginBottom: 10
-                            }}
-                        >
-                            Filters
-                        </Button>
+                        {/*<Button*/}
+                        {/*    type="primary"*/}
+                        {/*    onClick={showDrawer}*/}
+                        {/*    style={{*/}
+                        {/*        marginBottom: 10*/}
+                        {/*    }}*/}
+                        {/*>*/}
+                        {/*    Filters*/}
+                        {/*</Button>*/}
 
                         <SelectedFilters/>
                         <div id="result">
@@ -766,6 +775,8 @@ const App = () => {
                                 ]}
                             />
                         </div>
+            </Col>
+            </Row>
 
             </ReactiveBase>
     );
