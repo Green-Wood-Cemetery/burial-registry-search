@@ -254,7 +254,7 @@ const App = () => {
             {/*>*/}
 
             <Row gutter={16} style={{ padding: 20 }}>
-            <Col>
+            <Col span={8} style={{marginTop: 20}}>
 
                 <Collapse defaultActiveKey={['33']}>
 
@@ -624,7 +624,7 @@ const App = () => {
                                 marginBottom: 10,
                                 marginRight: 12,
                                 display: 'inline-block',
-                                width: '75%'
+                                width: '100%'
                             }}
                             URLParams={false}
                         />
