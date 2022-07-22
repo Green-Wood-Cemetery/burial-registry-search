@@ -45,4 +45,11 @@
 # python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_30_processed_SL_COMPLETE.xlsx -vol 30 > json/greenwood-volume-30.json
 # python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_34_processed_SL_COMPLETE.xlsx -vol 34 > json/greenwood-volume-34.json
 # python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_39_processed_SL_COMPLETE.xlsx -vol 39 > json/greenwood-volume-39.json
+# python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_40_processed_SL_COMPLETE.xlsx -vol 40 > json/greenwood-volume-40.json
+
+# July 22, 2022
+# fixes bad year data throughout
+#python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_27_processed_SL_COMPLETE.xlsx -vol 27 > json/greenwood-volume-27.json
+#python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_33_processed_SL_COMPLETE.xlsx -vol 33 > json/greenwood-volume-33.json
+#python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_38_processed_SL_COMPLETE_fixed.xlsx -vol 38 > json/greenwood-volume-38.json
 python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_40_processed_SL_COMPLETE.xlsx -vol 40 > json/greenwood-volume-40.json
