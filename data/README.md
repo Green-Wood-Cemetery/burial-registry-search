@@ -4,6 +4,8 @@
 
 *Scenario*: You've just signed up with an Elasticsearch hosting company and have created a new cluster. Next, you want to create a new index with all of the mappings required to start importing data.
 
+**Note**: the most current mapping can be found [here](https://github.com/Green-Wood-Cemetery/burial-registry-search/blob/master/data/schema/interments-mappings.json).
+
 Here is the curl command that will create the index with the required mappings:
 
 ```
