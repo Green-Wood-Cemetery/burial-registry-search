@@ -1213,3 +1213,22 @@ curl -X "PUT" "https://greenwood-kstyate-arc.searchbase.io/interments" \
   }
 }'
 ```
+## Delete an entire registry volume from the search index
+
+*Scenario*: You've made significant modifications to a registry volume and want to update it. The first step is to delete the registry volume from the search index. After that, you will upload the new and updated data. 
+
+Here is the curl call to remove all registry data for volume 27:
+
+```
+## delete all documents for a particular registry volume
+curl -X "POST" "https://greenwood-kstyate-arc.searchbase.io/interments/_delete_by_query?pretty&conflicts=proceed" \
+     -H 'Content-Type: application/json' \
+     -u 'your-api-key-goes-here' \
+     -d $'{
+  "query": {
+    "match": {
+      "registry_volume": 27
+    }
+  }
+}'
+```
