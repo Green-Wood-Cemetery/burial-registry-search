@@ -297,7 +297,7 @@ const App = () => {
                             style={{
                                 marginBottom: 20
                             }}
-                            URLParams={true}
+                            URLParams={false}
                             title="Name"
                         />
                     </Panel>
@@ -321,7 +321,7 @@ const App = () => {
                             loader="Loading ..."
                             filterLabel="Interment year range"
                             includeNullValues
-                            URLParams={true}
+                            URLParams={false}
                         />
                     </Panel>
 
@@ -336,7 +336,7 @@ const App = () => {
                             title="Birthplace"
                             filterLabel="Birthplace"
                             sortBy="asc"
-                            URLParams={true}
+                            URLParams={false}
                             showCheckbox/>
                     </Panel>
 
@@ -350,7 +350,7 @@ const App = () => {
                                 marginBottom: 20
                             }}
                             filterLabel="Marital status"
-                            URLParams={true}
+                            URLParams={false}
                             showCheckbox/>
                     </Panel>
 
@@ -374,7 +374,7 @@ const App = () => {
                             }}
                             loader="Loading ..."
                             filterLabel="Age Range"
-                            URLParams={true}
+                            URLParams={false}
                             includeNullValues
                         />
                     </Panel>
@@ -390,7 +390,7 @@ const App = () => {
                             title="Late residence"
                             filterLabel="Late residence"
                             sortBy="asc"
-                            URLParams={true}
+                            URLParams={false}
                             showCheckbox/>
                     </Panel>
 
@@ -404,7 +404,7 @@ const App = () => {
                             }}
                             title="Place of death"
                             filterLabel="Place of death"
-                            URLParams={true}
+                            URLParams={false}
                             sortBy="asc"
                             showCheckbox/>
                     </Panel>
@@ -418,7 +418,7 @@ const App = () => {
                                 marginBottom: 20
                             }}
                             filterLabel="Cause of death"
-                            URLParams={true}
+                            URLParams={false}
                             showCheckbox/>
                     </Panel>
 
@@ -440,7 +440,7 @@ const App = () => {
                             }}
                             loader="Loading ..."
                             filterLabel="Death year range"
-                            URLParams={true}
+                            URLParams={false}
                         />
                     </Panel>
 
@@ -453,7 +453,7 @@ const App = () => {
                                 marginBottom: 20
                             }}
                             filterLabel="Undertaker / Funeral Director"
-                            URLParams={true}
+                            URLParams={false}
                             showCheckbox/>
                     </Panel>
 
@@ -512,7 +512,7 @@ const App = () => {
                             style={{
                                 marginBottom: 20
                             }}
-                            URLParams={true}
+                            URLParams={false}
                             title="ID"
                         />
                         <MultiList
@@ -525,7 +525,7 @@ const App = () => {
                             filterLabel="Burial registry volume"
                             showSearch={false}
                             showCheckbox
-                            URLParams={true}
+                            URLParams={false}
                             sortBy="asc"
                             title="Volume"
                         />
@@ -646,7 +646,7 @@ const App = () => {
                                 pagination={true}
                                 paginationAt="bottom"
                                 pages={10}
-                                URLParams
+                                URLParams={false}
                                 excludeFields={[
                                     "birth_place_geo_location",
                                     "death_place_geo_place_id",
