@@ -644,6 +644,7 @@ const App = () => {
                                 componentId="result"
                                 dataField="_score"
                                 pagination={true}
+                                scrollOnChange={false}
                                 paginationAt="bottom"
                                 pages={10}
                                 URLParams={false}
