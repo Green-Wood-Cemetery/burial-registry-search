@@ -34,11 +34,74 @@ workbook = load_workbook(filename=args.input, data_only=True)
 
 # sheet = workbook.active
 sheet = workbook[args.sheet]
+'''
+=====================================================================================================================
+SPREADSHEET COLUMN CONSTANTS
 
-# spreadsheet column constants
+Default Configuration
+---------------------
+A -> IMAGE_FILENAME
+B -> INTERMENT_ID
+C -> INTERMENT_MONTH
+D -> INTERMENT_DAY
+E -> INTERMENT_YEAR
+F -> NAME
+G -> LOT_LOCATION
+H -> GRAVE_LOCATION
+I -> BIRTH_PLACE
+J -> AGE_YEARS
+K -> AGE_MONTHS
+L -> AGE_DAYS
+M -> MARITAL_STATUS_MARRIED
+N -> RESIDENCE_CITY
+O -> RESIDENCE_STREET
+P -> DEATH_LOCATION
+Q -> DEATH_MONTH
+R -> DEATH_DAY
+S -> DEATH_YEAR
+T -> CAUSE_OF_DEATH
+U -> UNDERTAKER
+V -> NOTES
+W -> HAS_DIAGRAM
+X -> NEEDS_REVIEW 
+=====================================================================================================================
+'''
 
-# vols 16-20
-if 16 <= args.vol <= 20:
+# Volumes: 4
+#   - Duplicate 'Street & Number' column
+#   - One column for marital status
+if args.vol == 4:
+    IMAGE_FILENAME = 0
+    INTERMENT_ID = 1
+    INTERMENT_MONTH = 2
+    INTERMENT_DAY = 3
+    INTERMENT_YEAR = 4
+    NAME = 5
+    LOT_LOCATION = 6
+    GRAVE_LOCATION = 7
+    BIRTH_PLACE = 8
+    AGE_YEARS = 9
+    AGE_MONTHS = 10
+    AGE_DAYS = 11
+    MARITAL_STATUS_MARRIED = 12
+    MARITAL_STATUS_SINGLE = 12
+    MARITAL_STATUS_SINGLE_COLUMN = 12
+    RESIDENCE_CITY = 13
+    RESIDENCE_STREET = 14
+    DEATH_LOCATION = 16
+    DEATH_DAY = 17
+    DEATH_MONTH = 18
+    DEATH_YEAR = 19
+    CAUSE_OF_DEATH = 20
+    UNDERTAKER = 21
+    NOTES = 22
+    HAS_DIAGRAM = 23
+    NEEDS_REVIEW = 24
+
+# Volumes: 16-20
+#   - No INTERMENT_YEAR and DEATH_YEAR columns
+#   - Two marital status columns (married and single)
+elif 16 <= args.vol <= 20:
     IMAGE_FILENAME = 0
     INTERMENT_ID = 1
     INTERMENT_MONTH = 2
@@ -63,9 +126,9 @@ if 16 <= args.vol <= 20:
     HAS_DIAGRAM = 21
     NEEDS_REVIEW = 22
 
-# vols 21 - 28
-# there are now columns for interment and death years
-elif 21 <= args.vol <= 28:
+# Volumes: 6-15, 21-28
+#  - Two marital status columns (married and single)
+elif 6 <= args.vol <= 15 or 21 <= args.vol <= 28:
     IMAGE_FILENAME = 0
     INTERMENT_ID = 1
     INTERMENT_MONTH = 2
@@ -92,37 +155,9 @@ elif 21 <= args.vol <= 28:
     HAS_DIAGRAM = 23
     NEEDS_REVIEW = 24
 
-# vols 29 - ?
-# marital status is now one column instead of two
-elif 29 <= args.vol <= 50:
-    IMAGE_FILENAME = 0
-    INTERMENT_ID = 1
-    INTERMENT_MONTH = 2
-    INTERMENT_DAY = 3
-    INTERMENT_YEAR = 4
-    NAME = 5
-    LOT_LOCATION = 6
-    GRAVE_LOCATION = 7
-    BIRTH_PLACE = 8
-    AGE_YEARS = 9
-    AGE_MONTHS = 10
-    AGE_DAYS = 11
-    MARITAL_STATUS_MARRIED = 12
-    MARITAL_STATUS_SINGLE = 12
-    MARITAL_STATUS_SINGLE_COLUMN = 12
-    RESIDENCE_CITY = 13
-    RESIDENCE_STREET = 14
-    DEATH_LOCATION = 15
-    DEATH_MONTH = 16
-    DEATH_DAY = 17
-    DEATH_YEAR = 18
-    CAUSE_OF_DEATH = 19
-    UNDERTAKER = 20
-    NOTES = 21
-    HAS_DIAGRAM = 22
-    NEEDS_REVIEW = 23
-
-# default
+# (Default Configuration)
+# Volumes: 1-2, 29-60
+# - One marital status column
 else:
     IMAGE_FILENAME = 0
     INTERMENT_ID = 1
@@ -354,7 +389,7 @@ for row in sheet.iter_rows(min_row=args.row_start, values_only=True):
 
         i.set_has_diagram(row[HAS_DIAGRAM])
         # check if grave location has "see r column"
-        if bool(_see_r_column_regex.search(row[GRAVE_LOCATION])):
+        if bool(row[GRAVE_LOCATION] and _see_r_column_regex.search(row[GRAVE_LOCATION])):
             i.set_has_diagram('Diagram')
 
         i.set_transcriber_requests_review(row[NEEDS_REVIEW])
@@ -530,4 +565,5 @@ for col in ['J', 'K', 'L', 'M', 'N']:
 for col in ['P']:
     ws.column_dimensions[col].hidden = True
 
-wb.save("excel/output/Volume_" + str(args.vol) + "_processed.xlsx")
+volume_number_str = str(args.vol) if args.vol >= 9 else '0' + str(args.vol)
+wb.save("excel/output/Volume_" + volume_number_str + "_processed.xlsx")
