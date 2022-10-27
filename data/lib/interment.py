@@ -245,6 +245,8 @@ class Interment:
         self.__death_date_year_cached = None
         self.__death_date_iso = None
         self.__death_month_cached = None
+        self.__death_date_year_display = None
+        self.__death_year_cached = None
 
         # PLACES:
         # BIRTH
@@ -454,7 +456,7 @@ class Interment:
         display_temp = ''
         previous_entry = self.__previous
 
-        if month is not None and month != '':
+        if month is not None and month != '' and month != '"' and not str(month).isspace():
             self.__interment_date_month_raw = month
             self.__interment_date_month_display = month
             display_temp += month + " "
@@ -467,7 +469,7 @@ class Interment:
                 self.__needs_review = True
                 self.__interment_date_comments = "Unable to parse interment month"
 
-        if day is not None and day != '':
+        if day is not None and day != '' and day != '"' and not str(day).isspace():
             self.__interment_date_day_raw = int(day)
             self.__interment_date_day_display = int(day)
             display_temp += str(int(day)) + ", "
@@ -596,15 +598,16 @@ class Interment:
             self.__death_date_year = year
             self.__death_year_cached = year
         else:
-            if previous_entry is not None:
-                if previous_entry.get_death_year_cached() is not None:
-                    self.__death_year_cached = previous_entry.get_death_year_cached()
-                if previous_entry.get_death_date_year_display() is not None:
-                    self.__death_date_year_display = previous_entry.get_death_date_year_display()
-                    self.__death_date_year = previous_entry.get_death_date_year_display()
+            if previous_entry.get_death_year_cached() is not None:
+                self.__death_year_cached = previous_entry.get_death_year_cached()
+            if previous_entry.get_death_date_year_display() is not None:
+                self.__death_date_year_display = previous_entry.get_death_date_year_display()
+                self.__death_date_year = previous_entry.get_death_date_year_display()
             else:
                 self.__needs_review = True
                 self.__death_date_comments = "Unable to parse death year"
+                self.__death_year_cached = None
+                self.__death_date_year_display = None
 
         # generate iso date
         if display_temp != '':
