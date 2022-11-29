@@ -126,9 +126,9 @@ elif 16 <= args.vol <= 20:
     HAS_DIAGRAM = 21
     NEEDS_REVIEW = 22
 
-# Volumes: 6-15, 21-28
+# Volumes: 5-15, 21-28
 #  - Two marital status columns (married and single)
-elif 6 <= args.vol <= 15 or 21 <= args.vol <= 28:
+elif 5 <= args.vol <= 15 or 21 <= args.vol <= 28:
     IMAGE_FILENAME = 0
     INTERMENT_ID = 1
     INTERMENT_MONTH = 2
