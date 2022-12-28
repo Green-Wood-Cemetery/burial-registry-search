@@ -1637,6 +1637,8 @@ class Interment:
     def set_remarks_raw(self, value):
         if value is None:
             value = ''
+        if type(value) is not str:
+            value = str(value)
         self.__remarks_raw = value
         self.__remarks_display = ''
 
