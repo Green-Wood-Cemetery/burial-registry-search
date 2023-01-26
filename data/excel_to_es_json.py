@@ -235,6 +235,11 @@ for i in es_dict:
         if "residence_place_geo_formatted_address_extra" in i:
             del i["residence_place_geo_formatted_address_extra"]
 
+    # convert empty dates to 2099-12-31
+    if i["death_date_iso"] == "":
+        i["death_date_iso"] = "2099-12-31"
+
+
     # --- PARSE REGISTRY VOL AND PAGE
     try:
         m = re.search('[Vv]olume\s+(\d+)_(\d+)', i["registry_image"])
