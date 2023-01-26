@@ -147,7 +147,7 @@ es_dict = df.to_dict(orient='records')
 class DateTimeEncoder(json.JSONEncoder):
     def default(self, z):
         if isinstance(z, datetime.datetime):
-            return str(z)
+            return (str(z).replace("00:00:00", "")).strip()
         else:
             return super().default(z)
 
