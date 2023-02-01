@@ -8,3 +8,4 @@ inflection
 pandas
 python-dotenv
 humanize
+requests
