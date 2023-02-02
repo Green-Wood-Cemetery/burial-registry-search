@@ -9,4 +9,4 @@ pandas
 python-dotenv
 humanize
 requests
-demjson
+demjson3

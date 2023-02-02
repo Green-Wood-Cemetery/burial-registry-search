@@ -1,5 +1,5 @@
 import requests
-import demjson
+import demjson3
 import json
 import argparse
 import logging
@@ -51,7 +51,7 @@ except:
 if len(file_data) > 0:
     try:
         logging.info(f"Loading ES Index {args.index} data...")
-        response = requests.post(url, data=demjson.encode(payload_obj), headers=headers)
+        response = requests.post(url, data=demjson3.encode(payload_obj), headers=headers)
         raw_data = json.loads(response.text)
         total_records = raw_data["hits"]["total"]["value"]
     except:
@@ -64,7 +64,7 @@ if len(file_data) > 0:
         while start < total_records:
             payload_obj["from"] = start
             payload_obj["size"] = size
-            payload = demjson.encode(payload_obj)
+            payload = demjson3.encode(payload_obj)
             response = requests.post(url, data=payload, headers=headers)
             raw_data = json.loads(response.text)
             for item in raw_data["hits"]["hits"]:
