@@ -1,4 +1,132 @@
-# Common Tasks
+# Data Preparation and Validation
+
+This folder contains the scripts to prepare and validate the import of the volume data into ReactiveSearch (RS) ElasticSearch (ES) instance.
+
+## Technologies used
+
+The scripts are written in Python (work and tested with python 3.9.X and 3.10).
+
+The following libraries needs to be installed:
+- requests
+- pandas
+- openpyxl
+- argparse
+- logging
+- nameparser
+- dateparser
+- googlemaps
+- inflection
+- pandas
+- python-dotenv
+- humanize
+- requests
+- demjson3
+
+### How to prepare your Python to run the scripts
+
+If you don't have Python installed, please proceed going to this link [here](https://www.python.org/downloads/). Choose among the versions 3.9.X or 3.10.X for your operating system. Then, proceed with download and install.
+
+After that, you need to decide if you want to maintain a virtual environment to run your scripts or if you are going to install the required libraries on your global Python.
+
+If you opt for the virtual environment, please open a terminal, navigate to the data folder and type the following command:
+
+```
+$ python3 -m venv venv
+```
+
+After that, before you run any script, please execute the following command:
+
+```
+$ source venv/Scripts/activate
+```
+or if you are using Windows:
+
+```
+C:> venv/scripts/activate.bat
+```
+
+Then it is done! You are ready to install the required libraries!
+
+### Installing the libraries
+
+On your computer, in your global or local Python environment, please execute the following command:
+
+```
+$ pip3 install -r requirements.txt
+```
+
+This command may give you some warnings about pip version, which is safe to ignore. Please make sure that all libraries were installed before proceed further.
+
+## About the Scripts
+
+Our data preparation and validation pipeline is composed of 3 scripts, that can be executed in adhoc way or in the following sequence:
+
+- Process the Transcription Excel files
+- Convert Processed File into ES JSON
+- Validate Data Import into RS
+
+### Process the Transcription Excel files
+
+This script get the transcription files and make some adjustments in the data, generating a new version of the Excel file that can be processed by the next script.
+
+The command line to execute this script is:
+
+```
+$ python3 process_spreadsheet.py -input 'excel/input/VOLUME_59 Final Data.xlsx' -vol 59 -sheet 'Sheet1' -row_start 3 -marital_status_cols 1 -lookup_years N -year_prefix '19'
+```
+
+The parameters used are:
+- -input: the path to the transcription file
+- -vol: the number of the volume. This information is important for the validation step
+- -sheet: the name of the worksheet in the transcription file that holds the data
+- -row_start: the row of the worksheet where the data starts
+- -marital_status_cols: how many columns in the data have marital status. This is due to the transcription service have not followed a standard
+- -lookup_years: not documented
+- -year_prefix: for dates that have only 2 digits in the year, what is the prefix to be added
+
+
+### Convert Processed File into ES JSON
+
+This script will convert the processed excel files into JSON files, following the ES Index format.
+
+The command line to execute this script is:
+
+```
+python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_40_processed_SL_COMPLETE.xlsx -vol 40 > json/greenwood-volume-40.json
+```
+
+The parameters used are:
+- -file: the path to the transcription file
+- -vol: the number of the volume. This information is important for the validation step
+- --no-geocode: not documented
+
+>> Attention!!! 
+>> To generate the JSON file you need to get the output of this script and save into a file with json extension. This is done adding that ' > json/greenwood-volume-40.json' as the ending of the command line.
+
+### Validate Data Import into RS
+
+This script will check if the ES JSON files were correctly imported into an ES Index.
+
+The command line to execute this script is:
+
+```
+python3 validate_index.py -file json/greenwood-volume-40.json -index interments -vol 40
+```
+
+The parameters used are:
+- -file: the path to the transcription file
+- -index: the name of the ES Index
+- -vol: the number of the volume. This parameter is optional and should be used if we want to validate only part of the index against the file
+
+So, if you want to validate against a test index, the command would be like:
+
+```
+python3 validate_index.py -file json/greenwood-volume-40.json -index 40test
+```
+
+This script will show a message on the terminal saying the if file and the index are identical or not. In case the file and the index are not identical, you should go to the logs folder and open the most recent log file that starts with 'compare-index' prefix and check the detailed error messages to understand what is the difference.
+
+
 
 ## Create a new Elasticsearch index
 
