@@ -64,7 +64,10 @@ Our data preparation and validation pipeline is composed of 3 scripts, that can 
 
 - Process the Transcription Excel files
 - Convert Processed File into ES JSON
+- Import ES JSON file into ES Index
 - Validate Data Import into RS
+
+We also have a script to clean records from an index based on the volume id.
 
 ### Process the Transcription Excel files
 
@@ -142,6 +145,22 @@ python3 validate_index.py -file json/greenwood-volume-40.json -index 40test
 
 This script will show a message on the terminal saying the if file and the index are identical or not. In case the file and the index are not identical, you should go to the logs folder and open the most recent log file that starts with 'compare-index' prefix and check the detailed error messages to understand what is the difference.
 
+
+### Clean Data inside the ES Index
+
+This script will remove from the ES Index all records that have the registry_volume field equal to the number provide as the vol parameter.
+
+The command line to execute this script is:
+
+```
+python3 clean_data.py -index interments -vol 40
+```
+
+The parameters used are:
+- -index: the name of the ES Index
+- -vol: the number of the volume
+
+This script will show a message on the terminal saying the total records found and the total records deleted.
 
 
 ## Create a new Elasticsearch index
