@@ -1,0 +1,22 @@
+Loading file json/greenwood-volume-60.json data...
+File json/greenwood-volume-60.json data loaded...
+Loading ES Index interments data...
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Loaded 6553 records from index interments...
+Comparing file with index data...
+File and Index were identical!!!
