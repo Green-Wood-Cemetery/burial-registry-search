@@ -1,0 +1,29 @@
+Loading file json/greenwood-volume-59.json data...
+File json/greenwood-volume-59.json data loaded...
+Loading ES Index interments data...
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_search HTTP/1.1" 200 None
+Loaded 10000 records from index interments...
+The index interments and the file json/greenwood-volume-59.json have different number of rows.
+interments = 10000
+json/greenwood-volume-59.json = 6762

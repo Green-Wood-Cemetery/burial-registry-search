@@ -1,0 +1,22 @@
+Loading file json/greenwood-volume-59.json data...
+File json/greenwood-volume-59.json data loaded...
+Loading ES Index 59test data...
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /59test/_search HTTP/1.1" 200 None
+Loaded 6762 records from index 59test...
+Comparing file with index data...
+File and Index were identical!!!
