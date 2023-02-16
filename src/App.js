@@ -544,6 +544,45 @@ const App = () => {
                         {/*    title="Page"*/}
                         {/*/>*/}
                     </Panel>
+                     
+                    <Panel header="Lot number" key="15">
+                        <DataSearch
+                            autosuggest={false}
+                            componentId="lotNumberSearch"
+                            filterLabel={"Lot Number"}
+                            componentType="DATASEARCH"
+                            dataField={['burial_location_lot_current']}
+                            debounce={0}
+                            defaultValue={undefined}
+                            fieldWeights={[1]}
+                            fuzziness={0}
+                            highlight={false}
+                            placeholder="Search lot numbers"
+                            queryFormat="and"
+                            showFilter={true}
+                            size={10}
+                            strictSelection={false}
+                            style={{
+                                marginBottom: 20
+                            }}
+                            URLParams={false}
+                            title="LOTNBR"
+                        />
+                        <MultiList
+                            componentId="lot_number_facet"
+                            dataField="burial_location_lot_current.keyword"
+                            size={100}
+                            style={{
+                                marginBottom: 20
+                            }}
+                            filterLabel="Burial Lot Number"
+                            showSearch={false}
+                            showCheckbox
+                            URLParams={false}
+                            sortBy="asc"
+                            title="Lots"
+                        />
+                    </Panel>
                 </Collapse>
             </Col>
 
@@ -717,6 +756,7 @@ const App = () => {
                                         'residence_place_city_display_facet',
                                         'birth_place_displayed_facet',
                                         'name_facet',
+                                        'lot_number_facet'
                                     ]
                                 }}
                                 renderItem={renderItem}
