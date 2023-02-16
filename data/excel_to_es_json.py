@@ -10,17 +10,19 @@ import re
 import logging
 import time
 
-parser = argparse.ArgumentParser(description='Converts XLSX to Elasticsearch JSON')
-parser.add_argument('-url', type=str, help='spreadsheet url')
-parser.add_argument('-file', type=str, help='spreadsheet file')
-parser.add_argument('-vol', type=int, help='registry volume number')
-parser.add_argument('--geocode', action=argparse.BooleanOptionalAction, help='process geocoded locations')
+parser = argparse.ArgumentParser(description="Converts XLSX to Elasticsearch JSON")
+parser.add_argument("-url", type=str, help="spreadsheet url")
+parser.add_argument("-file", type=str, help="spreadsheet file")
+parser.add_argument("-vol", type=int, help="registry volume number")
+parser.add_argument("--geocode", action=argparse.BooleanOptionalAction, help="process geocoded locations")
 args = parser.parse_args()
 
 
 # logging config
 timestr = time.strftime("%Y%m%d-%H%M%S")
-logging.basicConfig(filename='logs/excel_to_es-volume-' + str(args.vol) + '-' + timestr + '.csv', filemode='a', format='%(message)s')
+logging.basicConfig(
+    filename="logs/excel_to_es-volume-" + str(args.vol) + "-" + timestr + ".csv", filemode="a", format="%(message)s"
+)
 
 volume = args.vol
 
@@ -129,24 +131,24 @@ new_cols = [
     "remarks_transcribed",
     "remarks_display",
     "burial_origin",
-    "has_diagram"
+    "has_diagram",
 ]
 
 if args.url:
-    df = pd.read_excel(args.url, names=new_cols, usecols='A:CZ', keep_default_na=False)
+    df = pd.read_excel(args.url, names=new_cols, usecols="A:CZ", keep_default_na=False)
 elif args.file:
-    df = pd.read_excel(args.file, names=new_cols, usecols='A:CZ', keep_default_na=False)
+    df = pd.read_excel(args.file, names=new_cols, usecols="A:CZ", keep_default_na=False)
 else:
     sys.exit("Please indicate input file or url.")
 
 # replace NaN with empty string
-df = df.fillna('')
-es_dict = df.to_dict(orient='records')
+df = df.fillna("")
+es_dict = df.to_dict(orient="records")
 
 
 class DateTimeEncoder(json.JSONEncoder):
     def default(self, z):
-        if isinstance(z, datetime.datetime):
+        if isinstance(z, datetime.datetime) or isinstance(z, datetime.time):
             return (str(z).replace("00:00:00", "")).strip()
         else:
             return super().default(z)
@@ -239,10 +241,9 @@ for i in es_dict:
     if i["death_date_iso"] == "":
         i["death_date_iso"] = "2099-12-31"
 
-
     # --- PARSE REGISTRY VOL AND PAGE
     try:
-        m = re.search('[Vv]olume\s+(\d+)_(\d+)', i["registry_image"])
+        m = re.search("[Vv]olume\s+(\d+)_(\d+)", i["registry_image"])
         if m is None:
             logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
             # exit()
