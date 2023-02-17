@@ -1,0 +1,55 @@
+Loading file json/greenwood-volume-42.json data...
+File json/greenwood-volume-42.json data loaded...
+Loading ES Index interments data...
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_bulk HTTP/1.1" 200 None
+The import process of file json/greenwood-volume-42.json into index interments was not successful.
+Dumping errors for import process ...
+{
+    "index": {
+        "_id": "",
+        "_index": "interments",
+        "_type": "_doc",
+        "error": {
+            "reason": "if _id is specified it must not be empty",
+            "type": "illegal_argument_exception"
+        },
+        "status": 400
+    }
+}
+{
+    "index": {
+        "_id": "",
+        "_index": "interments",
+        "_type": "_doc",
+        "error": {
+            "reason": "if _id is specified it must not be empty",
+            "type": "illegal_argument_exception"
+        },
+        "status": 400
+    }
+}
+{
+    "index": {
+        "_id": "",
+        "_index": "interments",
+        "_type": "_doc",
+        "error": {
+            "reason": "if _id is specified it must not be empty",
+            "type": "illegal_argument_exception"
+        },
+        "status": 400
+    }
+}
+{
+    "index": {
+        "_id": "",
+        "_index": "interments",
+        "_type": "_doc",
+        "error": {
+            "reason": "if _id is specified it must not be empty",
+            "type": "illegal_argument_exception"
+        },
+        "status": 400
+    }
+}
