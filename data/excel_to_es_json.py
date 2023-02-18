@@ -156,108 +156,113 @@ class DateTimeEncoder(json.JSONEncoder):
 
 # add cemetery and volume props
 row_count = 0
+parsed_data = []
 for i in es_dict:
+    if i["interment_id"] is not None:
+        row_count = row_count + 1
+        # add cemetery and volume props
+        i["cemetery"] = "Green-Wood Cemetery, Brooklyn, NY, USA"
+        i["registry_volume"] = volume
 
-    row_count = row_count + 1
-    # add cemetery and volume props
-    i["cemetery"] = "Green-Wood Cemetery, Brooklyn, NY, USA"
-    i["registry_volume"] = volume
+        # convert lat/lon strings to json
+        if args.geocode:
+            i["residence_place_geo_location"] = ast.literal_eval(i["residence_place_geo_location"])
+            i["birth_place_geo_location"] = ast.literal_eval(i["birth_place_geo_location"])
+            i["death_place_geo_location"] = ast.literal_eval(i["death_place_geo_location"])
 
-    # convert lat/lon strings to json
-    if args.geocode:
-        i["residence_place_geo_location"] = ast.literal_eval(i["residence_place_geo_location"])
-        i["birth_place_geo_location"] = ast.literal_eval(i["birth_place_geo_location"])
-        i["death_place_geo_location"] = ast.literal_eval(i["death_place_geo_location"])
+        # convert empty values to numbers
+        if i["age_years"] == "":
+            i["age_years"] = 0
+        if i["age_months"] == "":
+            i["age_months"] = 0
+        if i["age_days"] == "":
+            i["age_days"] = 0
+        if i["age_hours"] == "":
+            i["age_hours"] = 0
 
-    # convert empty values to numbers
-    if i["age_years"] == "":
-        i["age_years"] = 0
-    if i["age_months"] == "":
-        i["age_months"] = 0
-    if i["age_days"] == "":
-        i["age_days"] = 0
-    if i["age_hours"] == "":
-        i["age_hours"] = 0
+        # fix bad lot owner values
+        if i["is_lot_owner"] == 0:
+            i["is_lot_owner"] = False
+        if i["is_lot_owner"] == 1:
+            i["is_lot_owner"] = True
 
-    # fix bad lot owner values
-    if i["is_lot_owner"] == 0:
-        i["is_lot_owner"] = False
-    if i["is_lot_owner"] == 1:
-        i["is_lot_owner"] = True
+        # fix bad has diagram values
+        if i["has_diagram"] == 0:
+            i["has_diagram"] = False
+        if i["has_diagram"] == 1:
+            i["has_diagram"] = True
 
-    # fix bad has diagram values
-    if i["has_diagram"] == 0:
-        i["has_diagram"] = False
-    if i["has_diagram"] == 1:
-        i["has_diagram"] = True
+        # more boolean conversions...
+        if i["birth_geo_is_faulty"] == 0:
+            i["birth_geo_is_faulty"] = False
+        if i["birth_geo_is_faulty"] == 1:
+            i["birth_geo_is_faulty"] = True
+        if i["death_place_geo_is_faulty"] == 0:
+            i["death_place_geo_is_faulty"] = False
+        if i["death_place_geo_is_faulty"] == 1:
+            i["death_place_geo_is_faulty"] = True
+        if i["residence_place_geo_is_faulty"] == 0:
+            i["residence_place_geo_is_faulty"] = False
+        if i["residence_place_geo_is_faulty"] == 1:
+            i["residence_place_geo_is_faulty"] = True
+        if i["birth_geo_is_faulty"] == "UNKNOWN":
+            i["birth_geo_is_faulty"] = True
 
-    # more boolean conversions...
-    if i["birth_geo_is_faulty"] == 0:
-        i["birth_geo_is_faulty"] = False
-    if i["birth_geo_is_faulty"] == 1:
-        i["birth_geo_is_faulty"] = True
-    if i["death_place_geo_is_faulty"] == 0:
-        i["death_place_geo_is_faulty"] = False
-    if i["death_place_geo_is_faulty"] == 1:
-        i["death_place_geo_is_faulty"] = True
-    if i["residence_place_geo_is_faulty"] == 0:
-        i["residence_place_geo_is_faulty"] = False
-    if i["residence_place_geo_is_faulty"] == 1:
-        i["residence_place_geo_is_faulty"] = True
-    if i["birth_geo_is_faulty"] == "UNKNOWN":
-        i["birth_geo_is_faulty"] = True
+        # need to catch cases where the reviewer changes number types to float
+        # instead of integer when editing the spreadsheet
+        if isinstance(i["interment_id"], float):
+            i["interment_id"] = int(i["interment_id"])
+        if isinstance(i["interment_date_day_transcribed"], float):
+            i["interment_date_day_transcribed"] = int(i["interment_date_day_transcribed"])
+        if isinstance(i["interment_date_year_transcribed"], float):
+            i["interment_date_year_transcribed"] = int(i["interment_date_year_transcribed"])
+        if isinstance(i["age_years"], float):
+            i["age_years"] = int(i["age_years"])
+        if isinstance(i["age_months"], float):
+            i["age_months"] = int(i["age_months"])
+        if isinstance(i["age_days"], float):
+            i["age_days"] = int(i["age_days"])
+        if isinstance(i["age_hours"], float):
+            i["age_hours"] = int(i["age_hours"])
+        if isinstance(i["death_date_year_transcribed"], float):
+            i["death_date_year_transcribed"] = int(i["death_date_year_transcribed"])
 
-    # need to catch cases where the reviewer changes number types to float
-    # instead of integer when editing the spreadsheet
-    if isinstance(i["interment_id"], float):
-        i["interment_id"] = int(i["interment_id"])
-    if isinstance(i["interment_date_day_transcribed"], float):
-        i["interment_date_day_transcribed"] = int(i["interment_date_day_transcribed"])
-    if isinstance(i["interment_date_year_transcribed"], float):
-        i["interment_date_year_transcribed"] = int(i["interment_date_year_transcribed"])
-    if isinstance(i["age_years"], float):
-        i["age_years"] = int(i["age_years"])
-    if isinstance(i["age_months"], float):
-        i["age_months"] = int(i["age_months"])
-    if isinstance(i["age_days"], float):
-        i["age_days"] = int(i["age_days"])
-    if isinstance(i["age_hours"], float):
-        i["age_hours"] = int(i["age_hours"])
-    if isinstance(i["death_date_year_transcribed"], float):
-        i["death_date_year_transcribed"] = int(i["death_date_year_transcribed"])
+        if not i["has_diagram"]:
+            i["has_diagram"] = False
 
-    if not i["has_diagram"]:
-        i["has_diagram"] = False
+        if args.geocode:
+            if "death_place_geo_formatted_address_extra" in i:
+                del i["death_place_geo_formatted_address_extra"]
+            if "birth_geo_formatted_address_extra" in i:
+                del i["birth_geo_formatted_address_extra"]
+            if "residence_place_geo_formatted_address_extra" in i:
+                del i["residence_place_geo_formatted_address_extra"]
 
-    if args.geocode:
-        if "death_place_geo_formatted_address_extra" in i:
-            del i["death_place_geo_formatted_address_extra"]
-        if "birth_geo_formatted_address_extra" in i:
-            del i["birth_geo_formatted_address_extra"]
-        if "residence_place_geo_formatted_address_extra" in i:
-            del i["residence_place_geo_formatted_address_extra"]
+        # convert empty dates to 2099-12-31
+        if i["death_date_iso"] == "":
+            i["death_date_iso"] = "2099-12-31"
 
-    # convert empty dates to 2099-12-31
-    if i["death_date_iso"] == "":
-        i["death_date_iso"] = "2099-12-31"
-
-    # --- PARSE REGISTRY VOL AND PAGE
-    try:
-        m = re.search("[Vv]olume\s+(\d+)_(\d+)", i["registry_image"])
-        if m is None:
+        # --- PARSE REGISTRY VOL AND PAGE
+        try:
+            m = re.search("[Vv]olume\s+(\d+)_(\d+)", i["registry_image"])
+            if m is None:
+                logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
+                # exit()
+                continue
+            # registry_volume = m.group(1)
+            registry_page = m.group(2)
+            i["registry_page"] = registry_page
+            # image_filename = "Volume " + registry_volume + "_" + registry_page
+            # todo: check if image exists on server
+        except re.error:
             logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
             # exit()
             continue
-        # registry_volume = m.group(1)
-        registry_page = m.group(2)
-        i["registry_page"] = registry_page
-        # image_filename = "Volume " + registry_volume + "_" + registry_page
-        # todo: check if image exists on server
-    except re.error:
-        logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
-        # exit()
-        continue
+        parsed_data.append(i)
+    else:
+        logging.error("Rejected Record")
+        logging.error(i)
 
 # dump and print json
-json_string = json.dumps(es_dict, indent=2, sort_keys=False, cls=DateTimeEncoder)
+json_string = json.dumps(parsed_data, indent=2, sort_keys=False, cls=DateTimeEncoder)
 print(json_string)
