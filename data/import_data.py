@@ -54,6 +54,7 @@ if len(file_data) > 0:
         response = requests.post(url, data=payload, headers=headers)
 
         parsed = json.loads(response.text)
+
         if parsed["errors"]:
             print(
                 f"The import process of file {args.file} into index {args.index} was not successful. See logs for errors."
@@ -64,7 +65,29 @@ if len(file_data) > 0:
                 if item["index"]["status"] == 400:
                     logging.error(json.dumps(item, indent=4, sort_keys=True))
         else:
-            print(f"The import process of file {args.file} into index {args.index} was successful.")
+            find_updates = False
+            updates = []
+            for item in parsed["items"]:
+                if item["index"]["status"] == 200:
+                    if not find_updates:
+                        logging.error(
+                            "The import have generated some updates, which indicates duplicated interment_ids on the file."
+                        )
+                    logging.error(json.dumps(item, indent=4, sort_keys=True))
+                    updates.append(item)
+                    find_updates = True
+
+            if find_updates:
+                print(
+                    f"The import process of file {args.file} into index {args.index} was successful, but some updates have happened. See the logs for more information."
+                )
+                with open(f"logs/dump_updates_{timestr}.json", "w") as fw:
+                    json.dump(updates, fw)
+                print(f"We have saved all the updated records on the file logs/dump_updates_{timestr}.json.")
+
+            else:
+                print(f"The import process of file {args.file} into index {args.index} was successful.")
+
     except:
         logging.error(f"Connectivity error when inserting data on index {args.index}...")
 else:
