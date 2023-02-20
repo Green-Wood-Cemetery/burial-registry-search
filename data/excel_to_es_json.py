@@ -193,20 +193,29 @@ for i in es_dict:
             i["has_diagram"] = True
 
         # more boolean conversions...
-        if i["birth_geo_is_faulty"] == 0:
+        if i["birth_geo_is_faulty"] == 0 or i["birth_geo_is_faulty"] == "FALSE":
             i["birth_geo_is_faulty"] = False
-        if i["birth_geo_is_faulty"] == 1:
+        if i["birth_geo_is_faulty"] == 1 or i["birth_geo_is_faulty"] == "TRUE":
             i["birth_geo_is_faulty"] = True
-        if i["death_place_geo_is_faulty"] == 0:
+
+        if i["death_place_geo_is_faulty"] == 0 or i["death_place_geo_is_faulty"] == "FALSE":
             i["death_place_geo_is_faulty"] = False
-        if i["death_place_geo_is_faulty"] == 1:
+        if i["death_place_geo_is_faulty"] == 1 or i["death_place_geo_is_faulty"] == "TRUE":
             i["death_place_geo_is_faulty"] = True
-        if i["residence_place_geo_is_faulty"] == 0:
+
+        if i["residence_place_geo_is_faulty"] == 0 or i["residence_place_geo_is_faulty"] == "FALSE":
             i["residence_place_geo_is_faulty"] = False
-        if i["residence_place_geo_is_faulty"] == 1:
+        if i["residence_place_geo_is_faulty"] == 1 or i["residence_place_geo_is_faulty"] == "TRUE":
             i["residence_place_geo_is_faulty"] = True
+
         if i["birth_geo_is_faulty"] == "UNKNOWN":
             i["birth_geo_is_faulty"] = True
+
+        if i["death_place_geo_is_faulty"] == "UNKNOWN":
+            i["death_place_geo_is_faulty"] = True
+
+        if i["residence_place_geo_is_faulty"] == "UNKNOWN":
+            i["residence_place_geo_is_faulty"] = True
 
         # need to catch cases where the reviewer changes number types to float
         # instead of integer when editing the spreadsheet
