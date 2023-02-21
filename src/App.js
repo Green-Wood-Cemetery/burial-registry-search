@@ -337,7 +337,8 @@ const App = () => {
                             filterLabel="Birthplace"
                             sortBy="asc"
                             URLParams={false}
-                            showCheckbox/>
+                            showCheckbox
+                            showLoadMore/>
                     </Panel>
 
                     <Panel header="Marital status" key="5">
@@ -391,7 +392,9 @@ const App = () => {
                             filterLabel="Late residence"
                             sortBy="asc"
                             URLParams={false}
-                            showCheckbox/>
+                            showCheckbox
+                            showLoadMore
+                          />
                     </Panel>
 
                     <Panel header="Place of death" key="2">
@@ -406,7 +409,8 @@ const App = () => {
                             filterLabel="Place of death"
                             URLParams={false}
                             sortBy="asc"
-                            showCheckbox/>
+                            showCheckbox
+                            showLoadMore/>
                     </Panel>
 
                     <Panel header="Cause of death" key="1">
@@ -419,7 +423,8 @@ const App = () => {
                             }}
                             filterLabel="Cause of death"
                             URLParams={false}
-                            showCheckbox/>
+                            showCheckbox
+                            showLoadMore/>
                     </Panel>
 
                     <Panel header="Date of death" key="7">
@@ -454,7 +459,8 @@ const App = () => {
                             }}
                             filterLabel="Undertaker / Funeral Director"
                             URLParams={false}
-                            showCheckbox/>
+                            showCheckbox
+                            showLoadMore/>
                     </Panel>
 
                     {/*<Panel header="Gender (guess based on first name)" key="6">*/}
@@ -549,7 +555,7 @@ const App = () => {
                         <MultiList
                             componentId="lot_number_facet"
                             dataField="burial_location_lot_current.keyword"
-                            size={99999}
+                            size={100}
                             style={{
                                 marginBottom: 20
                             }}
@@ -558,6 +564,7 @@ const App = () => {
                             URLParams={false}
                             sortBy="asc"
                             title="LOT NUMBER"
+                            showLoadMore
                         />
                     </Panel>
                 </Collapse>
