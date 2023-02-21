@@ -1,0 +1,975 @@
+Loading file json/greenwood-volume-54.json data...
+File json/greenwood-volume-54.json data loaded...
+Loading ES Index interments data...
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_bulk HTTP/1.1" 200 None
+The import have generated some updates, which indicates duplicated interment_ids on the file.
+{
+    "index": {
+        "_id": "391451",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272097,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391452",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272098,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391453",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272099,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391454",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272100,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391455",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272101,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391456",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272102,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391457",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272103,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391458",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272104,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391459",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272105,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391460",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272106,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391461",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272107,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391462",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272108,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391463",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272109,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391464",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272110,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391465",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272111,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391466",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272112,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391467",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272113,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391468",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272114,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391469",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272115,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391470",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272116,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391471",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272117,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391472",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272118,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391473",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272119,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391474",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272120,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391475",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272121,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391476",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272122,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391477",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272123,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391478",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272124,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391479",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272125,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391480",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272126,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391481",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272127,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391482",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272128,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391483",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272129,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391484",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272130,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391485",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272131,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391486",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272132,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391487",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272133,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391488",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272134,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391489",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272135,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391490",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272136,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391491",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272137,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391492",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272138,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391493",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272139,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391494",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272140,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391495",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272141,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391496",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272142,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391497",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272143,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391498",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272144,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391499",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272145,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391500",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272146,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391501",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272147,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391502",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272148,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391503",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272149,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391504",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272150,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391505",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272151,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391506",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272152,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}
+{
+    "index": {
+        "_id": "391507",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 272153,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 2,
+        "result": "updated",
+        "status": 200
+    }
+}

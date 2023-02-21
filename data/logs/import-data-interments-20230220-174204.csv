@@ -1,0 +1,23 @@
+Loading file json/greenwood-volume-58.json data...
+File json/greenwood-volume-58.json data loaded...
+Loading ES Index interments data...
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /interments/_bulk HTTP/1.1" 200 None
+The import have generated some updates, which indicates duplicated interment_ids on the file.
+{
+    "index": {
+        "_id": "421360",
+        "_index": "interments",
+        "_primary_term": 73,
+        "_seq_no": 263668,
+        "_shards": {
+            "failed": 0,
+            "successful": 1,
+            "total": 1
+        },
+        "_type": "_doc",
+        "_version": 3,
+        "result": "updated",
+        "status": 200
+    }
+}
