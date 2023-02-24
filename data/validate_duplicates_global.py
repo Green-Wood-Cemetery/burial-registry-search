@@ -49,12 +49,12 @@ for key in interments.keys():
 if len(records) > 0:
     print(f"See the list of duplicates in the files of folder {args.folder}...")
     logging.info(f"See the list of duplicates in the files of folder {args.folder}...")
-    with open("logs/duplicate_list.csv", "w", newline="") as fw:
+    with open(f"logs/duplicate_list_{args.folder}.csv", "w", newline="") as fw:
         dw = csv.DictWriter(fw, fieldnames=["file", "interment_id"])
         dw.writeheader()
         dw.writerows(records)
-        print(f"List of duplicates saved on logs/duplicate_list.csv...")
-        logging.info(f"List of duplicates saved on logs/duplicate_list.csv...")
+        print(f"List of duplicates saved on logs/duplicate_list_{args.folder}.csv...")
+        logging.info(f"List of duplicates saved on logs/duplicate_list_{args.folder}.csv...")
 
 else:
     print(f"No dupes where found in the files of folder {args.folder}...")

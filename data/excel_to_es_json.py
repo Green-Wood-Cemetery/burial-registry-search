@@ -219,8 +219,8 @@ for i in es_dict:
 
         # need to catch cases where the reviewer changes number types to float
         # instead of integer when editing the spreadsheet
-        if isinstance(i["interment_id"], float):
-            i["interment_id"] = int(i["interment_id"])
+        # if isinstance(i["interment_id"], float):
+        #    i["interment_id"] = int(i["interment_id"])
         if isinstance(i["interment_date_day_transcribed"], float):
             i["interment_date_day_transcribed"] = int(i["interment_date_day_transcribed"])
         if isinstance(i["interment_date_year_transcribed"], float):
