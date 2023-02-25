@@ -69,6 +69,9 @@ Our data preparation and validation pipeline is composed of 3 scripts, that can 
 - Clean Data from Index
 - List Duplicated Ids.
 
+You can run all those scripts manually, or use our convenient shell scripts to make easier:
+- Single Execution Scripts
+- Full Execution Scripts
 
 ### Process the Transcription Excel files
 
@@ -179,6 +182,43 @@ The parameters used are:
 - -file: the name of file
 
 The script print the ids on the terminal.
+
+## Shell Scripts
+
+The shell scripts are just a convenient way to make easier to execute the steps. The python scripts are used by them, so the efect is the same as execute the python scripts directly.
+
+### Single Execution Scripts
+
+#### single_convert.sh
+
+Convert one excel file into json file. It uses only one positional parameter that is the number of the volume.
+
+```
+$ ./single_convert.sh 40
+```
+
+You can find the log of the execution on the logs folder, on file excel-to-es-volume-04-`<timestamp>`.csv.
+
+
+#### single_load.sh
+
+Import the json file, cleaning the index before loading. It uses two positional parameters: the number of the volume and the index name.
+
+```
+$ ./single_load.sh 40 test-index
+```
+Logs can be found in the logs folder (import-data-`<index>`-`<timestamp>`.csv). 
+You can also check for file `import_errors.json` to see the records that were not imported. This file does not clean at every execution, so do it manually.
+
+#### single_validate.sh
+
+Validate if the json file and the content imported on the index really match. It uses two positional parameters: the number of the volume and the index name.
+
+```
+$ ./single_validate_import.sh 40 test-index
+```
+
+Besides the log file of the execution on the logs folder, it also generates two other files: `validate_size.csv`that contains the record count comparison between index and file, and `validate_values.csv`, that contains field by field the differences between index and file.
 
 
 ## Create a new Elasticsearch index
