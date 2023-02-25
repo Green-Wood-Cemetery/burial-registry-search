@@ -326,5 +326,37 @@
         }
       }
     }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "330792",
+      "status": 400,
+      "error": {
+        "type": "mapper_parsing_exception",
+        "reason": "failed to parse field [has_diagram] of type [boolean] in document with id '330792'. Preview of field's value: 'Not recorded'",
+        "caused_by": {
+          "type": "illegal_argument_exception",
+          "reason": "Failed to parse value [Not recorded] as only [true] or [false] are allowed."
+        }
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "330792",
+      "status": 400,
+      "error": {
+        "type": "mapper_parsing_exception",
+        "reason": "failed to parse field [residence_place_geo_is_faulty] of type [boolean] in document with id '330792'. Preview of field's value: 'July 3, 1905'",
+        "caused_by": {
+          "type": "illegal_argument_exception",
+          "reason": "Failed to parse value [July 3, 1905] as only [true] or [false] are allowed."
+        }
+      }
+    }
   }
 ]

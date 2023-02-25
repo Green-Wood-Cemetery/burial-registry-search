@@ -73,8 +73,12 @@ if len(file_data) > 0:
 
         logging.info(f"Loaded {total_records} records from index {args.index}...")
 
+        with open("logs/validate_size.csv", "a", newline="") as fw:
+            fw.write(f"'{timestr}',{args.file},{len(file_data)},{args.index},{total_records}\n")
+
         if len(file_data) == len(records):
             error = False
+            errors = []
             print("Comparing file with index data...")
             logging.info("Comparing file with index data...")
 
@@ -84,21 +88,23 @@ if len(file_data) > 0:
             for indx in range(0, len(records)):
                 for col_name in records[indx].keys():
                     if file_data[indx][col_name] != records[indx][col_name]:
-                        logging.error(f"Record {indx} has a different value on column {col_name}.")
-                        logging.error(f"File[{indx}]['{col_name}'] ==> {file_data[indx][col_name]}")
-                        logging.error(f"Index[{indx}]['{col_name}'] ==> {records[indx][col_name]}")
+                        errors.append(
+                            f"'{timestr}',{args.file},'{file_data[indx][col_name]}',{args.index},'{records[indx][col_name]}\n'"
+                        )
                         error = True
             if error:
-                print("File and Index were not identical!!!")
-                print("File and Index were not identical. See logs for error...")
+                logging.error("File and Index were not identical!!!")
+                logging.error("See the validate_values file for detail on issues.")
+                print("File and Index were not identical. See validate_values for errors...")
+                with open("logs/validate_values.csv", "a", newline="") as fw:
+                    fw.writelines(errors)
             else:
                 logging.info(f"File and Index were identical!!!")
                 print(f"File and Index were identical!!!")
         else:
             logging.error(f"The index {args.index} and the file {args.file} have different number of rows.")
-            logging.error(f"{args.index} = {len(records)}")
-            logging.error(f"{args.file} = {len(file_data)}")
-            print("File and Index were not identical. See logs for error...")
+            logging.error("See the validate_size file for detail in the issue.")
+            print("File and Index were not identical. See validate_size for error...")
     else:
         logging.info("The process has finished because the index does not have records to be compared.")
         print("File and/or Index were not loaded for comparison. See logs for error...")
