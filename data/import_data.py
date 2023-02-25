@@ -12,8 +12,9 @@ args = parser.parse_args()
 
 # logging config
 timestr = time.strftime("%Y%m%d-%H%M%S")
+parsed_vol = (args.file.replace(".json", "")).split("-")[2]
 logging.basicConfig(
-    filename="logs/import-data-" + str(args.index) + "-" + timestr + ".csv",
+    filename="logs/import-data-" + str(args.index) + "-" + parsed_vol + "-" + timestr + ".csv",
     filemode="a",
     format="%(message)s",
     level=logging.DEBUG,
@@ -45,49 +46,62 @@ except:
 
 if len(file_data) > 0:
     try:
-        payload = ""
-        for item in file_data:
-            type = {"index": {"_id": item["interment_id"]}}
-            payload += demjson3.encode(type) + "\n" + demjson3.encode(item) + "\n"
+        ind = 0
+        size = 100
+        max = len(file_data)
+        nr_records = 0
+        while ind < max:
+            payload = ""
+            for item in file_data[ind : ind + size]:
+                type = {"index": {"_id": item["interment_id"]}}
+                payload += demjson3.encode(type) + "\n" + demjson3.encode(item) + "\n"
 
-        logging.info(f"Loading ES Index {args.index} data...")
-        response = requests.post(url, data=payload, headers=headers)
+            response = requests.post(url, data=payload, headers=headers)
+            nr_records += size
 
-        parsed = json.loads(response.text)
+            parsed = json.loads(response.text)
 
-        if parsed["errors"]:
-            print(
-                f"The import process of file {args.file} into index {args.index} was not successful. See logs for errors."
-            )
-            logging.error(f"The import process of file {args.file} into index {args.index} was not successful.")
-            logging.error(f"Dumping errors for import process ...")
-            for item in parsed["items"]:
-                if item["index"]["status"] == 400:
-                    logging.error(json.dumps(item, indent=4, sort_keys=True))
-        else:
-            find_updates = False
-            updates = []
-            for item in parsed["items"]:
-                if item["index"]["status"] == 200:
-                    if not find_updates:
-                        logging.error(
-                            "The import have generated some updates, which indicates duplicated interment_ids on the file."
-                        )
-                    logging.error(json.dumps(item, indent=4, sort_keys=True))
-                    updates.append(item)
-                    find_updates = True
-
-            if find_updates:
+            if parsed["errors"]:
                 print(
-                    f"The import process of file {args.file} into index {args.index} was successful, but some updates have happened. See the logs for more information."
+                    f"The import process of file {args.file} into index {args.index} was not successful. See logs for errors."
                 )
-                with open(f"logs/dump_updates_{timestr}.json", "w") as fw:
-                    json.dump(updates, fw)
-                print(f"We have saved all the updated records on the file logs/dump_updates_{timestr}.json.")
+                logging.error(f"The import process of file {args.file} into index {args.index} was not successful.")
+                logging.error(f"Dumping errors for import process ...")
+                errors = []
+                for item in parsed["items"]:
+                    if item["index"]["status"] != 201:
+                        logging.error(json.dumps(item, indent=4, sort_keys=True))
+                        errors.append(item)
 
+                with open("logs/import_errors.json", "a") as fw:
+                    json.dump(errors, fw)
             else:
-                print(f"The import process of file {args.file} into index {args.index} was successful.")
+                find_updates = False
+                updates = []
+                for item in parsed["items"]:
+                    if item["index"]["status"] == 200:
+                        if not find_updates:
+                            logging.error(
+                                "The import have generated some updates, which indicates duplicated interment_ids on the file."
+                            )
+                        logging.error(json.dumps(item, indent=4, sort_keys=True))
+                        updates.append(item)
+                        find_updates = True
 
+                if find_updates:
+                    print(
+                        f"The import process of file {args.file} into index {args.index} was successful, but some updates have happened. See the logs for more information."
+                    )
+                    with open(f"logs/dump_updates_{timestr}.json", "w") as fw:
+                        json.dump(updates, fw)
+                    print(f"We have saved all the updated records on the file logs/dump_updates_{timestr}.json.")
+
+                else:
+                    print(
+                        f"Import of {nr_records} records from file {args.file} into index {args.index} was successful."
+                    )
+
+            ind += size
     except:
         logging.error(f"Connectivity error when inserting data on index {args.index}...")
 else:

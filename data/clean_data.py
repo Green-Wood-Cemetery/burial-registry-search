@@ -13,7 +13,7 @@ args = parser.parse_args()
 # logging config
 timestr = time.strftime("%Y%m%d-%H%M%S")
 logging.basicConfig(
-    filename="logs/import-data-" + str(args.index) + "-" + timestr + ".csv",
+    filename="logs/clean-data-" + str(args.index) + "-" + str(args.vol) + "-" + timestr + ".csv",
     filemode="a",
     format="%(message)s",
     level=logging.DEBUG,

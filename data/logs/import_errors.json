@@ -1,0 +1,330 @@
+[
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "1123",
+      "status": 400,
+      "error": {
+        "type": "mapper_parsing_exception",
+        "reason": "failed to parse field [birth_geo_is_faulty] of type [boolean] in document with id '1123'. Preview of field's value: '2'",
+        "caused_by": {
+          "type": "json_parse_exception",
+          "reason": "Current token (VALUE_NUMBER_INT) not of boolean type\n at [Source: (ByteArrayInputStream); line: 1, column: 399]"
+        }
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "1123",
+      "status": 400,
+      "error": {
+        "type": "mapper_parsing_exception",
+        "reason": "failed to parse field [birth_geo_is_faulty] of type [boolean] in document with id '1123'. Preview of field's value: '2'",
+        "caused_by": {
+          "type": "json_parse_exception",
+          "reason": "Current token (VALUE_NUMBER_INT) not of boolean type\n at [Source: (ByteArrayInputStream); line: 1, column: 399]"
+        }
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "323684.0",
+      "status": 400,
+      "error": {
+        "type": "mapper_parsing_exception",
+        "reason": "failed to parse field [has_diagram] of type [boolean] in document with id '323684.0'. Preview of field's value: 'Said to be 54 years'",
+        "caused_by": {
+          "type": "illegal_argument_exception",
+          "reason": "Failed to parse value [Said to be 54 years] as only [true] or [false] are allowed."
+        }
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "330792",
+      "status": 400,
+      "error": {
+        "type": "mapper_parsing_exception",
+        "reason": "failed to parse field [death_place_geo_is_faulty] of type [boolean] in document with id '330792'. Preview of field's value: 'Brooklyn NY Boro Queens NY City'",
+        "caused_by": {
+          "type": "illegal_argument_exception",
+          "reason": "Failed to parse value [Brooklyn NY Boro Queens NY City] as only [true] or [false] are allowed."
+        }
+      }
+    }
+  }
+]
