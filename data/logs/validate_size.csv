@@ -59,3 +59,5 @@ date,file,file_size,index,index_size
 '20230225-090825',json/greenwood-volume-58.json,6759,test-auto,6759
 '20230225-090830',json/greenwood-volume-59.json,6762,test-auto,6762
 '20230225-090835',json/greenwood-volume-60.json,6553,test-auto,6553
+'20230226-190016',json/greenwood-volume-09.json,8819,test-auto,8819
+'20230226-190108',json/greenwood-volume-24.json,7128,test-auto,7124
