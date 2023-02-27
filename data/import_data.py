@@ -46,6 +46,19 @@ except:
 
 if len(file_data) > 0:
     try:
+        # This code is setting up a loop to send data in chunks of
+        # 100 items to an API. The loop will continue until all of
+        # the data in the file_data array has been sent. The payload
+        # variable is created by encoding each item in the
+        # file_data array and adding it to the payload string.
+        # The response from the API is then checked for errors,
+        # and if there are any, the loop will be broken.
+        # The ind variable is incremented by size each time
+        # the loop runs, so that it will move on to the
+        # next chunk of 100 items in file_data.
+        # nr_records is also incremented by size each time,
+        # so that it can keep track of how many records
+        # have been sent.
         ind = 0
         size = 100
         max = len(file_data)

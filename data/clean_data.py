@@ -5,12 +5,16 @@ import argparse
 import logging
 import time
 
+# Creates an argument parser object with two arguments:
+# -index and -vol.
+# Then configures the logging module to create a log file with
+# the index name and volume number.
+
 parser = argparse.ArgumentParser(description="Compares Elasticsearch JSON with Elasticsearch INDEX")
 parser.add_argument("-index", type=str, help="ES Index")
 parser.add_argument("-vol", type=int, help="Volume to be cleaned")
 args = parser.parse_args()
 
-# logging config
 timestr = time.strftime("%Y%m%d-%H%M%S")
 logging.basicConfig(
     filename="logs/clean-data-" + str(args.index) + "-" + str(args.vol) + "-" + timestr + ".csv",
@@ -18,6 +22,12 @@ logging.basicConfig(
     format="%(message)s",
     level=logging.DEBUG,
 )
+
+# Sets authorization and appname variables as well as
+# a method variable. It also creates a url variable using
+# the f-string method.
+# It then sets headers for the request and creates an
+# empty list for file_data and sets total_records to 0.
 
 authorization = "Basic d2NvcnRlczpHVzQ3OGd3"
 appname = args.index
@@ -29,6 +39,14 @@ headers = {"Authorization": authorization, "Content-Type": "application/json"}
 
 file_data = []
 total_records = 0
+
+# The code prints out starting information about the
+# index and volume before trying to make a request
+# using the payload variable.
+# If there are records found in the response,
+# it logs information about them as well as printing it out.
+# If no records are found, it prints out an error message
+# and logs it.
 
 print("Starting process to Clean the index...")
 print(f"Index: {args.index}")
