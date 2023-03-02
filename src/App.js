@@ -3,6 +3,7 @@ import React from 'react';
 import {
   DataSearch,
   DynamicRangeSlider,
+  RangeInput,
   MultiList,
   ReactiveBase,
   ReactiveList,
@@ -24,6 +25,7 @@ import {
 } from '@ant-design/icons';
 
 import 'antd/dist/antd.css';
+import './styles.css';
 
 const { Panel } = Collapse;
 
@@ -241,7 +243,7 @@ const App = () => {
       url={ENDPOINT}
       credentials={CREDENTIALS}
       style={{ padding: 20 }}
-    // enableAppbase={true}
+      enableAppbase={true}
     >
 
       {/*<Drawer*/}
@@ -303,18 +305,22 @@ const App = () => {
             </Panel>
 
             <Panel header="Date of interment" key="8">
-              <DynamicRangeSlider
+              <RangeInput
                 componentId="interment_year_facet"
                 dataField="interment_date_year_transcribed"
-                rangeLabels={(min, max) => ({
-                  start: min,
-                  end: max,
-                })}
+                range={{
+                  start: 1840,
+                  end: 1937,
+                }}
+                rangeLabels={{
+                  start: 1840,
+                  end: 1937,
+                }}
                 stepValue={1}
                 tooltipTrigger={"always"}
                 showHistogram={true}
                 showFilter={true}
-                interval={2}
+                interval={0}
                 react={{
                   and: ["CategoryFilter", "SearchFilter"]
                 }}
@@ -372,15 +378,15 @@ const App = () => {
                 dataField="age_years"
                 rangeLabels={(min, max) => (
                   {
-                    "start": "0 years",
-                    "end": "110 years"
+                    "start": min,
+                    "end": max
                   }
                 )}
                 stepValue={1}
                 tooltipTrigger={"always"}
                 showHistogram={true}
                 showFilter={true}
-                interval={2}
+                interval={0}
                 react={{
                   and: ["CategoryFilter", "SearchFilter"]
                 }}
@@ -484,7 +490,7 @@ const App = () => {
                 tooltipTrigger={"always"}
                 showHistogram={true}
                 showFilter={true}
-                interval={2}
+                interval={0}
                 react={{
                   and: ["CategoryFilter", "SearchFilter"]
                 }}
@@ -730,10 +736,13 @@ const App = () => {
           {/*</Button>*/}
 
           <SelectedFilters />
+
           <div id="result">
             <ReactiveList
               componentId="result"
               dataField="_score"
+              showExport={true}
+              innerClass={{ export: 'export' }}
               pagination={true}
               scrollOnChange={false}
               paginationAt="bottom"
@@ -786,8 +795,6 @@ const App = () => {
                 "death_place_geo_street_number",
                 "birth_geo_neighborhood",
                 "death_place_geo_state_long",
-
-
               ]}
               react={{
                 and: [

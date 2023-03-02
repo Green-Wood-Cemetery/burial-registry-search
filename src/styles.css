@@ -65,3 +65,8 @@
 .react-expand-collapse--expanded .react-expand-collapse__button:before {
 	content: none;
 }
+
+.export {
+		font-size: 12px;
+	
+}
