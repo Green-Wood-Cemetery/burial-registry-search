@@ -1,0 +1,4 @@
+Starting new HTTPS connection (1): green-wood-hrrhhxs-arc.searchbase.io:443
+https://green-wood-hrrhhxs-arc.searchbase.io:443 "POST /test-auto/_delete_by_query?wait_for_completion=true&scroll_size=5000 HTTP/1.1" 200 252
+Total records for volume: 7900
+Total records deleted: 7900

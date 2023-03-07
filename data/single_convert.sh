@@ -53,5 +53,9 @@
 #python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_33_processed_SL_COMPLETE.xlsx -vol 33 > json/greenwood-volume-33.json
 #python3 excel_to_es_json.py --geocode -file excel/reviewed/Volume_38_processed_SL_COMPLETE_fixed.xlsx -vol 38 > json/greenwood-volume-38.json
 #python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_40_processed_SL_COMPLETE.xlsx -vol 40 > json/greenwood-volume-40.json
-python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_${1}_processed_SL_COMPLETE.xlsx -vol ${1} > json/greenwood-volume-${1}.json
-
+if [[ $i -lt 10 ]]
+then
+  python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_0${1}_processed_SL_COMPLETE.xlsx -vol ${1} > json/greenwood-volume-${1}.json
+else
+  python3 excel_to_es_json.py --no-geocode -file excel/reviewed/Volume_${1}_processed_SL_COMPLETE.xlsx -vol ${1} > json/greenwood-volume-${1}.json
+fi 

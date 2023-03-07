@@ -171,13 +171,18 @@ for i in es_dict:
             i["death_place_geo_location"] = ast.literal_eval(i["death_place_geo_location"])
 
         # convert empty values to numbers
-        if i["age_years"] == "":
+        if (
+            i["age_years"] in ["", "-", "69/70"]
+            or i["age_years"] is None
+            or str(i["age_years"]).strip() in ["289", "339", "664", "779", "788", "789", "809", "862"]
+        ):
             i["age_years"] = 0
-        if i["age_months"] == "":
+
+        if i["age_months"] == "" or i["age_months"] is None or i["age_months"] == "-":
             i["age_months"] = 0
-        if i["age_days"] == "":
+        if i["age_days"] == "" or i["age_days"] is None or i["age_days"] == "-":
             i["age_days"] = 0
-        if i["age_hours"] == "":
+        if i["age_hours"] == "" or i["age_hours"] is None or i["age_hours"] == "-":
             i["age_hours"] = 0
 
         # fix bad lot owner values
@@ -247,9 +252,55 @@ for i in es_dict:
             if "residence_place_geo_formatted_address_extra" in i:
                 del i["residence_place_geo_formatted_address_extra"]
 
+        if isinstance(i["death_date_iso"], datetime.datetime):
+            i["death_date_iso"] = i["death_date_iso"].strftime("%Y-%m-%d")
+
         # convert empty dates to 2099-12-31
-        if i["death_date_iso"] == "":
-            i["death_date_iso"] = "2099-12-31"
+        if len(str(i["death_date_iso"])) == 4:
+            i["death_date_month_transcribed"] = "0"
+            i["death_date_day_transcribed"] = "0"
+            i["death_date_year_transcribed"] = i["death_date_iso"]
+            i["death_day"] = "0"
+            i["death_month"] = "0"
+            i["death_year"] = i["death_date_iso"]
+        elif len(str(i["death_date_iso"])) == 7:
+            if "-" in i["death_date_iso"]:
+                i["death_date_month_transcribed"] = i["death_date_iso"].split("-")[1]
+                i["death_date_day_transcribed"] = "0"
+                i["death_date_year_transcribed"] = i["death_date_iso"].split("-")[0]
+                i["death_day"] = "0"
+                i["death_month"] = i["death_date_iso"].split("-")[1]
+                i["death_year"] = i["death_date_iso"].split("-")[0]
+            else:
+                i["death_date_month_transcribed"] = "0"
+                i["death_date_day_transcribed"] = "0"
+                i["death_date_year_transcribed"] = "0"
+                i["death_day"] = "0"
+                i["death_month"] = "0"
+                i["death_year"] = "0"
+        elif len(str(i["death_date_iso"])) == 10:
+            if "-" in i["death_date_iso"] and len(i["death_date_iso"].split("-")) == 3:
+                i["death_date_month_transcribed"] = i["death_date_iso"].split("-")[1]
+                i["death_date_day_transcribed"] = i["death_date_iso"].split("-")[2]
+                i["death_date_year_transcribed"] = i["death_date_iso"].split("-")[0]
+                i["death_day"] = i["death_date_iso"].split("-")[2]
+                i["death_month"] = i["death_date_iso"].split("-")[1]
+                i["death_year"] = i["death_date_iso"].split("-")[0]
+            else:
+                i["death_date_month_transcribed"] = "0"
+                i["death_date_day_transcribed"] = "0"
+                i["death_date_year_transcribed"] = "0"
+                i["death_day"] = "0"
+                i["death_month"] = "0"
+                i["death_year"] = "0"
+        else:
+            i["death_date_iso"] = "Not Known"
+            i["death_date_month_transcribed"] = "0"
+            i["death_date_day_transcribed"] = "0"
+            i["death_date_year_transcribed"] = "0"
+            i["death_day"] = "0"
+            i["death_month"] = "0"
+            i["death_year"] = "0"
 
         # --- PARSE REGISTRY VOL AND PAGE
         try:

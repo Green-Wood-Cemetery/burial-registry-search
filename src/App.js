@@ -7,7 +7,8 @@ import {
   MultiList,
   ReactiveBase,
   ReactiveList,
-  SelectedFilters
+  SelectedFilters,
+  RangeSlider
 } from '@appbaseio/reactivesearch';
 
 import {
@@ -479,13 +480,17 @@ const App = () => {
             </Panel>
 
             <Panel header="Date of death" key="7">
-              <DynamicRangeSlider
+              <RangeInput
                 componentId="death_year_facet"
-                dataField="death_date_year_transcribed"
-                rangeLabels={(min, max) => ({
-                  start: min,
-                  end: max,
-                })}
+                dataField="death_year"
+                range={{
+                  start: 1600,
+                  end: 1998
+                }}
+                rangeLabels={{
+                  start: '1600',
+                  end: '1998',
+                }}
                 stepValue={1}
                 tooltipTrigger={"always"}
                 showHistogram={true}
@@ -588,7 +593,7 @@ const App = () => {
               <MultiList
                 componentId="registry_volume_facet"
                 dataField="registry_volume.keyword"
-                size={100}
+                aggregationSize={100}
                 style={{
                   marginBottom: 20
                 }}
