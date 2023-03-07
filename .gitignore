@@ -25,3 +25,5 @@ venv/
 data/test.xlsx
 
 data/elasticsearch/
+
+data/sqlite/*
