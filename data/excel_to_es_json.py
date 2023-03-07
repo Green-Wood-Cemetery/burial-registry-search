@@ -162,7 +162,7 @@ for i in es_dict:
         row_count = row_count + 1
         # add cemetery and volume props
         i["cemetery"] = "Green-Wood Cemetery, Brooklyn, NY, USA"
-        i["registry_volume"] = volume
+        i["registry_volume"] = str(volume) if volume > 9 else "0" + str(volume)
 
         # convert lat/lon strings to json
         if args.geocode:
