@@ -146,6 +146,13 @@ df = df.fillna("")
 es_dict = df.to_dict(orient="records")
 
 
+def clear_field(texto):
+    fixed_text = ("".join(c for c in texto if not c.isdigit() and c not in ['"'])).strip()
+    fixed_text = fixed_text.replace("-", "").replace("- P", "").strip()
+    fixed_text = "" if fixed_text == "?" else fixed_text
+    return None if len(fixed_text) == 0 else fixed_text
+
+
 class DateTimeEncoder(json.JSONEncoder):
     def default(self, z):
         if isinstance(z, datetime.datetime) or isinstance(z, datetime.time):
@@ -301,6 +308,24 @@ for i in es_dict:
             i["death_day"] = "0"
             i["death_month"] = "0"
             i["death_year"] = "0"
+
+        i["cause_of_death_display"] = clear_field(i["cause_of_death_display"])
+
+        if i["marital_status"] in [
+            "Not recorded",
+            "Married",
+            "Single",
+            "Widow",
+            "Divorced",
+            "Marriage Annulled",
+            "Legally Separated",
+            "Infant",
+            "Separated",
+            "Child",
+        ]:
+            i["marital_status"] = str(i["marital_status"]).strip()
+        else:
+            i["marital_status"] = "Unknown"
 
         # --- PARSE REGISTRY VOL AND PAGE
         try:

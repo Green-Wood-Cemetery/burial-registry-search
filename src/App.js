@@ -7,8 +7,7 @@ import {
   MultiList,
   ReactiveBase,
   ReactiveList,
-  SelectedFilters,
-  RangeSlider
+  SelectedFilters
 } from '@appbaseio/reactivesearch';
 
 import {
@@ -205,21 +204,6 @@ function renderItem(res, triggerClickAnalytics) {
   );
 }
 
-// let onPopoverClickPlaceOfDeath = function(item) {
-// 	if (typeof item !== 'undefined') {
-// 		return <div>{item.death_geo_formatted_address}</div>;
-// 	}
-// };
-// let onPopoverClickPlaceOfResidence = function(item) {
-// 	if (typeof item !== 'undefined') {
-// 		return <div>{item.residence_geo_formatted_address}</div>;
-// 	}
-// };
-// let onPopoverClickPlaceOfBirth = function(item) {
-// 	if (typeof item !== 'undefined') {
-// 		return <div>{item.birth_geo_formatted_address}</div>;
-// 	}
-// };
 
 const CREDENTIALS = process.env.REACT_APP_ES_CREDENTIALS;
 const ENDPOINT = process.env.REACT_APP_ES_ENDPOINT;
@@ -823,18 +807,15 @@ const App = () => {
                   'lot_number_facet'
                 ]
               }}
+
               renderItem={renderItem}
               showResultStats={true}
-              // renderResultStats={function(stats) {
-              //     return `Showing ${stats.displayedResults} of total ${stats.numberOfResults} in ${
-              //         stats.time
-              //     } ms`;
-              // }}
               size={10}
               defaultQuery={() => ({ track_total_hits: true })}
               style={{
                 marginTop: 20
               }}
+
               sortOptions={[
                 {
                   dataField: "interment_date_year_transcribed",
