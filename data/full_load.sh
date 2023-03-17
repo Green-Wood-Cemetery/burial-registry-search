@@ -13,5 +13,5 @@ do
     python3 import_data.py -file json/greenwood-volume-${i}.json -index ${1}
   fi
 
-  sleep 30
+  sleep 60
 done

@@ -311,7 +311,7 @@ for i in es_dict:
 
         i["cause_of_death_display"] = clear_field(i["cause_of_death_display"])
 
-        if i["marital_status"] in [
+        if i["marital_status"] and i["marital_status"] in [
             "Not recorded",
             "Married",
             "Single",
@@ -332,17 +332,18 @@ for i in es_dict:
             m = re.search("[Vv]olume\s+(\d+)_(\d+)", i["registry_image"])
             if m is None:
                 logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
-                # exit()
                 continue
-            # registry_volume = m.group(1)
-            registry_page = m.group(2)
+
+            registry_volume = int(m.group(1))
+            registry_page = int(m.group(2))
             i["registry_page"] = registry_page
-            # image_filename = "Volume " + registry_volume + "_" + registry_page
-            # todo: check if image exists on server
+
+            image_filename = f"Volume {registry_volume:02d}_{registry_page:03d}"
+            i["registry_image"] = image_filename
         except re.error:
             logging.warning("Unable to parse volume page: " + i["registry_image"] + " at row " + str(row_count))
-            # exit()
             continue
+
         parsed_data.append(i)
     else:
         logging.error("Rejected Record")
