@@ -1,1 +1,290 @@
-[{"index": {"_index": "interments", "_type": "_doc", "_id": "", "status": 400, "error": {"type": "illegal_argument_exception", "reason": "if _id is specified it must not be empty"}}}, {"index": {"_index": "interments", "_type": "_doc", "_id": "", "status": 400, "error": {"type": "illegal_argument_exception", "reason": "if _id is specified it must not be empty"}}}][{"index": {"_index": "interments", "_type": "_doc", "_id": "", "status": 400, "error": {"type": "illegal_argument_exception", "reason": "if _id is specified it must not be empty"}}}]
+[
+  {
+    "index": {
+      "_index": "interments",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "interments",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "interments",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  },
+  {
+    "index": {
+      "_index": "test-auto",
+      "_type": "_doc",
+      "_id": "",
+      "status": 400,
+      "error": {
+        "type": "illegal_argument_exception",
+        "reason": "if _id is specified it must not be empty"
+      }
+    }
+  }
+]
